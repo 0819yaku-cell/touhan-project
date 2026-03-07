@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import data from '../../data/questions.json';
+
+export async function getStaticPaths() {
+  const chapterTitles: Record<string, string> = {
+    "1": "第1章：医薬品に共通する特性と基本的な知識",
+    "2": "第2章：人体の働きと医薬品",
+    "3": "第3章：主な医薬品とその作用",
+    "4": "第4章：薬事関係法規・制度",
+    "5": "第5章：医薬品の適正使用・安全対策"
+  };
+
+  // 1〜5章までの全ページを生成
+  return ["1", "2", "3", "4", "5"].map((chapterNum) => {
+    const chapterName = `第${chapterNum}章`;
+    // この章に属する問題を抽出
+    const chapterQuestions = data.filter(q => {
+      const qChap = typeof q.chapter === 'number' ? `第${q.chapter}章` : (q.chapter ?? '');
+      return qChap === chapterName;
+    }).map((q) => {
+      // リンク用に全体のindex（全問題の中での通し番号）も必要
+      const globalIndex = data.findIndex(item => item.id === q.id);
+      return { ...q, globalIndex };
+    });
+
+    return {
+      params: { chapter: chapterNum },
+      props: {
+        chapterName,
+        chapterTitle: chapterTitles[chapterNum],
+        questions: chapterQuestions
+      }
+    };
+  });
+}
+
+const { chapterName, chapterTitle, questions } = Astro.props;
+---
+
+<Layout>
+  <div class="container page-wrapper py-xl animate-fade-in">
+    
+    <header class="chapter-header mb-lg">
+      <a href="/" class="back-link mb-sm">
+        <span class="back-icon">←</span> トップへ戻る
+      </a>
+      <div class="header-badge mt-sm">{chapterName}</div>
+      <h1 class="chapter-title">{chapterTitle.replace(`第${Astro.params.chapter}章：`, '')}</h1>
+      <p class="chapter-meta">収録問題数: {questions.length} 問</p>
+    </header>
+
+    <main class="chapter-main">
+      {questions.length > 0 ? (
+        <div class="qlist-grid">
+          {questions.map((q: any) => {
+            let snippet = q.question.replace('○か×か？', '').replace('○か✕か？', '');
+            if (snippet.length > 40) snippet = snippet.substring(0, 40) + '...';
+            
+            return (
+              <a href={`/questions/${q.globalIndex + 1}`} class="qlink-card" id={`qcard-${q.id}`}>
+                <div class="qlink-header">
+                  <span class="qlink-badge">Q{q.globalIndex + 1}</span>
+                  <div class="qlink-tags">
+                    {q.theme && <span class="qlink-category">{q.theme}</span>}
+                    <span class="qlink-category">{q.level || '標準'}</span>
+                  </div>
+                  <span class="qlink-status" id={`status-${q.id}`}></span>
+                </div>
+                <p class="qlink-text">{snippet}</p>
+                <div class="qlink-footer">
+                   <span class="qlink-arrow">解説を見る →</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="empty-state text-center py-xl">
+          <div class="empty-icon text-4xl mb-md opacity-50">🚧</div>
+          <h2 class="text-lg font-bold text-slate-700 mb-sm">現在準備中です</h2>
+          <p class="text-sm text-slate-500">この章の問題は順次追加される予定です。</p>
+        </div>
+      )}
+    </main>
+
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .mb-sm { margin-bottom: 0.5rem; }
+  .mb-md { margin-bottom: 1rem; }
+  .mb-lg { margin-bottom: 1.5rem; }
+  .mt-sm { margin-top: 0.5rem; }
+  .py-xl { padding-top: 3rem; padding-bottom: 3rem; }
+
+  /* ── Header ── */
+  .chapter-header {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.7; }
+
+  .header-badge {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+
+  .chapter-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  .chapter-meta {
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* ── List ── */
+  .qlist-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .qlink-card {
+    display: block;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  
+  .qlink-card:hover, .qlink-card:active {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+  }
+
+  .qlink-card.is-mastered {
+    border-color: #a7f3d0;
+    background: #f0fdf4;
+  }
+
+  .qlink-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .qlink-badge {
+    background: #bae6fd;
+    color: #0369a1;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .qlink-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .qlink-category {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .qlink-status {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  
+  .qlink-card.is-mastered .qlink-status::after {
+    content: '✓ マスター';
+    color: #10b981;
+  }
+
+  .qlink-text {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+  }
+
+  .qlink-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .qlink-arrow {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0ea5e9;
+  }
+</style>
+
+<script>
+  function updateMasteredStatus() {
+    const cards = document.querySelectorAll('.qlink-card');
+    cards.forEach(card => {
+      const qId = card.id.replace('qcard-', '');
+      if (localStorage.getItem(`touhan_mastered_${qId}`) === 'true') {
+        card.classList.add('is-mastered');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateMasteredStatus);
+</script>

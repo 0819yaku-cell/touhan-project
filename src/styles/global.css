@@ -1,0 +1,175 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+@source "../data/questions.json";
+
+:root {
+  /* Color Palette - Pastel Theme */
+  --color-primary: #7dd3fc;
+  /* Light Blue */
+  --color-primary-light: #bae6fd;
+  --color-primary-dark: #0284c7;
+  --color-accent: #ffedfa;
+  /* Pastel Pink */
+  --color-bg: #f0f9ff;
+  /* Pastel Blue */
+  --color-surface: #ffffff;
+  --color-text: #334155;
+  --color-text-muted: #64748b;
+
+  /* Status Colors */
+  --color-success: #6ee7b7;
+  /* Mint Green */
+  --color-error: #fca5a5;
+  /* Soft Red */
+
+  /* Typography */
+  --font-family-base: 'Inter', 'Noto Sans JP', sans-serif;
+
+  /* Spacing & Sizes */
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-full: 9999px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+}
+
+/* Reset & Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  /* Nuclear option: prevent any element from overflowing its parent */
+}
+
+/* Images and media should never overflow */
+img,
+video,
+svg,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html,
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent any horizontal scroll */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: 480px;
+  /* Mobile-first target width */
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mb-xl {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}

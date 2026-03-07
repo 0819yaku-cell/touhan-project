@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Quiz from '../../components/Quiz.astro';
+import data from '../../data/questions.json';
+
+export async function getStaticPaths() {
+  return data.map((q, index) => ({
+    params: { id: String(index + 1) },
+    props: {
+      questionId: q.id,
+      questionNumber: index + 1,
+      totalQuestions: data.length,
+      prevNum: index > 0 ? index : null,
+      nextNum: index < data.length - 1 ? index + 2 : null,
+      chapter: typeof q.chapter === 'number' ? `第${q.chapter}章` : (q.chapter ?? ''),
+      category: q.theme || q.category || '',
+    },
+  }));
+}
+
+const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, category } = Astro.props;
+---
+
+<Layout>
+  <div class="qpage-wrapper">
+
+    <!-- ミニヘッダー：サイト名 + 進捗 -->
+    <header class="qpage-header">
+      <a href="/" class="back-link">
+        <span class="back-icon">←</span> 問題一覧
+      </a>
+      <span class="progress-badge">{questionNumber} / {totalQuestions}問</span>
+    </header>
+
+    <!-- カテゴリ表示 -->
+    {(chapter || category) && (
+      <div class="category-bar">
+        {chapter && <span class="cat-tag cat-chapter">{chapter}</span>}
+        {category && <span class="cat-tag cat-category">{category}</span>}
+      </div>
+    )}
+
+    <!-- 問題コンポーネント -->
+    <main class="qpage-main">
+      <Quiz questionId={questionId} />
+    </main>
+
+    <!-- 前後ナビゲーション -->
+    <nav class="qpage-nav">
+      {prevNum
+        ? <a href={`/questions/${prevNum}`} class="nav-btn nav-btn--prev">← 前の問題</a>
+        : <a href="/" class="nav-btn nav-btn--prev">← 問題一覧へ</a>
+      }
+      {nextNum
+        ? <a href={`/questions/${nextNum}`} class="nav-btn nav-btn--next">次の問題 →</a>
+        : <a href="/" class="nav-btn nav-btn--next nav-btn--home">🏠 一覧に戻る</a>
+      }
+    </nav>
+
+  </div>
+</Layout>
+
+<style>
+  .qpage-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 0 2rem 0;
+    box-sizing: border-box;
+  }
+
+  /* ── ミニヘッダー ── */
+  .qpage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
+    border-bottom: 1px solid #bae6fd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-sizing: border-box;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.7; }
+  .back-icon { font-size: 1rem; }
+
+  .progress-badge {
+    background: var(--color-primary-light);
+    color: #0369a1;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+
+  /* ── カテゴリバー ── */
+  .category-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .cat-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+  .cat-chapter {
+    background: #dbeafe;
+    color: #1d4ed8;
+  }
+  .cat-category {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  /* ── メインコンテンツ ── */
+  .qpage-main {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* ── 前後ナビゲーション ── */
+  .qpage-nav {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0 1rem 1rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .nav-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.1);
+  }
+  .nav-btn:active { transform: translateY(3px); box-shadow: none; }
+
+  .nav-btn--prev {
+    background: #f1f5f9;
+    color: #475569;
+  }
+  .nav-btn--prev:hover { background: #e2e8f0; }
+
+  .nav-btn--next {
+    background: var(--color-primary-dark);
+    color: white;
+  }
+  .nav-btn--next:hover { background: #0369a1; }
+
+  .nav-btn--home {
+    background: var(--color-success);
+    color: white;
+  }
+</style>

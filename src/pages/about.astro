@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="container page-wrapper py-8 animate-fade-in mx-auto px-4 sm:px-6">
+    <header class="mb-8 text-center mt-4">
+      <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight">運営者情報</h1>
+    </header>
+
+    <main class="space-y-6">
+      
+      <!-- 運営者プロフィール -->
+      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
+        <div class="flex flex-col items-center">
+          <div class="w-24 h-24 bg-sky-50 rounded-full border-4 border-sky-100 flex items-center justify-center overflow-hidden mb-4 shadow-sm relative">
+            <img src="/pharmacist.png" alt="運営者" class="w-full h-full object-cover" />
+          </div>
+          <h2 class="text-xl font-bold text-slate-800 mb-2">運営者プロフィール</h2>
+          <p class="text-center text-sm md:text-base leading-relaxed font-medium text-slate-700">
+            薬剤師歴18年（病院5年・調剤薬局13年）、薬局長歴10年の現役薬剤師。<br class="hidden sm:block" />2008年に薬剤師免許取得。
+          </p>
+        </div>
+      </section>
+
+      <!-- このサイトを作った理由 -->
+      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
+        <h2 class="text-lg font-bold text-slate-800 pb-2 mb-4 flex items-center gap-2">
+          <span class="text-xl">💡</span> このサイトを作った理由
+        </h2>
+        <p class="text-sm md:text-base leading-relaxed font-medium text-slate-700">
+          セルフメディケーションの重要性が高まる中、厚生労働省は医療費削減のために選定療養の導入やOTC医薬品の拡充を進めています。第2類医薬品に移行する薬も増え、登録販売者の需要は今後ますます高まっていくでしょう。受験資格もなく、働きながらでも取得できる登録販売者は、自分のキャリアを見直したい方にとって最適な資格です。現場で働く医療事務スタッフにも取得を目指す方が増えています。そんな方たちが、スキマ時間にスマホで手軽に勉強できる環境を作りたいと思い、このサイトを立ち上げました。
+        </p>
+      </section>
+
+      <!-- 読者へのメッセージ -->
+      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
+        <h2 class="text-lg font-bold text-slate-800 pb-2 mb-4 flex items-center gap-2">
+          <span class="text-xl">✉️</span> 読者へのメッセージ
+        </h2>
+        <p class="text-sm md:text-base leading-relaxed font-medium text-slate-700">
+          薬のことって、実はすごく面白いんです。最初はなんとなくでいい。勉強していくうちに、薬の奥深さにきっとハマっていきますよ。薬は現代の魔法。一緒に楽しく学んでいきましょう！
+        </p>
+      </section>
+
+      <!-- 経歴 -->
+      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
+        <h2 class="text-lg font-bold text-slate-800 pb-2 flex items-center gap-2">
+          <span class="text-xl">⏳</span> 経歴
+        </h2>
+        
+        <div class="ml-2 mt-4">
+          <div class="relative border-l-2 border-blue-300 space-y-6 pb-2">
+            
+            <div class="relative pl-6">
+              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
+              <div class="font-bold text-blue-900 text-sm">2008年</div>
+              <div class="text-slate-700 mt-1">薬剤師免許取得</div>
+            </div>
+            
+            <div class="relative pl-6">
+              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
+              <div class="font-bold text-blue-900 text-sm">2008〜2013年</div>
+              <div class="text-slate-700 mt-1">病院勤務（5年）</div>
+            </div>
+
+            <div class="relative pl-6">
+              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
+              <div class="font-bold text-blue-900 text-sm">2013年〜現在</div>
+              <div class="text-slate-700 mt-1">調剤薬局勤務（13年）</div>
+            </div>
+
+            <div class="relative pl-6">
+              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
+              <div class="font-bold text-blue-900 text-sm">2015年〜現在</div>
+              <div class="text-slate-700 mt-1">薬局長として勤務（10年）</div>
+            </div>
+
+            <div class="relative pl-6">
+              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
+              <div class="font-bold text-blue-900 text-sm">2026年</div>
+              <div class="text-slate-700 mt-1">登録販売者のくすり教室を開設</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 免責事項 -->
+      <section class="bg-slate-50 p-4 sm:p-6 rounded-xl border border-slate-200">
+        <h3 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2">
+          <span class="text-amber-500 text-base">⚠️</span> 免責事項
+        </h3>
+        <p class="text-xs text-slate-600 leading-relaxed font-medium">
+          本サイトの解説は学習サポートを目的としており、正確性について最善を尽くしていますが、最新の法令や試験範囲については必ず公式情報（厚生労働省の手引き等）をご確認ください。
+        </p>
+      </section>
+
+    </main>
+  </div>
+</Layout>

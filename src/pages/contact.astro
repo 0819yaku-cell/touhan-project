@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="container page-wrapper py-8 animate-fade-in mx-auto">
+    <header class="mb-8 text-center mt-4">
+      <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight">お問い合わせ</h1>
+      <p class="text-slate-500 text-sm mt-3 font-medium">ご意見、ご感想、解説の誤りのご指摘などをお寄せください。</p>
+    </header>
+
+    <main class="bg-white p-6 sm:p-10 rounded-2xl shadow-sm border border-slate-200 text-center">
+      
+      <p class="text-slate-600 leading-relaxed font-medium mb-10 text-sm sm:text-base">
+        ご意見・ご感想・解説の誤りのご指摘などはGoogleフォームよりお気軽にお送りください。<br class="hidden sm:inline" />いただいたご意見はサイト改善に活用させていただきます。
+      </p>
+
+      <div class="flex justify-center">
+        <a href="https://forms.gle/r5kPrm1RhbxyKwUo8" target="_blank" rel="noopener noreferrer" class="btn-primary-lg">
+          <span>お問い合わせはこちら</span>
+        </a>
+      </div>
+
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .btn-primary-lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0284c7 100%);
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 800;
+    padding: 1.25rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+  }
+
+  .btn-primary-lg:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(14, 165, 233, 0.45);
+  }
+  
+  .btn-primary-lg:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  }
+</style>

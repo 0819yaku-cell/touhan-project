@@ -1,0 +1,758 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/questions.json';
+
+// --- 進捗表示用のデータ構造の生成 ---
+const chapterTitles: Record<string, string> = {
+  "第1章": "医薬品に共通する特性と基本的な知識",
+  "第2章": "人体の働きと医薬品",
+  "第3章": "主な医薬品とその作用",
+  "第4章": "薬事関係法規・制度",
+  "第5章": "医薬品の適正使用・安全対策"
+};
+
+const chaptersMap = new Map();
+
+// 先に第1章〜第5章までの枠を全て作成しておく
+Object.keys(chapterTitles).forEach(cName => {
+  chaptersMap.set(cName, {
+    name: cName,
+    title: chapterTitles[cName],
+    total: 0,
+    themesMap: new Map()
+  });
+});
+
+data.forEach((q: any) => {
+  const cName = typeof q.chapter === 'number' ? `第${q.chapter}章` : (q.chapter ?? "");
+  if (chaptersMap.has(cName)) {
+    const chapObj = chaptersMap.get(cName);
+    chapObj.total++;
+
+    const tName = q.theme || q.category || "その他";
+    if (!chapObj.themesMap.has(tName)) {
+      chapObj.themesMap.set(tName, {
+        name: tName,
+        questions: []
+      });
+    }
+    chapObj.themesMap.get(tName).questions.push(q);
+  }
+});
+
+// Mapから配列に変換
+const chapters = Array.from(chaptersMap.values()).map(c => ({
+  ...c,
+  themes: Array.from(c.themesMap.values())
+}));
+
+// 章番号順に並び替え
+chapters.sort((a, b) => {
+  const numA = parseInt(a.name.replace(/\D/g, '')) || 0;
+  const numB = parseInt(b.name.replace(/\D/g, '')) || 0;
+  return numA - numB;
+});
+---
+
+<Layout>
+  <div class="container page-wrapper py-xl animate-fade-in">
+    <div class="content-grid">
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="page-header mb-xl">
+          <!-- Top row: badge + title + subtitle -->
+          <div class="header-top">
+            <div class="header-badge whitespace-nowrap tracking-tight text-[11px] !px-2">📍 全国共通範囲に対応（厚労省の最新基準を完全網羅）</div>
+            <h1 class="main-title">登録販売者のくすり教室</h1>
+            <p class="main-subtitle">現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説</p>
+          </div>
+          <!-- Bottom row: avatar + speech bubble -->
+          <div class="header-chara-row">
+            <div class="chara-avatar">
+              <img src="/pharmacist.png" alt="薬剤師マスコット" class="chara-img" />
+            </div>
+            <div class="speech-bubble">
+              <p>「難しい言葉」はもうおしまい！<br />「なぜ？」で理解して<br />確実に合格を目指しましょう！</p>
+            </div>
+          </div>
+        </header>
+
+        <!-- CTA Section -->
+        <section class="cta-section text-center mb-xl">
+          <a href="/questions/1" class="btn-primary-lg">
+            <span>今日の学習をはじめる →</span>
+          </a>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section mb-xl">
+          <h2 class="section-title text-center mb-md">選ばれる3つの理由</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon icon-image">
+                <img src="/pharmacist.png" alt="薬剤師" />
+              </div>
+              <h3 class="feature-title">現役薬剤師が監修</h3>
+              <p class="feature-desc">現場のリアルな知識を踏まえた、正確で実践的な解説です。</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <!-- Book and Lightbulb SVG -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-book">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-bulb">
+                  <path d="M9 18h6" />
+                  <path d="M10 22h4" />
+                  <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
+                </svg>
+              </div>
+              <h3 class="feature-title">小学生でも分かる</h3>
+              <p class="feature-desc">専門用語を極力排除し、直感的な図解とやさしい言葉で説明します。</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <!-- Unlocked Padlock SVG -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-lock">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+                </svg>
+              </div>
+              <h3 class="feature-title">完全無料</h3>
+              <p class="feature-desc">すべての過去問解説と学習機能が、登録なしでずっと無料で使えます。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Chapters Progress Section -->
+        <section class="modules-section mb-xl">
+          <h2 class="section-title text-center mb-md">分野別の進捗</h2>
+          <div class="modules-accordion">
+            {chapters.map((chap, i) => {
+              const numMatch = chap.name.match(/\d/);
+              const chapterNum = numMatch ? numMatch[0] : "1";
+              
+              return (
+              <div class="chap-card" data-chapter={chap.name}>
+                <button class="chap-header" aria-expanded="false" aria-controls={`chap-content-${i}`}>
+                  <div class="chap-header-main">
+                    <span class="chap-badge">{chap.name}</span>
+                    <a href={`/chapters/${chapterNum}`} class="chap-title chap-title-link">{chap.title}</a>
+                  </div>
+                  <div class="chap-header-sub">
+                    <div class="chap-progress-bar-container">
+                      <div class="chap-progress-bar" id={`progress-bar-${i}`} style="width: 0%"></div>
+                    </div>
+                    <!-- JS will correctly sum and overwrite this text -->
+                    <span class="chap-progress-text chap-total-ref" id={`progress-text-${i}`}>0 / 0</span>
+                    <span class="accordion-icon">▼</span>
+                  </div>
+                </button>
+                <div class="chap-content" id={`chap-content-${i}`}>
+                  {chap.themes.length > 0 ? (
+                    <ul class="theme-list">
+                      {chap.themes.map((theme: any, j: number) => {
+                        const qIds = theme.questions.map((q: any) => q.id).join(',');
+                        return (
+                          <li class="theme-item">
+                            <div class="theme-info">
+                              <h4 class="theme-name leading-snug" set:html={theme.name.replace('（', '<br>（')}></h4>
+                              <span class="theme-progress shrink-0 whitespace-nowrap" id={`theme-text-${i}-${j}`}>0 / {theme.questions.length}</span>
+                            </div>
+                            <!-- hidden list of question IDs for JS to read -->
+                            <div class="theme-q-ids hidden" data-ids={qIds}></div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ) : (
+                    <p class="text-sm text-center text-slate-500 py-2">現在準備中です</p>
+                  )}
+                </div>
+              </div>
+            )})}
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .py-xl {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .mt-sm { margin-top: var(--spacing-sm); }
+  .mt-md { margin-top: var(--spacing-md); }
+  .mt-xl { margin-top: 4rem; }
+
+  /* ── Header ── */
+  .page-header {
+    padding: 1rem;
+    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #bae6fd;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 480px) {
+    .page-header {
+      padding: 1rem;
+    }
+  }
+
+  .header-top {
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .header-chara-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .chara-avatar {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #bae6fd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chara-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: #ffffff;
+    padding: 4px 12px;
+    border-radius: var(--border-radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 0.5rem;
+  }
+
+  .main-title {
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
+    color: #0f172a;
+    margin: 0 0 0.2rem;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+
+  .main-subtitle {
+    font-size: 0.75rem; /* Reduced from 0.85rem */
+    color: #475569;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .speech-bubble {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #7dd3fc;
+    border-radius: 12px;
+    padding: 0.6rem 0.6rem; /* Reduced horizontal padding from 0.9rem */
+    box-shadow: 0 2px 8px rgba(125, 211, 252, 0.2);
+    margin-left: 2px;
+    align-self: center;
+    max-width: 380px;
+  }
+
+  .speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: -15px;
+    border-width: 8px 15px 8px 0;
+    border-style: solid;
+    border-color: transparent #7dd3fc transparent transparent;
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 22px;
+    left: -11px;
+    border-width: 6px 12px 6px 0;
+    border-style: solid;
+    border-color: transparent #ffffff transparent transparent;
+  }
+
+  .speech-bubble p {
+    margin: 0;
+    font-size: 0.9rem; /* Reduced from 1rem */
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    .speech-bubble { max-width: calc(100% - 90px); padding: 0.5rem 0.4rem; }
+    .speech-bubble p { font-size: 0.75rem; } /* Reduced from 0.8rem */
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  /* ── CTA Button ── */
+  .cta-section {
+    padding: 2rem 0;
+  }
+
+  .btn-primary-lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0284c7 100%);
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 800;
+    padding: 1.25rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+  }
+
+  .btn-primary-lg:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(14, 165, 233, 0.45);
+  }
+  
+  .btn-primary-lg:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  }
+
+  /* ── Features Section ── */
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 2px;
+  }
+
+  .features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .feature-card {
+    background: #ffffff;
+    border: 2px solid #e0f2fe;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    border-color: #bae6fd;
+  }
+
+  .feature-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: #f0f9ff;
+    border-radius: 50%;
+    margin: 0 auto 0.75rem auto;
+    color: #0ea5e9; /* SVG stroke color matches brand primary */
+  }
+
+  .feature-icon.icon-image {
+    background: transparent; /* No background for the image avatar */
+  }
+
+  .feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 2px solid #bae6fd;
+    box-sizing: border-box;
+  }
+
+  /* Book and Bulb */
+  .svg-book {
+    width: 32px;
+    height: 32px;
+    color: #0ea5e9;
+  }
+  .svg-bulb {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: -6px;
+    right: -6px;
+    color: #f59e0b; /* Amber color for the bulb */
+    fill: #fef3c7;
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.4));
+  }
+
+  /* Unlocked Padlock */
+  .svg-lock {
+    width: 36px;
+    height: 36px;
+    color: #10b981; /* Emerald/success color */
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-desc {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .page-footer {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid #eaeaea;
+    padding-top: 2rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  /* ── Chapters Progress (Accordion) ── */
+  .modules-section {
+    margin-top: 2rem;
+  }
+
+  .modules-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .chap-card {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  
+  .chap-card.is-open {
+    border-color: #38bdf8;
+  }
+
+  .chap-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .chap-header:hover {
+    background: #f1f5f9;
+  }
+
+  .chap-header-main {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .chap-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .chap-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .chap-title-link {
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .chap-title-link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+
+  .chap-header-sub {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .chap-progress-bar-container {
+    flex: 1;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .chap-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+  }
+
+  .chap-progress-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    min-width: 44px;
+    text-align: right;
+  }
+
+  .accordion-icon {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    transition: transform 0.3s;
+  }
+
+  .chap-card.is-open .accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  .chap-content {
+    display: none;
+    border-top: 1px solid #e2e8f0;
+    padding: 1rem;
+    background: #ffffff;
+  }
+
+  .chap-card.is-open .chap-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .theme-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .theme-item {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid #bae6fd;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  .theme-item.is-mastered {
+    border-left-color: #10b981;
+    background: #ecfdf5;
+  }
+
+  .theme-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .theme-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #334155;
+    margin: 0;
+  }
+
+  .theme-progress {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+  
+  .theme-item.is-mastered .theme-name {
+    color: #15803d;
+  }
+  .theme-item.is-mastered .theme-progress {
+    color: #16a34a;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+</style>
+
+<script>
+  function updateChapterProgress() {
+    const cards = document.querySelectorAll('.chap-card');
+    cards.forEach(card => {
+      const themeItems = card.querySelectorAll('.theme-item');
+      let chapTotalMastered = 0;
+      let chapTotalQuestions = 0; // JS側でテーマごとに動的カウントする
+
+      themeItems.forEach(item => {
+        const idsEl = item.querySelector('.theme-q-ids') as HTMLElement;
+        if (!idsEl || !idsEl.dataset.ids) return;
+        
+        const qIds = idsEl.dataset.ids.split(',');
+        let themeMastered = 0;
+        
+        qIds.forEach(id => {
+          if (localStorage.getItem(`touhan_mastered_${id}`) === 'true') {
+            themeMastered++;
+          }
+        });
+
+        const themeProgressEl = item.querySelector('.theme-progress');
+        if (themeProgressEl) {
+          themeProgressEl.textContent = `${themeMastered} / ${qIds.length}`;
+        }
+        
+        if (themeMastered === qIds.length && qIds.length > 0) {
+          item.classList.add('is-mastered');
+        } else {
+          item.classList.remove('is-mastered');
+        }
+
+        chapTotalMastered += themeMastered;
+        chapTotalQuestions += qIds.length;
+      });
+
+      const bar = card.querySelector('.chap-progress-bar') as HTMLElement;
+      const text = card.querySelector('.chap-progress-text') as HTMLElement;
+      
+      if (chapTotalQuestions > 0) {
+        const percent = Math.round((chapTotalMastered / chapTotalQuestions) * 100);
+        if (bar) bar.style.width = `${percent}%`;
+        if (text) text.textContent = `${chapTotalMastered} / ${chapTotalQuestions}`;
+        
+        const badge = card.querySelector('.chap-badge') as HTMLElement;
+        if (chapTotalMastered === chapTotalQuestions && badge) {
+           badge.style.background = '#dcfce7';
+           badge.style.color = '#15803d';
+        }
+      } else {
+        if (bar) bar.style.width = `0%`;
+        if (text) text.textContent = `0 / 0`;
+      }
+    });
+  }
+
+  function setupAccordions() {
+    // リンククリック時にアコーディオンが開閉しないようにする
+    const titleLinks = document.querySelectorAll('.chap-title-link');
+    titleLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    });
+
+    const headers = document.querySelectorAll('.chap-header');
+    headers.forEach(header => {
+      const newHeader = header.cloneNode(true) as HTMLElement;
+      header.parentNode?.replaceChild(newHeader, header);
+
+      newHeader.addEventListener('click', (e) => {
+        // もしクリックされた要素がAタグの中なら何もしない（一応の保険）
+        if ((e.target as HTMLElement).closest('a')) return;
+        
+        const card = newHeader.closest('.chap-card');
+        if (card) {
+          card.classList.toggle('is-open');
+          const isExpanded = card.classList.contains('is-open');
+          newHeader.setAttribute('aria-expanded', isExpanded.toString());
+        }
+      });
+    });
+  }
+
+  function initInteractive() {
+    updateChapterProgress();
+    setupAccordions();
+  }
+
+  // Handle initial page load
+  document.addEventListener('DOMContentLoaded', initInteractive);
+</script>

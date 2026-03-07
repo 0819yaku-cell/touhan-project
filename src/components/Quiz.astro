@@ -1,0 +1,838 @@
+---
+import data from '../data/questions.json';
+
+interface Props {
+  questionId: string;
+}
+
+const { questionId } = Astro.props;
+const currentQuestion = data.find(q => q.id === questionId);
+
+if (!currentQuestion) {
+  throw new Error(`Question ID ${questionId} not found in data`);
+}
+
+// Handle both "q_001" string ids and numeric ids
+const displayNumber = typeof currentQuestion.id === 'string' 
+  ? parseInt(currentQuestion.id.replace('q_', ''), 10) 
+  : currentQuestion.id;
+
+// Handle both correct_answer ("○"/"×") and isCorrect (boolean)
+const correctAnswer = 'correct_answer' in currentQuestion 
+  ? currentQuestion.correct_answer 
+  : (currentQuestion.isCorrect ? '○' : '×');
+
+/**
+ * 禁則処理 + 単語保護
+ *
+ * Step1: 分断したくない単語を white-space:nowrap の span で包む
+ *        (長いパターンを先に処理することで二重処理を防ぐ)
+ * Step2: 句読点の直前日本語文字を inline-block で包み「。」の行頭落ちを防ぐ
+ *        (日本語文字のみにマッチしHTMLタグの誤マッチを防止)
+ */
+function wrapKinsoku(text: string): string {
+  // Step1: 特定単語を保護（長い文字列を先に処理して部分一致バグを防ぐ）
+  const protectedWords = [
+    'ものである',  // ← 長いものを先に（「のである」が先だと「も」が取り残される）
+    'ものです',
+    'ものの',
+    'もので',
+    'もの',
+    'のである',
+    'である',
+    'その',
+    'ります',
+    'ません',
+  ];
+  let result = text;
+  for (const word of protectedWords) {
+    result = result.split(word).join(`<span style="white-space:nowrap">${word}</span>`);
+  }
+
+  // Step2: 句読点の直前日本語文字群を inline-block で括る
+  // [぀-ヿ一-鿿「」『』【】（）] = ヒラガナ・カタカナ・漢字・かっこ → HTMLタグ文字を誤マッチしない
+  result = result.replace(
+    /([぀-ヿ一-鿿「」『』【】（）・…—]{1,4}[。！？])/g,
+    '<span style="display:inline-block">$1</span>'
+  );
+
+  return result;
+}
+
+const questionBody = currentQuestion.question
+  .replace('○か×か？', '')
+  .replace('○か✕か？', '');
+---
+
+<div class="quiz-container" data-question-id={currentQuestion.id} data-correct-answer={correctAnswer}>
+  <div class="quiz-card mb-lg opacity-0 translate-y-4 transition-all duration-500 init-animate">
+    <div class="quiz-badge mb-md">Q{displayNumber}</div>
+    <h2 class="question-text mb-lg">
+      <Fragment set:html={wrapKinsoku(questionBody)} />
+      <span class="question-suffix mt-sm">○か✕か？</span>
+    </h2>
+    
+    <div class="btn-group">
+      <button class="btn btn-answer btn-true" data-answer="○">
+        <span class="btn-icon">○</span> 正しい
+      </button>
+      <button class="btn btn-answer btn-false" data-answer="×">
+        <span class="btn-icon">✕</span> 誤り
+      </button>
+    </div>
+  </div>
+
+  <div class="explanation-card hidden">
+    <div class="result-header mb-md">
+      <span class="result-badge"></span>
+      <span class="result-message"></span>
+    </div>
+    
+    <div class="pharmacist-advice">
+      <div class="pharmacist-icon">
+        <img src="/pharmacist.png" alt="薬剤師" class="pharmacist-img" />
+      </div>
+      <div class="pharmacist-bubble">
+        <div class="explanation-content mb-md">
+          {currentQuestion.explanation.split('\n').map((line) => (
+            <p set:html={wrapKinsoku(line)} />
+          ))}
+        </div>
+      </div>
+    </div>
+    
+    {/* ── HTML形式の図解 (新フォーマット) ── */}
+    {currentQuestion.diagramHtml && (
+      <div class="diagram-html-content mt-md mb-md">
+        <Fragment set:html={currentQuestion.diagramHtml} />
+      </div>
+    )}
+    
+    {/* ── 比較テーブル (旧フォーマット) ── */}
+    {currentQuestion.diagram?.type === 'comparison' && (
+      <div class="diagram-block">
+        <div class="diagram-title">{currentQuestion.diagram.title}</div>
+        <div class="comparison-table">
+          <div class={`compare-col compare-col--${currentQuestion.diagram.left.color}`}>
+            <div class="compare-header">
+              <span class="compare-icon">{currentQuestion.diagram.left.icon}</span>
+              <span class="compare-label">{currentQuestion.diagram.left.label}</span>
+            </div>
+            <ul class="compare-list">
+              {currentQuestion.diagram.left.items.map((item: string) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="compare-vs">VS</div>
+          <div class={`compare-col compare-col--${currentQuestion.diagram.right.color}`}>
+            <div class="compare-header">
+              <span class="compare-icon">{currentQuestion.diagram.right.icon}</span>
+              <span class="compare-label">{currentQuestion.diagram.right.label}</span>
+            </div>
+            <ul class="compare-list">
+              {currentQuestion.diagram.right.items.map((item: string) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* ── ステップフロー ── */}
+    {currentQuestion.diagram?.type === 'steps' && (
+      <div class="diagram-block">
+        <div class="diagram-title">{currentQuestion.diagram.title}</div>
+        <div class="step-flow">
+          {currentQuestion.diagram.steps.map((step: any, i: number) => (
+            <>
+              <div class="step-item">
+                <div class="step-icon">{step.icon}</div>
+                <div class="step-label">{step.label}</div>
+                <div class="step-note">{step.note}</div>
+              </div>
+              {i < currentQuestion.diagram.steps.length - 1 && (
+                <div class="step-arrow">▶</div>
+              )}
+            </>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {/* ── カラーコールアウト ── */}
+    {currentQuestion.callout && (
+      <div class={`callout callout--${currentQuestion.callout.type}`}>
+        <span class="callout-icon">
+          {currentQuestion.callout.type === 'important' ? '💡' : '⚠️'}
+        </span>
+        <span class="callout-text">{currentQuestion.callout.text}</span>
+      </div>
+    )}
+
+    <div class="action-footer mt-lg">
+      <label class="checkbox-container">
+        <input type="checkbox" class="complete-checkbox" id={`mastered-checkbox-${currentQuestion.id}`} />
+        <span class="checkmark"></span>
+        <span class="checkbox-label">この問題をマスターした！</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quiz-container {
+    max-width: 100%;
+    margin: 0 auto 3rem auto;
+  }
+
+  .quiz-card {
+    background: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    padding: 1rem 0.75rem;
+    box-shadow: var(--shadow-md);
+    text-align: left;         /* デフォルトは左揃え：ボタン等は子要素で中央を上書き */
+    border-top: 5px solid var(--color-primary);
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: var(--shadow-md);
+  }
+
+  
+  .init-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .quiz-badge {
+    display: inline-block;
+    background: var(--color-primary-light);
+    color: white;
+    padding: 6px 16px;
+    border-radius: var(--border-radius-full);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .question-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    word-break: normal;
+    overflow-wrap: break-word;
+    line-break: strict;
+    transition: color var(--transition-normal);
+  }
+
+  .question-suffix {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    text-align: center;        /* 「○か✕か？」は中央揃えを維持 */
+  }
+  
+  .question-text.completed-text {
+    color: var(--color-success);
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    /* ボタンは text-align:center を明示 */
+  }
+
+  .btn {
+    flex: 1;
+    min-width: 0;     /* Remove fixed min-width so buttons shrink on tiny screens */
+    padding: 0.8rem 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-md);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), filter var(--transition-fast);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.15); /* 3D Button effect */
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+  }
+
+  .btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+
+  .btn-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .btn-true {
+    background-color: var(--color-success);
+  }
+  .btn-true:hover {
+    background-color: #21867a;
+  }
+
+  .btn-false {
+    background-color: var(--color-error);
+  }
+  .btn-false:hover {
+    background-color: #d12f3c;
+  }
+
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: translateY(4px);
+    box-shadow: none;
+    filter: grayscale(80%);
+  }
+
+  /* Explanation section */
+  .explanation-card {
+    background: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem;
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-md);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-left: 5px solid var(--color-text-muted);
+  }
+
+  .explanation-card.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .explanation-card.correct-theme {
+    border-left-color: var(--color-success);
+  }
+  
+  .explanation-card.incorrect-theme {
+    border-left-color: var(--color-error);
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px dashed #eaeaea;
+  }
+
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    padding: 6px 16px;
+    border-radius: var(--border-radius-full);
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+  
+  .result-message {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .result-correct .result-badge {
+    background-color: #e6fcf5;
+    color: var(--color-success);
+    border: 2px solid var(--color-success);
+  }
+  
+  .result-correct .result-message {
+    color: var(--color-success);
+  }
+  
+  .result-incorrect .result-badge {
+    background-color: #fff0f1;
+    color: var(--color-error);
+    border: 2px solid var(--color-error);
+  }
+  
+  .result-incorrect .result-message {
+    color: var(--color-error);
+  }
+
+  /* Pharmacist bubble */
+  .pharmacist-advice {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+  
+  .pharmacist-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;    /* Never grow or shrink past its fixed 56px */
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    background: white;
+    border: 2px solid var(--color-primary-light);
+  }
+  
+  .pharmacist-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .pharmacist-bubble {
+    background: #f1f5f9;
+    border-radius: 16px;
+    border-top-left-radius: 4px;
+    padding: 0.75rem;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: normal;      /* Use normal for Japanese - let browser wrap naturally */
+  }
+  
+  .pharmacist-bubble::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: -10px;
+    border-width: 10px 14px 10px 0;
+    border-style: solid;
+    border-color: transparent #f1f5f9 transparent transparent;
+  }
+
+  .explanation-content {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    text-align: left;
+    line-break: strict;
+    overflow-wrap: anywhere;
+  }
+
+  .explanation-content p {
+    margin-bottom: 0.75rem;
+    color: #334155;
+    position: relative;
+    font-weight: 500;
+  }
+  
+  .explanation-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── ダイアグラム共通 ── */
+  .diagram-block {
+    margin-top: 1.8rem;
+  }
+
+  .diagram-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #64748b;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  /* ── 比較テーブル ── */
+  .comparison-table {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .compare-col {
+    flex: 1;
+    padding: 0.8rem 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 0;     /* Allow flex children to shrink properly */
+    word-break: break-word;
+  }
+
+  .compare-col--red {
+    background: linear-gradient(135deg, #fff1f1, #ffe4e4);
+    border-right: 3px solid #fff;
+  }
+
+  .compare-col--green {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  }
+
+  .compare-list {
+    list-style: none;      /* 箇箇書きを両列とも「なし」に統一 */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .compare-list li {
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #334155;
+    word-break: keep-all;
+    line-break: strict;
+    overflow-wrap: break-word;
+  }
+
+  .compare-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 800;
+    font-size: 0.82rem;
+  }
+
+  .compare-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    flex-shrink: 0;
+    background: #f1f5f9;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #94a3b8;
+    letter-spacing: 1px;
+  }
+
+  /* ── ステップフロー ── */
+  .step-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 1.2rem 0.5rem;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .step-item {
+    flex: 1;
+    min-width: 0;    /* allow shrink */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0.6rem 0.4rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 2px solid #bae6fd;
+  }
+
+  .step-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .step-label {
+    font-size: 0.72rem;   /* 12px - compact for mobile */
+    font-weight: 800;
+    color: #0369a1;
+    text-align: center;
+    line-height: 1.2;
+    word-break: keep-all;
+    line-break: strict;
+    overflow-wrap: anywhere;
+  }
+
+  .step-note {
+    font-size: 0.65rem;
+    color: #64748b;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .step-arrow {
+    font-size: 1.2rem;
+    color: #7dd3fc;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ── カラーコールアウト ── */
+  .callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 1.2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .callout--important {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    color: #92400e;
+  }
+
+  .callout--warning {
+    background: #fff1f2;
+    border-left: 4px solid #f43f5e;
+    color: #9f1239;
+  }
+
+  .callout-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .callout-text {
+    flex: 1;
+    font-size: 0.85rem;
+    line-break: strict;
+    overflow-wrap: anywhere;
+  }
+
+  /* Checkbox styling */
+  .action-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+    background: linear-gradient(to right, #ffffff, #f8fafc);
+    border: 2px dashed #cbd5e1;
+    transition: all 0.3s ease;
+  }
+  
+  .action-footer.is-mastered {
+    background: linear-gradient(135deg, #fff5fb 0%, var(--color-accent) 100%);
+    border-color: #fbcfe8;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(251, 207, 232, 0.5);
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #475569;
+    font-weight: 700;
+    user-select: none;
+    transition: color var(--transition-fast);
+  }
+
+  .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 28px;
+    width: 28px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #cbd5e1;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .checkbox-container:hover input ~ .checkmark {
+    border-color: #fbcfe8;
+    background-color: #fff5fb;
+  }
+
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #f472b6;
+    border-color: #f472b6;
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .checkbox-container input:checked ~ .checkbox-label {
+    color: #db2777;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+    animation: checkmarkIn 0.3s ease-out forwards;
+  }
+
+  .checkbox-container .checkmark:after {
+    left: 9px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  
+  @keyframes checkmarkIn {
+    0% { height: 0; width: 0; opacity: 0; }
+    100% { height: 12px; width: 6px; opacity: 1; }
+  }
+</style>
+
+<script>
+  function initializeQuizzes() {
+    const containers = document.querySelectorAll('.quiz-container');
+    
+    // Animate cards on load
+    setTimeout(() => {
+      document.querySelectorAll('.init-animate').forEach((el, index) => {
+        setTimeout(() => el.classList.add('visible'), index * 150);
+      });
+    }, 100);
+
+    containers.forEach(container => {
+      // Prevent double binding
+      if (container.hasAttribute('data-initialized')) return;
+      container.setAttribute('data-initialized', 'true');
+
+      const correctAnswer = container.getAttribute('data-correct-answer');
+      const buttons = container.querySelectorAll('.btn-answer');
+      const explanationCard = container.querySelector('.explanation-card');
+      const resultHeader = container.querySelector('.result-header');
+      const resultBadge = container.querySelector('.result-badge');
+      const resultMessage = container.querySelector('.result-message');
+      const checkbox = container.querySelector('.complete-checkbox') as HTMLInputElement;
+      const questionText = container.querySelector('.question-text');
+
+      const qId = container.getAttribute('data-question-id');
+
+      // Check answer buttons logic
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const target = e.currentTarget as HTMLButtonElement;
+          const userAnswer = target.getAttribute('data-answer');
+          
+          // Disable all buttons
+          buttons.forEach(b => (b as HTMLButtonElement).disabled = true);
+          
+          // Check answer
+          const isCorrect = userAnswer === correctAnswer;
+          
+          // Render result UI
+          if (explanationCard && resultHeader && resultBadge && resultMessage) {
+            // Step 1: Remove hidden to allow layout
+            explanationCard.classList.remove('hidden');
+            
+            // Step 2: Wait a tick so display:block applies, then animate + render Mermaid
+            setTimeout(() => {
+              explanationCard.classList.add('show');
+              
+              if (isCorrect) {
+                resultHeader.classList.add('result-correct');
+                explanationCard.classList.add('correct-theme');
+                resultBadge.textContent = '正解';
+                resultMessage.textContent = '素晴らしい！その通りです。';
+              } else {
+                resultHeader.classList.add('result-incorrect');
+                explanationCard.classList.add('incorrect-theme');
+                resultBadge.textContent = '不正解';
+                resultMessage.textContent = `惜しい！正解は「${correctAnswer}」です。`;
+              }
+              
+              // Step 3: Re-run Mermaid ONLY on diagrams inside this card
+              // This is necessary because Mermaid can't process hidden elements on page load
+              const mermaidEls = explanationCard.querySelectorAll('.mermaid');
+              if (mermaidEls.length > 0 && (window as any).mermaid) {
+                (window as any).mermaid.run({ nodes: mermaidEls });
+              }
+              
+              // Scroll to explanation smoothly
+              explanationCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 50);
+          }
+        });
+      });
+
+      // Mastery Checkbox logic
+      if (checkbox && questionText && qId) {
+        // Load initial state
+        const isMastered = localStorage.getItem(`touhan_mastered_${qId}`) === 'true';
+        checkbox.checked = isMastered;
+        const footer = checkbox.closest('.action-footer');
+        
+        if (isMastered) {
+          questionText.classList.add('completed-text');
+          if (footer) footer.classList.add('is-mastered');
+        }
+
+        checkbox.addEventListener('change', (e) => {
+          const isChecked = (e.target as HTMLInputElement).checked;
+          
+          if (isChecked) {
+            localStorage.setItem(`touhan_mastered_${qId}`, 'true');
+            questionText.classList.add('completed-text');
+            if (footer) footer.classList.add('is-mastered');
+          } else {
+            localStorage.setItem(`touhan_mastered_${qId}`, 'false');
+            questionText.classList.remove('completed-text');
+            if (footer) footer.classList.remove('is-mastered');
+          }
+        });
+      }
+    });
+  }
+
+  // Initialize on both standard loads and Astro view transitions
+  document.addEventListener('DOMContentLoaded', initializeQuizzes);
+  document.addEventListener('astro:page-load', initializeQuizzes);
+</script>
