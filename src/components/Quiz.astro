@@ -1,5 +1,7 @@
 ---
 import data from '../data/questions.json';
+import fs from 'node:fs';
+import path from 'node:path';
 
 interface Props {
   questionId: string;
@@ -62,6 +64,14 @@ function wrapKinsoku(text: string): string {
 const questionBody = currentQuestion.question
   .replace('○か×か？', '')
   .replace('○か✕か？', '');
+
+// 図解画像の存在チェックと拡張子の自動判定
+const basePath = path.join(process.cwd(), 'public', 'assets', 'images', 'diagrams');
+const extensions = ['.webp', '.png', '.PNG', '.jpg', '.jpeg'];
+let foundExt = extensions.find(ext => fs.existsSync(path.join(basePath, `q${displayNumber}${ext}`)));
+
+const hasDiagramImage = !!foundExt;
+const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNumber}${foundExt}` : null;
 ---
 
 <div class="quiz-container" data-question-id={currentQuestion.id} data-correct-answer={correctAnswer}>
@@ -101,12 +111,24 @@ const questionBody = currentQuestion.question
       </div>
     </div>
     
-    {/* ── HTML形式の図解 (新フォーマット) ── */}
-    {currentQuestion.diagramHtml && (
+    {/* ── HTML形式の図解 (新フォーマット) または 専用画像 ── */}
+    {hasDiagramImage ? (
+      <div class="diagram-image-wrapper my-8 w-full flex justify-center">
+        <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-2 sm:p-3 w-full mx-auto flex items-center justify-center transition-transform hover:shadow-lg">
+          <img 
+            src={diagramImageUrl}
+            alt={`Q${displayNumber}の解説図解`}
+            class="w-full aspect-video object-contain rounded-xl bg-slate-50"
+            loading="lazy"
+            onerror="this.parentElement.parentElement.style.display='none';"
+          />
+        </div>
+      </div>
+    ) : currentQuestion.diagramHtml ? (
       <div class="diagram-html-content mt-md mb-md">
         <Fragment set:html={currentQuestion.diagramHtml} />
       </div>
-    )}
+    ) : null}
     
     {/* ── 比較テーブル (旧フォーマット) ── */}
     {currentQuestion.diagram?.type === 'comparison' && (
@@ -320,16 +342,16 @@ const questionBody = currentQuestion.question
     border-left: 5px solid var(--color-text-muted);
   }
 
-  .explanation-card.show {
+  :global(.explanation-card.show) {
     opacity: 1;
     transform: translateY(0);
   }
   
-  .explanation-card.correct-theme {
+  :global(.explanation-card.correct-theme) {
     border-left-color: var(--color-success);
   }
   
-  .explanation-card.incorrect-theme {
+  :global(.explanation-card.incorrect-theme) {
     border-left-color: var(--color-error);
   }
 
@@ -362,23 +384,23 @@ const questionBody = currentQuestion.question
     font-weight: 700;
   }
   
-  .result-correct .result-badge {
+  :global(.result-correct .result-badge) {
     background-color: #e6fcf5;
     color: var(--color-success);
     border: 2px solid var(--color-success);
   }
   
-  .result-correct .result-message {
+  :global(.result-correct .result-message) {
     color: var(--color-success);
   }
   
-  .result-incorrect .result-badge {
+  :global(.result-incorrect .result-badge) {
     background-color: #fff0f1;
     color: var(--color-error);
     border: 2px solid var(--color-error);
   }
   
-  .result-incorrect .result-message {
+  :global(.result-incorrect .result-message) {
     color: var(--color-error);
   }
 
