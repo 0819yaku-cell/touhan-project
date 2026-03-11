@@ -119,7 +119,8 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
             src={diagramImageUrl}
             alt={`Q${displayNumber}の解説図解`}
             class="w-full aspect-video object-contain rounded-xl bg-slate-50"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             onerror="this.parentElement.parentElement.style.display='none';"
           />
         </div>
