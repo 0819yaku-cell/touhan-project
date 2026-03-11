@@ -45,17 +45,21 @@ const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, c
       <Quiz questionId={questionId} />
     </main>
 
-    <!-- 前後ナビゲーション -->
-    <nav class="qpage-nav">
-      {prevNum
-        ? <a href={`/questions/${prevNum}`} class="nav-btn nav-btn--prev">← 前の問題</a>
-        : <a href="/" class="nav-btn nav-btn--prev">← 問題一覧へ</a>
-      }
-      {nextNum
-        ? <a href={`/questions/${nextNum}`} class="nav-btn nav-btn--next">次の問題 →</a>
-        : <a href="/" class="nav-btn nav-btn--next nav-btn--home">🏠 一覧に戻る</a>
-      }
-    </nav>
+    <!-- 前後ナビゲーション (回答後にJSでDOM挿入) -->
+    <div id="nav-container"></div>
+
+    <template id="nav-template">
+      <nav id="global-nav" class="qpage-nav opacity-0 transition-opacity duration-500">
+        {prevNum
+          ? <a href={`/questions/${prevNum}`} id="nav-prev" class="nav-btn nav-btn--prev">← 前の問題</a>
+          : <a href="/" id="nav-prev" class="nav-btn nav-btn--prev">← 問題一覧へ</a>
+        }
+        {nextNum
+          ? <a href={`/questions/${nextNum}`} id="nav-next" class="nav-btn nav-btn--next text-[1.1rem]">次の問題 →</a>
+          : <a href="/" id="nav-next" class="nav-btn nav-btn--next nav-btn--home text-[1.1rem]">🏠 一覧に戻る</a>
+        }
+      </nav>
+    </template>
 
   </div>
 </Layout>

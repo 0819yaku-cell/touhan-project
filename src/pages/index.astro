@@ -13,6 +13,35 @@ const chapterTitles: Record<string, string> = {
 
 const chaptersMap = new Map();
 
+// --- テーマ名（単元）の「マイルド化」変換マッピング ---
+const themeNameMap: Record<string, string> = {
+  "医薬品の本質": "お薬の役割",
+  "医薬品の適正使用": "正しい使い方",
+  "薬害の歴史": "薬害の教訓",
+  "人体の構造と働き（内臓群）": "消化器や呼吸器など",
+  "人体の構造と働き（感覚・神経・運動）": "目・耳・鼻・脳・骨など",
+  "薬の働く仕組み（体内動態と剤形）": "薬が効く流れと形",
+  "主な副作用": "注意したい副作用",
+  "精神神経系に作用する薬": "風邪や痛み・眠気の薬",
+  "呼吸器官に作用する薬": "咳やのどの薬",
+  "胃腸に作用する薬": "胃腸・便秘の薬",
+  "心臓・血液に作用する薬": "心臓・血液の薬",
+  "排泄器官に作用する薬": "おしっこと痔の薬",
+  "婦人薬": "女性向けの薬",
+  "アレルギー用薬": "アレルギーの薬",
+  "鼻に用いる薬": "鼻炎の薬",
+  "眼科用薬": "目薬",
+  "皮膚に用いる薬": "皮膚の薬・塗り薬",
+  "歯や口内に用いる薬": "歯と口の薬",
+  "禁煙補助剤": "禁煙サポート薬",
+  "滋養強壮保健薬": "栄養剤・ビタミン剤",
+  "漢方処方製剤・生薬製剤": "漢方・生薬",
+  "公衆衛生用薬": "消毒薬と殺虫剤",
+  "一般用検査薬": "検査薬（妊娠・尿糖など）",
+  "薬事関係法規・制度": "お薬の法律とルール",
+  "医薬品の適正使用・安全対策": "安全に使うための情報"
+};
+
 // 先に第1章〜第5章までの枠を全て作成しておく
 Object.keys(chapterTitles).forEach(cName => {
   chaptersMap.set(cName, {
@@ -29,7 +58,10 @@ data.forEach((q: any) => {
     const chapObj = chaptersMap.get(cName);
     chapObj.total++;
 
-    const tName = q.theme || q.category || "その他";
+    const rawThemeName = q.theme || q.category || "その他";
+    // マッピング辞書にあれば変換し、なければそのまま使う
+    const tName = themeNameMap[rawThemeName] || rawThemeName;
+    
     if (!chapObj.themesMap.has(tName)) {
       chapObj.themesMap.set(tName, {
         name: tName,
@@ -59,29 +91,46 @@ chapters.sort((a, b) => {
     <div class="content-grid">
       <!-- Main Content -->
       <main class="main-content">
-        <header class="page-header mb-xl">
-          <!-- Top row: badge + title + subtitle -->
-          <div class="header-top">
-            <div class="header-badge whitespace-nowrap tracking-tight text-[11px] !px-2">📍 全国共通範囲に対応（厚労省の最新基準を完全網羅）</div>
-            <h1 class="main-title">登録販売者のくすり教室</h1>
-            <p class="main-subtitle">現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説</p>
-          </div>
-          <!-- Bottom row: avatar + speech bubble -->
-          <div class="header-chara-row">
-            <div class="chara-avatar">
-              <img src="/pharmacist.png" alt="薬剤師マスコット" class="chara-img" />
-            </div>
-            <div class="speech-bubble">
-              <p>「難しい言葉」はもうおしまい！<br />「なぜ？」で理解して<br />確実に合格を目指しましょう！</p>
-            </div>
+        <header class="hero-section mb-xl">
+          <div class="hero-image-wrapper">
+            <!-- SEO用: 見た目上は非表示にしつつクローラーには認識させる -->
+            <h1 class="sr-only">登録販売者のくすり教室</h1>
+            <p class="sr-only">全国共通範囲に対応（最新基準を完全網羅）現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説</p>
+            
+            <img src="/top-hero-official.webp" alt="登録販売者のくすり教室 全国共通範囲に対応（最新基準を完全網羅） 現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説" class="hero-img" loading="eager" fetchpriority="high" />
           </div>
         </header>
 
         <!-- CTA Section -->
         <section class="cta-section text-center mb-xl">
-          <a href="/questions/1" class="btn-primary-lg">
-            <span>今日の学習をはじめる →</span>
-          </a>
+          <div class="stats-container mb-md">
+            <p class="stats-text font-bold text-lg text-slate-600">
+              現在のマスター数：<span id="global-mastered-count" class="text-primary-dark text-2xl mx-1">0</span> / {data.length}問
+            </p>
+          </div>
+          
+          <div class="cta-buttons flex flex-col items-center gap-4 w-full mx-auto px-2">
+            <button id="btn-start-daily" class="btn-primary-lg w-full cursor-pointer border-0 !py-4 !text-[1.1rem] !rounded-2xl shadow-md">
+              <span>今日の10問を始める</span>
+            </button>
+            
+            <div class="grid grid-cols-2 gap-3 w-full">
+              <!-- 左: 模擬テスト120問 -->
+              <button id="btn-mock-exam" class="w-full py-5 px-2 bg-indigo-50 border-[3px] border-indigo-200 text-indigo-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="opacity-90"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>模擬テスト<br>120問</span>
+              </button>
+              
+              <!-- 右: 好きな所から始める -->
+              <button id="btn-scroll-modules" class="w-full py-5 px-2 bg-emerald-50 border-[3px] border-emerald-200 text-emerald-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-emerald-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="opacity-90"><path d="M4 9h16"></path><path d="M4 15h16"></path><path d="M10 3L8 21"></path><path d="M16 3l-2 18"></path></svg>
+                <span>好きな所から<br>始める</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- scriptで使用するための見えないデータ要素 -->
+          <div id="quiz-data-ids" data-ids={JSON.stringify(data.map((q: any) => q.id))} class="hidden"></div>
         </section>
 
         <!-- Features Section -->
@@ -108,7 +157,7 @@ chapters.sort((a, b) => {
                 </svg>
               </div>
               <h3 class="feature-title">小学生でも分かる</h3>
-              <p class="feature-desc">専門用語を極力排除し、直感的な図解とやさしい言葉で説明します。</p>
+              <p class="feature-desc">専門用語を減らし、図解とやさしい言葉で説明します。</p>
             </div>
             <div class="feature-card">
               <div class="feature-icon">
@@ -119,54 +168,67 @@ chapters.sort((a, b) => {
                 </svg>
               </div>
               <h3 class="feature-title">完全無料</h3>
-              <p class="feature-desc">すべての過去問解説と学習機能が、登録なしでずっと無料で使えます。</p>
+              <p class="feature-desc">すべての過去問解説と学習機能が<br>登録なしでずっと無料で使えます。</p>
             </div>
           </div>
         </section>
 
         <!-- Chapters Progress Section -->
-        <section class="modules-section mb-xl">
-          <h2 class="section-title text-center mb-md">分野別の進捗</h2>
-          <div class="modules-accordion">
+        <section id="modules-section" class="modules-section mb-xl">
+          <div class="text-center mb-md">
+            <h2 class="section-title mb-2">章ごとに学習する</h2>
+            <p class="text-sm font-bold text-slate-500">各章をタップすると、その分野の問題一覧に進めます ↓<br>（さらに細かく単元を選んで集中学習もできます）</p>
+          </div>
+          <div class="modules-grid">
             {chapters.map((chap, i) => {
               const numMatch = chap.name.match(/\d/);
-              const chapterNum = numMatch ? numMatch[0] : "1";
-              
+              const chapterNum = numMatch ? parseInt(numMatch[0] || "1", 10) : 1;
+              const colorClasses = [
+                "chap-color-1", // Pink
+                "chap-color-2", // Blue
+                "chap-color-3", // Green
+                "chap-color-4", // Orange
+                "chap-color-5"  // Purple
+              ];
+              const themeClass = colorClasses[(chapterNum - 1) % 5];
               return (
-              <div class="chap-card" data-chapter={chap.name}>
-                <button class="chap-header" aria-expanded="false" aria-controls={`chap-content-${i}`}>
-                  <div class="chap-header-main">
+              <div class={`chap-tile-wrapper ${themeClass}`}>
+                <button class="chap-tile text-left w-full cursor-pointer border-none bg-transparent p-0 m-0 relative">
+                  <div class="chap-tile-header">
                     <span class="chap-badge">{chap.name}</span>
-                    <a href={`/chapters/${chapterNum}`} class="chap-title chap-title-link">{chap.title}</a>
+                    <span class="chap-progress-badge" id={`chap-progress-text-${i}`}>0%</span>
                   </div>
-                  <div class="chap-header-sub">
-                    <div class="chap-progress-bar-container">
-                      <div class="chap-progress-bar" id={`progress-bar-${i}`} style="width: 0%"></div>
-                    </div>
-                    <!-- JS will correctly sum and overwrite this text -->
-                    <span class="chap-progress-text chap-total-ref" id={`progress-text-${i}`}>0 / 0</span>
-                    <span class="accordion-icon">▼</span>
+                  <h3 class="chap-tile-title pr-8">{chap.title}</h3>
+                  <div class="chap-progress-bar-container">
+                    <div class="chap-progress-bar" id={`chap-progress-bar-${i}`} style="width: 0%"></div>
                   </div>
+                  <span class="accordion-icon">▼</span>
                 </button>
-                <div class="chap-content" id={`chap-content-${i}`}>
+                <div class="chap-themes" id={`chap-content-${i}`}>
                   {chap.themes.length > 0 ? (
-                    <ul class="theme-list">
-                      {chap.themes.map((theme: any, j: number) => {
-                        const qIds = theme.questions.map((q: any) => q.id).join(',');
-                        return (
-                          <li class="theme-item">
-                            <div class="theme-info">
-                              <h4 class="theme-name leading-snug" set:html={theme.name.replace('（', '<br>（')}></h4>
-                              <span class="theme-progress shrink-0 whitespace-nowrap" id={`theme-text-${i}-${j}`}>0 / {theme.questions.length}</span>
-                            </div>
-                            <!-- hidden list of question IDs for JS to read -->
-                            <div class="theme-q-ids hidden" data-ids={qIds}></div>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                    <div class="flex flex-col gap-4 mt-1">
+                      <div class="theme-pills flex flex-wrap gap-2">
+                        {chap.themes.map((theme: any, j: number) => {
+                          const qIds = theme.questions.map((q: any) => q.id).join(',');
+                          const firstQId = theme.questions.length > 0 ? theme.questions[0].id : '';
+                          return (
+                            <a href={firstQId ? `/questions/${firstQId}` : '#'} class="theme-pill relative overflow-hidden">
+                              <span class="theme-name leading-tight text-sm mb-1" set:html={theme.name.replace('（', '<br>（')}></span>
+                              <span class="theme-pill-progress ml-2 mb-1" id={`theme-progress-${i}-${j}`}>0/${theme.questions.length}</span>
+                              <div class="theme-pill-bar-container absolute bottom-0 left-0 right-0 h-1 bg-black/5">
+                                <div class="theme-pill-bar h-full transition-all" id={`theme-bar-${i}-${j}`} style="width: 0%"></div>
+                              </div>
+                              <div class="theme-q-ids hidden" data-ids={qIds}></div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                      <a href={`/chapters/${chapterNum}`} class="block text-center text-sm font-bold opacity-80 hover:opacity-100 py-2 border border-current rounded-lg border-opacity-20 transition-opacity">
+                        ✅ この章の問題をすべて解く →
+                      </a>
+                    </div>
                   ) : (
-                    <p class="text-sm text-center text-slate-500 py-2">現在準備中です</p>
+                    <p class="text-xs text-slate-400 mt-2">現在準備中です</p>
                   )}
                 </div>
               </div>
@@ -193,129 +255,44 @@ chapters.sort((a, b) => {
   .mt-md { margin-top: var(--spacing-md); }
   .mt-xl { margin-top: 4rem; }
 
-  /* ── Header ── */
-  .page-header {
-    padding: 1rem;
-    background: linear-gradient(135deg, #e0f2fe 0%, #dcfce7 100%);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid #bae6fd;
+  /* ── Hero Header ── */
+  /* ── Hero Section (Redesigned) ── */
+  .hero-section {
     width: 100%;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
     box-sizing: border-box;
-  }
-
-  @media (max-width: 480px) {
-    .page-header {
-      padding: 1rem;
-    }
-  }
-
-  .header-top {
-    text-align: center;
-    margin-bottom: 1.2rem;
-  }
-
-  .header-chara-row {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    flex-direction: column;
   }
-
-  .chara-avatar {
-    flex-shrink: 0;
-    width: 88px;
-    height: 88px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 3px solid #bae6fd;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  
+  .hero-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* アスペクト比を維持 */
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; /* 上部のみ角丸 */
+    background-color: #f8fafc; /* 読み込み前のプレースホルダー色 */
   }
 
-  .chara-img {
+  .hero-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain; /* イラスト全体が見切れずに収まるようにする */
+    object-position: center bottom;
+    display: block;
   }
 
-  .header-badge {
-    display: inline-block;
-    background: #ffffff;
-    padding: 4px 12px;
-    border-radius: var(--border-radius-full);
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: #0369a1;
-    border: 1px solid #bae6fd;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 0.5rem;
+  .hero-text-area {
+    /* インラインでTailwindクラスを活用しているため、最小限の調整のみ */
+    position: relative;
+    z-index: 10;
   }
-
   .main-title {
-    font-size: clamp(1.25rem, 3vw, 1.7rem);
-    color: #0f172a;
-    margin: 0 0 0.2rem;
-    line-height: 1.4;
-    font-weight: 800;
+    line-height: 1.3;
   }
 
   .main-subtitle {
-    font-size: 0.75rem; /* Reduced from 0.85rem */
-    color: #475569;
-    font-weight: 600;
-    margin: 0;
     line-height: 1.5;
-  }
-
-  .speech-bubble {
-    position: relative;
-    background: #ffffff;
-    border: 2px solid #7dd3fc;
-    border-radius: 12px;
-    padding: 0.6rem 0.6rem; /* Reduced horizontal padding from 0.9rem */
-    box-shadow: 0 2px 8px rgba(125, 211, 252, 0.2);
-    margin-left: 2px;
-    align-self: center;
-    max-width: 380px;
-  }
-
-  .speech-bubble::before {
-    content: '';
-    position: absolute;
-    bottom: 20px;
-    left: -15px;
-    border-width: 8px 15px 8px 0;
-    border-style: solid;
-    border-color: transparent #7dd3fc transparent transparent;
-  }
-
-  .speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: 22px;
-    left: -11px;
-    border-width: 6px 12px 6px 0;
-    border-style: solid;
-    border-color: transparent #ffffff transparent transparent;
-  }
-
-  .speech-bubble p {
-    margin: 0;
-    font-size: 0.9rem; /* Reduced from 1rem */
-    font-weight: 700;
-    color: #0f172a;
-    line-height: 1.6;
-    text-align: center;
-  }
-
-  @media (max-width: 480px) {
-    .speech-bubble { max-width: calc(100% - 90px); padding: 0.5rem 0.4rem; }
-    .speech-bubble p { font-size: 0.75rem; } /* Reduced from 0.8rem */
   }
 
   .content-grid {
@@ -344,7 +321,6 @@ chapters.sort((a, b) => {
     box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
     transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
     width: 100%;
-    max-width: 360px;
     box-sizing: border-box;
   }
 
@@ -476,96 +452,77 @@ chapters.sort((a, b) => {
     font-weight: 600;
     line-height: 1.6;
   }
-  /* ── Chapters Progress (Accordion) ── */
+  /* ── Chapters Progress (Tiles) ── */
   .modules-section {
     margin-top: 2rem;
   }
 
-  .modules-accordion {
+  .modules-grid {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    gap: 1.5rem;
   }
 
-  .chap-card {
+  .chap-tile-wrapper {
     background: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    border: 2px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   
-  .chap-card.is-open {
-    border-color: #38bdf8;
+  .chap-tile-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   }
 
-  .chap-header {
-    width: 100%;
+  .chap-tile {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    padding: 1rem;
-    background: #f8fafc;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 0.5rem;
   }
 
-  .chap-header:hover {
-    background: #f1f5f9;
-  }
-
-  .chap-header-main {
+  .chap-tile-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .chap-badge {
-    background: #e0f2fe;
-    color: #0369a1;
     font-weight: 800;
     font-size: 0.8rem;
     padding: 4px 10px;
     border-radius: 9999px;
-    white-space: nowrap;
-    flex-shrink: 0;
   }
 
-  .chap-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 0;
+  .chap-progress-badge {
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .chap-tile-title {
+    font-size: 1.1rem;
+    font-weight: 800;
     line-height: 1.4;
-  }
-
-  .chap-title-link {
-    text-decoration: none;
-    position: relative;
-    padding-bottom: 2px;
-  }
-
-  .chap-title-link:hover {
-    color: var(--color-primary-dark);
-    text-decoration: underline;
-  }
-
-  .chap-header-sub {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    width: 100%;
+    margin: 0;
   }
 
   .chap-progress-bar-container {
-    flex: 1;
+    width: 100%;
     height: 8px;
-    background-color: #e2e8f0;
+    background-color: #f1f5f9;
     border-radius: 9999px;
     overflow: hidden;
+    margin-top: 0.5rem;
   }
 
   .chap-progress-bar {
@@ -575,88 +532,121 @@ chapters.sort((a, b) => {
     transition: width 0.5s ease;
   }
 
-  .chap-progress-text {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #475569;
-    min-width: 44px;
-    text-align: right;
-  }
-
-  .accordion-icon {
-    font-size: 0.8rem;
-    color: #94a3b8;
-    transition: transform 0.3s;
-  }
-
-  .chap-card.is-open .accordion-icon {
-    transform: rotate(180deg);
-  }
-
-  .chap-content {
+  .hide-scrollbar::-webkit-scrollbar {
     display: none;
-    border-top: 1px solid #e2e8f0;
-    padding: 1rem;
-    background: #ffffff;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 
-  .chap-card.is-open .chap-content {
+  /* Colors */
+  .chap-color-1 { border-color: #fbcfe8; background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%); }
+  .chap-color-1 .chap-badge { background: #fce7f3; color: #be185d; }
+  .chap-color-1 .chap-tile-title { color: #831843; }
+  .chap-color-1 .chap-progress-badge { color: #9d174d; }
+  .chap-color-1 .theme-pill { background: #ffffff; border: 2px solid #fbcfe8; color: #be185d; }
+  
+  .chap-color-2 { border-color: #bfdbfe; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); }
+  .chap-color-2 .chap-badge { background: #dbeafe; color: #1d4ed8; }
+  .chap-color-2 .chap-tile-title { color: #1e3a8a; }
+  .chap-color-2 .chap-progress-badge { color: #1e40af; }
+  .chap-color-2 .theme-pill { background: #ffffff; border: 2px solid #bfdbfe; color: #1d4ed8; }
+
+  .chap-color-3 { border-color: #a7f3d0; background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%); }
+  .chap-color-3 .chap-badge { background: #d1fae5; color: #047857; }
+  .chap-color-3 .chap-tile-title { color: #064e3b; }
+  .chap-color-3 .chap-progress-badge { color: #065f46; }
+  .chap-color-3 .theme-pill { background: #ffffff; border: 2px solid #a7f3d0; color: #047857; }
+
+  .chap-color-4 { border-color: #fed7aa; background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); }
+  .chap-color-4 .chap-badge { background: #ffedd5; color: #c2410c; }
+  .chap-color-4 .chap-tile-title { color: #7c2d12; }
+  .chap-color-4 .chap-progress-badge { color: #9a3412; }
+  .chap-color-4 .theme-pill { background: #ffffff; border: 2px solid #fed7aa; color: #c2410c; }
+
+  .chap-color-5 { border-color: #e9d5ff; background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%); }
+  .chap-color-5 .chap-badge { background: #f3e8ff; color: #7e22ce; }
+  .chap-color-5 .chap-tile-title { color: #4c1d95; }
+  .chap-color-5 .chap-progress-badge { color: #6b21a8; }
+  .chap-color-5 .theme-pill { background: #ffffff; border: 2px solid #e9d5ff; color: #7e22ce; }
+
+  .chap-themes {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0,0,0,0.1);
+  }
+
+  .chap-tile-wrapper.is-open .chap-themes {
     display: block;
-    animation: fadeIn 0.3s ease;
+    animation: fadeInDown 0.3s ease-out;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .theme-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  .accordion-icon {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: inherit;
+    opacity: 0.5;
+    transition: transform 0.3s;
   }
 
-  .theme-item {
-    background: #f8fafc;
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    border-left: 4px solid #bae6fd;
-    transition: background-color 0.2s, border-color 0.2s;
-  }
-  
-  .theme-item.is-mastered {
-    border-left-color: #10b981;
-    background: #ecfdf5;
+  .chap-tile-wrapper.is-open .accordion-icon {
+    transform: translateY(-50%) rotate(180deg);
   }
 
-  .theme-info {
-    display: flex;
-    justify-content: space-between;
+  .theme-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    padding: 0.6rem 0.75rem;
+    padding-bottom: 0.8rem; /* Space for the bottom bar */
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .theme-pill:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  }
+
+  .theme-pill.is-mastered {
+    background: #f0fdf4 !important;
+    border-color: #86efac !important;
+    color: #166534 !important;
   }
 
   .theme-name {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #334155;
-    margin: 0;
+    font-weight: 800;
   }
 
-  .theme-progress {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #64748b;
+  .theme-pill-progress {
+    font-weight: 800;
+    opacity: 0.7;
+    margin-left: auto;
+    font-size: 0.75rem;
   }
+
+  /* Theme Pill Bar Colors mapped from Chapter */
+  .chap-color-1 .theme-pill-bar { background: #ec4899; }
+  .chap-color-2 .theme-pill-bar { background: #3b82f6; }
+  .chap-color-3 .theme-pill-bar { background: #10b981; }
+  .chap-color-4 .theme-pill-bar { background: #f97316; }
+  .chap-color-5 .theme-pill-bar { background: #a855f7; }
   
-  .theme-item.is-mastered .theme-name {
-    color: #15803d;
-  }
-  .theme-item.is-mastered .theme-progress {
-    color: #16a34a;
+  .theme-pill.is-mastered .theme-pill-bar {
+    background: #166534; /* Dark green when mastered */
   }
 
   .hidden {
@@ -666,14 +656,14 @@ chapters.sort((a, b) => {
 
 <script>
   function updateChapterProgress() {
-    const cards = document.querySelectorAll('.chap-card');
-    cards.forEach(card => {
-      const themeItems = card.querySelectorAll('.theme-item');
+    const wrappers = document.querySelectorAll('.chap-tile-wrapper');
+    wrappers.forEach((wrapper, i) => {
+      const themePills = wrapper.querySelectorAll('.theme-pill');
       let chapTotalMastered = 0;
-      let chapTotalQuestions = 0; // JS側でテーマごとに動的カウントする
+      let chapTotalQuestions = 0;
 
-      themeItems.forEach(item => {
-        const idsEl = item.querySelector('.theme-q-ids') as HTMLElement;
+      themePills.forEach((pill, j) => {
+        const idsEl = pill.querySelector('.theme-q-ids') as HTMLElement;
         if (!idsEl || !idsEl.dataset.ids) return;
         
         const qIds = idsEl.dataset.ids.split(',');
@@ -685,72 +675,125 @@ chapters.sort((a, b) => {
           }
         });
 
-        const themeProgressEl = item.querySelector('.theme-progress');
-        if (themeProgressEl) {
-          themeProgressEl.textContent = `${themeMastered} / ${qIds.length}`;
+        const pillProgressEl = pill.querySelector('.theme-pill-progress');
+        if (pillProgressEl) {
+          pillProgressEl.textContent = `${themeMastered}/${qIds.length}`;
+        }
+        
+        const pillBarEl = pill.querySelector('.theme-pill-bar') as HTMLElement;
+        if (pillBarEl) {
+          const pillPercent = qIds.length > 0 ? Math.round((themeMastered / qIds.length) * 100) : 0;
+          pillBarEl.style.width = `${pillPercent}%`;
         }
         
         if (themeMastered === qIds.length && qIds.length > 0) {
-          item.classList.add('is-mastered');
+          pill.classList.add('is-mastered');
         } else {
-          item.classList.remove('is-mastered');
+          pill.classList.remove('is-mastered');
         }
 
         chapTotalMastered += themeMastered;
         chapTotalQuestions += qIds.length;
       });
 
-      const bar = card.querySelector('.chap-progress-bar') as HTMLElement;
-      const text = card.querySelector('.chap-progress-text') as HTMLElement;
-      
+      const chapProgressText = wrapper.querySelector('.chap-progress-badge') as HTMLElement;
+      const bar = wrapper.querySelector('.chap-progress-bar') as HTMLElement;
       if (chapTotalQuestions > 0) {
         const percent = Math.round((chapTotalMastered / chapTotalQuestions) * 100);
-        if (bar) bar.style.width = `${percent}%`;
-        if (text) text.textContent = `${chapTotalMastered} / ${chapTotalQuestions}`;
-        
-        const badge = card.querySelector('.chap-badge') as HTMLElement;
-        if (chapTotalMastered === chapTotalQuestions && badge) {
-           badge.style.background = '#dcfce7';
-           badge.style.color = '#15803d';
+        if (chapProgressText) {
+          chapProgressText.textContent = `${percent}% マスター（${chapTotalMastered}/${chapTotalQuestions}）`;
         }
+        if (bar) bar.style.width = `${percent}%`;
       } else {
+        if (chapProgressText) chapProgressText.textContent = `0%`;
         if (bar) bar.style.width = `0%`;
-        if (text) text.textContent = `0 / 0`;
       }
     });
   }
 
   function setupAccordions() {
-    // リンククリック時にアコーディオンが開閉しないようにする
-    const titleLinks = document.querySelectorAll('.chap-title-link');
-    titleLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
-    });
+    const toggles = document.querySelectorAll('.chap-tile');
+    toggles.forEach(toggle => {
+      // Clean up old event listeners by replacing the node, just in case
+      const newToggle = toggle.cloneNode(true) as HTMLElement;
+      toggle.parentNode?.replaceChild(newToggle, toggle);
 
-    const headers = document.querySelectorAll('.chap-header');
-    headers.forEach(header => {
-      const newHeader = header.cloneNode(true) as HTMLElement;
-      header.parentNode?.replaceChild(newHeader, header);
-
-      newHeader.addEventListener('click', (e) => {
-        // もしクリックされた要素がAタグの中なら何もしない（一応の保険）
+      newToggle.addEventListener('click', (e) => {
+        // Prevent opening if the click was actually inside a link or something else (though now it's a button)
         if ((e.target as HTMLElement).closest('a')) return;
         
-        const card = newHeader.closest('.chap-card');
-        if (card) {
-          card.classList.toggle('is-open');
-          const isExpanded = card.classList.contains('is-open');
-          newHeader.setAttribute('aria-expanded', isExpanded.toString());
+        const wrapper = newToggle.closest('.chap-tile-wrapper');
+        if (wrapper) {
+          wrapper.classList.toggle('is-open');
         }
       });
     });
   }
 
+  import { getStats, getLastQuestionId, getUnmasteredIds, getIncorrectIds } from '../utils/storage';
+
   function initInteractive() {
     updateChapterProgress();
     setupAccordions();
+
+    // トップページに戻ってきた時点で「今日の10問」などのセッション状態はリセットする
+    sessionStorage.removeItem('touhan_daily_session');
+    sessionStorage.removeItem('touhan_daily_index');
+    sessionStorage.removeItem('touhan_daily_correct');
+    sessionStorage.removeItem('touhan_daily_mastered');
+
+    // --- トップページのボタンと進捗用ロジック ---
+    const globalCountEl = document.getElementById('global-mastered-count');
+    if (globalCountEl) {
+      globalCountEl.textContent = getStats().toString();
+    }
+    
+    const quizDataEl = document.getElementById('quiz-data-ids');
+    const allIds = quizDataEl && quizDataEl.dataset.ids ? JSON.parse(quizDataEl.dataset.ids) : [];
+    
+    // 今日の10問
+    const btnDaily = document.getElementById('btn-start-daily');
+    if (btnDaily) {
+      btnDaily.addEventListener('click', () => {
+        const unmastered = getUnmasteredIds(allIds);
+        if (unmastered.length === 0) {
+          alert('すべての問題をマスターしました！全問正解です！');
+          return;
+        }
+        // シャッフルして最大10問を抽出
+        const shuffled = unmastered.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 10);
+        
+        // セッションに10問の配列と現在のインデックスを持たせる
+        sessionStorage.setItem('touhan_daily_session', JSON.stringify(selected));
+        sessionStorage.setItem('touhan_daily_index', '0');
+        sessionStorage.setItem('touhan_daily_correct', '0'); // 成績カウント用
+        sessionStorage.setItem('touhan_daily_mastered', '0'); // 今回マスターした数カウント用
+        
+        // 1問目に飛ぶ
+        window.location.href = `/questions/${selected[0]}`;
+      });
+    }
+
+    // 模擬テスト（準備中）
+    const btnMock = document.getElementById('btn-mock-exam');
+    if (btnMock) {
+      btnMock.addEventListener('click', () => {
+        alert('本番形式の模擬テスト120問機能は、現在鋭意準備中です！お楽しみに！');
+      });
+    }
+
+    // 好きな所から始める（スムーズスクロール）
+    const btnScroll = document.getElementById('btn-scroll-modules');
+    if (btnScroll) {
+      btnScroll.addEventListener('click', () => {
+        const target = document.getElementById('modules-section');
+        if (target) {
+          // ヘッダーなどの高さを考慮してやや上にスクロールをオフセットするならここで調整可能
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
   }
 
   // Handle initial page load

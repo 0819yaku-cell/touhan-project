@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/questions.json';
+---
+
+<Layout>
+  <div class="container page-wrapper py-xl animate-fade-in">
+    <div class="result-card text-center">
+      <!-- ヒーロー画像エリア -->
+      <div class="result-hero mb-lg">
+        <h1 class="result-title mb-sm">お疲れ様でした！</h1>
+        <p class="result-subtitle mb-md">今日の10問が完了しました</p>
+        
+        <div class="hero-image-wrapper">
+          <!-- TODO: 現状は result1.webp 1枚だが、今後1〜10まで増えたらJSでランダムに切り替える -->
+          <img id="result-image" src="/assets/images/results/result1.webp" alt="お疲れ様！" class="hero-image" />
+        </div>
+      </div>
+      
+      <!-- スコアボードエリア -->
+      <div class="scoreboard mb-xl">
+        <div class="score-row">
+          <div class="score-label">今回の成績</div>
+          <div class="score-value highlight">
+            <span id="score-correct">0</span> <span class="score-unit">/ 10問</span>
+          </div>
+        </div>
+        
+        <div class="score-divider"></div>
+        
+        <div class="score-row">
+          <div class="score-label">今回マスターした数</div>
+          <div class="score-value">
+            <span id="score-session-mastered" class="text-emerald-500 font-bold">0</span> <span class="score-unit">問</span>
+          </div>
+        </div>
+        
+        <div class="score-divider"></div>
+        
+        <div class="score-row">
+          <div class="score-label">累計マスター数</div>
+          <div class="score-value">
+            <span id="score-total-mastered">0</span> <span class="score-unit">/ {data.length}問</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- アクションエリア -->
+      <div class="action-area flex flex-col gap-3">
+        <button id="btn-play-again" class="btn-primary-lg w-full mb-2 max-w-sm mx-auto flex border-0 cursor-pointer">
+          <span>もう10問やる 🔥</span>
+        </button>
+        <a href="/" class="btn-secondary w-full max-w-sm mx-auto flex justify-center py-3 font-bold text-slate-500 hover:text-slate-700 transition-colors text-sm">
+          トップページへ戻る
+        </a>
+      </div>
+      
+      <!-- scriptで使用するための見えないデータ要素 -->
+      <div id="quiz-data-ids" data-ids={JSON.stringify(data.map((q: any) => q.id))} class="hidden"></div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .result-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 4px solid var(--color-primary-light);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(125,211,252,0.4) 0%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+  }
+
+  .result-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-primary-dark);
+    position: relative;
+    z-index: 1;
+  }
+
+  .result-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 4px solid #fff;
+    background: #fdfdfd;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    animation: bounce-slight 2s infinite ease-in-out;
+  }
+
+  @keyframes bounce-slight {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .scoreboard {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #e2e8f0;
+  }
+
+  .score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  .score-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 0.5rem 0;
+  }
+
+  .score-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .score-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .score-value.highlight {
+    font-size: 2rem;
+    color: var(--color-primary-dark);
+  }
+
+  .score-unit {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .btn-primary-lg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0284c7 100%);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 1.25rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.35);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary-lg:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(14, 165, 233, 0.45);
+  }
+</style>
+
+<script>
+  import { getStats, getUnmasteredIds } from '../utils/storage';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // 累計マスター数の取得・表示
+    const totalMasteredEl = document.getElementById('score-total-mastered');
+    if (totalMasteredEl) {
+      totalMasteredEl.textContent = getStats().toString();
+    }
+
+    // セッションデータの取得・表示
+    const correctEl = document.getElementById('score-correct');
+    const sessionMasteredEl = document.getElementById('score-session-mastered');
+    
+    // 今回の正解数
+    const sessionCorrect = sessionStorage.getItem('touhan_daily_correct') || '0';
+    if (correctEl) correctEl.textContent = sessionCorrect;
+    
+    // 今回手動でマスターした数
+    const sessionMastered = sessionStorage.getItem('touhan_daily_mastered') || '0';
+    if (sessionMasteredEl) sessionMasteredEl.textContent = sessionMastered;
+    
+    // 画像のランダム表示ロジック（1〜10の範囲でランダム）
+    const imgEl = document.getElementById('result-image') as HTMLImageElement;
+    if (imgEl) {
+      const randomNum = Math.floor(Math.random() * 10) + 1;
+      imgEl.src = `/assets/images/results/result${randomNum}.webp`;
+      
+      // 画像ロードエラー時は1番にフォールバック
+      imgEl.onerror = () => { imgEl.src = '/assets/images/results/result1.webp'; };
+    }
+
+    // リザルト画面表示後、現状の成績数値をいったんリセットしておく
+    sessionStorage.removeItem('touhan_daily_session');
+    sessionStorage.removeItem('touhan_daily_index');
+    sessionStorage.removeItem('touhan_daily_correct');
+    sessionStorage.removeItem('touhan_daily_mastered');
+
+    // 「もう10問やる」ボタンのロジック
+    const btnPlayAgain = document.getElementById('btn-play-again');
+    const quizDataEl = document.getElementById('quiz-data-ids');
+    if (btnPlayAgain && quizDataEl) {
+      btnPlayAgain.addEventListener('click', () => {
+        const allIds = JSON.parse(quizDataEl.dataset.ids || '[]');
+        const unmastered = getUnmasteredIds(allIds);
+        
+        if (unmastered.length === 0) {
+          alert('すべての問題をマスターしました！全問正解です！');
+          window.location.href = '/';
+          return;
+        }
+        
+        // シャッフルして最大10問を抽出
+        const shuffled = unmastered.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 10);
+        
+        // 新しいセッションを作成
+        sessionStorage.setItem('touhan_daily_session', JSON.stringify(selected));
+        sessionStorage.setItem('touhan_daily_index', '0');
+        sessionStorage.setItem('touhan_daily_correct', '0');
+        sessionStorage.setItem('touhan_daily_mastered', '0');
+        
+        window.location.href = `/questions/${selected[0]}`;
+      });
+    }
+  });
+</script>

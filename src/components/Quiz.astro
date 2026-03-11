@@ -194,13 +194,18 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
       </div>
     )}
 
-    <div class="action-footer mt-lg">
-      <label class="checkbox-container">
+    <div id={`mastery-container-${currentQuestion.id}`} class="mt-lg mb-sm flex flex-col items-center"></div>
+
+    <!-- テンプレートとして保持し、回答するまでDOMに物理配置しない -->
+    <template id={`mastery-template-${currentQuestion.id}`}>
+      <label class="mastery-toggle-btn opacity-0 transition-opacity duration-500" id={`mastery-label-${currentQuestion.id}`}>
         <input type="checkbox" class="complete-checkbox" id={`mastered-checkbox-${currentQuestion.id}`} />
-        <span class="checkmark"></span>
-        <span class="checkbox-label">この問題をマスターした！</span>
+        <span class="mastery-content">
+          <span class="mastery-icon"></span>
+          <span class="mastery-text">この問題をマスターした！</span>
+        </span>
       </label>
-    </div>
+    </template>
   </div>
 </div>
 
@@ -240,6 +245,80 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
     font-size: 1rem;
     letter-spacing: 1px;
     box-shadow: var(--shadow-sm);
+  }
+
+  /* ── マスターボタン (Pastel Toggle) ── */
+  .mastery-toggle-btn {
+    display: inline-block;
+    width: 100%;
+    max-width: 320px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .mastery-toggle-btn input {
+    display: none;
+  }
+  
+  .mastery-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: 3px solid #e2e8f0;
+    padding: 1rem;
+    border-radius: 9999px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 0 #e2e8f0;
+  }
+  
+  .mastery-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .mastery-icon::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: currentColor;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .mastery-toggle-btn:active .mastery-content {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #e2e8f0;
+  }
+
+  /* Checked state (Mastered) */
+  .mastery-toggle-btn input:checked + .mastery-content {
+    background: #dcfce7;
+    color: #10b981;
+    border-color: #a7f3d0;
+    box-shadow: 0 4px 0 #a7f3d0;
+  }
+
+  .mastery-toggle-btn input:checked + .mastery-content .mastery-icon::after {
+    transform: scale(1);
+  }
+  
+  .mastery-toggle-btn:active input:checked + .mastery-content {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #a7f3d0;
   }
 
   .question-text {
@@ -753,8 +832,13 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
 </style>
 
 <script>
+  import { saveResult, toggleMaster } from '../utils/storage';
+
   function initializeQuizzes() {
     const containers = document.querySelectorAll('.quiz-container');
+
+    // セッション情報の取得（以降で参照用）
+    const sessionIdsStr = sessionStorage.getItem('touhan_daily_session');
     
     // Animate cards on load
     setTimeout(() => {
@@ -791,6 +875,11 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
           // Check answer
           const isCorrect = userAnswer === correctAnswer;
           
+          // 出題結果を記録（正誤履歴の保存、正解時は自動マスター）
+          if (qId) {
+            saveResult(qId, isCorrect);
+          }
+          
           // Render result UI
           if (explanationCard && resultHeader && resultBadge && resultMessage) {
             // Step 1: Remove hidden to allow layout
@@ -812,11 +901,96 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
                 resultMessage.textContent = `惜しい！正解は「${correctAnswer}」です。`;
               }
               
+              // ==== 連戦セッション用の成績加算ロジック ====
+              if (sessionIdsStr) {
+                if (isCorrect) {
+                  const currentCorrect = parseInt(sessionStorage.getItem('touhan_daily_correct') || '0', 10);
+                  sessionStorage.setItem('touhan_daily_correct', (currentCorrect + 1).toString());
+                }
+              }
+              
               // Step 3: Re-run Mermaid ONLY on diagrams inside this card
               // This is necessary because Mermaid can't process hidden elements on page load
               const mermaidEls = explanationCard.querySelectorAll('.mermaid');
               if (mermaidEls.length > 0 && (window as any).mermaid) {
                 (window as any).mermaid.run({ nodes: mermaidEls });
+              }
+              
+              // ==== マスターチェックボックスの動的DOM挿入 ====
+              const masteryContainer = container.querySelector('#mastery-container-' + qId);
+              const masteryTemplate = container.querySelector('#mastery-template-' + qId) as HTMLTemplateElement;
+              
+              if (masteryContainer && masteryTemplate && masteryContainer.children.length === 0) {
+                masteryContainer.appendChild(masteryTemplate.content.cloneNode(true));
+                
+                // 動的挿入したチェックボックスに対してイベント登録
+                const checkbox = masteryContainer.querySelector('.complete-checkbox') as HTMLInputElement;
+                if (checkbox && questionText) {
+                  const isMastered = localStorage.getItem(`touhan_mastered_${qId}`) === 'true';
+                  checkbox.checked = isMastered;
+                  if (isMastered) questionText.classList.add('completed-text');
+
+                  checkbox.addEventListener('change', (e) => {
+                    const isChecked = (e.target as HTMLInputElement).checked;
+                    toggleMaster(qId, isChecked);
+                    
+                    if (isChecked && sessionStorage.getItem('touhan_daily_session')) {
+                      const currentSessionMastered = parseInt(sessionStorage.getItem('touhan_daily_mastered') || '0', 10);
+                      sessionStorage.setItem('touhan_daily_mastered', (currentSessionMastered + 1).toString());
+                    }
+                    
+                    if (isChecked) {
+                      questionText.classList.add('completed-text');
+                    } else {
+                      questionText.classList.remove('completed-text');
+                    }
+                  });
+                }
+                
+                setTimeout(() => {
+                  const btn = masteryContainer.querySelector('.mastery-toggle-btn');
+                  if (btn) btn.classList.remove('opacity-0');
+                }, 50);
+              }
+              
+              // ==== ナビゲーションボタンの動的DOM挿入 ====
+              const navContainer = document.getElementById('nav-container');
+              const navTemplate = document.getElementById('nav-template') as HTMLTemplateElement;
+              
+              if (navContainer && navTemplate && navContainer.children.length === 0) {
+                navContainer.appendChild(navTemplate.content.cloneNode(true));
+                
+                const globalNav = document.getElementById('global-nav');
+                const navPrev = document.getElementById('nav-prev') as HTMLAnchorElement;
+                const navNext = document.getElementById('nav-next') as HTMLAnchorElement;
+                
+                // 連戦セッション用のUI表示ロジックをここで適用
+                if (sessionIdsStr) {
+                  try {
+                    const sessionIds = JSON.parse(sessionIdsStr);
+                    const currentIndex = parseInt(sessionStorage.getItem('touhan_daily_index') || '0', 10);
+                    
+                    if (navPrev) navPrev.style.display = 'none';
+                    if (navNext) {
+                      if (currentIndex < sessionIds.length - 1) {
+                        navNext.innerHTML = '次の問題 →';
+                        navNext.href = `/questions/${sessionIds[currentIndex + 1]}`;
+                        navNext.addEventListener('click', () => {
+                           sessionStorage.setItem('touhan_daily_index', (currentIndex + 1).toString());
+                        });
+                      } else {
+                        navNext.innerHTML = '結果を見る 🏆';
+                        navNext.href = '/result';
+                      }
+                    }
+                  } catch(e) {
+                    console.error('Session mapping failed', e);
+                  }
+                }
+                
+                setTimeout(() => {
+                  if (globalNav) globalNav.classList.remove('opacity-0');
+                }, 50);
               }
               
               // Scroll to explanation smoothly
@@ -825,33 +999,6 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
           }
         });
       });
-
-      // Mastery Checkbox logic
-      if (checkbox && questionText && qId) {
-        // Load initial state
-        const isMastered = localStorage.getItem(`touhan_mastered_${qId}`) === 'true';
-        checkbox.checked = isMastered;
-        const footer = checkbox.closest('.action-footer');
-        
-        if (isMastered) {
-          questionText.classList.add('completed-text');
-          if (footer) footer.classList.add('is-mastered');
-        }
-
-        checkbox.addEventListener('change', (e) => {
-          const isChecked = (e.target as HTMLInputElement).checked;
-          
-          if (isChecked) {
-            localStorage.setItem(`touhan_mastered_${qId}`, 'true');
-            questionText.classList.add('completed-text');
-            if (footer) footer.classList.add('is-mastered');
-          } else {
-            localStorage.setItem(`touhan_mastered_${qId}`, 'false');
-            questionText.classList.remove('completed-text');
-            if (footer) footer.classList.remove('is-mastered');
-          }
-        });
-      }
     });
   }
 
