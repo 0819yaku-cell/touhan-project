@@ -35,31 +35,37 @@ const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, c
     <!-- カテゴリ表示 -->
     {(chapter || category) && (
       <div class="category-bar">
-        {chapter && <span class="cat-tag cat-chapter">{chapter}</span>}
-        {category && <span class="cat-tag cat-category">{category}</span>}
+        {chapter && (
+          <a href={`/chapters/${chapter.match(/\d+/)?.[0] || '1'}`} class="cat-tag cat-chapter hover:opacity-80 transition-opacity">
+            {chapter}
+          </a>
+        )}
+        {category && (
+          <a href={`/themes/${encodeURIComponent(category)}`} class="cat-tag cat-category hover:opacity-80 transition-opacity">
+            {category}
+          </a>
+        )}
       </div>
     )}
 
     <!-- 問題コンポーネント -->
     <main class="qpage-main">
-      <Quiz questionId={questionId} />
+      <Quiz questionId={questionId} nextNum={nextNum} />
     </main>
 
-    <!-- 前後ナビゲーション (回答後にJSでDOM挿入) -->
-    <div id="nav-container"></div>
-
-    <template id="nav-template">
+    <!-- 前後ナビゲーション (最初から表示) -->
+    <div id="nav-container">
       <nav id="global-nav" class="qpage-nav opacity-0 transition-opacity duration-500">
         {prevNum
           ? <a href={`/questions/${prevNum}`} id="nav-prev" class="nav-btn nav-btn--prev">← 前の問題</a>
-          : <a href="/" id="nav-prev" class="nav-btn nav-btn--prev">← 問題一覧へ</a>
+          : <a href="/" id="nav-prev" class="nav-btn nav-btn--prev">← 一覧へ</a>
         }
         {nextNum
           ? <a href={`/questions/${nextNum}`} id="nav-next" class="nav-btn nav-btn--next text-[1.1rem]">次の問題 →</a>
           : <a href="/" id="nav-next" class="nav-btn nav-btn--next nav-btn--home text-[1.1rem]">🏠 一覧に戻る</a>
         }
       </nav>
-    </template>
+    </div>
 
   </div>
 </Layout>

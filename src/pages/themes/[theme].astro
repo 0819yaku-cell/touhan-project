@@ -1,0 +1,278 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import data from '../../data/questions.json';
+
+export async function getStaticPaths() {
+  const themeNameMap: Record<string, string> = {
+    "医薬品の本質": "お薬の役割",
+    "医薬品の適正使用": "正しい使い方",
+    "薬害の歴史": "薬害の教訓",
+    "人体の構造と働き（内臓群）": "消化器や呼吸器など",
+    "人体の構造と働き（感覚・神経・運動）": "目・耳・鼻・脳・骨など",
+    "薬の働く仕組み（体内動態と剤形）": "薬が効く流れと形",
+    "主な副作用": "注意したい副作用",
+    "精神神経系に作用する薬": "風邪や痛み・眠気の薬",
+    "呼吸器官に作用する薬": "咳やのどの薬",
+    "胃腸に作用する薬": "胃腸・便秘の薬",
+    "心臓・血液に作用する薬": "心臓・血液の薬",
+    "排泄器官に作用する薬": "おしっこと痔の薬",
+    "婦人薬": "女性向けの薬",
+    "アレルギー用薬": "アレルギーの薬",
+    "鼻に用いる薬": "鼻炎の薬",
+    "眼科用薬": "目薬",
+    "皮膚に用いる薬": "皮膚の薬・塗り薬",
+    "歯や口内に用いる薬": "歯と口の薬",
+    "禁煙補助剤": "禁煙サポート薬",
+    "滋養強壮保健薬": "栄養剤・ビタミン剤",
+    "漢方処方製剤・生薬製剤": "漢方・生薬",
+    "公衆衛生用薬": "消毒薬と殺虫剤",
+    "一般用検査薬": "検査薬（妊娠・尿糖など）",
+    "薬事関係法規・制度": "お薬の法律とルール",
+    "医薬品の適正使用・安全対策": "安全に使うための情報"
+  };
+
+  // 全問題からユニークなテーマを抽出
+  const themes = new Set(data.map(q => q.theme || q.category || "その他"));
+  
+  return Array.from(themes).map((themeName) => {
+    const displayTitle = themeNameMap[themeName] || themeName;
+    const themeQuestions = data.filter(q => (q.theme || q.category || "その他") === themeName).map(q => {
+      const globalIndex = data.findIndex(item => item.id === q.id);
+      return { ...q, globalIndex };
+    });
+
+    return {
+      params: { theme: themeName },
+      props: {
+        themeName,
+        displayTitle,
+        questions: themeQuestions
+      }
+    };
+  });
+}
+
+const { themeName, displayTitle, questions } = Astro.props;
+---
+
+<Layout>
+  <div class="container page-wrapper py-xl animate-fade-in">
+    
+    <header class="theme-header mb-lg">
+      <a href="/" class="back-link mb-sm">
+        <span class="back-icon">←</span> トップへ戻る
+      </a>
+      <div class="header-badge mt-sm">小テーマ</div>
+      <h1 class="theme-title">{displayTitle}</h1>
+      <p class="theme-meta">収録問題数: {questions.length} 問</p>
+    </header>
+
+    <main class="theme-main">
+      {questions.length > 0 ? (
+        <div class="qlist-grid">
+          {questions.map((q: any) => {
+            let snippet = q.question.replace('○か×か？', '').replace('○か✕か？', '');
+            if (snippet.length > 40) snippet = snippet.substring(0, 40) + '...';
+            
+            return (
+              <a href={`/questions/${q.globalIndex + 1}`} class="qlink-card" id={`qcard-${q.id}`}>
+                <div class="qlink-header">
+                  <span class="qlink-badge">Q{q.globalIndex + 1}</span>
+                  <div class="qlink-tags">
+                    <span class="qlink-category">{q.level || '標準'}</span>
+                  </div>
+                  <span class="qlink-status" id={`status-${q.id}`}></span>
+                </div>
+                <p class="qlink-text">{snippet}</p>
+                <div class="qlink-footer">
+                   <span class="qlink-arrow">解説を見る →</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <div class="empty-state text-center py-xl">
+          <div class="empty-icon text-4xl mb-md opacity-50">🚧</div>
+          <h2 class="text-lg font-bold text-slate-700 mb-sm">現在準備中です</h2>
+          <p class="text-sm text-slate-500">このテーマの問題は順次追加される予定です。</p>
+        </div>
+      )}
+    </main>
+
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .mb-sm { margin-bottom: 0.5rem; }
+  .mb-md { margin-bottom: 1rem; }
+  .mb-lg { margin-bottom: 1.5rem; }
+  .mt-sm { margin-top: 0.5rem; }
+  .py-xl { padding-top: 3rem; padding-bottom: 3rem; }
+
+  /* ── Header ── */
+  .theme-header {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-link:hover { opacity: 0.7; }
+
+  .header-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+
+  .theme-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  .theme-meta {
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* ── List ── */
+  .qlist-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .qlink-card {
+    display: block;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  
+  .qlink-card:hover, .qlink-card:active {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+  }
+
+  .qlink-card.is-mastered {
+    border-color: #a7f3d0;
+    background: #f0fdf4;
+  }
+
+  .qlink-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .qlink-badge {
+    background: #bae6fd;
+    color: #0369a1;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .qlink-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .qlink-category {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .qlink-status {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  
+  .qlink-card.is-mastered .qlink-status {
+    background: #d1fae5;
+    color: #059669;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+  }
+
+  .qlink-card.is-mastered .qlink-status::after {
+    content: '✓ マスター済み';
+  }
+
+  .qlink-text {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+  }
+
+  .qlink-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .qlink-arrow {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0ea5e9;
+  }
+</style>
+
+<script>
+  function updateMasteredStatus() {
+    const cards = document.querySelectorAll('.qlink-card');
+    cards.forEach(card => {
+      const qId = card.id.replace('qcard-', '');
+      if (localStorage.getItem(`touhan_mastered_${qId}`) === 'true') {
+        card.classList.add('is-mastered');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateMasteredStatus);
+</script>

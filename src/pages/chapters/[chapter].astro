@@ -215,9 +215,16 @@ const { chapterName, chapterTitle, questions } = Astro.props;
     font-weight: 800;
   }
   
+  .qlink-card.is-mastered .qlink-status {
+    background: #d1fae5;
+    color: #059669;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+  }
+
   .qlink-card.is-mastered .qlink-status::after {
-    content: '✓ マスター';
-    color: #10b981;
+    content: '✓ マスター済み';
   }
 
   .qlink-text {

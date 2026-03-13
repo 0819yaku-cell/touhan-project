@@ -96,7 +96,6 @@ chapters.sort((a, b) => {
             <!-- SEO用: 見た目上は非表示にしつつクローラーには認識させる -->
             <h1 class="sr-only">登録販売者のくすり教室</h1>
             <p class="sr-only">全国共通範囲に対応（最新基準を完全網羅）現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説</p>
-            
             <img src="/top-hero-official.webp" alt="登録販売者のくすり教室 全国共通範囲に対応（最新基準を完全網羅） 現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説" class="hero-img" loading="eager" fetchpriority="high" />
           </div>
         </header>
@@ -109,20 +108,20 @@ chapters.sort((a, b) => {
             </p>
           </div>
           
-          <div class="cta-buttons flex flex-col items-center gap-4 w-full mx-auto px-2">
-            <button id="btn-start-daily" class="btn-primary-lg w-full cursor-pointer border-0 !py-4 !text-[1.1rem] !rounded-2xl shadow-md">
+          <div class="cta-buttons flex flex-col items-center gap-4 w-full mx-auto px-4">
+            <button id="btn-start-daily" class="btn-primary-lg w-full cursor-pointer border-0 !py-5 !text-[1.1rem] !rounded-2xl shadow-md">
               <span>今日の10問を始める</span>
             </button>
             
-            <div class="grid grid-cols-2 gap-3 w-full">
+            <div class="grid grid-cols-2 gap-4 w-full">
               <!-- 左: 模擬テスト120問 -->
-              <button id="btn-mock-exam" class="w-full py-5 px-2 bg-indigo-50 border-[3px] border-indigo-200 text-indigo-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
+              <button id="btn-mock-exam" class="w-full py-6 px-2 bg-indigo-50 border-[3px] border-indigo-200 text-indigo-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
                 <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="opacity-90"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 <span>模擬テスト<br>120問</span>
               </button>
               
               <!-- 右: 好きな所から始める -->
-              <button id="btn-scroll-modules" class="w-full py-5 px-2 bg-emerald-50 border-[3px] border-emerald-200 text-emerald-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-emerald-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
+              <button id="btn-scroll-modules" class="w-full py-6 px-2 bg-emerald-50 border-[3px] border-emerald-200 text-emerald-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-emerald-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
                 <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="opacity-90"><path d="M4 9h16"></path><path d="M4 15h16"></path><path d="M10 3L8 21"></path><path d="M16 3l-2 18"></path></svg>
                 <span>好きな所から<br>始める</span>
               </button>
@@ -210,9 +209,9 @@ chapters.sort((a, b) => {
                       <div class="theme-pills flex flex-wrap gap-2">
                         {chap.themes.map((theme: any, j: number) => {
                           const qIds = theme.questions.map((q: any) => q.id).join(',');
-                          const firstQId = theme.questions.length > 0 ? theme.questions[0].id : '';
+                          const rawThemeName = theme.questions.length > 0 ? (theme.questions[0].theme || theme.questions[0].category || "その他") : "その他";
                           return (
-                            <a href={firstQId ? `/questions/${firstQId}` : '#'} class="theme-pill relative overflow-hidden">
+                            <a href={`/themes/${encodeURIComponent(rawThemeName)}`} class="theme-pill relative overflow-hidden">
                               <span class="theme-name leading-tight text-sm mb-1" set:html={theme.name.replace('（', '<br>（')}></span>
                               <span class="theme-pill-progress ml-2 mb-1" id={`theme-progress-${i}-${j}`}>0/${theme.questions.length}</span>
                               <div class="theme-pill-bar-container absolute bottom-0 left-0 right-0 h-1 bg-black/5">

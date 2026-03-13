@@ -5,9 +5,10 @@ import path from 'node:path';
 
 interface Props {
   questionId: string;
+  nextNum: number | null;
 }
 
-const { questionId } = Astro.props;
+const { questionId, nextNum } = Astro.props;
 const currentQuestion = data.find(q => q.id === questionId);
 
 if (!currentQuestion) {
@@ -74,7 +75,22 @@ const hasDiagramImage = !!foundExt;
 const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNumber}${foundExt}` : null;
 ---
 
-<div class="quiz-container" data-question-id={currentQuestion.id} data-correct-answer={correctAnswer}>
+<div class="quiz-container" data-question-id={currentQuestion.id} data-correct-answer={correctAnswer} data-next-num={nextNum}>
+  <!-- マスター済みバナー -->
+  <div id="mastery-banner" class="mastery-banner hidden mb-md init-animate opacity-0 translate-y-4 transition-all duration-500">
+    <div class="mastery-banner-content">
+      <div class="mastery-banner-text">
+        <span class="mastery-banner-icon">✓</span>
+        この問題はマスター済みです
+      </div>
+      <div class="mastery-banner-actions">
+        {nextNum && (
+          <a href={`/questions/${nextNum}`} class="mastery-skip-btn">スキップして次へ →</a>
+        )}
+        <button type="button" class="mastery-review-btn" id="btn-review-explanation">解説を再確認する</button>
+      </div>
+    </div>
+  </div>
   <div class="quiz-card mb-lg opacity-0 translate-y-4 transition-all duration-500 init-animate">
     <div class="quiz-badge mb-md">Q{displayNumber}</div>
     <h2 class="question-text mb-lg">
@@ -210,6 +226,76 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
 </div>
 
 <style>
+  .mastery-banner {
+    background: #ecfdf5;
+    border: 2px solid #10b981;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  }
+  .mastery-banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+  .mastery-banner-text {
+    color: #065f46;
+    font-weight: 800;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .mastery-banner-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #10b981;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+  }
+  .mastery-banner-actions {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  .mastery-skip-btn, .mastery-review-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mastery-skip-btn {
+    background: #10b981;
+    color: white;
+  }
+  .mastery-skip-btn:hover {
+    background: #059669;
+    transform: translateY(-1px);
+  }
+  .mastery-review-btn {
+    background: white;
+    color: #10b981;
+    border: 2px solid #10b981;
+  }
+  .mastery-review-btn:hover {
+    background: #f0fdf4;
+    transform: translateY(-1px);
+  }
+
   .quiz-container {
     max-width: 100%;
     margin: 0 auto 3rem auto;
@@ -848,6 +934,61 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
     }, 100);
 
     containers.forEach(container => {
+      // ==== ナビゲーションボタンの初期化 (ページ読み込み時に1回だけ実行) ====
+      const globalNav = document.getElementById('global-nav');
+      if (globalNav && !globalNav.hasAttribute('data-nav-initialized')) {
+        globalNav.setAttribute('data-nav-initialized', 'true');
+        const navPrev = document.getElementById('nav-prev') as HTMLAnchorElement;
+        const navNext = document.getElementById('nav-next') as HTMLAnchorElement;
+        
+        if (sessionIdsStr) {
+          try {
+            const sessionIds = JSON.parse(sessionIdsStr);
+            const currentIndex = parseInt(sessionStorage.getItem('touhan_daily_index') || '0', 10);
+            
+            if (navPrev) {
+              if (currentIndex > 0) {
+                navPrev.innerHTML = '← 前の問題';
+                navPrev.href = `/questions/${sessionIds[currentIndex - 1]}`;
+                navPrev.addEventListener('click', () => {
+                   sessionStorage.setItem('touhan_daily_index', (currentIndex - 1).toString());
+                });
+              } else {
+                navPrev.innerHTML = '← 一覧へ';
+                navPrev.href = '/';
+              }
+            }
+
+            if (navNext) {
+              if (currentIndex < sessionIds.length - 1) {
+                navNext.innerHTML = '次の問題 →';
+                navNext.href = `/questions/${sessionIds[currentIndex + 1]}`;
+                navNext.addEventListener('click', () => {
+                   sessionStorage.setItem('touhan_daily_index', (currentIndex + 1).toString());
+                });
+              } else {
+                navNext.innerHTML = '結果を見る 🏆';
+                navNext.href = '/result';
+              }
+            }
+          } catch(e) {
+            console.error('Session initialization failed', e);
+          }
+          // セッション中は回答するまで非表示（初期状態 opacity-0）
+        } else {
+          // 通常の問題選択：最初から表示
+          globalNav.classList.remove('opacity-0');
+        }
+      }
+      const qId = container.getAttribute('data-question-id');
+
+      // Mastery Check on load
+      const isMastered = localStorage.getItem(`touhan_mastered_${qId}`) === 'true';
+      if (isMastered) {
+        const banner = container.querySelector('#mastery-banner');
+        if (banner) banner.classList.remove('hidden');
+      }
+
       // Prevent double binding
       if (container.hasAttribute('data-initialized')) return;
       container.setAttribute('data-initialized', 'true');
@@ -860,8 +1001,6 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
       const resultMessage = container.querySelector('.result-message');
       const checkbox = container.querySelector('.complete-checkbox') as HTMLInputElement;
       const questionText = container.querySelector('.question-text');
-
-      const qId = container.getAttribute('data-question-id');
 
       // Check answer buttons logic
       buttons.forEach(btn => {
@@ -953,52 +1092,74 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
                 }, 50);
               }
               
-              // ==== ナビゲーションボタンの動的DOM挿入 ====
-              const navContainer = document.getElementById('nav-container');
-              const navTemplate = document.getElementById('nav-template') as HTMLTemplateElement;
-              
-              if (navContainer && navTemplate && navContainer.children.length === 0) {
-                navContainer.appendChild(navTemplate.content.cloneNode(true));
-                
-                const globalNav = document.getElementById('global-nav');
-                const navPrev = document.getElementById('nav-prev') as HTMLAnchorElement;
-                const navNext = document.getElementById('nav-next') as HTMLAnchorElement;
-                
-                // 連戦セッション用のUI表示ロジックをここで適用
-                if (sessionIdsStr) {
-                  try {
-                    const sessionIds = JSON.parse(sessionIdsStr);
-                    const currentIndex = parseInt(sessionStorage.getItem('touhan_daily_index') || '0', 10);
-                    
-                    if (navPrev) navPrev.style.display = 'none';
-                    if (navNext) {
-                      if (currentIndex < sessionIds.length - 1) {
-                        navNext.innerHTML = '次の問題 →';
-                        navNext.href = `/questions/${sessionIds[currentIndex + 1]}`;
-                        navNext.addEventListener('click', () => {
-                           sessionStorage.setItem('touhan_daily_index', (currentIndex + 1).toString());
-                        });
-                      } else {
-                        navNext.innerHTML = '結果を見る 🏆';
-                        navNext.href = '/result';
-                      }
-                    }
-                  } catch(e) {
-                    console.error('Session mapping failed', e);
-                  }
-                }
-                
-                setTimeout(() => {
-                  if (globalNav) globalNav.classList.remove('opacity-0');
-                }, 50);
-              }
               
               // Scroll to explanation smoothly
               explanationCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              
+              // セッション中の場合は回答後にナビゲーションを表示
+              const globalNav = document.getElementById('global-nav');
+              if (globalNav && sessionIdsStr) {
+                globalNav.classList.remove('opacity-0');
+              }
             }, 50);
           }
         });
       });
+      // Review Explanation flow
+      const btnReview = container.querySelector('#btn-review-explanation');
+      if (btnReview) {
+        btnReview.addEventListener('click', () => {
+          if (explanationCard && resultHeader && resultBadge && resultMessage) {
+              // Hide banner
+              const banner = container.querySelector('#mastery-banner');
+              if (banner) banner.classList.add('hidden');
+
+              // Show explanation directly
+              explanationCard.classList.remove('hidden');
+              setTimeout(() => {
+                explanationCard.classList.add('show');
+                resultHeader.classList.add('result-correct'); // Mastered is considered correct for UI
+                explanationCard.classList.add('correct-theme');
+                resultBadge.textContent = 'マスター済み';
+                resultMessage.textContent = '復習モード：解説を再確認できます。';
+                
+                // Mermaid
+                const mermaidEls = explanationCard.querySelectorAll('.mermaid');
+                if (mermaidEls.length > 0 && (window as any).mermaid) {
+                  (window as any).mermaid.run({ nodes: mermaidEls });
+                }
+
+                // Mastery UI insertion
+                const masteryContainer = container.querySelector('#mastery-container-' + qId);
+                const masteryTemplate = container.querySelector('#mastery-template-' + qId) as HTMLTemplateElement;
+                if (masteryContainer && masteryTemplate && masteryContainer.children.length === 0) {
+                  masteryContainer.appendChild(masteryTemplate.content.cloneNode(true));
+                  const cb = masteryContainer.querySelector('.complete-checkbox') as HTMLInputElement;
+                  if (cb) {
+                    cb.checked = true;
+                    if (questionText) questionText.classList.add('completed-text');
+                    cb.addEventListener('change', (e) => {
+                      const isChecked = (e.target as HTMLInputElement).checked;
+                      toggleMaster(qId!, isChecked);
+                      if (isChecked) questionText?.classList.add('completed-text');
+                      else questionText?.classList.remove('completed-text');
+                    });
+                  }
+                  setTimeout(() => {
+                    const toggleBtn = masteryContainer.querySelector('.mastery-toggle-btn');
+                    if (toggleBtn) toggleBtn.classList.remove('opacity-0');
+                  }, 50);
+                }
+
+                // Show Footer Nav
+                const globalNav = document.getElementById('global-nav');
+                if (globalNav) globalNav.classList.remove('opacity-0');
+
+                explanationCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }, 50);
+          }
+        });
+      }
     });
   }
 

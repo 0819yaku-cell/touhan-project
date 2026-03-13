@@ -2469,9 +2469,9 @@
     "theme": "胃腸に作用するお薬（胃腸薬、止瀉薬、瀉下薬など）",
     "year": "令和6年度",
     "level": "標準",
-    "question": "制酸薬としてよく使われる「水酸化アルミニウムゲル」などの「アルミニウム」を含む成分を、何年にもわたって長く大量に飲み続けると、骨がス残渣カになったり脳に悪影響を及ぼす副作用が出ることがある。○か×か？",
+    "question": "制酸薬としてよく使われる「水酸化アルミニウムゲル」などの「アルミニウム」を含む成分を、何年にもわたって長く大量に飲み続けると、骨がスカスカになったり脳に悪影響を及ぼす副作用が出ることがある。○か×か？",
     "isCorrect": true,
-    "explanation": "アルミニウムが少しずつ体の中（骨や脳）に溜まっていき、骨軟化症（骨が曲がる）やアルミニウム脳症（認知症のような症状）を引き起こす恐れがあるため、日常的に長 기간継続して服用するのは避けるべきです。",
+    "explanation": "アルミニウムが少しずつ体の中（骨や脳）に溜まっていき、骨軟化症（骨が曲がる）やアルミニウム脳症（認知症のような症状）を引き起こす恐れがあるため、日常的に長期間継続して服用するのは避けるべきです。",
     "diagramHtml": "<div class=\"w-full aspect-video bg-slate-50 rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 text-slate-400 p-4\">\n  <span class=\"text-3xl mb-2\">🖼️</span>\n  <span class=\"text-sm font-bold tracking-wider\">図解準備中 (Q225)</span>\n  <span class=\"text-xs mt-2 text-center\">ここに後から図解画像を追加します</span>\n</div>"
   },
   {
