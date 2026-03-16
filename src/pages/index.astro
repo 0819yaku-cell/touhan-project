@@ -115,10 +115,10 @@ chapters.sort((a, b) => {
             
             <div class="grid grid-cols-2 gap-4 w-full">
               <!-- 左: 模擬テスト120問 -->
-              <button id="btn-mock-exam" class="w-full py-6 px-2 bg-indigo-50 border-[3px] border-indigo-200 text-indigo-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
+              <a href="/mock-exam" id="btn-mock-exam" class="w-full py-6 px-2 bg-indigo-50 border-[3px] border-indigo-200 text-indigo-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full no-underline">
                 <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="opacity-90"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 <span>模擬テスト<br>120問</span>
-              </button>
+              </a>
               
               <!-- 右: 好きな所から始める -->
               <button id="btn-scroll-modules" class="w-full py-6 px-2 bg-emerald-50 border-[3px] border-emerald-200 text-emerald-700 font-bold text-[0.95rem] leading-tight rounded-2xl shadow-sm hover:bg-emerald-100 active:scale-95 transition-all cursor-pointer flex flex-col items-center justify-center gap-3 h-full">
@@ -132,51 +132,25 @@ chapters.sort((a, b) => {
           <div id="quiz-data-ids" data-ids={JSON.stringify(data.map((q: any) => q.id))} class="hidden"></div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features-section mb-xl">
-          <h2 class="section-title text-center mb-md">選ばれる3つの理由</h2>
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon icon-image">
-                <img src="/pharmacist.png" alt="薬剤師" />
+
+        <!-- Comparison Link Section -->
+        <section class="comparison-section px-4 mb-xl">
+          <a href="#" class="comparison-card">
+            <div class="comparison-content">
+              <div class="comparison-text">
+                <span class="comparison-label">薬剤師が本音で比較</span>
+                <h2 class="comparison-title">どの登録販売者講座がいい？</h2>
               </div>
-              <h3 class="feature-title">現役薬剤師が監修</h3>
-              <p class="feature-desc">現場のリアルな知識を踏まえた、正確で実践的な解説です。</p>
+              <div class="comparison-arrow">→</div>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">
-                <!-- Book and Lightbulb SVG -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-book">
-                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-                </svg>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-bulb">
-                  <path d="M9 18h6" />
-                  <path d="M10 22h4" />
-                  <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
-                </svg>
-              </div>
-              <h3 class="feature-title">小学生でも分かる</h3>
-              <p class="feature-desc">専門用語を減らし、図解とやさしい言葉で説明します。</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">
-                <!-- Unlocked Padlock SVG -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-lock">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                  <path d="M7 11V7a5 5 0 0 1 9.9-1" />
-                </svg>
-              </div>
-              <h3 class="feature-title">完全無料</h3>
-              <p class="feature-desc">すべての過去問解説と学習機能が<br>登録なしでずっと無料で使えます。</p>
-            </div>
-          </div>
+          </a>
         </section>
 
         <!-- Chapters Progress Section -->
         <section id="modules-section" class="modules-section mb-xl">
           <div class="text-center mb-md">
             <h2 class="section-title mb-2">章ごとに学習する</h2>
-            <p class="text-sm font-bold text-slate-500">各章をタップすると、その分野の問題一覧に進めます ↓<br>（さらに細かく単元を選んで集中学習もできます）</p>
+            <p class="text-sm font-bold text-slate-500">章をタップ → 単元を選んで学習できます</p>
           </div>
           <div class="modules-grid">
             {chapters.map((chap, i) => {
@@ -234,6 +208,13 @@ chapters.sort((a, b) => {
             )})}
           </div>
         </section>
+
+        <!-- Temporary Merit Article Link (Reverted to previous simple style at bottom) -->
+        <div class="temp-merit-link-container px-4">
+          <a href="/articles/merit" class="temp-merit-link">
+            登録販売者を目指すべき６つの理由
+          </a>
+        </div>
       </main>
     </div>
   </div>
@@ -333,115 +314,108 @@ chapters.sort((a, b) => {
     box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
   }
 
-  /* ── Features Section ── */
-  .section-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #475569;
-    letter-spacing: 1px;
-    position: relative;
-    padding-bottom: 0.75rem;
+  /* ── Comparison Section ── */
+  .comparison-section {
+    margin-top: 1rem;
   }
 
-  .section-title::after {
+  .comparison-card {
+    display: block;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    border: 3px solid #e0f2fe;
+    border-radius: 24px;
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comparison-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
+    border-color: #bae6fd;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+
+  .comparison-card::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 4px;
-    background: #38bdf8;
-    border-radius: 2px;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
+    opacity: 0.8;
   }
 
-  .features-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-top: 1.5rem;
-  }
-
-  .feature-card {
-    background: #ffffff;
-    border: 2px solid #e0f2fe;
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    transition: transform 0.2s;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-2px);
-    border-color: #bae6fd;
-  }
-
-  .feature-icon {
-    position: relative;
+  .comparison-content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    background: #f0f9ff;
-    border-radius: 50%;
-    margin: 0 auto 0.75rem auto;
-    color: #0ea5e9; /* SVG stroke color matches brand primary */
+    justify-content: space-between;
+    gap: 1.5rem;
   }
 
-  .feature-icon.icon-image {
-    background: transparent; /* No background for the image avatar */
+  .comparison-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
-  .feature-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-    border: 2px solid #bae6fd;
-    box-sizing: border-box;
-  }
-
-  /* Book and Bulb */
-  .svg-book {
-    width: 32px;
-    height: 32px;
-    color: #0ea5e9;
-  }
-  .svg-bulb {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: -6px;
-    right: -6px;
-    color: #f59e0b; /* Amber color for the bulb */
-    fill: #fef3c7;
-    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.4));
-  }
-
-  /* Unlocked Padlock */
-  .svg-lock {
-    width: 36px;
-    height: 36px;
-    color: #10b981; /* Emerald/success color */
-  }
-
-  .feature-title {
-    font-size: 1.1rem;
+  .comparison-label {
+    font-size: 0.85rem;
     font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+    opacity: 0.9;
   }
 
-  .feature-desc {
-    font-size: 0.9rem;
-    color: #475569;
-    line-height: 1.6;
+  .comparison-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.3;
     margin: 0;
   }
 
+  .comparison-arrow {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+  }
+
+  .comparison-card:hover .comparison-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+
+  /* Temporary Merit Link Styles (Reverted) */
+  .temp-merit-link-container {
+    text-align: center;
+    margin: 4rem 0 2rem;
+  }
+
+  .temp-merit-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #f8fafc;
+    color: #64748b;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+
+  .temp-merit-link:hover {
+    background: #f1f5f9;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
   .page-footer {
     text-align: center;
     color: var(--color-text-muted);
@@ -774,13 +748,7 @@ chapters.sort((a, b) => {
       });
     }
 
-    // 模擬テスト（準備中）
-    const btnMock = document.getElementById('btn-mock-exam');
-    if (btnMock) {
-      btnMock.addEventListener('click', () => {
-        alert('本番形式の模擬テスト120問機能は、現在鋭意準備中です！お楽しみに！');
-      });
-    }
+    // 模擬テスト（/mock-examへの遷移はリンクタグで対応済み）
 
     // 好きな所から始める（スムーズスクロール）
     const btnScroll = document.getElementById('btn-scroll-modules');

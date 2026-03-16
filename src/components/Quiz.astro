@@ -75,7 +75,7 @@ const hasDiagramImage = !!foundExt;
 const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNumber}${foundExt}` : null;
 ---
 
-<div class="quiz-container" data-question-id={currentQuestion.id} data-correct-answer={correctAnswer} data-next-num={nextNum}>
+<div class="quiz-container" data-question-id={currentQuestion.id} data-chapter={currentQuestion.chapter} data-correct-answer={correctAnswer} data-next-num={nextNum}>
   <!-- マスター済みバナー -->
   <div id="mastery-banner" class="mastery-banner hidden mb-md init-animate opacity-0 translate-y-4 transition-all duration-500">
     <div class="mastery-banner-content">
@@ -925,6 +925,11 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
 
     // セッション情報の取得（以降で参照用）
     const sessionIdsStr = sessionStorage.getItem('touhan_daily_session');
+    const mockSessionIdsStr = sessionStorage.getItem('touhan_mock_session');
+    
+    const isDailyMode = !!sessionIdsStr;
+    const isMockMode = !!mockSessionIdsStr;
+    const isSessionMode = isDailyMode || isMockMode;
     
     // Animate cards on load
     setTimeout(() => {
@@ -941,17 +946,25 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
         const navPrev = document.getElementById('nav-prev') as HTMLAnchorElement;
         const navNext = document.getElementById('nav-next') as HTMLAnchorElement;
         
-        if (sessionIdsStr) {
+        if (isSessionMode) {
           try {
-            const sessionIds = JSON.parse(sessionIdsStr);
-            const currentIndex = parseInt(sessionStorage.getItem('touhan_daily_index') || '0', 10);
+            const activeSessionIds = JSON.parse((isMockMode ? mockSessionIdsStr : sessionIdsStr) as string);
+            const indexKey = isMockMode ? 'touhan_mock_index' : 'touhan_daily_index';
+            const currentIndex = parseInt(sessionStorage.getItem(indexKey) || '0', 10);
             
             if (navPrev) {
               if (currentIndex > 0) {
                 navPrev.innerHTML = '← 前の問題';
-                navPrev.href = `/questions/${sessionIds[currentIndex - 1]}`;
+                // IDが文字列("q_001")と数値の両方に対応するため、データからインデックスを逆引きしてパスを生成
+                // ...は面倒なので、本来の[id].astroのURL設計(index+1)に合わせる必要がある。
+                // dataからqIdが一致するもののindexを見つける必要がある。
+                // ただし、今のsession系は ID ではなく [id].astro 用の数字(index+1)を保持しているはず。
+                // index.astro を確認したところ、 selected.push(q.id) ではなく、IDが入っている。
+                // [id].astro の getStaticPaths は params: { id: String(index + 1) } 
+                // なので、sessionIds には id(例: q_001) ではなく、index+1 を入れるべき。
+                navPrev.href = `/questions/${activeSessionIds[currentIndex - 1]}`;
                 navPrev.addEventListener('click', () => {
-                   sessionStorage.setItem('touhan_daily_index', (currentIndex - 1).toString());
+                   sessionStorage.setItem(indexKey, (currentIndex - 1).toString());
                 });
               } else {
                 navPrev.innerHTML = '← 一覧へ';
@@ -960,15 +973,15 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
             }
 
             if (navNext) {
-              if (currentIndex < sessionIds.length - 1) {
+              if (currentIndex < activeSessionIds.length - 1) {
                 navNext.innerHTML = '次の問題 →';
-                navNext.href = `/questions/${sessionIds[currentIndex + 1]}`;
+                navNext.href = `/questions/${activeSessionIds[currentIndex + 1]}`;
                 navNext.addEventListener('click', () => {
-                   sessionStorage.setItem('touhan_daily_index', (currentIndex + 1).toString());
+                   sessionStorage.setItem(indexKey, (currentIndex + 1).toString());
                 });
               } else {
                 navNext.innerHTML = '結果を見る 🏆';
-                navNext.href = '/result';
+                navNext.href = isMockMode ? '/mock-exam/result' : '/result';
               }
             }
           } catch(e) {
@@ -1018,7 +1031,37 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
           if (qId) {
             saveResult(qId, isCorrect);
           }
+
+          // 模擬テスト結果用の詳細ログ
+          if (isMockMode && qId) {
+            const chapter = container.getAttribute('data-chapter');
+            const mockResultsStr = sessionStorage.getItem('touhan_mock_results') || '[]';
+            const mockResults = JSON.parse(mockResultsStr);
+            
+            // 重複排除（再挑戦時などの考慮）
+            const filteredResults = mockResults.filter((r: any) => r.id !== qId);
+            filteredResults.push({ id: qId, chapter: chapter, isCorrect: isCorrect });
+            sessionStorage.setItem('touhan_mock_results', JSON.stringify(filteredResults));
+          }
           
+          // ==== 模擬テスト限定：解説をスキップして即遷移 ====
+          if (isMockMode) {
+            // 成績加算ロジック
+            if (isCorrect) {
+              const currentCorrect = parseInt(sessionStorage.getItem('touhan_mock_correct') || '0', 10);
+              sessionStorage.setItem('touhan_mock_correct', (currentCorrect + 1).toString());
+            }
+            
+            const navNext = document.getElementById('nav-next') as HTMLAnchorElement;
+            if (navNext) {
+              // 少しだけ余韻（回答の感触）を残してから遷移
+              setTimeout(() => {
+                navNext.click();
+              }, 400); 
+              return; 
+            }
+          }
+
           // Render result UI
           if (explanationCard && resultHeader && resultBadge && resultMessage) {
             // Step 1: Remove hidden to allow layout
@@ -1040,11 +1083,12 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
                 resultMessage.textContent = `惜しい！正解は「${correctAnswer}」です。`;
               }
               
-              // ==== 連戦セッション用の成績加算ロジック ====
-              if (sessionIdsStr) {
+              // ==== 連戦セッション用の成績加算ロジック (通常の連戦用) ====
+              if (isSessionMode && !isMockMode) {
+                const correctKey = 'touhan_daily_correct';
                 if (isCorrect) {
-                  const currentCorrect = parseInt(sessionStorage.getItem('touhan_daily_correct') || '0', 10);
-                  sessionStorage.setItem('touhan_daily_correct', (currentCorrect + 1).toString());
+                  const currentCorrect = parseInt(sessionStorage.getItem(correctKey) || '0', 10);
+                  sessionStorage.setItem(correctKey, (currentCorrect + 1).toString());
                 }
               }
               
@@ -1092,13 +1136,12 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
                 }, 50);
               }
               
-              
               // Scroll to explanation smoothly
               explanationCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
               
               // セッション中の場合は回答後にナビゲーションを表示
               const globalNav = document.getElementById('global-nav');
-              if (globalNav && sessionIdsStr) {
+              if (globalNav && isSessionMode) {
                 globalNav.classList.remove('opacity-0');
               }
             }, 50);

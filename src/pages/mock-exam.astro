@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/questions.json';
+
+// Get total question IDs for each chapter to pass to client-side for randomization
+const chapterIds = {
+  1: data.filter(q => q.chapter === 1 || q.chapter === "1").map(q => q.id),
+  2: data.filter(q => q.chapter === 2 || q.chapter === "2").map(q => q.id),
+  3: data.filter(q => q.chapter === 3 || q.chapter === "3").map(q => q.id),
+  4: data.filter(q => q.chapter === 4 || q.chapter === "4").map(q => q.id),
+  5: data.filter(q => q.chapter === 5 || q.chapter === "5").map(q => q.id),
+};
+---
+
+<Layout>
+  <div class="container py-xl animate-fade-in">
+    <div class="mock-exam-container mx-auto max-w-[480px] px-4">
+      <header class="text-center mb-6">
+        <div class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-sm font-bold mb-4">
+          本番形式
+        </div>
+        <h1 class="text-3xl font-black text-slate-800 mb-4 leading-tight">模擬テスト120問</h1>
+        <div class="h-1.5 w-20 bg-indigo-500 mx-auto rounded-full"></div>
+      </header>
+
+      <main class="bg-white rounded-3xl shadow-xl p-6 border border-slate-100 mb-8 mt-4">
+        <section class="mb-6">
+          <p class="text-slate-800 font-black leading-relaxed mb-5 text-base sm:text-lg">
+            本番試験と同じ出題割合で出題されます。<br>
+            全問マルバツ形式です。
+          </p>
+          
+          <div class="bg-indigo-50/50 rounded-2xl p-5 border border-indigo-100">
+            <h2 class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-4">出題の内訳</h2>
+            <ul class="space-y-3 text-base">
+              <li class="flex justify-between items-center text-slate-800 font-extrabold">
+                <span>第1章：医薬品の共通特性</span>
+                <span class="text-indigo-600">20問</span>
+              </li>
+              <li class="flex justify-between items-center text-slate-800 font-extrabold">
+                <span>第2章：人体の働き</span>
+                <span class="text-indigo-600">20問</span>
+              </li>
+              <li class="flex justify-between items-center text-slate-800 font-extrabold border-y border-indigo-100/50 py-3">
+                <span>第3章：主な医薬品</span>
+                <span class="text-indigo-600">40問</span>
+              </li>
+              <li class="flex justify-between items-center text-slate-800 font-extrabold">
+                <span>第4章：薬事関係法規</span>
+                <span class="text-indigo-600">20問</span>
+              </li>
+              <li class="flex justify-between items-center text-slate-800 font-extrabold">
+                <span>第5章：適正使用・安全対策</span>
+                <span class="text-indigo-600">20問</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="mb-8 space-y-2">
+          <p class="text-xs text-slate-500 font-black">
+            ※マスター済みの問題も出題されます
+          </p>
+          <p class="text-xs text-slate-500 font-black">
+            ※途中でやめても進捗には影響しません
+          </p>
+        </section>
+
+        <div class="space-y-5">
+          <button id="btn-start-mock" class="w-full bg-indigo-600 text-white font-black text-2xl py-6 rounded-2xl shadow-xl hover:bg-indigo-700 active:scale-95 transition-all cursor-pointer border-none block text-center" style="background-color: #4f46e5; color: white;">
+            はじめる
+          </button>
+          
+          <a href="/" class="block text-center text-slate-500 font-black text-base no-underline hover:text-slate-800 py-2">
+            ← トップページに戻る
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="chapter-ids-data" data-json={JSON.stringify(chapterIds)} class="hidden"></div>
+</Layout>
+
+<script>
+  function initMockExam() {
+    const btnStart = document.getElementById('btn-start-mock');
+    const dataEl = document.getElementById('chapter-ids-data');
+    if (!btnStart || !dataEl) return;
+
+    const chapterIds = JSON.parse(dataEl.dataset.json || '{}');
+
+    btnStart.addEventListener('click', () => {
+      const selected = [];
+      const distribution = { 1: 20, 2: 20, 3: 40, 4: 20, 5: 20 };
+
+      for (const [chap, count] of Object.entries(distribution)) {
+        const ids = chapterIds[chap] || [];
+        const shuffled = [...ids].sort(() => 0.5 - Math.random());
+        selected.push(...shuffled.slice(0, count));
+      }
+
+      // Final shuffle of the 120 questions to mix chapters together if desired, 
+      // though usually mock exams follow chapter order. 
+      // The user didn't specify, but mixed is often better for practice.
+      // Let's keep them in chapter order for now (as that's how real exams are structured).
+
+      // Initialize session for mock exam
+      sessionStorage.setItem('touhan_mock_session', JSON.stringify(selected));
+      sessionStorage.setItem('touhan_mock_index', '0');
+      sessionStorage.setItem('touhan_mock_correct', '0');
+
+      // Also clear daily session if any to avoid confusion
+      sessionStorage.removeItem('touhan_daily_session');
+
+      // Redirect to the first question
+      window.location.href = `/questions/${selected[0]}`;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initMockExam);
+</script>
+
+<style>
+  .py-xl { padding-top: 1.5rem; padding-bottom: 2rem; }
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

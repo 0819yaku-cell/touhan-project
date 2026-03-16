@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="container py-xl animate-fade-in">
+    <div class="result-container mx-auto max-w-[600px] px-4">
+      <header class="text-center mb-xl">
+        <div class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-sm font-bold mb-4">
+          模擬テスト終了
+        </div>
+        <h1 class="text-3xl font-black text-slate-800 mb-4 leading-tight">採点結果</h1>
+        <div class="h-1.5 w-20 bg-indigo-500 mx-auto rounded-full"></div>
+      </header>
+
+      <main class="space-y-8">
+        <!-- 総合スコアカード -->
+        <section class="bg-white rounded-3xl shadow-xl p-8 border border-slate-100 text-center relative overflow-hidden">
+          <div id="result-status-bg" class="absolute inset-0 opacity-10 pointer-events-none"></div>
+          
+          <h2 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-6">総合点数</h2>
+          <div class="score-display mb-6">
+            <span id="total-correct" class="text-6xl font-black text-slate-800">0</span>
+            <span class="text-2xl font-bold text-slate-400 mx-2">/ 120問</span>
+          </div>
+          <div id="total-percent" class="text-4xl font-black text-indigo-600 mb-6">0%</div>
+          
+          <!-- 合否判定エリア -->
+          <div id="result-message-card" class="rounded-2xl p-6 transition-all">
+            <div id="result-image" class="text-6xl mb-4">🏆</div>
+            <div id="result-title" class="text-xl font-black mb-2">判定中...</div>
+            <p id="result-desc" class="text-slate-600 font-bold mb-0"></p>
+          </div>
+        </section>
+
+        <!-- 章ごとの内訳 -->
+        <section class="bg-white rounded-3xl shadow-xl p-8 border border-slate-100">
+          <h2 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-6">章ごとの成績</h2>
+          <div id="chapter-breakdown" class="space-y-4">
+            <!-- JSで挿入 -->
+          </div>
+        </section>
+
+        <!-- 合格基準 -->
+        <section class="bg-indigo-50 rounded-3xl p-8 border border-indigo-100">
+          <h2 class="text-sm font-black text-indigo-700 uppercase tracking-widest mb-4">合格の目安</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-xl p-4">
+              <div class="text-[10px] text-slate-400 font-black mb-1">総合得点</div>
+              <div class="text-base font-black text-slate-700">85%以上</div>
+            </div>
+            <div class="bg-white rounded-xl p-4">
+              <div class="text-[10px] text-slate-400 font-black mb-1">各章の得点</div>
+              <div class="text-base font-black text-slate-700">40%以上</div>
+            </div>
+          </div>
+          <p class="text-xs text-indigo-700 font-bold mt-4 leading-relaxed">
+            ※マルバツ形式のため本番より正答率が高く出る傾向があります。本アプリでは合格圏内として85%以上を目指しましょう。
+          </p>
+        </section>
+
+        <!-- アクションボタン -->
+        <div class="grid gap-4">
+          <button id="btn-review" class="w-full bg-slate-800 text-white font-black text-lg py-5 rounded-2xl shadow-lg hover:bg-slate-900 transition-all cursor-pointer border-none block text-center">
+            間違えた問題を復習する
+          </button>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <button id="btn-retry" class="bg-white border-2 border-indigo-600 text-indigo-600 font-black text-lg py-4 rounded-2xl hover:bg-indigo-50 transition-all">
+              もう一度挑戦
+            </button>
+            <a href="/" id="btn-top" class="bg-indigo-100 text-indigo-700 font-black text-lg py-4 rounded-2xl text-center no-underline hover:bg-indigo-200 transition-all">
+              トップへ
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function renderResults() {
+    const resultsStr = sessionStorage.getItem('touhan_mock_results') || '[]';
+    const results = JSON.parse(resultsStr);
+    
+    const totalQuestions = 120;
+    const correctCount = results.filter((r: any) => r.isCorrect).length;
+    const percent = Math.round((correctCount / totalQuestions) * 100);
+    
+    // 総合スコアの表示
+    document.getElementById('total-correct')!.textContent = correctCount.toString();
+    document.getElementById('total-percent')!.textContent = `${percent}%`;
+    
+    // 章ごとの集計
+    const chapters = [1, 2, 3, 4, 5];
+    const distribution = { 1: 20, 2: 20, 3: 40, 4: 20, 5: 20 };
+    const chapterStats = chapters.map(ch => {
+      const chResults = results.filter((r: any) => parseInt(r.chapter) === ch);
+      const chCorrect = chResults.filter((r: any) => r.isCorrect).length;
+      const chTotal = (distribution as any)[ch];
+      const chPercent = Math.round((chCorrect / chTotal) * 100);
+      return { ch, chCorrect, chTotal, chPercent };
+    });
+    
+    // 章ごとのDOM生成
+    const breakdownEl = document.getElementById('chapter-breakdown')!;
+    breakdownEl.innerHTML = '';
+    chapterStats.forEach(stat => {
+      const isFailed = stat.chPercent < 40;
+      const row = document.createElement('div');
+      row.className = 'chapter-row';
+      row.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+          <div class="font-extrabold text-slate-700 text-sm">第${stat.ch}章</div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold ${isFailed ? 'text-red-500' : 'text-slate-400'}">${isFailed ? '足切り注意！' : ''}</span>
+            <span class="font-black text-slate-800">${stat.chCorrect} / ${stat.chTotal}</span>
+            <span class="text-indigo-600 font-black w-10 text-right">${stat.chPercent}%</span>
+          </div>
+        </div>
+        <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+          <div class="h-full bg-indigo-500 transition-all duration-1000" style="width: ${stat.chPercent}%"></div>
+        </div>
+      `;
+      breakdownEl.appendChild(row);
+    });
+    
+    // 合否判定
+    const isAllChaptersOk = chapterStats.every(s => s.chPercent >= 40);
+    const resultTitleEl = document.getElementById('result-title')!;
+    const resultDescEl = document.getElementById('result-desc')!;
+    const resultImageEl = document.getElementById('result-image')!;
+    const resultCardEl = document.getElementById('result-message-card')!;
+    
+    if (percent >= 85 && isAllChaptersOk) {
+      resultTitleEl.textContent = '合格圏内です！';
+      resultDescEl.textContent = '素晴らしい成績です。この調子で本番に備えましょう！';
+      resultImageEl.textContent = '🎊';
+      resultCardEl.className = 'rounded-2xl p-6 bg-emerald-50 text-emerald-800 border border-emerald-100';
+    } else if (percent >= 70) {
+      resultTitleEl.textContent = 'もう一息！';
+      resultDescEl.textContent = '基本的な知識はついています。苦手な章を重点的に復習しましょう。';
+      resultImageEl.textContent = '✨';
+      resultCardEl.className = 'rounded-2xl p-6 bg-amber-50 text-amber-800 border border-amber-100';
+    } else {
+      resultTitleEl.textContent = '復習しましょう';
+      resultDescEl.textContent = 'まずは各章の解説を読み込み、基礎を固めることから始めましょう！';
+      resultImageEl.textContent = '📖';
+      resultCardEl.className = 'rounded-2xl p-6 bg-slate-50 text-slate-700 border border-slate-100';
+    }
+
+    // イベント
+    document.getElementById('btn-retry')?.addEventListener('click', () => {
+      // セッションをリセットしてリダイレクト
+      sessionStorage.removeItem('touhan_mock_session');
+      sessionStorage.removeItem('touhan_mock_index');
+      sessionStorage.removeItem('touhan_mock_results');
+      window.location.href = '/mock-exam';
+    });
+    
+    document.getElementById('btn-top')?.addEventListener('click', () => {
+      sessionStorage.removeItem('touhan_mock_session');
+      sessionStorage.removeItem('touhan_mock_index');
+      sessionStorage.removeItem('touhan_mock_results');
+    });
+
+    document.getElementById('btn-review')?.addEventListener('click', () => {
+      alert('「間違えた問題を復習する」機能は現在準備中です。');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderResults);
+  document.addEventListener('astro:page-load', renderResults);
+</script>
+
+<style>
+  .py-xl { padding-top: 2rem; padding-bottom: 5rem; }
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

@@ -29,7 +29,7 @@ const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, c
       <a href="/" class="back-link">
         <span class="back-icon">←</span> 問題一覧
       </a>
-      <span class="progress-badge">{questionNumber} / {totalQuestions}問</span>
+      <span class="progress-badge" id="header-progress-badge">{questionNumber} / {totalQuestions}問</span>
     </header>
 
     <!-- カテゴリ表示 -->
@@ -188,3 +188,26 @@ const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, c
     color: white;
   }
 </style>
+
+<script>
+  function initDynamicHeader() {
+    const badge = document.getElementById('header-progress-badge');
+    if (!badge) return;
+
+    const dailySessionStr = sessionStorage.getItem('touhan_daily_session');
+    const mockSessionStr = sessionStorage.getItem('touhan_mock_session');
+
+    if (dailySessionStr) {
+      const index = parseInt(sessionStorage.getItem('touhan_daily_index') || '0', 10);
+      const total = JSON.parse(dailySessionStr).length;
+      badge.textContent = `${index + 1} / ${total}問 (今日の10問)`;
+    } else if (mockSessionStr) {
+      const index = parseInt(sessionStorage.getItem('touhan_mock_index') || '0', 10);
+      const total = JSON.parse(mockSessionStr).length;
+      badge.textContent = `${index + 1} / ${total}問 (模擬テスト)`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initDynamicHeader);
+  document.addEventListener('astro:page-load', initDynamicHeader);
+</script>
