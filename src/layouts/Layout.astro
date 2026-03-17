@@ -1,6 +1,16 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "登録販売者のくすり教室",
+	description = "登録販売者試験の対策ができるクイズサイトです。現役薬剤師が詳しく解説。合格を目指して頑張りましょう！"
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="ja">
@@ -10,7 +20,8 @@ import Footer from '../components/Footer.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="google-site-verification" content="gyDsl6h4HoosI8JhjPegIC0tD6VGLVGgAWvigYaS2FA" />
-		<title>登録販売者のくすり教室</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

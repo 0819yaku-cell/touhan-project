@@ -14,14 +14,19 @@ export async function getStaticPaths() {
       nextNum: index < data.length - 1 ? index + 2 : null,
       chapter: typeof q.chapter === 'number' ? `第${q.chapter}章` : (q.chapter ?? ''),
       category: q.theme || q.category || '',
+      text: q.question || '',
     },
   }));
 }
 
-const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, category } = Astro.props;
+const { questionId, questionNumber, totalQuestions, prevNum, nextNum, chapter, category, text } = Astro.props;
+
+// Q221 健胃薬（けんいやく）は味覚や… | 登録販売者のくすり教室
+const pageTitle = `Q${questionNumber} ${text.length > 15 ? text.substring(0, 15) + '...' : text} | 登録販売者のくすり教室`;
+const pageDescription = text;
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
   <div class="qpage-wrapper">
 
     <!-- ミニヘッダー：サイト名 + 進捗 -->
