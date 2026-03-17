@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import data from '../data/questions.json';
+import articles from '../data/articles.json';
 
 // --- 進捗表示用のデータ構造の生成 ---
 const chapterTitles: Record<string, string> = {
@@ -209,12 +210,33 @@ chapters.sort((a, b) => {
           </div>
         </section>
 
-        <!-- Temporary Merit Article Link (Reverted to previous simple style at bottom) -->
-        <div class="temp-merit-link-container px-4">
-          <a href="/articles/merit" class="temp-merit-link">
-            登録販売者を目指すべき６つの理由
-          </a>
-        </div>
+        <!-- Articles Section -->
+        <section class="articles-section px-4 mt-16 mb-8">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+              <span class="w-2 h-6 bg-primary rounded-full"></span>
+              お役立ち記事
+            </h2>
+          </div>
+          <div class="articles-list flex flex-col gap-4">
+            {articles.map((article) => (
+              <a href={`/articles/${article.slug}`} class="article-card group">
+                <div class="article-card-image">
+                  <img src={article.image} alt={article.title} />
+                </div>
+                <div class="article-card-body">
+                  <div class="article-card-meta">
+                    <span class="article-category">{article.category}</span>
+                  </div>
+                  <h3 class="article-card-title group-hover:text-primary-dark transition-colors">
+                    {article.title}
+                  </h3>
+                  <p class="article-card-desc">{article.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   </div>
@@ -415,6 +437,81 @@ chapters.sort((a, b) => {
     color: var(--color-primary);
     border-color: var(--color-primary);
     transform: translateY(-2px);
+  }
+
+  /* ── Articles Section ── */
+  .article-card {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    border-color: #e2e8f0;
+  }
+
+  .article-card-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .article-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .article-card-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .article-category {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    background: #f0f9ff;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+  }
+
+  .article-card-title {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-card-desc {
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
   }
   .page-footer {
     text-align: center;

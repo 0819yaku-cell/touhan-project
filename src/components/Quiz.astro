@@ -210,6 +210,19 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
       </div>
     )}
 
+    {/* ── 関連記事リンク (Q221専用) ── */}
+    {displayNumber === 221 && (
+      <div class="related-article-link mt-8 p-4 bg-sky-50 border border-sky-200 rounded-xl flex items-center justify-between group hover:bg-sky-100 transition-colors">
+        <div class="flex-1">
+          <p class="text-xs font-bold text-sky-600 mb-1">💡 もっと詳しく知りたい方はこちら</p>
+          <a href="/articles/healthy-stomach-medicine" class="text-sm font-black text-slate-800 decoration-sky-300 underline underline-offset-4 group-hover:text-sky-700">
+            健胃薬をオブラートで包んで飲んではいけない理由
+          </a>
+        </div>
+        <span class="text-sky-400 group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    )}
+
     <div id={`mastery-container-${currentQuestion.id}`} class="mt-lg mb-sm flex flex-col items-center"></div>
 
     <!-- テンプレートとして保持し、回答するまでDOMに物理配置しない -->

@@ -1,0 +1,258 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="健胃薬をオブラートで包んで飲んではいけない理由【薬剤師が解説】 | 登録販売者のくすり教室">
+  <div class="article-container animate-fade-in">
+    <header class="article-header">
+      <div class="category-tag">💊 薬剤師の豆知識</div>
+      <h1 class="article-title text-2xl font-black leading-tight text-slate-800 mb-8">
+        健胃薬をオブラートで包んで飲んではいけない理由
+      </h1>
+    </header>
+
+    <main class="article-content">
+      <!-- Section 1 -->
+      <section class="mb-12">
+        <h2 class="section-title">健胃薬ってどんな薬？</h2>
+        <p class="text-slate-600">
+          健胃薬は、胃の動きが弱くなったときに助けてくれる薬です。
+          胃もたれや食欲不振のときに使います。
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="mb-12">
+        <h2 class="section-title">なんでオブラートがダメなの？</h2>
+        <p class="text-slate-600 mb-6">
+          健胃薬には生薬（しょうやく）という植物からできた成分が入っています。<br />
+          この薬、実は<strong class="text-rose-500 font-black">「苦い」「香りがする」と感じることで効く</strong>という、ちょっと変わった仕組みを持っています。
+        </p>
+
+        <!-- Diagram from Q221 -->
+        <div class="diagram-box my-10">
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-2 overflow-hidden">
+            <img 
+              src="/assets/images/diagrams/q221.webp" 
+              alt="健胃薬の仕組み（Q221解説図）" 
+              class="w-full h-auto rounded-xl"
+            />
+          </div>
+          <p class="text-center text-xs text-slate-400 mt-3 font-bold">図：健胃薬が胃を動かす仕組み</p>
+        </div>
+
+        <div class="step-flow my-10">
+          <div class="step-item">
+            <div class="step-content">
+              <span class="step-num">1</span>
+              <p>舌や鼻が「苦い！」と感じる</p>
+            </div>
+            <div class="step-arrow">↓</div>
+          </div>
+          <div class="step-item">
+            <div class="step-content">
+              <span class="step-num">2</span>
+              <p>その信号が脳に届く</p>
+            </div>
+            <div class="step-arrow">↓</div>
+          </div>
+          <div class="step-item">
+            <div class="step-content">
+              <span class="step-num">3</span>
+              <p>脳が「胃よ、動け！」と指令を出す</p>
+            </div>
+            <div class="step-arrow">↓</div>
+          </div>
+          <div class="step-item">
+            <div class="step-content">
+              <span class="step-num">4</span>
+              <p class="text-primary-dark font-black">胃が元気になる</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-slate-600">
+          つまり、<strong>味や匂いを感じること自体が薬の効果</strong>なんです。
+          オブラートで包むと味も匂いも消えてしまうので、せっかく飲んでも効果が半減してしまいます。
+        </p>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="mb-12">
+        <div class="exam-mini-box">
+          <h2 class="exam-label">📝 試験での重要ポイント</h2>
+          <p class="exam-text italic">
+            「健胃薬はオブラートに包んで服用することは不適切である」→ <span class="text-rose-500 font-black">○（正しい）</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="mb-12">
+        <div class="pharmacist-note">
+          <div class="note-header font-black text-primary-dark mb-4">💊 薬剤師からひとこと</div>
+          <p class="text-slate-600 mb-4">
+            生薬系の薬は好き嫌いがはっきり分かれます。漢方や生薬には「体に合っているものは美味しく感じる」という考え方もあるくらいです。
+          </p>
+          <p class="text-slate-600">
+            どうしても苦くて飲めない…という方は、無理して飲み続けなくても大丈夫です。胃の粘膜を守る薬や、胃酸の出すぎを抑えるガスターのような薬など、他にも選択肢はたくさんあります。
+          </p>
+        </div>
+      </section>
+
+      <div class="back-nav mt-16 text-center">
+        <a href="/" class="btn-minimal">トップページへ戻る</a>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+
+  .article-header {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #f8fafc;
+    color: #94a3b8;
+    border: 1px solid #f1f5f9;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content {
+    padding: 0 1.5rem 5rem;
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 1.25rem;
+    background: var(--color-primary);
+    border-radius: 2px;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .step-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .step-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fafafa;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid #f1f5f9;
+  }
+
+  .step-num {
+    width: 20px;
+    height: 20px;
+    background: #cbd5e1;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+  }
+
+  .step-arrow {
+    color: #cbd5e1;
+    font-size: 1rem;
+    margin: 0.25rem 0;
+  }
+
+  .exam-mini-box {
+    background: #fffbeb;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid #fef3c7;
+  }
+
+  .exam-label {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #b45309;
+    margin-bottom: 0.5rem;
+  }
+
+  .exam-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #92400e;
+    font-weight: 700;
+  }
+
+  .pharmacist-note {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 2rem;
+  }
+
+  .btn-minimal {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.2s;
+  }
+
+  .btn-minimal:hover {
+    background: #f8fafc;
+    color: #64748b;
+    border-color: #e2e8f0;
+  }
+</style>

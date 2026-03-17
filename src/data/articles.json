@@ -1,0 +1,18 @@
+[
+    {
+        "slug": "merit",
+        "title": "登録販売者を目指すべき６つの理由",
+        "description": "学歴不問で挑戦でき、一生モノのスキルに。薬剤師が教える、今この資格を取るべき本当のメリット。",
+        "date": "2026-03-15",
+        "image": "/assets/images/articles/merit-hero.webp",
+        "category": "キャリア・資格"
+    },
+    {
+        "slug": "healthy-stomach-medicine",
+        "title": "健胃薬をオブラートで包んで飲んではいけない理由",
+        "description": "苦味や香りそのものが薬の一部？健胃薬のユニークな仕組みと、正しい飲み方を薬剤師が詳しく解説します。",
+        "date": "2026-03-17",
+        "image": "/images/thumbnail-medicine-knowledge.webp",
+        "category": "お薬の知識"
+    }
+]
