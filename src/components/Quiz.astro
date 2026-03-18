@@ -228,11 +228,13 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
     <!-- テンプレートとして保持し、回答するまでDOMに物理配置しない -->
     <template id={`mastery-template-${currentQuestion.id}`}>
       <label class="mastery-toggle-btn opacity-0 transition-opacity duration-500" id={`mastery-label-${currentQuestion.id}`}>
+        <span class="mastery-hint block mb-2 text-[0.7rem] font-bold text-slate-400">＼ 自信を持って答えられたらチェック！ ／</span>
         <input type="checkbox" class="complete-checkbox" id={`mastered-checkbox-${currentQuestion.id}`} />
         <span class="mastery-content">
           <span class="mastery-icon"></span>
           <span class="mastery-text">この問題をマスターした！</span>
         </span>
+        <span class="mastery-hint-sub block mt-2 text-[0.65rem] font-bold text-slate-400">※トップページの進捗に反映されます</span>
       </label>
     </template>
   </div>
@@ -354,6 +356,7 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
     cursor: pointer;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    text-align: center;
   }
   
   .mastery-toggle-btn input {
