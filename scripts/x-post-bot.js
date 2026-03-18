@@ -17,8 +17,8 @@ async function postDailyQuestion() {
         const rawData = fs.readFileSync(QUESTIONS_PATH, 'utf-8');
         const questions = JSON.parse(rawData);
 
-        // 2. Filter Chapters 3, 4, 5
-        const targetChapters = [3, 4, 5];
+        // 2. Filter Chapter 3 only
+        const targetChapters = [3];
         const filteredQuestions = questions.filter(q => targetChapters.includes(q.chapter));
 
         if (filteredQuestions.length === 0) {
