@@ -4699,13 +4699,13 @@
   {
     "id": 428,
     "chapter": 5,
-    "theme": "医薬品の適正使用・安全対策（添付文書の読み方、してはいけないこと、相談すること、保管・取扱い等）",
+    "theme": "医薬品の適正使用・安全対策（副作用被害救済制度、副作用等の報告制度、PL法など）",
     "year": "令和6年度",
     "level": "基準",
-    "question": "医薬品の添付文書における用語として、「１日数回」とは概ね「１日に２〜３回」を指し、「数日間」とは概ね「３〜５日間程度」を想定した表現である。○か×か？",
-    "isCorrect": false,
-    "explanation": "お薬の手引きや説明書において、「1日数回」はなんと「5〜6回」もの多い回数を指します。「数日間」は「5〜6日間」です。普通の日本語の感覚よりかなり多い日数・回数を指しているひっかけ問題です。",
-    "diagramHtml": "<div class=\"w-full aspect-video bg-slate-50 rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 text-slate-400 p-4\">\n  <span class=\"text-3xl mb-2\">🖼️</span>\n  <span class=\"text-sm font-bold tracking-wider\">図解準備中 (Q428)</span>\n  <span class=\"text-xs mt-2 text-center\">ここに後から図解画像を追加します</span>\n</div>"
+    "question": "製造物責任法（PL法）によれば、医薬品の欠陥によって健康被害が生じた場合、被害者は製造業者等の過失（ミス）を証明しなくても、その製造業者等に対して損害賠償を請求することができる。○か×か？",
+    "isCorrect": true,
+    "explanation": "PL法（製造物責任法）の大きな特徴は、メーカー側の『過失』を証明できなくても、製品に『欠陥』があることを証明すれば損害賠償を請求できる点です。以前の法律では被害者がメーカーのミスを証明する必要があり非常に困難でしたが、PL法によって消費者がより守られるようになりました。",
+    "diagramHtml": "<div class=\"w-full aspect-video bg-slate-50 rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 text-slate-400 p-4\">\n  <span class=\"text-3xl mb-2\">⚖️</span>\n  <span class=\"text-sm font-bold tracking-wider\">図解準備中 (PL法 Q428)</span>\n  <span class=\"text-xs mt-2 text-center\">「過失」ではなく「欠陥」で責任を問える仕組みを解説します</span>\n</div>"
   },
   {
     "id": 429,
