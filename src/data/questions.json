@@ -4880,7 +4880,7 @@
     "level": "基礎",
     "question": "殺虫剤・殺鼠剤、殺菌消毒剤（人体に直接使用するものを除く）、一般用検査薬等の製品は、そもそも人体に使用することを目的としていないため、副作用被害救済制度の対象から除外されている。○か×か？",
     "isCorrect": true,
-    "explanation": "ゴキブリ退治のスプレーや、妊娠検査薬などは「人間の体を直接治すお薬」ではないため、それを吸い込んで具合が悪くなったりしても、このお薬専用の救済制度では助けてもらえません。",
+    "explanation": "害虫退治のスプレーや、妊娠検査薬などは「人間の体を直接治すお薬」ではないため、それを吸い込んで具合が悪くなったりしても、このお薬専用の救済制度では助けてもらえません。",
     "diagramHtml": "<div class=\"w-full aspect-video bg-slate-50 rounded-xl flex flex-col items-center justify-center border-2 border-dashed border-slate-300 text-slate-400 p-4\">\n  <span class=\"text-3xl mb-2\">🖼️</span>\n  <span class=\"text-sm font-bold tracking-wider\">図解準備中 (Q444)</span>\n  <span class=\"text-xs mt-2 text-center\">ここに後から図解画像を追加します</span>\n</div>"
   },
   {
