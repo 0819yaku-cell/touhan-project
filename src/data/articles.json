@@ -14,5 +14,13 @@
         "date": "2026-03-17",
         "image": "/images/thumbnail-medicine-knowledge.webp",
         "category": "お薬の知識"
+    },
+    {
+        "slug": "alesion",
+        "title": "アレジオン２０を食後に飲んでいませんか？",
+        "description": "飲み方を間違えると効果が3割落ちる？薬剤師が教える正しい飲み方と効果の真実。",
+        "date": "2026-03-27",
+        "image": "/記事画像/アレジオン１.webp",
+        "category": "お薬の知識"
     }
 ]
