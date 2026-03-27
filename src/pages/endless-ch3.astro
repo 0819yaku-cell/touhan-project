@@ -1,0 +1,274 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/endless-ch3.json';
+
+// ランダムに並び替えるための初期データ渡し用
+const initialDataStr = JSON.stringify(data.map(q => ({
+  id: q.id,
+  question: q.question,
+  isCorrect: q.isCorrect,
+  explanation: q.explanation || "（解説準備中）"
+})));
+---
+
+<Layout title="エンドレス3章：武者修行モード">
+  <div id="musha-container" class="container mx-auto py-10 px-4 pb-24" style="max-width: 480px;">
+    
+    <!-- 導入画面 -->
+    <div id="screen-intro" class="musha-screen">
+      <header class="text-center mb-8">
+        <div class="inline-block bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-bold mb-4">
+          エンドレス3章
+        </div>
+        <h1 class="text-3xl font-black text-slate-800 mb-2 leading-tight">武者修行モード</h1>
+        <div class="h-1.5 w-20 bg-orange-400 mx-auto rounded-full"></div>
+      </header>
+
+      <main class="bg-white rounded-[32px] shadow-xl p-8 border border-slate-100 mb-8 mt-4 text-center">
+        <ul class="space-y-4 text-base text-slate-700 leading-relaxed mb-8 text-left">
+          <li class="flex items-start gap-3 font-bold">
+            <span class="text-orange-400 mt-1.5 w-2 h-2 rounded-full bg-current flex-shrink-0"></span>
+            <span>苦手な人が多い3章を補強するコンテンツです。</span>
+          </li>
+          <li class="flex items-start gap-3 font-bold">
+            <span class="text-orange-400 mt-1.5 w-2 h-2 rounded-full bg-current flex-shrink-0"></span>
+            <span>過去問をベースにすべて一問一答化しました。</span>
+          </li>
+          <li class="flex items-start gap-3 font-bold">
+            <span class="text-orange-400 mt-1.5 w-2 h-2 rounded-full bg-current flex-shrink-0"></span>
+            <span>正解した問題は一時除外され、全問正解まで修行は終わりません。</span>
+          </li>
+          <li class="flex items-start gap-3 font-bold">
+            <span class="text-orange-400 mt-1.5 w-2 h-2 rounded-full bg-current flex-shrink-0"></span>
+            <span>全問解き終えるとリセットされ、次の周回が始まります。</span>
+          </li>
+        </ul>
+
+        <div class="bg-orange-50 rounded-2xl p-6 border border-orange-100 mb-8 text-center">
+          <p class="text-xs font-bold text-orange-800 mb-2">現在の修行累計</p>
+          <p class="text-4xl font-black text-orange-600">
+            <span id="stats-total">0</span><span class="text-xl ml-1 text-orange-600/80">問</span>
+          </p>
+        </div>
+
+        <button id="btn-start" class="btn-primary-musha">
+          修行を始める
+        </button>
+        
+        <a href="/" class="block text-center text-slate-400 font-bold text-sm mt-8 no-underline hover:underline">
+          ← トップページに戻る
+        </a>
+      </main>
+    </div>
+
+    <!-- クイズ画面 -->
+    <div id="screen-quiz" class="musha-screen hidden">
+      <div class="flex justify-between items-center mb-4">
+        <div class="text-sm font-bold text-slate-500 bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100">
+          残り <span id="quiz-remain" class="text-orange-600 font-black">--</span> 問
+        </div>
+        <button id="btn-quit" class="text-xs font-bold text-slate-400 underline">中断して終了</button>
+      </div>
+
+      <div class="w-full h-2 bg-slate-200 rounded-full mb-8 overflow-hidden border border-slate-100">
+        <div id="quiz-progress" class="h-full bg-orange-400 transition-all duration-300" style="width: 0%"></div>
+      </div>
+
+      <!-- クイズカード -->
+      <div id="quiz-card-element" class="bg-white rounded-2xl shadow-lg border-t-[6px] border-t-sky-300 p-6 mb-6">
+        <div class="inline-block bg-sky-100 text-sky-700 px-4 py-1 rounded-full font-black text-sm mb-4" id="quiz-badge">Q1</div>
+        <div id="quiz-text" class="text-lg font-bold text-slate-700 leading-relaxed min-h-[4rem]">
+          <!-- JSで挿入 -->
+        </div>
+        
+        <!-- 回答ボタン: 120問テストに合わせ、確実に表示されるようにインラインスタイルで定義 -->
+        <div id="quiz-options" class="flex gap-4 mt-8">
+          <button class="musha-btn-ans" data-val="true" style="flex: 1; background-color: #6ee7b7; color: white; padding: 1rem 0.6rem; font-size: 1.1rem; font-weight: 700; border-radius: 16px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 0 rgba(0,0,0,0.15); transition: transform 0.1s;">
+            <span style="font-size: 1.5rem; line-height: 1;">○</span> 正しい
+          </button>
+          <button class="musha-btn-ans" data-val="false" style="flex: 1; background-color: #fca5a5; color: white; padding: 1rem 0.6rem; font-size: 1.1rem; font-weight: 700; border-radius: 16px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 0 rgba(0,0,0,0.15); transition: transform 0.1s;">
+            <span style="font-size: 1.5rem; line-height: 1;">✕</span> 誤り
+          </button>
+        </div>
+      </div>
+
+      <!-- 解説エリア -->
+      <div id="quiz-exp-area" class="hidden opacity-0 translate-y-4 transition-all duration-500">
+        <div id="quiz-res-banner" class="flex items-center gap-3 mb-4 py-2 px-4 rounded-full border-2 bg-white font-black text-lg">
+          <span id="quiz-res-badge" class="px-3 py-0.5 rounded-full border-2 text-sm"></span>
+          <span id="quiz-res-msg"></span>
+        </div>
+
+        <div class="flex gap-4 items-start bg-white p-5 rounded-3xl shadow-md border-l-[6px] border-slate-400">
+          <div class="w-[50px] h-[50px] rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0">
+            <img src="/pharmacist.png" alt="P" class="w-full h-full object-cover" />
+          </div>
+          <div class="bg-slate-50 p-4 rounded-2xl rounded-tl-none relative flex-1 text-sm text-slate-600 leading-relaxed">
+            <div id="quiz-exp-text"></div>
+            <div class="absolute left-[-8px] top-0 w-0 h-0 border-t-[8px] border-t-transparent border-r-[10px] border-r-slate-50 border-b-[8px] border-b-transparent"></div>
+          </div>
+        </div>
+
+        <button id="btn-next" class="btn-primary-musha mt-6">
+          次へ進む →
+        </button>
+      </div>
+    </div>
+
+    <!-- 結果画面 -->
+    <div id="screen-result" class="musha-screen hidden text-center">
+      <h1 class="text-3xl font-black text-slate-800 mb-8">修行終了！</h1>
+      <main class="bg-white rounded-[40px] shadow-2xl p-10 border border-slate-50">
+        <p class="text-sm font-bold text-slate-400 mb-2 uppercase tracking-widest">RESULT</p>
+        <p class="text-6xl font-black text-orange-600 mb-8">
+          <span id="res-correct">0</span><span class="text-2xl text-slate-300 mx-3">/</span><span id="res-total">0</span><span class="text-xl">問</span>
+        </p>
+        <div class="bg-orange-50 rounded-3xl p-6 mb-10 border border-orange-100">
+          <p class="text-xs font-black text-orange-600 mb-1">TOTAL SOLVED</p>
+          <p class="text-2xl font-black text-orange-950"><span id="res-new-total">0</span> 問</p>
+        </div>
+        <button id="btn-restart" class="btn-primary-musha mb-4">
+          もう一度修行する
+        </button>
+        <a href="/" class="block text-slate-400 font-bold no-underline py-2 hover:text-slate-600 transition-colors">トップに戻る</a>
+      </main>
+    </div>
+  </div>
+
+  <style is:global>
+    .musha-btn-ans:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+    }
+
+    /* 修行モードオリジナルのライトオレンジボタン */
+    .btn-primary-musha {
+      background-color: #fff7ed;
+      color: #c2410c;
+      padding: 1.25rem;
+      font-weight: 900;
+      font-size: 1.1rem;
+      border: 3px solid #ffedd5;
+      border-radius: 1.5rem;
+      width: 100%;
+      cursor: pointer;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s;
+    }
+    .btn-primary-musha:active { transform: scale(0.98); opacity: 0.9; }
+
+    .musha-screen { animation: MushaIn 0.5s ease-out forwards; }
+    @keyframes MushaIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    .hidden { display: none !important; }
+    
+    .theme-correct #quiz-res-banner { border-color: #10b981; color: #10b981; }
+    .theme-correct #quiz-res-badge { border-color: #10b981; background: #ecfdf5; }
+    .theme-incorrect #quiz-res-banner { border-color: #ef4444; color: #ef4444; }
+    .theme-incorrect #quiz-res-badge { border-color: #ef4444; background: #fef2f2; }
+  </style>
+
+  <script is:inline define:vars={{ initialDataStr }}>
+    const ALL = JSON.parse(initialDataStr);
+    let queue = [];
+    let curQ = null;
+    let sCorrect = 0;
+    let sTotal = 0;
+    let curIdx = 0;
+
+    function wrap(t) {
+      if (!t) return '';
+      const w = ['ものである', 'ものです', 'ものの', 'もので', 'もの', 'のである', 'である', 'その', 'ります', 'ません'];
+      let r = t;
+      w.forEach(x => { r = r.split(x).join(`<span style="white-space:nowrap">${x}</span>`); });
+      r = r.replace(/([぀-ヿ一-鿿「」『』【】（）・…—]{1,4}[。！？])/g, '<span style="display:inline-block">$1</span>');
+      return r;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const t = localStorage.getItem('touhan_endless_total') || '0';
+      const stats = document.getElementById('stats-total');
+      if (stats) stats.textContent = parseInt(t).toLocaleString();
+
+      document.getElementById('btn-start').onclick = start;
+      document.getElementById('btn-restart').onclick = start;
+      document.getElementById('btn-quit').onclick = end;
+      document.getElementById('btn-next').onclick = load;
+
+      document.querySelectorAll('.musha-btn-ans').forEach(b => {
+        b.onclick = (e) => answer(e.currentTarget.getAttribute('data-val') === 'true');
+      });
+    });
+
+    function show(id) {
+      ['screen-intro','screen-quiz', 'screen-result'].forEach(s => document.getElementById(s).classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function start() {
+      sCorrect = 0; sTotal = 0; curIdx = 0;
+      queue = [...ALL].sort(() => Math.random() - 0.5);
+      show('screen-quiz');
+      load();
+    }
+
+    function load() {
+      if (queue.length === 0) {
+        alert("全問制覇！");
+        queue = [...ALL].sort(() => Math.random() - 0.5);
+      }
+      curQ = queue[0];
+      curIdx++;
+
+      document.getElementById('quiz-remain').textContent = queue.length;
+      document.getElementById('quiz-badge').textContent = "Q" + curIdx;
+      document.getElementById('quiz-progress').style.width = ((ALL.length - queue.length) / ALL.length * 100) + "%";
+      document.getElementById('quiz-text').innerHTML = wrap(curQ.question) + '<div class="mt-4 text-center text-slate-400 text-sm italic">○か✕か？</div>';
+      
+      document.getElementById('quiz-options').classList.remove('hidden');
+      const ea = document.getElementById('quiz-exp-area');
+      ea.classList.add('hidden', 'opacity-0', 'translate-y-4');
+      ea.classList.remove('theme-correct', 'theme-incorrect');
+      document.querySelectorAll('.musha-btn-ans').forEach(b => b.disabled = false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function answer(v) {
+      document.querySelectorAll('.musha-btn-ans').forEach(b => b.disabled = true);
+      sTotal++;
+      const isOk = v === curQ.isCorrect;
+      const ea = document.getElementById('quiz-exp-area');
+
+      if (isOk) {
+        sCorrect++;
+        queue.shift();
+        document.getElementById('quiz-res-badge').textContent = '正解';
+        document.getElementById('quiz-res-msg').textContent = '素晴らしい！その通りです。';
+        ea.classList.add('theme-correct');
+      } else {
+        const itm = queue.shift();
+        queue.splice(Math.floor(Math.random() * queue.length), 0, itm);
+        document.getElementById('quiz-res-badge').textContent = '不正解';
+        document.getElementById('quiz-res-msg').textContent = `惜しい！正解は「${curQ.isCorrect ? '○' : '✕'}」です。`;
+        ea.classList.add('theme-incorrect');
+      }
+
+      document.getElementById('quiz-exp-text').innerHTML = (curQ.explanation || '').split('\n').map(l => `<p class="mb-2">${wrap(l)}</p>`).join('');
+      document.getElementById('quiz-options').classList.add('hidden');
+      ea.classList.remove('hidden');
+      setTimeout(() => {
+        ea.classList.remove('opacity-0', 'translate-y-4');
+        ea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+
+    function end() {
+      let t_all = parseInt(localStorage.getItem('touhan_endless_total') || '0') + sTotal;
+      localStorage.setItem('touhan_endless_total', t_all);
+      document.getElementById('res-correct').textContent = sCorrect;
+      document.getElementById('res-total').textContent = sTotal;
+      document.getElementById('res-new-total').textContent = t_all.toLocaleString();
+      show('screen-result');
+    }
+  </script>
+</Layout>
