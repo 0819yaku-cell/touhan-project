@@ -1011,9 +1011,9 @@ const diagramImageUrl = hasDiagramImage ? `/assets/images/diagrams/q${displayNum
       }
       const qId = container.getAttribute('data-question-id');
 
-      // Mastery Check on load
+      // Mastery Check on load (disable in mock exam so users can't skip)
       const isMastered = localStorage.getItem(`touhan_mastered_${qId}`) === 'true';
-      if (isMastered) {
+      if (isMastered && !isMockMode) {
         const banner = container.querySelector('#mastery-banner');
         if (banner) banner.classList.remove('hidden');
       }

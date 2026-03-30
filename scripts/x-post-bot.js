@@ -2,15 +2,18 @@ import { TwitterApi } from 'twitter-api-v2';
 import fs from 'node:fs';
 import path from 'node:path';
 import dotenv from 'dotenv';
+import XLSX from 'xlsx';
 
 dotenv.config();
 
 const QUESTIONS_PATH = path.resolve('./src/data/questions.json');
 const POSTED_IDS_PATH = path.resolve('./scripts/posted-ids.json');
+const TRIVIA_EXCEL_PATH = path.resolve('./public/豆知識/豆知識①.xlsx');
 const BASE_URL = 'https://touhan-quiz.com/questions/';
 
-// Check for dry-run mode
+// Check for arguments
 const isDryRun = process.argv.includes('--dry-run');
+const isTrivia = process.argv.includes('--type=trivia');
 
 async function postDailyQuestion() {
     try {
@@ -93,4 +96,85 @@ async function postDailyQuestion() {
     }
 }
 
-postDailyQuestion();
+async function postDailyTrivia() {
+    try {
+        if (!fs.existsSync(TRIVIA_EXCEL_PATH)) {
+            throw new Error(`Trivia Excel file not found at ${TRIVIA_EXCEL_PATH}`);
+        }
+
+        // 1. Load the Excel workbook and the first sheet
+        const workbook = XLSX.readFile(TRIVIA_EXCEL_PATH);
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+
+        // 2. Parse into JSON array
+        let rows = XLSX.utils.sheet_to_json(sheet);
+
+        // 3. Filter available rows (not marked as "済")
+        let availableRows = rows.filter(row => row['投稿済み'] !== '済');
+
+        // Reset if all are posted
+        if (availableRows.length === 0) {
+            console.log('All trivia items have been posted. Resetting the history.');
+            rows.forEach(row => { row['投稿済み'] = ''; });
+            availableRows = [...rows]; // copy the reset rows
+        }
+
+        if (availableRows.length === 0) {
+            throw new Error('No valid trivia found in the Excel file.');
+        }
+
+        // 4. Select one randomly
+        const randomRow = availableRows[Math.floor(Math.random() * availableRows.length)];
+        const tweetContent = randomRow['投稿内容'];
+
+        if (isDryRun) {
+            console.log('--- TRIVIA DRY RUN MODE ---');
+            console.log(`Available: ${availableRows.length}/${rows.length}`);
+            console.log('[TRIVIA TWEET]');
+            console.log(tweetContent);
+            console.log('---------------------------');
+            // Mock marking as posted
+            randomRow['投稿済み'] = '済';
+            console.log(`Row ID ${randomRow['ID']} would be marked as '済'.`);
+            return;
+        }
+
+        // 5. Initialize X API Client
+        const client = new TwitterApi({
+            appKey: process.env.X_API_KEY,
+            appSecret: process.env.X_API_SECRET,
+            accessToken: process.env.X_ACCESS_TOKEN,
+            accessSecret: process.env.X_ACCESS_SECRET,
+        });
+
+        // 6. Post to X
+        console.log('Posting trivia tweet...');
+        const mainTweet = await client.v2.tweet(tweetContent);
+        console.log(`Trivia tweet posted! ID: ${mainTweet.data.id}`);
+
+        // 7. Update Excel state
+        const targetId = randomRow['ID'];
+        rows.forEach(row => {
+            if (row['ID'] === targetId) {
+                row['投稿済み'] = '済';
+            }
+        });
+
+        const newSheet = XLSX.utils.json_to_sheet(rows);
+        workbook.Sheets[sheetName] = newSheet;
+        XLSX.writeFile(workbook, TRIVIA_EXCEL_PATH);
+        console.log(`Trivia ID ${targetId} saved as posted in Excel.`);
+
+    } catch (error) {
+        console.error('Error in postDailyTrivia:', error);
+        process.exit(1);
+    }
+}
+
+// Main execution orchestrator
+if (isTrivia) {
+    postDailyTrivia();
+} else {
+    postDailyQuestion();
+}
