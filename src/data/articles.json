@@ -78,5 +78,13 @@
         "date": "2026-03-31",
         "image": "/images/thumbnail-medicine-knowledge.webp",
         "category": "お薬の知識・漢方"
+    },
+    {
+        "slug": "salary",
+        "title": "登録販売者の年収・給料はいくら？薬剤師が教えるリアルな収入事情",
+        "description": "平均年収357万円の実態、職場別の違い、薬剤師とのコスパ比較、年収を上げる4つの方法を現役薬剤師が詳しく解説。",
+        "date": "2026-04-01",
+        "image": "/記事画像/登販年収.webp",
+        "category": "給料・キャリア"
     }
 ]
