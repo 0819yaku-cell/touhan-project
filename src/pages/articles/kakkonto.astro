@@ -145,53 +145,55 @@ import Layout from '../../layouts/Layout.astro';
 
         <!-- ① 構成生薬 -->
         <h3 class="subsection-title">① 構成生薬7種（全部覚える）</h3>
-        <div class="overflow-x-auto mb-6 rounded-xl border border-slate-200">
-          <table class="w-full text-left text-sm text-slate-600">
-            <thead>
-              <tr>
-                <th class="p-3 border-b border-green-200 bg-green-600 text-white font-bold">生薬名</th>
-                <th class="p-3 border-b border-green-200 bg-green-600 text-white font-bold">読み方</th>
-                <th class="p-3 border-b border-green-200 bg-green-600 text-white font-bold">主な働き</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-amber-50 font-bold text-amber-800">葛根</td>
-                <td class="p-3 border-b border-slate-100 bg-amber-50 font-semibold">カッコン</td>
-                <td class="p-3 border-b border-slate-100 bg-amber-50"><span class="badge badge--amber">主薬</span> 発汗・解熱・首肩のこりをほぐす</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-red-50 font-bold text-red-700">麻黄</td>
-                <td class="p-3 border-b border-slate-100 bg-red-50 font-semibold">マオウ</td>
-                <td class="p-3 border-b border-slate-100 bg-red-50"><span class="badge badge--red">重要</span> 発汗・解熱・気管支拡張（交感神経刺激）</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-bold text-slate-700">桂皮</td>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold">ケイヒ</td>
-                <td class="p-3 border-b border-slate-100 bg-white">発汗・体を温める</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700">芍薬</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold">シャクヤク</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50">鎮痛・筋肉の緊張をほぐす</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-red-50 font-bold text-red-700">甘草</td>
-                <td class="p-3 border-b border-slate-100 bg-red-50 font-semibold">カンゾウ</td>
-                <td class="p-3 border-b border-slate-100 bg-red-50"><span class="badge badge--red">重要</span> 鎮痛・抗炎症・他の生薬との調和</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700">生姜</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold">ショウキョウ</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50">体を温める・健胃</td>
-              </tr>
-              <tr>
-                <td class="p-3 bg-white font-bold text-slate-700">大棗</td>
-                <td class="p-3 bg-white font-semibold">タイソウ</td>
-                <td class="p-3 bg-white">健胃・緩和</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead class="bg-emerald-50 text-emerald-900 border-b border-emerald-100 italic">
+                <tr>
+                  <th class="py-4 font-black border-r border-emerald-100" style="padding-left: 2.5rem !important; min-width: 120px;">生薬名</th>
+                  <th class="p-4 font-black border-r border-emerald-100">読み方</th>
+                  <th class="p-4 font-black">主な働き</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-amber-50 font-bold text-amber-800 border-r border-slate-100" style="padding-left: 2.5rem !important;">葛根</td>
+                  <td class="p-3 border-b border-slate-100 bg-amber-50 font-semibold border-r border-slate-100">カッコン</td>
+                  <td class="p-3 border-b border-slate-100 bg-amber-50"><span class="badge badge--amber">主薬</span> 発汗・解熱・首肩のこりをほぐす</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-red-50 font-bold text-red-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">麻黄</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50 font-semibold border-r border-slate-100">マオウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50"><span class="badge badge--red">重要</span> 発汗・解熱・気管支拡張（交感神経刺激）</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">桂皮</td>
+                  <td class="p-3 border-b border-slate-100 bg-white font-semibold border-r border-slate-100">ケイヒ</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">発汗・体を温める</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">芍薬</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold border-r border-slate-100">シャクヤク</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">鎮痛・筋肉の緊張をほぐす</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-red-50 font-bold text-red-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">甘草</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50 font-semibold border-r border-slate-100">カンゾウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50"><span class="badge badge--red">重要</span> 鎮痛・抗炎症・他の生薬との調和</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">生姜</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold border-r border-slate-100">ショウキョウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">体を温める・健胃</td>
+                </tr>
+                <tr>
+                  <td class="py-3 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">大棗</td>
+                  <td class="p-3 bg-white font-semibold border-r border-slate-100">タイソウ</td>
+                  <td class="p-3 bg-white">健胃・緩和</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- ② マオウ・カンゾウ -->
@@ -223,38 +225,40 @@ import Layout from '../../layouts/Layout.astro';
 
         <!-- ③ 麻黄湯との違い -->
         <h3 class="subsection-title mt-6">③ 麻黄湯との違いを押さえる</h3>
-        <div class="overflow-x-auto mb-6 rounded-xl border border-slate-200">
-          <table class="w-full text-left text-sm text-slate-600">
-            <thead>
-              <tr>
-                <th class="p-3 border-b border-slate-200 bg-slate-600 text-white font-bold"></th>
-                <th class="p-3 border-b border-green-200 bg-green-600 text-white font-bold text-center">葛根湯</th>
-                <th class="p-3 border-b border-blue-200 bg-blue-600 text-white font-bold text-center">麻黄湯</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold">証</td>
-                <td class="p-3 border-b border-slate-100 bg-white text-center">体力中等度以上</td>
-                <td class="p-3 border-b border-slate-100 bg-white text-center">体力充実</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold">特徴</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 text-center">肩こり・鼻炎にも使える</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 text-center">より強力な発汗・解熱</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold">ダイオウ</td>
-                <td class="p-3 border-b border-slate-100 bg-white text-center">なし</td>
-                <td class="p-3 border-b border-slate-100 bg-white text-center">なし</td>
-              </tr>
-              <tr>
-                <td class="p-3 bg-slate-50 font-semibold">カッコン</td>
-                <td class="p-3 bg-slate-50 text-center font-bold text-green-700">あり</td>
-                <td class="p-3 bg-slate-50 text-center font-bold text-red-600">なし</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-center text-sm">
+              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+                <tr>
+                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 120px;"></th>
+                  <th class="p-4 font-black border-r border-slate-200">葛根湯</th>
+                  <th class="p-4 font-black">麻黄湯</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">証</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white">体力中等度以上</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">体力充実</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold text-left" style="padding-left: 2.5rem !important;">特徴</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-slate-50">肩こり・鼻炎にも使える</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">より強力な発汗・解熱</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">ダイオウ</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white">なし</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">なし</td>
+                </tr>
+                <tr>
+                  <td class="py-3 bg-slate-50 font-semibold text-left border-r border-slate-100" style="padding-left: 2.5rem !important;">カッコン</td>
+                  <td class="p-3 border-r border-slate-100 bg-slate-50 font-bold text-green-700">あり</td>
+                  <td class="p-3 bg-slate-50 font-bold text-red-600">なし</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- ④ よく出る試験問題 -->
@@ -310,28 +314,30 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">市販の葛根湯の選び方</h2>
 
         <h3 class="subsection-title">剤形別の特徴と小児用量</h3>
-        <div class="overflow-x-auto mb-5 rounded-xl border border-slate-200">
-          <table class="w-full text-left text-sm text-slate-600">
-            <thead>
-              <tr>
-                <th class="p-3 border-b border-purple-200 bg-purple-600 text-white font-bold">剤形</th>
-                <th class="p-3 border-b border-purple-200 bg-purple-600 text-white font-bold">特徴</th>
-                <th class="p-3 border-b border-purple-200 bg-purple-600 text-white font-bold">小児の用量設定</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold">顆粒・粉末</td>
-                <td class="p-3 border-b border-slate-100 bg-white">吸収が早い・お湯に溶かせる</td>
-                <td class="p-3 border-b border-slate-100 bg-white"><span class="badge badge--green">1歳以上から</span>設定あり</td>
-              </tr>
-              <tr>
-                <td class="p-3 bg-slate-50 font-semibold">錠剤</td>
-                <td class="p-3 bg-slate-50">飲みやすいが1日12錠と錠数が多い</td>
-                <td class="p-3 bg-slate-50"><span class="badge badge--blue">5歳以上から</span>設定あり</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-center text-sm">
+              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+                <tr>
+                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 120px;">剤形</th>
+                  <th class="p-4 font-black border-r border-slate-200">特徴</th>
+                  <th class="p-4 font-black">小児の用量設定</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">顆粒・粉末</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white">吸収が早い・お湯に溶かせる</td>
+                  <td class="p-3 border-b border-slate-100 bg-white"><span class="badge badge--green">1歳以上から</span>設定あり</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-r border-slate-100 bg-slate-50 font-semibold text-left" style="padding-left: 2.5rem !important;">錠剤</td>
+                  <td class="p-3 border-r border-slate-100 bg-slate-50">飲みやすいが1日12錠と錠数が多い</td>
+                  <td class="p-3 bg-slate-50"><span class="badge badge--blue">5歳以上から</span>設定あり</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="pharmacist-box mb-6">
@@ -386,41 +392,40 @@ import Layout from '../../layouts/Layout.astro';
       <section class="mb-12">
         <h2 class="section-title">まとめ｜葛根湯を正しく使うために</h2>
 
-        <div class="overflow-x-auto mb-6 rounded-xl border border-slate-200">
-          <table class="w-full text-left text-sm text-slate-600">
-            <thead>
-              <tr>
-                <th class="p-3 border-b border-emerald-200 bg-emerald-600 text-white font-bold">項目</th>
-                <th class="p-3 border-b border-emerald-200 bg-emerald-600 text-white font-bold">ポイント</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold whitespace-nowrap">向いている体質</td>
-                <td class="p-3 border-b border-slate-100 bg-white">体力中等度以上・汗をかいていない</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold whitespace-nowrap">向いていない体質</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50">虚弱体質・高齢者・胃腸が弱い人</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold whitespace-nowrap">効能</td>
-                <td class="p-3 border-b border-slate-100 bg-white">風邪初期・鼻炎・頭痛・肩こり</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold whitespace-nowrap">主な構成生薬</td>
-                <td class="p-3 border-b border-slate-100 bg-slate-50">カッコン・マオウ・カンゾウ含む（7種）</td>
-              </tr>
-              <tr>
-                <td class="p-3 border-b border-slate-100 bg-white font-semibold whitespace-nowrap">試験の頻出ポイント</td>
-                <td class="p-3 border-b border-slate-100 bg-white">体力中等度以上・汗なし・マオウ・カンゾウ含有</td>
-              </tr>
-              <tr>
-                <td class="p-3 bg-slate-50 font-semibold whitespace-nowrap">副作用</td>
-                <td class="p-3 bg-slate-50">動悸・偽アルドステロン症に注意</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-center text-sm">
+              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+                <tr><th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 140px;">項目</th><th class="p-4 font-black">ポイント</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">向いている体質</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">体力中等度以上・汗をかいていない</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">向いていない体質</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 text-slate-800 font-bold">虚弱体質・高齢者・胃腸が弱い人</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">効能</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">風邪初期・鼻炎・頭痛・肩こり</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">主な構成生薬</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 text-slate-800 font-bold">カッコン・マオウ・カンゾウ含む（7種）</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">試験の頻出ポイント</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">体力中等度以上・汗なし・マオウ・カンゾウ含有</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">副作用</td>
+                  <td class="p-3 bg-slate-50 text-slate-800 font-bold">動悸・偽アルドステロン症に注意</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <p class="text-slate-600 mb-4">

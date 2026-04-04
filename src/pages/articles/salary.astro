@@ -57,33 +57,35 @@ import Layout from '../../layouts/Layout.astro';
       <!-- Section 2: 雇用形態別の年収 -->
       <section class="mb-12">
         <h2 class="section-title">雇用形態別の年収</h2>
-        <div class="overflow-x-auto mb-4 rounded-xl border border-green-200">
-          <table class="w-full text-left text-sm text-slate-600">
-            <thead class="bg-green-50 text-green-800">
-              <tr>
-                <th class="p-4 border-b border-green-200 font-black whitespace-nowrap">雇用形態</th>
-                <th class="p-4 border-b border-green-200 font-black">年収目安</th>
-                <th class="p-4 border-b border-green-200 font-black">備考</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-green-50/30 transition-colors">
-                <td class="p-4 border-b border-slate-100 bg-white font-bold whitespace-nowrap">正社員</td>
-                <td class="p-4 border-b border-slate-100 bg-white font-black text-green-700">300〜400万円</td>
-                <td class="p-4 border-b border-slate-100 bg-white">ボーナス・資格手当込み</td>
-              </tr>
-              <tr class="hover:bg-green-50/30 transition-colors">
-                <td class="p-4 border-b border-slate-100 bg-white font-bold whitespace-nowrap">店長・管理職</td>
-                <td class="p-4 border-b border-slate-100 bg-white font-black text-green-700">400〜500万円以上</td>
-                <td class="p-4 border-b border-slate-100 bg-white">役職手当が大きく影響</td>
-              </tr>
-              <tr class="hover:bg-green-50/30 transition-colors">
-                <td class="p-4 border-b border-slate-100 bg-white font-bold whitespace-nowrap">パート・アルバイト</td>
-                <td class="p-4 border-b border-slate-100 bg-white font-black text-green-700">時給1,100〜1,300円</td>
-                <td class="p-4 border-b border-slate-100 bg-white">資格手当がつく場合あり</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-3xl overflow-hidden border border-emerald-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead class="bg-emerald-50 text-emerald-900 border-b border-emerald-100">
+                <tr>
+                  <th class="py-4 font-black whitespace-nowrap border-r border-emerald-100" style="padding-left: 2.5rem !important; min-width: 140px;">雇用形態</th>
+                  <th class="p-4 font-black border-r border-emerald-100">年収目安</th>
+                  <th class="p-4 font-black">備考</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-green-50/30 transition-colors">
+                  <td class="py-4 border-b border-slate-100 bg-white font-bold whitespace-nowrap border-r border-slate-100" style="padding-left: 2.5rem !important;">正社員</td>
+                  <td class="p-4 border-b border-slate-100 bg-white font-black text-green-700 border-r border-slate-100">300〜400万円</td>
+                  <td class="p-4 border-b border-slate-100 bg-white">ボーナス・資格手当込み</td>
+                </tr>
+                <tr class="hover:bg-green-50/30 transition-colors">
+                  <td class="py-4 border-b border-slate-100 bg-white font-bold whitespace-nowrap border-r border-slate-100" style="padding-left: 2.5rem !important;">店長・管理職</td>
+                  <td class="p-4 border-b border-slate-100 bg-white font-black text-green-700 border-r border-slate-100">400〜500万円以上</td>
+                  <td class="p-4 border-b border-slate-100 bg-white">役職手当が大きく影響</td>
+                </tr>
+                <tr class="hover:bg-green-50/30 transition-colors">
+                  <td class="py-4 border-slate-100 bg-white font-bold whitespace-nowrap border-r border-slate-100" style="padding-left: 2.5rem !important;">パート・アルバイト</td>
+                  <td class="p-4 border-slate-100 bg-white font-black text-green-700 border-r border-slate-100">時給1,100〜1,300円</td>
+                  <td class="p-4 border-slate-100 bg-white">資格手当がつく場合あり</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <p class="text-slate-600">
           パートとして働く場合でも、資格保有者は非保有者より時給が高く設定されるケースが多いです。子育て中の方や、扶養内で働きたい方にとっては非常に使いやすい働き方といえます。
@@ -127,38 +129,40 @@ import Layout from '../../layouts/Layout.astro';
           私は薬剤師として18年のキャリアがあります。同じ職場で登録販売者と一緒に働いてきた経験から、客観的に比較してみたいと思います。
         </p>
 
-        <div class="overflow-x-auto mb-6 rounded-xl border border-slate-200 shadow-sm">
-          <table class="w-full text-left text-sm text-slate-600">
-            <thead>
-              <tr class="bg-slate-800 text-white">
-                <th class="p-4 border-b border-slate-700 font-bold whitespace-nowrap">比較項目</th>
-                <th class="p-4 border-b border-slate-700 font-black text-center bg-green-600">登録販売者</th>
-                <th class="p-4 border-b border-slate-700 font-black text-center bg-slate-700">薬剤師</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr class="bg-white">
-                <td class="p-4 font-bold bg-slate-50/50">平均年収</td>
-                <td class="p-4 text-center font-black text-green-700">約350〜400万円</td>
-                <td class="p-4 text-center">約550〜600万円</td>
-              </tr>
-              <tr class="bg-white">
-                <td class="p-4 font-bold bg-slate-50/50">資格取得期間</td>
-                <td class="p-4 text-center font-black text-green-700">数ヶ月〜1年</td>
-                <td class="p-4 text-center">最短6年（大学）</td>
-              </tr>
-              <tr class="bg-white">
-                <td class="p-4 font-bold bg-slate-50/50">学費・取得コスト</td>
-                <td class="p-4 text-center font-black text-green-700">数万円</td>
-                <td class="p-4 text-center">1,000万円以上<br /><span class="text-[10px] text-slate-400">（私立薬学部の場合）</span></td>
-              </tr>
-              <tr class="bg-white">
-                <td class="p-4 font-bold bg-slate-50/50">受験資格</td>
-                <td class="p-4 text-center font-black text-green-700">誰でも受験可</td>
-                <td class="p-4 text-center">大学卒業必須</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+                <tr>
+                  <th class="py-4 font-black whitespace-nowrap border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 140px;">比較項目</th>
+                  <th class="p-4 font-black text-center bg-emerald-50 text-emerald-900 border-r border-emerald-100 italic">登録販売者</th>
+                  <th class="p-4 font-black text-center">薬剤師</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="bg-white">
+                  <td class="py-4 font-bold bg-slate-50/50 border-r border-slate-100" style="padding-left: 2.5rem !important;">平均年収</td>
+                  <td class="p-4 text-center font-black text-green-700 border-r border-slate-100">約350〜400万円</td>
+                  <td class="p-4 text-center">約550〜600万円</td>
+                </tr>
+                <tr class="bg-white">
+                  <td class="py-4 font-bold bg-slate-50/50 border-r border-slate-100" style="padding-left: 2.5rem !important;">資格取得期間</td>
+                  <td class="p-4 text-center font-black text-green-700 border-r border-slate-100">数ヶ月〜1年</td>
+                  <td class="p-4 text-center">最短6年（大学）</td>
+                </tr>
+                <tr class="bg-white">
+                  <td class="py-4 font-bold bg-slate-50/50 border-r border-slate-100" style="padding-left: 2.5rem !important;">学費・取得コスト</td>
+                  <td class="p-4 text-center font-black text-green-700 border-r border-slate-100">数万円</td>
+                  <td class="p-4 text-center">1,000万円以上<br /><span class="text-[10px] text-slate-400">（私立薬学部の場合）</span></td>
+                </tr>
+                <tr class="bg-white">
+                  <td class="py-4 font-bold bg-slate-50/50 border-r border-slate-100" style="padding-left: 2.5rem !important;">受験資格</td>
+                  <td class="p-4 text-center font-black text-green-700 border-r border-slate-100">誰でも受験可</td>
+                  <td class="p-4 text-center">大学卒業必須</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- 薬剤師目線ハイライト -->
@@ -185,7 +189,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="grid gap-6">
           <div class="card p-6 border border-slate-100 bg-white shadow-sm rounded-2xl">
             <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm">1</span>
+              <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold border border-indigo-100">1</span>
               店舗管理者（店長）を目指す
             </h3>
             <p class="text-sm text-slate-600 leading-relaxed pl-10">
@@ -194,7 +198,7 @@ import Layout from '../../layouts/Layout.astro';
           </div>
           <div class="card p-6 border border-slate-100 bg-white shadow-sm rounded-2xl">
             <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm">2</span>
+              <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold border border-indigo-100">2</span>
               勤め先・エリア（地域）を選ぶ
             </h3>
             <p class="text-sm text-slate-600 leading-relaxed pl-10">
@@ -203,7 +207,7 @@ import Layout from '../../layouts/Layout.astro';
           </div>
           <div class="card p-6 border border-slate-100 bg-white shadow-sm rounded-2xl">
             <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm">3</span>
+              <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold border border-indigo-100">3</span>
               資格手当のある職場を選ぶ
             </h3>
             <p class="text-sm text-slate-600 leading-relaxed pl-10">
@@ -212,7 +216,7 @@ import Layout from '../../layouts/Layout.astro';
           </div>
           <div class="card p-6 border border-slate-100 bg-white shadow-sm rounded-2xl">
             <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm">4</span>
+              <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm font-bold border border-indigo-100">4</span>
               ダブルライセンスを取得する
             </h3>
             <p class="text-sm text-slate-600 leading-relaxed pl-10">
