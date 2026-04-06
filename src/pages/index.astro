@@ -99,6 +99,15 @@ chapters.sort((a, b) => {
   const numB = parseInt(b.name.replace(/\D/g, '')) || 0;
   return numA - numB;
 });
+
+// 🌿 漢方セクション用の特定記事抽出（葛根湯と防風通聖散を先頭に固定）
+const prioritySlugs = ['kakkonto', 'bofutsushosan'];
+const priorityArticles = prioritySlugs.map(slug => articles.find(a => a.slug === slug)).filter(Boolean);
+const herbArticles = [
+  ...priorityArticles,
+  ...articles.filter(a => a.category.includes('漢方') && !prioritySlugs.includes(a.slug))
+];
+const otherArticles = articles.filter(a => !a.category.includes('漢方'));
 ---
 
 <Layout>
@@ -151,6 +160,35 @@ chapters.sort((a, b) => {
           
           <!-- scriptで使用するための見えないデータ要素 -->
           <div id="quiz-data-ids" data-ids={JSON.stringify(data.map((q: any) => q.id))} class="hidden"></div>
+        </section>
+
+
+        <!-- Herb Article Section -->
+        <section class="herb-highlights-section px-4 mb-xl">
+          <div class="flex items-center justify-between mb-4 mt-2">
+            <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
+              <span class="w-2 h-6 bg-primary rounded-full"></span>
+              漢方を深く理解する
+            </h2>
+            <a href="/articles" class="btn-outline-sm no-underline">漢方記事一覧</a>
+          </div>
+          <p class="text-[0.75rem] font-bold text-slate-500 pl-4 mb-6">試験に出る漢方を薬剤師が徹底解説</p>
+          
+          <div class="herb-scroll-container hide-scrollbar">
+            <div class="herb-flex-wrapper">
+              {herbArticles.map((article) => (
+                <a href={`/articles/${article.slug}`} class="herb-card snap-start">
+                  <div class="herb-card-image">
+                    <img src={article.image} alt={article.title} />
+                  </div>
+                  <div class="herb-card-content">
+                    <span class="herb-category-badge">{article.category}</span>
+                    <h3 class="herb-card-title">{article.title}</h3>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
         </section>
 
 
@@ -242,7 +280,7 @@ chapters.sort((a, b) => {
             </h2>
           </div>
           <div class="articles-list flex flex-col gap-4">
-            {articles.map((article) => (
+            {otherArticles.map((article) => (
               <a href={`/articles/${article.slug}`} class="article-card group">
                 <div class="article-card-image">
                   <img src={article.image} alt={article.title} />
@@ -473,6 +511,101 @@ chapters.sort((a, b) => {
     color: var(--color-primary);
     border-color: var(--color-primary);
     transform: translateY(-2px);
+  }
+
+  .btn-outline-sm {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 9999px;
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 800;
+    transition: all 0.2s;
+    background: white;
+  }
+
+  .btn-outline-sm:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1);
+  }
+
+  /* ── Herb Highlights Section ── */
+  .herb-scroll-container {
+    overflow-x: auto;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .herb-flex-wrapper {
+    display: flex;
+    gap: 1rem;
+    padding: 0.25rem 0.25rem 1.25rem;
+  }
+
+  .herb-card {
+    flex: 0 0 200px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .herb-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    border-color: var(--color-primary-light);
+  }
+
+  .herb-card-image {
+    width: 100%;
+    height: 120px;
+    background: #f8fafc;
+  }
+
+  .herb-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .herb-card-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .herb-category-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    background: #f0f9ff;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    align-self: flex-start;
+  }
+
+  .herb-card-title {
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* ── Articles Section ── */
