@@ -2,329 +2,371 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="当帰芍薬散（とうきしゃくやくさん）とは？女性の冷え・むくみ・貧血に効く漢方を薬剤師が解説 | 登録販売者のくすり教室" description="女性三大漢方のひとつ、当帰芍薬散。冷え症やむくみ、生理痛への効果や、6種類の構成生薬、登録販売者試験で必ず出るポイントを現役薬剤師が詳しく解説します。">
-  <div class="article-container animate-fade-in text-slate-700">
-    <header class="article-header px-6">
-      <div class="category-tag">漢方・お薬の知識</div>
-      <h1 class="article-title text-2xl md:text-3xl font-black leading-tight text-slate-800 mb-6 mt-4">
-        当帰芍薬散（とうきしゃくやくさん）とは？<br class="hidden md:block" />女性の冷え・むくみ・貧血に効く漢方を薬剤師が解説
+<Layout title="当帰芍薬散（とうきしゃくやくさん）とは？冷え・生理不順・むくみに効く漢方を薬剤師が解説 | 登録販売者のくすり教室" description="冷え症・生理不順・むくみに効く当帰芍薬散。血を補いながら水を排出するメカニズム、6種類の生薬、登録販売者試験の頻出ポイントを現役薬剤師が詳しく解説します。">
+  <div class="article-container animate-fade-in">
+    <header class="article-header">
+      <div class="category-tag">🌿 お薬の知識・漢方</div>
+      <h1 class="article-title text-2xl font-black leading-tight text-slate-800 mb-6">
+        当帰芍薬散（とうきしゃくやくさん）とは？<br />冷え・生理不順・むくみに効く漢方を薬剤師が解説
       </h1>
-      <div class="mb-10">
-        <img
-          src="/記事画像/当帰芍薬散.webp"
-          alt="当帰芍薬散と薬剤師の解説"
-          class="w-full h-auto rounded-2xl shadow-md border border-slate-100"
-          loading="lazy"
-          decoding="async"
-        />
+      <div class="article-hero mb-8">
+        <img src="/記事画像/当帰芍薬散.webp" alt="当帰芍薬散の解説図解" class="w-full h-auto rounded-2xl shadow-sm border border-slate-100" />
       </div>
     </header>
 
-    <main class="article-content px-6 pb-20">
-      <p class="text-[10px] text-slate-400 mb-10 opacity-80 leading-relaxed italic border-b border-slate-100 pb-4">
+    <main class="article-content">
+      <p class="text-[10px] text-slate-400 mb-6 opacity-80 leading-relaxed italic">
         ※当サイトはアフィリエイト広告（Amazonアソシエイト・afbアフィリエイト含む）を掲載しています。記事内のリンクから商品を購入いただくと、サイト運営の支援になります。
       </p>
 
-      <!-- この記事でわかること（緑ボーダーボックス） -->
-      <div class="learn-more-box mb-16">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-2xl">💊</span>
-          <h2 class="text-lg font-black text-emerald-800 m-0 leading-none">この記事でわかること</h2>
+      <!-- この記事でわかること -->
+      <div class="learn-card mb-8">
+        <div class="learn-header">
+          <span class="learn-icon">📋</span>
+          <p class="learn-title">この記事でわかること</p>
         </div>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3 text-emerald-900/80 font-bold text-sm">
-            <span class="text-emerald-500 mt-1">✅</span>
-            当帰芍薬散がどんな症状に効くか
-          </li>
-          <li class="flex items-start gap-3 text-emerald-900/80 font-bold text-sm">
-            <span class="text-emerald-500 mt-1">✅</span>
-            「血を補いながら水を出す」とはどういうこと？
-          </li>
-          <li class="flex items-start gap-3 text-emerald-900/80 font-bold text-sm">
-            <span class="text-emerald-500 mt-1">✅</span>
-            6種類の生薬とそれぞれの役割
-          </li>
-          <li class="flex items-start gap-3 text-emerald-900/80 font-bold text-sm">
-            <span class="text-emerald-500 mt-1">✅</span>
-            登録販売者試験の頻出ポイント
-          </li>
-          <li class="flex items-start gap-3 text-emerald-900/80 font-bold text-sm">
-            <span class="text-emerald-500 mt-1">✅</span>
-            加味逍遙散・桂枝茯苓丸との使い分け
-          </li>
-          <li class="flex items-start gap-3 text-emerald-900/80 font-bold text-sm">
-            <span class="text-emerald-500 mt-1">✅</span>
-            副作用と注意点
-          </li>
+        <ul class="learn-list">
+          <li>当帰芍薬散がどんな症状に効くか</li>
+          <li>「血を補いながら水を出す」とはどういうこと？</li>
+          <li>6種類の生薬とそれぞれの役割</li>
+          <li>登録販売者試験の頻出ポイント</li>
+          <li>加味逍遙散・桂枝茯苓丸との使い分け</li>
+          <li>副作用と注意点</li>
         </ul>
       </div>
 
-      <!-- Section: 当帰芍薬散とは -->
-      <section class="mb-20">
-        <h2 class="article-section-title">当帰芍薬散とは</h2>
-        <p class="mb-6 leading-relaxed">
+      <!-- Section 1: 当帰芍薬散とは -->
+      <section class="mb-12">
+        <h2 class="section-title">当帰芍薬散とは</h2>
+        <p class="text-slate-600 mb-4">
           冷え症がひどい。生理不順がある。顔色が悪くて貧血気味。足がよくむくむ。体がだるくて疲れやすい。
         </p>
-        <p class="mb-6 leading-relaxed">
+        <p class="text-slate-600 mb-4">
           こういった悩みが重なって困っている女性に、まず候補として挙がる漢方薬が当帰芍薬散です。
         </p>
-        <p class="mb-6 leading-relaxed">
-          加味逍遙散・桂枝茯苓丸と並ぶ**「女性三大漢方」**のひとつで、ドラッグストアでも長年人気の処方です。
+        <p class="text-slate-600 mb-4">
+          加味逍遙散・桂枝茯苓丸と並ぶ<strong>「女性三大漢方」</strong>のひとつで、ドラッグストアでも長年人気の処方です。漢方の考え方では、<strong>「血（けつ）が足りない状態」</strong>と<strong>「水（すい）が溜まっている状態」</strong>が同時に起きている人に使います。血を補いながら余分な水分を排出することで、冷えやむくみ、生理トラブルをサポートします。
         </p>
-        <p class="mb-6 leading-relaxed">
-          漢方の考え方では、この処方は「**血（けつ）が足りない**状態」と「**水（すい）が溜まっている**状態」が同時に起きている人に使います。血を補いながら余分な水分を排出することで、冷えやむくみ、生理トラブルを同時にサポートしてくれます。
-        </p>
-        <p class="mb-6 leading-relaxed text-sm">
-          薬剤師として現場で見ていると、「なんとなく体がだるい・冷える・むくむ」という複合的なしんどさを抱える女性に処方されることが多い印象です。
-        </p>
-      </section>
-
-      <!-- Section: どんな人・場面に向いているか -->
-      <section class="mb-20">
-        <h2 class="article-section-title">どんな人・場面に向いているか</h2>
-        
-        <div class="grid gap-6 mb-12">
-          <!-- 向いている人 -->
-          <div class="bg-emerald-50 border border-emerald-100 rounded-3xl p-6 shadow-sm">
-            <h3 class="flex items-center gap-2 font-black text-emerald-800 mb-4">
-              <span class="text-xl">✅</span> こんな人に向いている
-            </h3>
-            <ul class="space-y-2 text-emerald-900/80 text-sm font-bold">
-              <li>・体力が弱め（虚弱）で疲れやすい人</li>
-              <li>・冷え症（特に手足・腰の冷え）がある人</li>
-              <li>・貧血気味・顔色が悪い人</li>
-              <li>・むくみやすい人</li>
-              <li>・生理不順・生理痛（比較的軽めの）がある人</li>
-              <li>・めまい・立ちくらみ・頭が重い人</li>
-              <li>・細身で体力がそれほどない女性</li>
-            </ul>
+        <div class="pharmacist-box">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
-          <!-- 向いていない人 -->
-          <div class="bg-amber-50 border border-amber-100 rounded-3xl p-6 shadow-sm">
-            <h3 class="flex items-center gap-2 font-black text-amber-800 mb-4">
-              <span class="text-xl">⚠️</span> こんな人は向いていない
-            </h3>
-            <ul class="space-y-2 text-amber-900/80 text-sm font-bold">
-              <li>・体力がある・のぼせやすい人（→ 桂枝茯苓丸の方が合う）</li>
-              <li>・イライラや精神的ストレスが強い人（→ 加味逍遙散の方が合う）</li>
-              <li>・著しく胃腸が弱い人（胃腸障害が出やすい）</li>
-              <li>・妊娠中の人</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 薬剤師のひとこと -->
-        <div class="pharmacist-insight-box mb-12">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xl">💊</span>
-            <h3 class="font-black text-sky-800 m-0">薬剤師のひとこと</h3>
-          </div>
-          <p class="text-sm text-sky-900/80 font-medium leading-relaxed mb-0">
-            「冷え症だから当帰芍薬散」と一律に選ぶのは危険です。のぼせを伴う冷えのぼせがある場合は桂枝茯苓丸、イライラや不眠を伴う場合は加味逍遙散の方が合います。「冷え＋貧血」がセットになって、のぼせやイライラはない——これが当帰芍薬散の典型的な使いどころです。
+          <p class="pharmacist-body mb-0">
+            「冷え症だから当帰芍薬散」と一律に選ぶのは危険です。のぼせを伴う冷えのぼせがある場合は桂枝茯苓丸、イライラや不眠を伴う場合は加味逍遙散の方が合います。「<strong>冷え＋貧血がセットになって、のぼせやイライラはない</strong>」——これが当帰芍薬散の典型的な使いどころです。
           </p>
         </div>
       </section>
 
-      <!-- Section: 当帰芍薬散の効能・効果 -->
-      <section class="mb-20">
-        <h2 class="article-section-title">当帰芍薬散の効能・効果</h2>
-        <div class="bg-slate-50 border-l-4 border-slate-400 p-6 rounded-r-2xl mb-8 italic text-slate-600 text-sm leading-relaxed text-sm">
-          「体力虚弱で、冷え症で貧血の傾向があり疲労しやすく、ときに下腹部痛、頭重、めまい、肩こり、耳鳴り、動悸などを訴えるものの次の諸症：」<br />
-          月経不順、月経痛、更年期障害、産前産後あるいは流産による障害（貧血、疲労倦怠、めまい、むくみ）、めまい・立ちくらみ、頭重、肩こり、腰痛、足腰の冷え症、しもやけ、むくみ、しみ、耳鳴り
+      <!-- Section 2: 証・体質 -->
+      <section class="mb-12">
+        <h2 class="section-title">【証】当帰芍薬散が合う体質・合わない体質</h2>
+        <p class="text-slate-600 mb-5">
+          当帰芍薬散は<strong>体力が弱め（虚弱）の人向け</strong>の漢方です。女性三大漢方の中で最も体力がない人に適する処方です。
+        </p>
+
+        <div class="sho-grid">
+          <div class="sho-card sho-card--yes">
+            <div class="sho-card-header sho-card-header--yes">✅ こんな人に向いている</div>
+            <ul class="sho-list">
+              <li><strong>体力が弱め（虚弱）</strong>で疲れやすい人</li>
+              <li><strong>冷え症</strong>（特に手足・腰の冷え）がある人</li>
+              <li><strong>貧血気味</strong>・顔色が悪い人</li>
+              <li><strong>むくみやすい</strong>人</li>
+              <li><strong>生理不順・生理痛</strong>（比較的軽めの）がある人</li>
+              <li>めまい・立ちくらみ・頭が重い人</li>
+              <li>細身で体力がそれほどない女性</li>
+            </ul>
+          </div>
+
+          <div class="sho-card sho-card--no">
+            <div class="sho-card-header sho-card-header--no">⚠️ こんな人は注意・不向き</div>
+            <ul class="sho-list sho-list--no">
+              <li><strong>体力がある・のぼせやすい</strong>人（→ 桂枝茯苓丸の方が合う）</li>
+              <li><strong>イライラや精神的ストレスが強い</strong>人（→ 加味逍遙散の方が合う）</li>
+              <li><strong>著しく胃腸が弱い</strong>人（胃腸障害が出やすい）</li>
+              <li>妊娠中の人</li>
+            </ul>
+          </div>
         </div>
-        <p class="mb-8">覚えておきたい3つのポイントです。</p>
-        <ul class="space-y-4 mb-8">
-          <li class="flex gap-4">
-            <span class="w-6 h-6 bg-slate-600 text-white rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
-            <p class="font-bold text-slate-800 m-0">「体力虚弱」<span class="text-xs text-slate-500 font-normal ml-2">（元気な人・体力がある人には向かない）</span></p>
-          </li>
-          <li class="flex gap-4">
-            <span class="w-6 h-6 bg-slate-600 text-white rounded-full flex items-center justify-center text-xs font-bold shrink-0">2</span>
-            <p class="font-bold text-slate-800 m-0">「冷え症で貧血の傾向」<span class="text-xs text-slate-500 font-normal ml-2">（冷えと血の不足がセットで来るイメージ）</span></p>
-          </li>
-          <li class="flex gap-4">
-            <span class="w-6 h-6 bg-slate-600 text-white rounded-full flex items-center justify-center text-xs font-bold shrink-0">3</span>
-            <p class="font-bold text-slate-800 m-0">適応する症状がとても幅広い<span class="text-xs text-slate-500 font-normal ml-2">（月経から更年期・むくみ・めまいまでカバー）</span></p>
-          </li>
-        </ul>
+
+        <div class="pharmacist-box mt-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">
+            薬剤師として現場で見ていると、「なんとなく体がだるい・冷える・むくむ」という複合的なしんどさを抱える女性に処方されることが多い印象です。<strong>のぼせやイライラがなく、ひたすら冷えて疲れやすい</strong>——そういう方に向いています。
+          </p>
+        </div>
       </section>
 
-      <!-- Section: 【試験対策】登録販売者試験の頻出ポイント -->
-      <section class="mb-20">
-        <h2 class="article-section-title">【試験対策】登録販売者の頻出ポイント</h2>
-        
-        <h3 class="font-black text-slate-800 mb-4 mt-12">① 生薬は6種類</h3>
+      <!-- Section 3: 効能・効果 -->
+      <section class="mb-12">
+        <h2 class="section-title">当帰芍薬散の効能・効果</h2>
+        <p class="text-slate-600 mb-4">添付文書に記載された正式な効能効果は以下の通りです。試験にもそのまま出題されるので、正確に覚えましょう。</p>
+
+        <div class="efficacy-box">
+          <p class="efficacy-title">📋 添付文書より</p>
+          <p class="efficacy-body">
+            <strong>体力虚弱で、冷え症で貧血の傾向があり疲労しやすく、ときに下腹部痛、頭重、めまい、肩こり、耳鳴り、動悸などを訴えるものの次の諸症：</strong><br />
+            月経不順、月経異常、月経痛、更年期障害、産前産後あるいは流産による障害（貧血、疲労倦怠、めまい、むくみ）、めまい・立ちくらみ、頭重、肩こり、腰痛、足腰の冷え症、しもやけ、むくみ、しみ、耳鳴り
+          </p>
+        </div>
+
+        <p class="text-slate-600 mt-5 mb-3 font-bold">試験で必ず押さえる3点：</p>
+        <div class="point-cards">
+          <div class="point-card point-card--1">
+            <span class="point-num">①</span>
+            <div>
+              <span class="point-label">「体力虚弱」</span>
+              <p class="point-desc">元気な人・体力がある人には向かない</p>
+            </div>
+          </div>
+          <div class="point-card point-card--2">
+            <span class="point-num">②</span>
+            <div>
+              <span class="point-label">「冷え症で貧血の傾向」</span>
+              <p class="point-desc">冷えと血の不足がセットのイメージ</p>
+            </div>
+          </div>
+          <div class="point-card point-card--3">
+            <span class="point-num">③</span>
+            <div>
+              <span class="point-label">適応する症状がとても幅広い</span>
+              <p class="point-desc">月経から更年期・むくみ・めまいまでカバー</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: 試験対策 -->
+      <section class="mb-12">
+        <h2 class="section-title">【試験対策】登録販売者試験の頻出ポイント</h2>
+        <p class="text-slate-600 mb-5">当帰芍薬散は登録販売者試験の第3章で頻出の漢方です。以下を確実に押さえましょう。</p>
+
+        <!-- ① 構成生薬 -->
+        <h3 class="subsection-title">① 構成生薬6種（全部覚える）</h3>
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
           <div class="overflow-x-auto px-4 py-2">
-            <table class="w-full text-left text-sm whitespace-nowrap">
-              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead class="bg-emerald-50 text-emerald-900 border-b border-emerald-100 italic">
                 <tr>
-                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 120px;">生薬名</th>
-                  <th class="p-4 font-black border-r border-slate-200">読み方</th>
-                  <th class="p-4 font-black">何をする</th>
+                  <th class="py-4 font-black border-r border-emerald-100" style="padding-left: 2.5rem !important; min-width: 120px;">生薬名</th>
+                  <th class="p-4 font-black border-r border-emerald-100">読み方</th>
+                  <th class="p-4 font-black">主な働き</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 bg-white font-bold">
-                <tr><td class="py-4 text-emerald-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">当帰</td><td class="p-4 italic text-slate-400 font-normal">トウキ</td><td class="p-4">主役。血を補う・血行促進・体を温める</td></tr>
-                <tr class="bg-slate-50/50"><td class="py-4 text-emerald-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">芍薬</td><td class="p-4 italic text-slate-400 font-normal">シャクヤク</td><td class="p-4">痛みを鎮める・血を補う・筋肉を緩める</td></tr>
-                <tr><td class="py-4 text-emerald-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">川芎</td><td class="p-4 italic text-slate-400 font-normal">センキュウ</td><td class="p-4">血行促進・痛みを鎮める</td></tr>
-                <tr class="bg-slate-50/50"><td class="py-4 text-emerald-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">茯苓</td><td class="p-4 italic text-slate-400 font-normal">ブクリョウ</td><td class="p-4">水はけ・胃腸を整える・気持ちを安定させる</td></tr>
-                <tr><td class="py-4 text-emerald-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">蒼朮／白朮</td><td class="p-4 italic text-slate-400 font-normal text-xs whitespace-normal">ソウジュツ／ビャクジュツ</td><td class="p-4">水はけ・胃腸を丈夫にする・むくみを改善</td></tr>
-                <tr class="bg-slate-50/50"><td class="py-4 text-emerald-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">沢瀉</td><td class="p-4 italic text-slate-400 font-normal">タクシャ</td><td class="p-4">余分な水を排出する・むくみを改善</td></tr>
+              <tbody class="bg-white">
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-amber-50 font-bold text-amber-800 border-r border-slate-100" style="padding-left: 2.5rem !important;">当帰</td>
+                  <td class="p-3 border-b border-slate-100 bg-amber-50 font-semibold border-r border-slate-100">トウキ</td>
+                  <td class="p-3 border-b border-slate-100 bg-amber-50"><span class="badge badge--amber">主役</span> 血を補う・血行促進・体を温める</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">芍薬</td>
+                  <td class="p-3 border-b border-slate-100 bg-white font-semibold border-r border-slate-100">シャクヤク</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">痛みを鎮める・血を補う・筋肉を緩める</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">川芎</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold border-r border-slate-100">センキュウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">血行促進・痛みを鎮める</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">茯苓</td>
+                  <td class="p-3 border-b border-slate-100 bg-white font-semibold border-r border-slate-100">ブクリョウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">水はけ・胃腸を整える・気持ちを安定させる</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">蒼朮／白朮</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold border-r border-slate-100">ソウジュツ／ビャクジュツ</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">水はけ・胃腸を丈夫にする・むくみを改善</td>
+                </tr>
+                <tr>
+                  <td class="py-3 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">沢瀉</td>
+                  <td class="p-3 bg-white font-semibold border-r border-slate-100">タクシャ</td>
+                  <td class="p-3 bg-white">余分な水を排出する・むくみを改善</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <h3 class="font-black text-slate-800 mb-4 mt-12">② マオウ・カンゾウ・ダイオウが全部入っていない</h3>
-        <p class="mb-6 text-sm">当帰芍薬散の大事な特徴です。</p>
+        <!-- ② マオウ・カンゾウ・ダイオウなし -->
+        <h3 class="subsection-title">② マオウ・カンゾウ・ダイオウが全部入っていない（超重要）</h3>
+        <p class="text-slate-600 mb-3">葛根湯・小青竜湯などと違い、3大成分がすべて含まれていません。高血圧・心臓病の方でも比較的使いやすい漢方です。</p>
+        <div class="ingredient-check-grid">
+          <div class="ingredient-card ingredient-card--no">
+            <span class="ingredient-icon">❌</span>
+            <div>
+              <p class="ingredient-name">マオウ（麻黄）</p>
+              <p class="ingredient-note">→ 含まれない</p>
+            </div>
+          </div>
+          <div class="ingredient-card ingredient-card--no">
+            <span class="ingredient-icon">❌</span>
+            <div>
+              <p class="ingredient-name">カンゾウ（甘草）</p>
+              <p class="ingredient-note">→ 含まれない</p>
+            </div>
+          </div>
+          <div class="ingredient-card ingredient-card--no">
+            <span class="ingredient-icon">❌</span>
+            <div>
+              <p class="ingredient-name">ダイオウ（大黄）</p>
+              <p class="ingredient-note">→ 含まれない</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ③ 女性三大漢方の比較 -->
+        <h3 class="subsection-title mt-6">③ 女性三大漢方の使い分けを押さえる</h3>
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
           <div class="overflow-x-auto px-4 py-2">
             <table class="w-full text-center text-sm">
               <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
                 <tr>
-                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 120px;">成分</th>
-                  <th class="p-4 font-black">含まれる？</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 bg-white font-bold text-sm">
-                <tr><td class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">カンゾウ（甘草）</td><td class="p-4 text-slate-300">❌ 入っていない</td></tr>
-                <tr><td class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">マオウ（麻黄）</td><td class="p-4 text-slate-300">❌ 入っていない</td></tr>
-                <tr><td class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">ダイオウ（大黄）</td><td class="p-4 text-slate-300">❌ 入っていない</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <p class="mb-12 text-sm leading-relaxed">
-          葛根湯・小青竜湯などと違い、マオウもカンゾウも入っていないため、**高血圧・心臓病の人でも比較的使いやすい**漢方です。
-        </p>
-
-        <h3 class="font-black text-slate-800 mb-4 mt-12">③ 女性三大漢方の使い分けが頻出</h3>
-        <p class="mb-6 text-sm">試験では3つの漢方の使い分けがよく出ます。</p>
-        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12 text-xs">
-          <div class="overflow-x-auto px-4 py-2">
-            <table class="w-full text-left">
-              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
-                <tr>
-                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 120px;">項目</th>
-                  <th class="p-4 font-black border-r border-slate-200">当帰芍薬散</th>
+                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 90px;"></th>
+                  <th class="p-4 font-black border-r border-slate-200 text-emerald-700">当帰芍薬散</th>
                   <th class="p-4 font-black border-r border-slate-200">加味逍遙散</th>
                   <th class="p-4 font-black">桂枝茯苓丸</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 bg-white font-bold">
+              <tbody>
                 <tr>
-                  <th class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">必要な体力</th>
-                  <td class="p-4 bg-emerald-50 text-emerald-800 text-sm border-r border-slate-100">虚弱</td>
-                  <td class="p-4 text-slate-600 text-sm border-r border-slate-100">中等度以下</td>
-                  <td class="p-4 text-slate-600 text-sm">中等度以上</td>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">体力</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white font-bold text-emerald-700">虚弱</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white">中等度以下</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">中等度以上</td>
                 </tr>
                 <tr>
-                  <th class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">冷えの傾向</th>
-                  <td class="p-4 bg-emerald-50 text-emerald-800 text-sm border-r border-slate-100">冷え症が強い</td>
-                  <td class="p-4 text-slate-600 text-sm border-r border-slate-100">冷えのぼせ</td>
-                  <td class="p-4 text-slate-600 text-sm">のぼせが強い</td>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold text-left" style="padding-left: 2.5rem !important;">冷えの傾向</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-slate-50 font-bold text-emerald-700">冷え症が強い</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-slate-50">冷えのぼせ</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">のぼせが強い</td>
                 </tr>
                 <tr>
-                  <th class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">精神症状</th>
-                  <td class="p-4 bg-emerald-50 text-emerald-800 text-sm border-r border-slate-100">少ない</td>
-                  <td class="p-4 text-slate-600 text-sm border-r border-slate-100">イライラ・不眠</td>
-                  <td class="p-4 text-slate-600 text-sm">少ない</td>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">精神症状</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white font-bold text-emerald-700">少ない</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white">イライラ・不眠</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">少ない</td>
                 </tr>
                 <tr>
-                  <th class="py-4 bg-slate-50 border-r border-slate-100" style="padding-left: 2.5rem !important;">特徴</th>
-                  <td class="p-4 bg-emerald-50 text-emerald-800 text-sm border-r border-slate-100">貧血・むくみ</td>
-                  <td class="p-4 text-slate-600 text-sm border-r border-slate-100">更年期のメンタル</td>
-                  <td class="p-4 text-slate-600 text-sm">血行不良・肩こり</td>
+                  <td class="py-3 border-r border-slate-100 bg-slate-50 font-semibold text-left" style="padding-left: 2.5rem !important;">特徴</td>
+                  <td class="p-3 border-r border-slate-100 bg-slate-50 font-bold text-emerald-700">貧血・むくみ</td>
+                  <td class="p-3 border-r border-slate-100 bg-slate-50">更年期のメンタル</td>
+                  <td class="p-3 bg-slate-50">血行不良・肩こり</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <h3 class="font-black text-slate-800 mb-4 mt-12">④ よく出る問題パターン</h3>
-        <ul class="space-y-4 mb-12">
-          <li class="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm">
-            <p class="text-xs font-black text-slate-400 mb-2">Q. 当帰芍薬散について正しいものはどれか？</p>
-            <ul class="space-y-2 text-sm font-bold">
-              <li class="text-slate-400">❌「体力充実した人に適する」→ <span class="text-slate-800">間違い（体力虚弱向け）</span></li>
-              <li class="text-slate-400">❌「カンゾウが含まれる」→ <span class="text-slate-800">間違い（含まれない）</span></li>
-              <li class="text-emerald-600">✅「冷え症で貧血の傾向がある人に用いる」→ <span class="text-emerald-800">正しい</span></li>
-              <li class="text-emerald-600">✅「マオウ・カンゾウ・ダイオウをいずれも含まない」→ <span class="text-emerald-800">正しい</span></li>
+        <!-- ④ よく出る試験問題 -->
+        <h3 class="subsection-title">④ よく出る試験問題パターン</h3>
+        <div class="exam-qa-box">
+          <p class="exam-question">Q. 当帰芍薬散について正しいものはどれか？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--wrong">❌「体力充実した人に適する」→ <strong>誤り</strong>（体力虚弱向け）</li>
+            <li class="exam-answer exam-answer--wrong">❌「カンゾウが含まれる」→ <strong>誤り</strong>（含まれない）</li>
+            <li class="exam-answer exam-answer--correct">✅「冷え症で貧血の傾向がある人に用いる」→ <strong>正しい</strong></li>
+            <li class="exam-answer exam-answer--correct">✅「マオウ・カンゾウ・ダイオウをいずれも含まない」→ <strong>正しい</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: 副作用 -->
+      <section class="mb-12">
+        <h2 class="section-title">当帰芍薬散の副作用と注意点</h2>
+        <p class="text-slate-600 mb-5">マオウ・カンゾウが入っていないため、他の漢方と比べると副作用リスクは低い部類です。ただし以下には注意が必要です。</p>
+
+        <div class="side-effect-grid">
+          <div class="side-effect-card side-effect-card--mao">
+            <h3 class="side-effect-title">主な副作用</h3>
+            <ul class="side-effect-list">
+              <li>胃腸障害：食欲不振・胃のむかつき・吐き気（特に胃腸が弱い人）</li>
+              <li>発疹・かゆみ（アレルギー反応）</li>
             </ul>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Section: 副作用と注意点 -->
-      <section class="mb-20">
-        <h2 class="article-section-title">副作用と注意点</h2>
-        <p class="mb-8 leading-relaxed">
-          マオウ・カンゾウが入っていないため、他の漢方と比べると副作用リスクは低い部類です。
-        </p>
-        
-        <h3 class="font-black text-slate-800 mb-4">主な副作用</h3>
-        <ul class="list-disc list-inside space-y-2 mb-8 text-sm font-bold text-slate-600">
-          <li>胃腸障害：食欲不振・胃のむかつき・吐き気（特に胃腸が弱い人）</li>
-          <li>発疹・かゆみ（アレルギー反応）</li>
-        </ul>
-
-        <h3 class="font-black text-slate-800 mb-4">まれにある重大な副作用</h3>
-        <ul class="list-disc list-inside space-y-2 mb-12 text-sm font-bold text-slate-600">
-          <li>肝機能障害：倦怠感・黄疸・発疹</li>
-          <li>腸間膜静脈硬化症：長期服用に注意（腹痛・下痢・便秘）</li>
-        </ul>
-
-        <div class="pharmacist-insight-box mb-12">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-xl">💊</span>
-            <h3 class="font-black text-sky-800 m-0">薬剤師のひとこと</h3>
           </div>
-          <p class="text-sm text-sky-900/80 font-medium leading-relaxed mb-0">
-            当帰芍薬散は比較的穏やかな処方ですが、効果が出るまで時間がかかります。最低1ヶ月は飲み続けることが大切。「飲んですぐ効かない」とやめてしまう方が多いですが、体質改善を目指す漢方は継続することが基本です。
+          <div class="side-effect-card side-effect-card--kan">
+            <h3 class="side-effect-title">まれにある重大な副作用</h3>
+            <ul class="side-effect-list">
+              <li><strong>肝機能障害</strong>：倦怠感・黄疸・発疹</li>
+              <li><strong>腸間膜静脈硬化症</strong>：長期服用に注意（腹痛・下痢・便秘）</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pharmacist-box mt-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">
+            当帰芍薬散は比較的穏やかな処方ですが、効果が出るまで時間がかかります。最低1ヶ月は飲み続けることが大切。「飲んですぐ効かない」とやめてしまう方が多いですが、<strong>体質改善を目指す漢方は継続が基本</strong>です。
           </p>
         </div>
       </section>
 
-      <!-- Section: おすすめ市販品 -->
-      <section class="mb-20">
-        <h2 class="article-section-title">おすすめ市販品</h2>
-        <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8 hover:translate-y-[-4px] transition-all mb-12">
-          <h3 class="text-base font-black text-slate-800 mb-2 leading-tight">
-            当帰芍薬散のおすすめ（錠剤・顆粒）
-          </h3>
-          <p class="text-xs text-slate-500 mb-8 leading-relaxed text-sm">
-            ツムラやクラシエなど、主要メーカーの当帰芍薬散はこちらから選べます。顆粒タイプや錠剤タイプなど、体調に合わせてお選びください。
-          </p>
-          <a href="https://amzn.to/4sVIw9o" target="_blank" rel="noopener noreferrer" class="amazon-btn">
-            🛒 アマゾンで詳細を見る
-          </a>
+      <!-- Section 6: 市販品 -->
+      <section class="mb-12">
+        <h2 class="section-title">市販の当帰芍薬散の選び方</h2>
+
+        <h3 class="subsection-title">おすすめ市販品</h3>
+        <div class="product-cards">
+          <div class="product-card">
+            <div class="product-type product-type--gran">🌿 錠剤・顆粒タイプ</div>
+            <p class="product-desc">ツムラやクラシエなど、主要メーカーの当帰芍薬散をAmazonでまとめて比較できます。体調に合わせてお選びください。</p>
+            <a href="https://amzn.to/4sVIw9o" class="amazon-btn" target="_blank" rel="noopener noreferrer">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
         </div>
       </section>
 
-      <!-- まとめ -->
-      <section class="mb-20">
-        <h2 class="article-section-title">まとめ</h2>
+      <!-- Section 7: まとめ -->
+      <section class="mb-12">
+        <h2 class="section-title">まとめ｜当帰芍薬散を正しく使うために</h2>
+
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
           <div class="overflow-x-auto px-4 py-2">
-            <table class="w-full text-left font-bold text-sm">
+            <table class="w-full text-center text-sm">
               <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
                 <tr><th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 140px;">項目</th><th class="p-4 font-black">ポイント</th></tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 bg-white">
-                <tr><th class="py-4 bg-slate-50 font-black" style="padding-left: 2.5rem !important;">どんな人に向く</th><td class="p-4 text-slate-800">体力虚弱・冷え症・貧血気味・むくみやすい</td></tr>
-                <tr><th class="py-4 bg-slate-50 font-black" style="padding-left: 2.5rem !important;">向いていない人</th><td class="p-4 text-slate-800">体力充実・のぼせが強い・イライラが強い</td></tr>
-                <tr><th class="py-4 bg-slate-50 font-black" style="padding-left: 2.5rem !important;">効く症状</th><td class="p-4 text-slate-800">月経不順・冷え症・むくみ・更年期障害・めまい</td></tr>
-                <tr><th class="py-4 bg-slate-50 font-black" style="padding-left: 2.5rem !important;">成分</th><td class="p-4 text-slate-800">6種類（マオウ・カンゾウ・ダイオウ全部なし）</td></tr>
-                <tr><th class="py-4 bg-slate-50 font-black text-emerald-600" style="padding-left: 2.5rem !important;">試験の頻出ポイント</th><td class="p-4 text-emerald-600">体力虚弱・女性三大漢方の使い分け・カンゾウなし</td></tr>
-                <tr><th class="py-4 bg-slate-50 font-black" style="padding-left: 2.5rem !important;">副作用</th><td class="p-4 text-slate-800">胃腸障害・肝機能障害（比較的穏やか）</td></tr>
-                <tr><th class="py-4 bg-slate-50 font-black" style="padding-left: 2.5rem !important;">効果が出るまで</th><td class="p-4 text-slate-800">最低1ヶ月の継続服用が目安</td></tr>
+              <tbody>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">向いている体質</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">体力虚弱・冷え症・貧血気味・むくみやすい</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">向いていない体質</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 text-slate-800 font-bold">体力充実・のぼせが強い・イライラが強い</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">効能</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">月経不順・冷え症・むくみ・更年期障害・めまい</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">主な構成生薬</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 text-slate-800 font-bold">6種類（マオウ・カンゾウ・ダイオウすべてなし）</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">試験の頻出ポイント</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">体力虚弱・女性三大漢方の使い分け・カンゾウなし</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">副作用</td>
+                  <td class="p-3 bg-slate-50 text-slate-800 font-bold">胃腸障害・肝機能障害（比較的穏やか）</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <p class="text-sm leading-relaxed mb-12 font-bold">
-          冷え・むくみ・生理トラブルが重なる体力虚弱な女性に向いた当帰芍薬散。「体力虚弱＋冷え＋貧血」という組み合わせが使いどころの核心です。加味逍遙散・桂枝茯苓丸との使い分けをしっかり覚えることが、登録販売者として現場で活かせる知識になります。
+
+        <p class="text-slate-600 mb-4">
+          冷え・むくみ・生理トラブルが重なる体力虚弱な女性に向いた当帰芍薬散。「<strong>体力虚弱＋冷え＋貧血</strong>」という組み合わせが使いどころの核心です。加味逍遙散・桂枝茯苓丸との使い分けをしっかり覚えることが、登録販売者として現場で活かせる知識になります。
         </p>
 
         <!-- ユーキャン CTA -->
@@ -342,47 +384,60 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </section>
 
-      <!-- クイズ誘導 CTA -->
-      <div class="cta-box mb-20">
-        <div class="cta-box-inner">
-          <h3 class="cta-heading">知識の定着度をチェック！</h3>
-          <p class="cta-sub">3章の漢方問題にチャレンジ</p>
-          <div class="cta-container">
-            <a href="/questions/today" class="quiz-cta-btn">
-              <div class="cta-btn-content">
-                <span class="cta-label">QUIZ</span>
-                <span class="cta-text">今日の10問を解く →</span>
-              </div>
-            </a>
-          </div>
+      <!-- 関連記事 -->
+      <section class="mb-12">
+        <h2 class="section-title">関連記事</h2>
+        <div class="related-links">
+          <!-- 内部リンク：漢方シリーズ｜加味逍遙散 -->
+          <!-- INTERNAL_LINK_PLACEHOLDER_KAMISHOYOSAN -->
+          <!-- 内部リンク：漢方シリーズ｜桂枝茯苓丸 -->
+          <!-- INTERNAL_LINK_PLACEHOLDER_KEISHI -->
+          <!-- 内部リンク：漢方シリーズ｜小青竜湯 -->
+          <!-- INTERNAL_LINK_PLACEHOLDER_SHOSEIRYU -->
         </div>
-      </div>
-    </main>
+      </section>
 
-    <footer class="article-footer border-t border-slate-100 pt-12 pb-20 px-6">
-      <div class="author-profile bg-slate-50 border border-slate-100 rounded-3xl p-10 max-w-lg mx-auto">
-        <div class="flex flex-col items-center text-center gap-6">
-          <div class="w-20 h-20 bg-white border-2 border-emerald-100 rounded-full flex items-center justify-center text-3xl shadow-md ring-8 ring-slate-50">💊</div>
-          <div>
-            <p class="font-black text-slate-800 text-base mb-2">この記事を書いた人</p>
-            <p class="text-xs text-slate-500 leading-relaxed max-w-xs mx-auto mb-0">
-              薬剤師・薬局長（薬剤師歴18年）。漢方の服薬指導を日々行いながら、登録販売者試験の重要ポイントを「現場の視点」で伝えています。
-            </p>
+      <!-- CTA: 問題演習 -->
+      <section class="mb-12">
+        <div class="cta-box">
+          <div class="cta-box-inner">
+            <p class="cta-heading">試験対策は問題演習で仕上げる</p>
+            <p class="cta-sub">当帰芍薬散・漢方の問題を実際に解いて定着させよう</p>
+            <div class="cta-container">
+              <a href="/" class="cta-btn">
+                <div class="cta-btn-content">
+                  <span class="cta-label">▶ まずはここから</span>
+                  <span class="cta-text">今日の10問を始める →</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="mt-20 text-center pb-12">
+      </section>
+
+      <!-- 著者 -->
+      <section class="mb-12">
+        <div class="disclaimer-box">
+          <h2 class="disclaimer-title">📝 この記事を書いた人</h2>
+          <p class="disclaimer-text">
+            薬剤師・薬局長（薬剤師歴18年）。調剤薬局で漢方の服薬指導を日常的に行っています。登録販売者試験の頻出漢方を、現場の視点からわかりやすく解説します。
+          </p>
+        </div>
+      </section>
+
+      <div class="back-nav mt-16 text-center">
         <a href="/" class="btn-minimal">トップページへ戻る</a>
       </div>
-    </footer>
+    </main>
   </div>
 </Layout>
 
 <style>
   .article-container {
-    max-width: 640px;
+    max-width: 600px;
     margin: 0 auto;
     background: white;
+    min-height: 100vh;
   }
 
   .article-header {
@@ -391,56 +446,190 @@ import Layout from '../../layouts/Layout.astro';
 
   .category-tag {
     display: inline-block;
-    padding: 3px 14px;
-    background: #ecfdf5;
-    color: #10b981;
+    padding: 2px 10px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
     border-radius: 9999px;
-    font-size: 0.7rem;
-    font-weight: 850;
-    letter-spacing: 0.05em;
-    border: 1px solid #d1fae5;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
   }
 
-  .article-section-title {
-    font-size: 1.5rem;
-    font-weight: 950;
+  .article-content {
+    padding: 0 1.5rem 5rem;
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 900;
     color: #1e293b;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-top: 4rem;
+    gap: 0.5rem;
   }
 
-  .article-section-title::before {
+  .section-title::before {
     content: '';
-    width: 6px;
-    height: 1.5rem;
-    background: #10b981;
-    border-radius: 9999px;
+    width: 4px;
+    height: 1.25rem;
+    background: var(--color-primary);
+    border-radius: 2px;
     flex-shrink: 0;
   }
 
-  /* ====== Learn More Box (Green Left Border) ====== */
-  .learn-more-box {
+  .subsection-title {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #334155;
+    margin: 1rem 0 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid #94a3b8;
+  }
+
+  p { margin-bottom: 1.25rem; font-size: 0.95rem; }
+
+  /* ====== Learn Card ====== */
+  .learn-card {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .learn-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .learn-icon { font-size: 1.25rem; }
+  .learn-title { font-size: 0.95rem; font-weight: 900; color: #166534; margin: 0; }
+  .learn-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .learn-list li {
+    font-size: 0.9rem; color: #15803d; font-weight: 700;
+    display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5;
+  }
+  .learn-list li::before { content: '✓'; color: #22c55e; font-weight: 950; flex-shrink: 0; }
+
+  /* ====== Pharmacist Box ====== */
+  .pharmacist-box {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #93c5fd;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 16px 16px 0;
+    padding: 1.25rem 1.5rem;
+  }
+  .pharmacist-box-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .pharmacist-icon { font-size: 1.1rem; }
+  .pharmacist-title { font-size: 0.875rem; font-weight: 900; color: #1e40af; }
+  .pharmacist-body { font-size: 0.875rem; color: #1e3a5f; line-height: 1.75; margin-bottom: 0.75rem; }
+
+  /* ====== Sho (証) Cards ====== */
+  .sho-grid { display: grid; gap: 1rem; }
+  .sho-card { border-radius: 16px; overflow: hidden; border: 1px solid; }
+  .sho-card--yes { border-color: #86efac; }
+  .sho-card--no { border-color: #fca5a5; }
+  .sho-card-header { padding: 0.75rem 1.25rem; font-size: 0.875rem; font-weight: 900; }
+  .sho-card-header--yes { background: #16a34a; color: white; }
+  .sho-card-header--no { background: #dc2626; color: white; }
+  .sho-list { list-style: none; padding: 1rem 1.25rem; margin: 0; display: grid; gap: 0.5rem; background: white; }
+  .sho-list li {
+    font-size: 0.875rem; color: #166534;
+    padding-left: 1.5rem; position: relative; line-height: 1.6;
+  }
+  .sho-list li::before { content: '◎'; color: #22c55e; font-weight: 900; position: absolute; left: 0; top: 0.1em; }
+  .sho-list--no li { color: #991b1b; }
+  .sho-list--no li::before { content: '△'; color: #ef4444; }
+
+  /* ====== Efficacy Box ====== */
+  .efficacy-box {
+    background: #fefce8;
+    border: 1px solid #fef08a;
+    border-left: 4px solid #eab308;
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem;
+  }
+  .efficacy-title { font-size: 0.8rem; font-weight: 900; color: #854d0e; margin-bottom: 0.5rem; }
+  .efficacy-body { font-size: 0.9rem; color: #713f12; line-height: 1.75; margin: 0; }
+
+  /* ====== Point Cards ====== */
+  .point-cards { display: grid; gap: 0.75rem; margin-bottom: 0; }
+  .point-card {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    border-radius: 12px; padding: 0.875rem 1rem; border: 1px solid;
+  }
+  .point-card--1 { background: #fef9c3; border-color: #fde047; }
+  .point-card--2 { background: #ecfdf5; border-color: #86efac; }
+  .point-card--3 { background: #eff6ff; border-color: #93c5fd; }
+  .point-num { font-size: 1.25rem; font-weight: 900; color: #64748b; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .point-label { font-size: 0.9rem; font-weight: 900; color: #1e293b; display: block; }
+  .point-desc { font-size: 0.8rem; color: #64748b; margin: 0.15rem 0 0; }
+
+  /* ====== Ingredient Check ====== */
+  .ingredient-check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+  @media (max-width: 480px) {
+    .ingredient-check-grid { grid-template-columns: 1fr; }
+  }
+  .ingredient-card {
+    border-radius: 12px; padding: 0.875rem 1rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    border: 1px solid;
+  }
+  .ingredient-card--yes { background: #f0fdf4; border-color: #86efac; }
+  .ingredient-card--no { background: #fef2f2; border-color: #fca5a5; }
+  .ingredient-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .ingredient-name { font-size: 0.825rem; font-weight: 900; color: #1e293b; margin: 0; }
+  .ingredient-note { font-size: 0.775rem; color: #64748b; margin: 0.1rem 0 0; }
+
+  /* ====== Exam QA ====== */
+  .exam-qa-box {
     background: #f8fafc;
-    border-left: 6px solid #10b981;
-    padding: 2.5rem 2rem;
-    border-radius: 0 24px 24px 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem;
   }
+  .exam-question { font-size: 0.9rem; font-weight: 900; color: #1e293b; margin-bottom: 0.875rem; }
+  .exam-answers { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.625rem; }
+  .exam-answer { font-size: 0.875rem; line-height: 1.6; padding: 0.5rem 0.75rem; border-radius: 8px; }
+  .exam-answer--wrong { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  .exam-answer--correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
 
-  /* ====== Pharmacist Insight (Blue Highlight) ====== */
-  .pharmacist-insight-box {
-    background: #f0f9ff;
-    border: 1px solid #e0f2fe;
-    border-left: 6px solid #0ea5e9;
-    padding: 2.5rem;
-    border-radius: 24px;
-    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.05);
+  /* ====== Side Effect Cards ====== */
+  .side-effect-grid { display: grid; gap: 1rem; }
+  .side-effect-card { border-radius: 16px; padding: 1.25rem; border: 1px solid; }
+  .side-effect-card--mao { background: #fff1f2; border-color: #fecdd3; }
+  .side-effect-card--kan { background: #fff7ed; border-color: #fed7aa; }
+  .side-effect-title { font-size: 0.875rem; font-weight: 900; color: #991b1b; margin: 0 0 0.75rem; }
+  .side-effect-card--kan .side-effect-title { color: #c2410c; }
+  .side-effect-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+  .side-effect-list li {
+    font-size: 0.875rem; color: #7f1d1d;
+    display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.6;
   }
+  .side-effect-card--kan .side-effect-list li { color: #7c2d12; }
+  .side-effect-list li::before { content: '・'; flex-shrink: 0; }
 
-  /* ====== Amazon Button ====== */
+  /* ====== Badges ====== */
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 900;
+    padding: 1px 6px; border-radius: 4px; margin-right: 4px;
+  }
+  .badge--amber { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .badge--red { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .badge--green { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .badge--blue { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+
+  /* ====== Product Cards ====== */
+  .product-cards { display: grid; gap: 0.75rem; }
+  .product-card {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 16px; padding: 1.25rem;
+  }
+  .product-type {
+    display: inline-block; font-size: 0.75rem; font-weight: 900;
+    padding: 2px 10px; border-radius: 9999px; margin-bottom: 0.5rem;
+  }
+  .product-type--tablet { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .product-type--gran { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .product-desc { font-size: 0.875rem; color: #475569; margin-bottom: 0.875rem; }
   .amazon-btn {
     display: inline-block;
     background: linear-gradient(to right, #f97316, #ea580c);
@@ -449,11 +638,7 @@ import Layout from '../../layouts/Layout.astro';
     box-shadow: 0 3px 10px rgba(249, 115, 22, 0.35);
     transition: all 0.2s ease-in-out;
   }
-
-  .amazon-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 14px rgba(249, 115, 22, 0.45);
-  }
+  .amazon-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(249, 115, 22, 0.45); }
 
   /* ====== U-CAN CTA ====== */
   .uccan-cta-box {
@@ -464,20 +649,17 @@ import Layout from '../../layouts/Layout.astro';
     text-align: center;
     box-shadow: 0 15px 40px rgba(34, 163, 74, 0.1);
   }
-
   .uccan-cta-heading {
     font-size: 1.25rem;
     font-weight: 950;
     color: #166534;
     margin-bottom: 1rem;
   }
-
   .uccan-cta-sub {
     font-size: 0.95rem;
     color: #16a34a;
     font-weight: 700;
   }
-
   .modern-cta-btn {
     display: inline-block;
     background: #059669;
@@ -490,111 +672,56 @@ import Layout from '../../layouts/Layout.astro';
     transition: all 0.2s;
     font-size: 0.95rem;
   }
-
   .modern-cta-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
   }
 
-  /* ====== Quiz CTA Box (Blue) ====== */
-  .cta-box {
-    background: linear-gradient(135deg, #eff6ff, #dbeafe);
-    border: 1px solid #93c5fd;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-
-  .cta-box-inner {
-    padding: 1.75rem 1.5rem;
-    text-align: center;
-  }
-
-  .cta-heading {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: #1e40af;
-    margin-bottom: 0.25rem;
-  }
-
-  .cta-sub {
-    font-size: 0.85rem;
-    color: #3b82f6;
-    font-weight: 700;
-    margin-bottom: 1.25rem;
-  }
-
-  .cta-container {
-    display: flex;
-    justify-content: center;
-  }
-
-  .quiz-cta-btn {
+  /* ====== CTA Box ====== */
+  .cta-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 20px; overflow: hidden; }
+  .cta-box-inner { padding: 1.75rem 1.5rem; text-align: center; }
+  .cta-heading { font-size: 1.1rem; font-weight: 900; color: #1e40af; margin-bottom: 0.25rem; }
+  .cta-sub { font-size: 0.85rem; color: #3b82f6; font-weight: 700; margin-bottom: 1.25rem; }
+  .cta-container { display: flex; justify-content: center; }
+  .cta-btn {
     display: block; width: 100%; max-width: 360px;
     background: linear-gradient(to right, #2563eb, #4f46e5);
     border-radius: 9999px; padding: 1rem 1.5rem; text-decoration: none;
     box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
     transition: all 0.2s ease-in-out;
   }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+  .cta-btn-content { display: flex; flex-direction: column; align-items: center; }
+  .cta-label { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
+  .cta-text { font-size: 1.1rem; font-weight: 900; color: #fff; }
 
-  .quiz-cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-  }
+  /* ====== Disclaimer / Author ====== */
+  .disclaimer-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .disclaimer-title { font-size: 0.875rem; font-weight: 900; color: #475569; margin-bottom: 0.75rem; }
+  .disclaimer-text { font-size: 0.875rem; color: #475569; margin: 0; line-height: 1.7; }
 
-  .cta-btn-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  /* ====== Related Links ====== */
+  .related-links { display: grid; gap: 0.5rem; }
 
-  .cta-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 0.25rem;
-  }
-
-  .cta-text {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: #fff;
-  }
-
-  /* ====== Back to Top Button ====== */
+  /* ====== Back Nav ====== */
   .btn-minimal {
-    display: inline-block;
-    padding: 1rem 3rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 0.75rem;
-    border-radius: 9999px;
-    border: 2px solid #f1f5f9;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.3s;
+    display: inline-block; padding: 0.75rem 2rem;
+    color: #94a3b8; text-decoration: none; font-weight: 800;
+    font-size: 0.85rem; border-radius: 9999px; border: 1px solid #f1f5f9;
+    transition: all 0.2s;
   }
+  .btn-minimal:hover { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
 
-  .btn-minimal:hover {
-    background: #f8fafc;
-    border-color: #e2e8f0;
-    color: #64748b;
-    transform: scale(1.05);
-  }
-
-  /* Animations */
+  /* ====== Animations ====== */
   .scale-up-center {
     animation: scale-up-center 0.6s cubic-bezier(0.39, 0.575, 0.565, 1.000) both;
   }
-
   @keyframes scale-up-center {
     0% { transform: scale(0.95); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
   }
 
   @media (max-width: 480px) {
-    .article-section-title { font-size: 1.25rem; }
-    .learn-more-box, .pharmacist-insight-box { padding: 1.5rem; }
     .modern-cta-btn { width: 100%; padding: 1.25rem 1rem; }
   }
 </style>
