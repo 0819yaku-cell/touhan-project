@@ -39,13 +39,16 @@ import Layout from '../../layouts/Layout.astro';
       <section class="mb-12">
         <h2 class="section-title">越婢加朮湯とは</h2>
         <p class="text-slate-600 mb-4">
-          関節が腫れて熱を持ち、痛くて動かしにくい。皮膚が赤くなってジュクジュクしている。こういった状態を漢方では**「熱と水（すい）が体にたまっている」**と考えます。
+          関節が腫れて熱を持ち、痛くて動かしにくい。皮膚が赤くなってかゆい・ジュクジュクしている。体がむくんでいて、尿量が少ない。
         </p>
         <p class="text-slate-600 mb-4">
-          越婢加朮湯は、炎症による熱を冷ましながら、余分な水分も排出するという**「二刀流」の働き**が特徴の漢方薬です。
+          こういった状態を漢方では<strong>「熱と水（すい）が体にたまっている」</strong>状態と考えます。炎症による熱が体の中にこもり、さらに水分の代謝が乱れてむくみや腫れが出ている、というイメージです。
         </p>
         <p class="text-slate-600 mb-4">
-          関節リウマチや変形性関節症、湿疹・皮膚炎など、**炎症による「熱感」と「むくみ・腫れ」が同時に出ている状態**に使われます。
+          越婢加朮湯は、この「熱＋水」の状態に対応する処方です。名前の「越婢（えっぴ）」は処方の元になった「越婢湯」のこと、「加朮（かじゅつ）」は「朮（ジュツ）を加えた」という意味です。つまり、<strong>越婢湯に水分代謝を整える朮を追加した処方</strong>です。
+        </p>
+        <p class="text-slate-600 mb-4">
+          熱を冷ましながら余分な水分も排出する、という二刀流の働きが特徴です。関節リウマチ・変形性関節症・ネフローゼ症候群など、<strong>炎症とむくみが同時に出ている状態</strong>に使われます。
         </p>
         <div class="pharmacist-box">
           <div class="pharmacist-box-header">
@@ -53,143 +56,373 @@ import Layout from '../../layouts/Layout.astro';
             <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
           <p class="pharmacist-body mb-0">
-            使い分けのポイントは**「熱を持っているか」**です。触ると熱い・赤い・腫れているなら越婢加朮湯。じんわりむくんでいるけど熱感はない・疲れやすいタイプなら防己黄耆湯です。
+            「関節が腫れる漢方」というと防己黄耆湯も思い浮かびますが、使い分けのポイントは<strong>「熱を持っているかどうか」</strong>です。触ると熱い・赤くなっている・炎症が強い、というときは越婢加朮湯。じんわりむくんでいるけど熱感はない・疲れやすい虚弱タイプ、というときは防己黄耆湯です。マオウを含むかどうかも大きな違いで、高血圧や心臓に持病がある方には越婢加朮湯は慎重に使う必要があります。
           </p>
         </div>
       </section>
 
       <!-- Section 2: 証・体質 -->
       <section class="mb-12">
-        <h2 class="section-title">越婢加朮湯が合う体質</h2>
+        <h2 class="section-title">【証】越婢加朮湯が合う体質・合わない体質</h2>
         <p class="text-slate-600 mb-5">
-          体力中等度以上で、患部に熱感や腫れがある人に適しています。
+          漢方薬選びで最も重要なのが「証」の確認です。越婢加朮湯は<strong>体力中等度以上で、患部に熱感がある人向け</strong>の漢方です。
         </p>
 
         <div class="sho-grid">
+          <!-- 向いている -->
           <div class="sho-card sho-card--yes">
             <div class="sho-card-header sho-card-header--yes">✅ こんな人・場面に向いている</div>
             <ul class="sho-list">
               <li><strong>体力中等度以上</strong>の人</li>
-              <li>関節が腫れて熱を持ち、痛い人</li>
-              <li>赤くジュクジュクした湿疹・かゆみがある人</li>
-              <li>むくみがあり、喉が渇く人</li>
-              <li>炎症が強く、患部がほてる人</li>
+              <li><strong>関節が腫れて熱を持ち、痛い</strong>人（特に下肢の関節）</li>
+              <li><strong>皮膚の湿疹・かゆみ</strong>がある人（特に患部が赤く、ジュクジュクしている）</li>
+              <li><strong>むくみ</strong>がある人</li>
+              <li><strong>尿量が少ない</strong>と感じる人</li>
+              <li>体が<strong>ほてりやすい・熱がこもりやすい</strong>人</li>
             </ul>
           </div>
 
+          <!-- 不向き -->
           <div class="sho-card sho-card--no">
             <div class="sho-card-header sho-card-header--no">⚠️ こんな人は注意が必要</div>
             <ul class="sho-list sho-list--no">
-              <li>体力が低下している虚弱な人</li>
-              <li>冷えが強く、熱感がない人</li>
-              <li>高血圧・心臓病の人（マオウ含有のため）</li>
-              <li>排尿困難がある人（男性の前立腺肥大など）</li>
+              <li><strong>体力が低下している虚弱な人</strong>（マオウの刺激が強すぎることがある）</li>
+              <li><strong>冷えが強い人</strong>（体を冷やす処方のため合わないことがある）</li>
+              <li><strong>高血圧・心臓病</strong>で治療中の人（マオウ含有のため要相談）</li>
+              <li><strong>甲状腺機能亢進症</strong>の人（マオウが禁忌）</li>
+              <li><strong>排尿困難</strong>がある人（マオウが症状を悪化させることがある）</li>
+              <li>妊娠中の人（要相談）</li>
             </ul>
           </div>
+        </div>
+
+        <div class="pharmacist-box mt-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">
+            お客様の関節の腫れに対応するとき、「<strong>触ると熱いですか？赤くなっていますか？</strong>」と一言確認するだけで、越婢加朮湯と防己黄耆湯を正しく選べます。マオウを含む処方なので、持病（高血圧・心臓病・前立腺肥大）の有無も必ず確認しましょう。
+          </p>
         </div>
       </section>
 
       <!-- Section 3: 効能・効果 -->
       <section class="mb-12">
         <h2 class="section-title">越婢加朮湯の効能・効果</h2>
+        <p class="text-slate-600 mb-4">添付文書に記載された正式な効能効果は以下の通りです。試験にもそのまま出題されるので、正確に覚えましょう。</p>
+
         <div class="efficacy-box">
           <p class="efficacy-title">📋 添付文書より</p>
           <p class="efficacy-body">
-            <strong>体力中等度以上で、むくみがあり、ときに口渇があるものの次の諸症：浮腫、関節炎、関節のはれ及び痛み、筋肉痛、湿疹・皮膚炎</strong>
+            <strong>体力中等度以上で、むくみがあり、ときに口渇があるものの次の諸症：</strong><br />
+            浮腫、関節炎、関節のはれ及び痛み、筋肉痛、湿疹・皮膚炎
           </p>
+        </div>
+
+        <p class="text-slate-600 mt-5 mb-3 font-bold">試験で必ず押さえる3点：</p>
+        <div class="point-cards">
+          <div class="point-card point-card--1">
+            <span class="point-num">①</span>
+            <div>
+              <span class="point-label">「体力中等度以上＋むくみ」がベース</span>
+              <p class="point-desc">虚弱体質・冷えタイプには不向き</p>
+            </div>
+          </div>
+          <div class="point-card point-card--2">
+            <span class="point-num">②</span>
+            <div>
+              <span class="point-label">「関節炎・関節のはれ及び痛み」が明記</span>
+              <p class="point-desc">炎症を伴う関節症状が主な対象</p>
+            </div>
+          </div>
+          <div class="point-card point-card--3">
+            <span class="point-num">③</span>
+            <div>
+              <span class="point-label">「湿疹・皮膚炎」にも対応</span>
+              <p class="point-desc">赤くジュクジュクした皮膚の炎症にも使える</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Section 4: 試験対策 -->
       <section class="mb-12">
         <h2 class="section-title">【試験対策】登録販売者試験の頻出ポイント</h2>
+        <p class="text-slate-600 mb-5">越婢加朮湯は登録販売者試験の第3章で頻出の漢方です。以下を確実に押さえましょう。</p>
 
-        <h3 class="subsection-title">① 構成生薬は6種（マオウ・石膏が核心）</h3>
-        <p class="text-slate-600 mb-4">マオウと石膏（セッコウ）のコンビが、熱を冷ましながら水分を排出します。</p>
+        <!-- ① 構成生薬 -->
+        <h3 class="subsection-title">① 構成生薬6種（マオウと石膏のコンビが核心）</h3>
+        <p class="text-slate-600 mb-3">元になった越婢湯（5種）に<strong>朮（ジュツ）を1種加えた</strong>処方です。マオウ（麻黄）と石膏（セッコウ）のコンビが熱を発散させながら水分を排出する、越婢加朮湯の核心です。</p>
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
           <div class="overflow-x-auto px-4 py-2">
             <table class="w-full text-left text-sm text-slate-600">
               <thead class="bg-emerald-50 text-emerald-900 border-b border-emerald-100 italic">
                 <tr>
-                  <th class="py-4 font-black border-r border-emerald-100" style="padding-left: 2.5rem !important; min-width: 120px;">生薬名</th>
+                  <th class="py-4 font-black border-r border-emerald-100" style="padding-left: 2.5rem !important; min-width: 100px;">生薬名</th>
+                  <th class="p-4 font-black border-r border-emerald-100" style="min-width: 170px;">読み方</th>
                   <th class="p-4 font-black">主な働き</th>
                 </tr>
               </thead>
               <tbody class="bg-white">
                 <tr>
                   <td class="py-3 border-b border-slate-100 bg-amber-50 font-bold text-amber-800 border-r border-slate-100" style="padding-left: 2.5rem !important;">麻黄</td>
-                  <td class="p-3 border-b border-slate-100 bg-amber-50">主薬。発汗・尿出し・炎症を発散させる</td>
+                  <td class="p-3 border-b border-slate-100 bg-amber-50 font-semibold border-r border-slate-100">マオウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-amber-50"><span class="badge badge--amber">主薬</span> 発汗・水分排出・炎症を発散させる</td>
                 </tr>
                 <tr>
-                  <td class="py-3 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">石膏</td>
-                  <td class="p-3 bg-white">強い熱を冷まし、炎症を強力に抑える</td>
+                  <td class="py-3 border-b border-slate-100 bg-red-50 font-bold text-red-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">石膏</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50 font-semibold border-r border-slate-100">セッコウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50"><span class="badge badge--red">重要</span> 体の熱を強力に冷ます・炎症を抑える</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">生姜</td>
+                  <td class="p-3 border-b border-slate-100 bg-white font-semibold border-r border-slate-100">ショウキョウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">胃を温める・マオウの副作用を和らげる</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-slate-50 font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">大棗</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 font-semibold border-r border-slate-100">タイソウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">気を補う・胃腸を整える</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-slate-100 bg-red-50 font-bold text-red-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">甘草</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50 font-semibold border-r border-slate-100">カンゾウ</td>
+                  <td class="p-3 border-b border-slate-100 bg-red-50"><span class="badge badge--red">重要</span> 諸薬を調和する・炎症を和らげる</td>
+                </tr>
+                <tr>
+                  <td class="py-3 bg-white font-bold text-slate-700 border-r border-slate-100" style="padding-left: 2.5rem !important;">蒼朮／白朮</td>
+                  <td class="p-3 bg-white font-semibold border-r border-slate-100">ソウジュツ／ビャクジュツ</td>
+                  <td class="p-3 bg-white">水分代謝を整える・むくみを改善する</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <h3 class="subsection-title">② 重要：マオウ・カンゾウの両方を含有</h3>
+        <!-- ② マオウ・カンゾウ・ダイオウ -->
+        <h3 class="subsection-title">② マオウ・カンゾウが含まれる（超重要）</h3>
+        <p class="text-slate-600 mb-3">試験では「越婢加朮湯にマオウは含まれるか？」という問いが頻出です。</p>
         <div class="ingredient-check-grid">
           <div class="ingredient-card ingredient-card--yes">
-             <span class="ingredient-icon">⚠️</span>
-             <div><p class="ingredient-name">マオウ（麻黄）</p><p class="ingredient-note">→ **あり**（動悸・血圧上昇に注意）</p></div>
+            <span class="ingredient-icon">✅</span>
+            <div>
+              <p class="ingredient-name">マオウ（麻黄）</p>
+              <p class="ingredient-note">→ 含まれる</p>
+            </div>
           </div>
           <div class="ingredient-card ingredient-card--yes">
-             <span class="ingredient-icon">⚠️</span>
-             <div><p class="ingredient-name">カンゾウ（甘草）</p><p class="ingredient-note">→ **あり**（偽アルドステロン症に注意）</p></div>
+            <span class="ingredient-icon">✅</span>
+            <div>
+              <p class="ingredient-name">カンゾウ（甘草）</p>
+              <p class="ingredient-note">→ 含まれる</p>
+            </div>
+          </div>
+          <div class="ingredient-card ingredient-card--no">
+            <span class="ingredient-icon">❌</span>
+            <div>
+              <p class="ingredient-name">ダイオウ（大黄）</p>
+              <p class="ingredient-note">→ 含まれない</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-slate-500 text-xs mt-3 italic">マオウを含むため動悸・血圧上昇・排尿困難・不眠などの副作用に注意。カンゾウも含むため偽アルドステロン症のリスクもあります。</p>
+
+        <!-- ③ 防己黄耆湯との違い -->
+        <h3 class="subsection-title mt-6">③ 防己黄耆湯との違いを押さえる（頻出！）</h3>
+        <p class="text-slate-600 mb-3">「関節症状＋むくみ」という共通点があるため、比較問題が出やすい組み合わせです。</p>
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
+          <div class="overflow-x-auto px-4 py-2">
+            <table class="w-full text-center text-sm">
+              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+                <tr>
+                  <th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 120px;"></th>
+                  <th class="p-4 font-black border-r border-slate-200">越婢加朮湯</th>
+                  <th class="p-4 font-black">防己黄耆湯</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">体力</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white font-bold text-slate-800">中等度以上</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">中等度以下</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold text-left" style="padding-left: 2.5rem !important;">関節の状態</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-slate-50 font-bold text-red-600">熱を持つ・赤い・炎症が強い</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50">腫れるが熱感は少ない</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">体型</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-white">問わない</td>
+                  <td class="p-3 border-b border-slate-100 bg-white">色白・水太り</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold text-left" style="padding-left: 2.5rem !important;">マオウ</td>
+                  <td class="p-3 border-b border-r border-slate-100 bg-slate-50 font-bold text-green-700">✅ あり</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 font-bold text-red-500">❌ なし</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-r border-slate-100 bg-white font-semibold text-left" style="padding-left: 2.5rem !important;">汗</td>
+                  <td class="p-3 border-r border-slate-100 bg-white">発汗させる方向</td>
+                  <td class="p-3 bg-white">止める方向</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <h3 class="subsection-title mt-8">③ 防己黄耆湯との違い</h3>
-        <div class="point-cards">
-           <div class="point-card point-card--3">
-              <span class="point-num">!</span>
-              <div>
-                 <span class="point-label">越婢加朮湯：体力あり ＋ 熱・赤み</span>
-                 <p class="point-desc">マオウあり</p>
-              </div>
-           </div>
-           <div class="point-card point-card--1">
-              <span class="point-num">!</span>
-              <div>
-                 <span class="point-label">防己黄耆湯：体力なし ＋ 水太り</span>
-                 <p class="point-desc">マオウなし</p>
-              </div>
-           </div>
+        <!-- ④ よく出る試験問題 -->
+        <h3 class="subsection-title">④ よく出る試験問題パターン</h3>
+        <div class="exam-qa-box">
+          <p class="exam-question">Q. 越婢加朮湯について正しいものはどれか？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--wrong">❌「マオウを含まない」→ <strong>誤り</strong>（含まれる）</li>
+            <li class="exam-answer exam-answer--wrong">❌「体力虚弱な人向けの処方である」→ <strong>誤り</strong>（体力中等度以上）</li>
+            <li class="exam-answer exam-answer--wrong">❌「防己黄耆湯と同じ体質に使う」→ <strong>誤り</strong>（体力・熱感の有無が異なる）</li>
+            <li class="exam-answer exam-answer--correct">✅「関節の腫れや熱感を伴う関節炎・湿疹に用いる」→ <strong>正しい</strong></li>
+            <li class="exam-answer exam-answer--correct">✅「マオウを含むため、高血圧や心臓病の人には慎重に使う」→ <strong>正しい</strong></li>
+          </ul>
         </div>
       </section>
 
-      <!-- Section 5: 副作用と注意点 -->
+      <!-- Section 5: 副作用 -->
       <section class="mb-12">
-        <h2 class="section-title">副作用と注意点</h2>
-        <div class="pharmacist-box">
+        <h2 class="section-title">越婢加朮湯の副作用と注意点</h2>
+        <p class="text-slate-600 mb-5">マオウとカンゾウを両方含むため、副作用のリスクは他の処方より高めです。使用対象と使用量には特に注意が必要です。</p>
+
+        <div class="side-effect-grid">
+          <div class="side-effect-card side-effect-card--mao">
+            <h3 class="side-effect-title">麻黄（マオウ）による副作用</h3>
+            <ul class="side-effect-list">
+              <li>動悸・血圧上昇（交感神経刺激作用）</li>
+              <li>不眠・興奮</li>
+              <li>排尿困難（前立腺肥大の人は特に注意）</li>
+            </ul>
+          </div>
+          <div class="side-effect-card side-effect-card--kan">
+            <h3 class="side-effect-title">甘草（カンゾウ）による副作用</h3>
+            <ul class="side-effect-list">
+              <li><strong>偽アルドステロン症</strong>：むくみ・血圧上昇・低カリウム血症</li>
+              <li class="text-xs text-orange-700">※他のカンゾウ含有薬との重複服用でリスクが上がる</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pharmacist-box mt-5">
           <div class="pharmacist-box-header">
             <span class="pharmacist-icon">💊</span>
             <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
           <p class="pharmacist-body mb-0">
-             マオウを含むため、高血圧や心臓病、前立腺肥大（排尿困難）のある方には慎重な対応が必要です。動悸や血圧上昇、不眠、尿が出にくいといった症状が出た場合は、すぐに服用を中止するよう伝えてください。
+            越婢加朮湯は<strong>高血圧・心臓病・脳血管障害</strong>の人にはマオウが血圧・心拍数を上げるため原則禁忌に近い処方です。<strong>甲状腺機能亢進症・前立腺肥大・糖尿病</strong>の方も要相談。お客様から持病を確認することが登録販売者として最も大切なポイントです。
           </p>
         </div>
       </section>
 
-      <!-- Section 6: まとめ -->
+      <!-- Section 6: 市販品 -->
       <section class="mb-12">
-        <h2 class="section-title">まとめ</h2>
+        <h2 class="section-title">おすすめ市販品</h2>
+        <div class="product-cards">
+          <div class="product-card">
+            <div class="product-type product-type--tablet">💊 錠剤タイプ</div>
+            <p class="product-desc">飲みやすい・職場や外出先でも使いやすい</p>
+            <!-- アフィリエイトCTAボックス：Amazon 越婢加朮湯 錠剤リンク挿入箇所 -->
+          </div>
+          <div class="product-card">
+            <div class="product-type product-type--gran">🌿 顆粒タイプ</div>
+            <p class="product-desc">吸収が早い・関節の腫れ・湿疹にすぐ対応したい人に</p>
+            <!-- アフィリエイトCTAボックス：Amazon 越婢加朮湯 顆粒リンク挿入箇所 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: まとめ -->
+      <section class="mb-12">
+        <h2 class="section-title">まとめ｜越婢加朮湯を正しく使うために</h2>
+
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-12">
           <div class="overflow-x-auto px-4 py-2">
             <table class="w-full text-center text-sm">
               <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
-                <tr><th class="py-4 font-black border-r border-slate-200" style="padding-left: 1.5rem !important;">項目</th><th class="p-4 font-black">ポイント</th></tr>
+                <tr><th class="py-4 font-black border-r border-slate-200" style="padding-left: 2.5rem !important; min-width: 140px;">項目</th><th class="p-4 font-black">ポイント</th></tr>
               </thead>
               <tbody>
-                <tr><td class="py-3 border-b border-r bg-white font-semibold text-left" style="padding-left: 1.5rem !important;">向いている人</td><td class="p-3 border-b bg-white text-slate-800 font-bold">体力が普通以上にあり、関節の熱感・腫れがある人</td></tr>
-                <tr><td class="py-3 border-b border-r bg-slate-50 font-semibold text-left" style="padding-left: 1.5rem !important;">成分の特徴</td><td class="p-3 border-b bg-slate-50 text-slate-800 font-bold">マオウ・カンゾウの両方を含む</td></tr>
-                <tr><td class="py-3 border-r bg-white font-semibold text-left" style="padding-left: 1.5rem !important;">キーワード</td><td class="p-3 bg-white text-slate-800 font-bold">炎症・熱感・ジュクジュク湿疹</td></tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">向いている体質</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">体力中等度以上（熱がこもりやすい・炎症が強い人）</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">効能</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 text-slate-800 font-bold">関節炎・関節の腫れや痛み・湿疹・皮膚炎・むくみ</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">構成生薬</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">6種（マオウ・カンゾウあり・ダイオウなし）</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">最大の特徴</td>
+                  <td class="p-3 border-b border-slate-100 bg-slate-50 text-slate-800 font-bold">「熱＋水」に対応。熱を冷ましながら水分を排出する</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-b border-r border-slate-100 bg-white font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">試験の頻出ポイント</td>
+                  <td class="p-3 border-b border-slate-100 bg-white text-slate-800 font-bold">マオウ含有・防己黄耆湯との違い・熱感を伴う関節症状がキーワード</td>
+                </tr>
+                <tr>
+                  <td class="py-3 border-r border-slate-100 bg-slate-50 font-semibold whitespace-nowrap text-left" style="padding-left: 2.5rem !important;">副作用</td>
+                  <td class="p-3 bg-slate-50 text-slate-800 font-bold">動悸・血圧上昇（マオウ）・偽アルドステロン症（カンゾウ）</td>
+                </tr>
               </tbody>
             </table>
           </div>
+        </div>
+
+        <p class="text-slate-600 mb-4">
+          越婢加朮湯は「炎症で熱を持った関節・皮膚の症状」に使う処方です。<strong>触ると熱い・赤い・腫れている、そういった状態がサインです。</strong>マオウを含むため副作用リスクをしっかり把握した上で、持病のある方には慎重に対応することが登録販売者として大切なポイントです。
+        </p>
+        <p class="text-slate-600">
+          登録販売者として、お客様に正しいアドバイスができるよう、この知識をしっかり活かしてください。
+        </p>
+
+        <!-- アフィリエイトCTAボックス：通信講座（ユーキャン・スタディング等）リンク挿入箇所 -->
+        <!-- AFFILIATE_CTA_PLACEHOLDER -->
+      </section>
+
+      <!-- 関連記事 -->
+      <section class="mb-12">
+        <h2 class="section-title">関連記事</h2>
+        <div class="related-links">
+          <a href="/articles/boiogito" class="btn-minimal">➡️ 漢方シリーズ｜防己黄耆湯</a>
+          <a href="/articles/bofutsushosan" class="btn-minimal">➡️ 漢方シリーズ｜防風通聖散</a>
+          <a href="/articles/goreisan" class="btn-minimal">➡️ 漢方シリーズ｜五苓散</a>
+        </div>
+      </section>
+
+      <!-- CTA: 問題演習 -->
+      <section class="mb-12">
+        <div class="cta-box">
+          <div class="cta-box-inner">
+            <p class="cta-heading">試験対策は問題演習で仕上げる</p>
+            <p class="cta-sub">越婢加朮湯・漢方の問題を実際に解いて定着させよう</p>
+            <div class="cta-container">
+              <a href="/" class="cta-btn">
+                <div class="cta-btn-content">
+                  <span class="cta-label">▶ まずはここから</span>
+                  <span class="cta-text">今日の10問を始める →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 著者 -->
+      <section class="mb-12">
+        <div class="disclaimer-box">
+          <h2 class="disclaimer-title">📝 この記事を書いた人</h2>
+          <p class="disclaimer-text">
+            薬剤師・薬局長（薬剤師歴18年）。調剤薬局で漢方の服薬指導を日常的に行っています。登録販売者試験の頻出漢方を、現場の視点からわかりやすく解説します。
+          </p>
         </div>
       </section>
 
@@ -201,27 +434,96 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* Premium layout styles */
-  .article-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; }
-  .article-header { padding: 3rem 1.5rem 0; }
-  .category-tag { display: inline-block; padding: 2px 10px; background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; border-radius: 9999px; font-size: 0.75rem; font-weight: 800; margin-bottom: 1.25rem; }
-  .article-content { padding: 0 1.5rem 5rem; line-height: 1.8; }
-  .section-title { font-size: 1.25rem; font-weight: 900; color: #1e293b; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-  .section-title::before { content: ''; width: 4px; height: 1.25rem; background: #16a34a; border-radius: 2px; flex-shrink: 0; }
-  .subsection-title { font-size: 1rem; font-weight: 900; color: #334155; margin: 1rem 0 0.75rem; padding-left: 0.75rem; border-left: 3px solid #94a3b8; }
+  .article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+
+  .article-header {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content {
+    padding: 0 1.5rem 5rem;
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 1.25rem;
+    background: var(--color-primary);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .subsection-title {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #334155;
+    margin: 1rem 0 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 3px solid #94a3b8;
+  }
+
   p { margin-bottom: 1.25rem; font-size: 0.95rem; }
-  .learn-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #22c55e; border-radius: 12px; padding: 1.5rem; }
+
+  /* ====== Learn Card ====== */
+  .learn-card {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
   .learn-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
   .learn-icon { font-size: 1.25rem; }
   .learn-title { font-size: 0.95rem; font-weight: 900; color: #166534; margin: 0; }
   .learn-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
-  .learn-list li { font-size: 0.9rem; color: #15803d; font-weight: 700; display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5; }
+  .learn-list li {
+    font-size: 0.9rem; color: #15803d; font-weight: 700;
+    display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5;
+  }
   .learn-list li::before { content: '✓'; color: #22c55e; font-weight: 950; flex-shrink: 0; }
-  .pharmacist-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-left: 4px solid #3b82f6; border-radius: 0 16px 16px 0; padding: 1.25rem 1.5rem; }
+
+  /* ====== Pharmacist Box ====== */
+  .pharmacist-box {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #93c5fd;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 16px 16px 0;
+    padding: 1.25rem 1.5rem;
+  }
   .pharmacist-box-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
   .pharmacist-icon { font-size: 1.1rem; }
   .pharmacist-title { font-size: 0.875rem; font-weight: 900; color: #1e40af; }
   .pharmacist-body { font-size: 0.875rem; color: #1e3a5f; line-height: 1.75; margin-bottom: 0.75rem; }
+
+  /* ====== Sho (証) Cards ====== */
   .sho-grid { display: grid; gap: 1rem; }
   .sho-card { border-radius: 16px; overflow: hidden; border: 1px solid; }
   .sho-card--yes { border-color: #86efac; }
@@ -229,27 +531,153 @@ import Layout from '../../layouts/Layout.astro';
   .sho-card-header { padding: 0.75rem 1.25rem; font-size: 0.875rem; font-weight: 900; }
   .sho-card-header--yes { background: #16a34a; color: white; }
   .sho-card-header--no { background: #dc2626; color: white; }
-  .sho-list { list-style: none; padding: 1rem 1.25rem; margin: 0; display: grid; gap: 0.5rem; background: white; }
-  .sho-list li { font-size: 0.875rem; color: #166534; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.6; }
+  .sho-list {
+    list-style: none; padding: 1rem 1.25rem; margin: 0; display: grid; gap: 0.5rem; background: white;
+  }
+  .sho-list li {
+    font-size: 0.875rem; color: #166534;
+    display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.6;
+  }
   .sho-list li::before { content: '◎'; color: #22c55e; font-weight: 900; flex-shrink: 0; }
   .sho-list--no li { color: #991b1b; }
   .sho-list--no li::before { content: '△'; color: #ef4444; }
-  .efficacy-box { background: #fefce8; border: 1px solid #fef08a; border-left: 4px solid #eab308; border-radius: 0 12px 12px 0; padding: 1.25rem; }
+
+  /* ====== Efficacy Box ====== */
+  .efficacy-box {
+    background: #fefce8;
+    border: 1px solid #fef08a;
+    border-left: 4px solid #eab308;
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem;
+  }
   .efficacy-title { font-size: 0.8rem; font-weight: 900; color: #854d0e; margin-bottom: 0.5rem; }
   .efficacy-body { font-size: 0.9rem; color: #713f12; line-height: 1.75; margin: 0; }
+
+  /* ====== Point Cards ====== */
   .point-cards { display: grid; gap: 0.75rem; margin-bottom: 0; }
-  .point-card { display: flex; align-items: flex-start; gap: 0.75rem; border-radius: 12px; padding: 0.875rem 1rem; border: 1px solid; }
-  .point-card--3 { background: #fef9c3; border-color: #fde047; }
-  .point-card--1 { background: #eff6ff; border-color: #93c5fd; }
+  .point-card {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    border-radius: 12px; padding: 0.875rem 1rem; border: 1px solid;
+  }
+  .point-card--1 { background: #fef9c3; border-color: #fde047; }
+  .point-card--2 { background: #ecfdf5; border-color: #86efac; }
+  .point-card--3 { background: #eff6ff; border-color: #93c5fd; }
   .point-num { font-size: 1.25rem; font-weight: 900; color: #64748b; flex-shrink: 0; line-height: 1; margin-top: 2px; }
   .point-label { font-size: 0.9rem; font-weight: 900; color: #1e293b; display: block; }
   .point-desc { font-size: 0.8rem; color: #64748b; margin: 0.15rem 0 0; }
-  .ingredient-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .ingredient-card { border-radius: 12px; padding: 0.875rem 1rem; display: flex; align-items: flex-start; gap: 0.75rem; border: 1px solid; }
-  .ingredient-card--yes { background: #fff1f2; border-color: #fecdd3; }
+
+  /* ====== Ingredient Check ====== */
+  .ingredient-check-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+  @media (max-width: 480px) {
+    .ingredient-check-grid { grid-template-columns: 1fr; }
+  }
+  .ingredient-card {
+    border-radius: 12px; padding: 0.875rem 1rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    border: 1px solid;
+  }
+  .ingredient-card--yes { background: #f0fdf4; border-color: #86efac; }
+  .ingredient-card--no { background: #fef2f2; border-color: #fca5a5; }
   .ingredient-icon { font-size: 1.1rem; flex-shrink: 0; }
   .ingredient-name { font-size: 0.825rem; font-weight: 900; color: #1e293b; margin: 0; }
   .ingredient-note { font-size: 0.775rem; color: #64748b; margin: 0.1rem 0 0; }
-  .btn-minimal { display: inline-block; padding: 0.75rem 2rem; color: #94a3b8; text-decoration: none; font-weight: 800; font-size: 0.85rem; border-radius: 9999px; border: 1px solid #f1f5f9; transition: all 0.2s; }
+
+  /* ====== Exam QA ====== */
+  .exam-qa-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+  .exam-question { font-size: 0.9rem; font-weight: 900; color: #1e293b; margin-bottom: 0.875rem; }
+  .exam-answers { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.625rem; }
+  .exam-answer { font-size: 0.875rem; line-height: 1.6; padding: 0.5rem 0.75rem; border-radius: 8px; }
+  .exam-answer--wrong { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  .exam-answer--correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+  /* ====== Side Effect Cards ====== */
+  .side-effect-grid { display: grid; gap: 1rem; }
+  .side-effect-card { border-radius: 16px; padding: 1.25rem; border: 1px solid; }
+  .side-effect-card--mao { background: #fff1f2; border-color: #fecdd3; }
+  .side-effect-card--kan { background: #fff7ed; border-color: #fed7aa; }
+  .side-effect-title { font-size: 0.875rem; font-weight: 900; color: #991b1b; margin: 0 0 0.75rem; }
+  .side-effect-card--kan .side-effect-title { color: #c2410c; }
+  .side-effect-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 0.4rem;
+  }
+  .side-effect-list li {
+    font-size: 0.875rem; color: #7f1d1d;
+    display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.6;
+  }
+  .side-effect-card--kan .side-effect-list li { color: #7c2d12; }
+  .side-effect-list li::before { content: '・'; flex-shrink: 0; }
+
+  /* ====== Badges ====== */
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 900;
+    padding: 1px 6px; border-radius: 4px; margin-right: 4px;
+  }
+  .badge--amber { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .badge--red { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .badge--green { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .badge--blue { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+
+  /* ====== Product Cards ====== */
+  .product-cards { display: grid; gap: 0.75rem; }
+  .product-card {
+    background: #f8fafc; border: 1px solid #e2e8f0;
+    border-radius: 16px; padding: 1.25rem;
+  }
+  .product-type {
+    display: inline-block; font-size: 0.75rem; font-weight: 900;
+    padding: 2px 10px; border-radius: 9999px; margin-bottom: 0.5rem;
+  }
+  .product-type--tablet { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .product-type--gran { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .product-desc { font-size: 0.875rem; color: #475569; margin-bottom: 0.875rem; }
+  .amazon-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #f97316, #ea580c);
+    color: white; font-size: 0.875rem; font-weight: 900;
+    padding: 0.6rem 1.25rem; border-radius: 9999px; text-decoration: none;
+    box-shadow: 0 3px 10px rgba(249, 115, 22, 0.35);
+    transition: all 0.2s ease-in-out;
+  }
+  .amazon-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(249, 115, 22, 0.45); }
+
+  /* ====== CTA Box ====== */
+  .cta-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 20px; overflow: hidden; }
+  .cta-box-inner { padding: 1.75rem 1.5rem; text-align: center; }
+  .cta-heading { font-size: 1.1rem; font-weight: 900; color: #1e40af; margin-bottom: 0.25rem; }
+  .cta-sub { font-size: 0.85rem; color: #3b82f6; font-weight: 700; margin-bottom: 1.25rem; }
+  .cta-container { display: flex; justify-content: center; }
+  .cta-btn {
+    display: block; width: 100%; max-width: 360px;
+    background: linear-gradient(to right, #2563eb, #4f46e5);
+    border-radius: 9999px; padding: 1rem 1.5rem; text-decoration: none;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+    transition: all 0.2s ease-in-out;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+  .cta-btn-content { display: flex; flex-direction: column; align-items: center; }
+  .cta-label { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
+  .cta-text { font-size: 1.1rem; font-weight: 900; color: #fff; }
+
+  /* ====== Disclaimer / Author ====== */
+  .disclaimer-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .disclaimer-title { font-size: 0.875rem; font-weight: 900; color: #475569; margin-bottom: 0.75rem; }
+  .disclaimer-text { font-size: 0.875rem; color: #475569; margin: 0; line-height: 1.7; }
+
+  /* ====== Related Links ====== */
+  .related-links { display: grid; gap: 0.5rem; }
+
+  /* ====== Back Nav ====== */
+  .btn-minimal {
+    display: inline-block; padding: 0.75rem 2rem;
+    color: #94a3b8; text-decoration: none; font-weight: 800;
+    font-size: 0.85rem; border-radius: 9999px; border: 1px solid #f1f5f9;
+    transition: all 0.2s;
+  }
   .btn-minimal:hover { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
 </style>
