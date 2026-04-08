@@ -458,8 +458,8 @@ import Layout from '../../layouts/Layout.astro';
   .sho-card-header--yes { background: #16a34a; color: white; }
   .sho-card-header--no { background: #dc2626; color: white; }
   .sho-list { list-style: none; padding: 1rem 1.25rem; margin: 0; display: grid; gap: 0.5rem; background: white; }
-  .sho-list li { font-size: 0.875rem; color: #166534; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.6; }
-  .sho-list li::before { content: '◎'; color: #22c55e; font-weight: 900; flex-shrink: 0; }
+  .sho-list li { font-size: 0.875rem; color: #166534; padding-left: 1.5rem; position: relative; line-height: 1.6; }
+  .sho-list li::before { content: '◎'; color: #22c55e; font-weight: 900; position: absolute; left: 0; top: 0.1em; }
   .sho-list--no li { color: #991b1b; }
   .sho-list--no li::before { content: '△'; color: #ef4444; }
 
