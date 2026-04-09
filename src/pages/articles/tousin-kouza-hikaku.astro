@@ -10,7 +10,7 @@ import Layout from '../../layouts/Layout.astro';
         登録販売者の通信講座おすすめ比較【2026年版】<br />薬剤師が本音で解説
       </h1>
       <div class="article-hero mb-8">
-        <img src="/記事画像/通信講座比較.webp" alt="登録販売者通信講座おすすめ比較2026" class="w-full h-auto rounded-2xl shadow-sm border border-slate-100" loading="lazy" decoding="async" />
+        <img src="/記事画像/登販比較.webp" alt="登録販売者通信講座おすすめ比較2026" class="w-full h-auto rounded-2xl shadow-sm border border-slate-100" />
       </div>
     </header>
 
@@ -18,9 +18,6 @@ import Layout from '../../layouts/Layout.astro';
       <p class="text-[10px] text-slate-400 mb-6 opacity-80 leading-relaxed italic">
         ※当サイトはアフィリエイト広告（Amazonアソシエイト・afbアフィリエイト含む）を掲載しています。記事内のリンクから商品を購入いただくと、サイト運営の支援になります。
       </p>
-
-      <p class="text-slate-600 mb-4">「ユーキャンとスタディング、どっちがいいの？」「独学でも合格できる？」</p>
-      <p class="text-slate-600 mb-6">この記事では、18年の現場経験を持つ現役薬剤師が、登録販売者試験の主要な勉強法を<strong>費用・特徴・向いている人</strong>の観点で本音比較します。</p>
 
       <!-- この記事でわかること -->
       <div class="learn-card mb-8">
@@ -41,7 +38,7 @@ import Layout from '../../layouts/Layout.astro';
         <p class="text-slate-600 mb-4">まず結論から。</p>
 
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <div class="overflow-x-auto px-4 py-2">
+          <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-600">
               <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
                 <tr>
@@ -79,15 +76,16 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">薬剤師の本音：通信講座は必要？</h2>
         <p class="text-slate-600 mb-4">18年間、薬剤師として現場で働いてきた立場からはっきり言います。</p>
 
-        <div class="feature-highlight">
-          <div class="feature-icon">💊</div>
-          <div>
-            <p class="feature-title">登録販売者試験は独学でも十分合格できます</p>
-            <p class="feature-body">全国平均合格率は約40〜50%。テキスト1冊＋問題演習をしっかりこなせば、合格ラインには十分届きます。</p>
+        <div class="pharmacist-box">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
+          <p class="pharmacist-body mb-2"><strong>登録販売者試験は独学でも十分合格できます。</strong></p>
+          <p class="pharmacist-body mb-0">全国平均合格率は約40〜50%。テキスト1冊＋問題演習をしっかりこなせば、合格ラインには十分届きます。</p>
         </div>
 
-        <p class="text-slate-600 mt-4 mb-2">ただし、こんな人には通信講座をおすすめします。</p>
+        <p class="text-slate-600 mt-5 mb-2">ただし、こんな人には通信講座をおすすめします。</p>
         <ul class="text-slate-600 mb-4 pl-4 list-disc space-y-1">
           <li>勉強の習慣がなく、一人では続かない</li>
           <li>テキストを読んでも理解できない部分が多い</li>
@@ -101,13 +99,13 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">費用比較表</h2>
 
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <div class="overflow-x-auto px-4 py-2">
+          <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-600">
               <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
                 <tr>
                   <th class="p-4 font-black border-r border-indigo-100">講座名</th>
                   <th class="p-4 font-black border-r border-indigo-100 text-center">費用</th>
-                  <th class="p-4 font-black text-center">形式</th>
+                  <th class="p-4 font-black">形式</th>
                 </tr>
               </thead>
               <tbody>
@@ -141,9 +139,9 @@ import Layout from '../../layouts/Layout.astro';
       <section class="mb-12">
         <h2 class="section-title">ユーキャン登録販売者講座</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-6">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
           <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1">
+          <ul class="text-sm text-slate-600 space-y-1.5">
             <li>💰 <strong>受講料</strong>：49,000円（分割払い 3,810円×13回）</li>
             <li>📚 <strong>形式</strong>：フルカラーテキスト＋デジタル学習のハイブリッド</li>
             <li>✏️ <strong>添削指導</strong>：7回（他社平均3回）</li>
@@ -156,30 +154,33 @@ import Layout from '../../layouts/Layout.astro';
           </ul>
         </div>
 
-        <div class="feature-highlight mb-6">
-          <div class="feature-icon">💬</div>
-          <div>
-            <p class="feature-title">薬剤師の本音コメント</p>
-            <p class="feature-body">受講者の86.5%が初学者、81.4%が働きながら合格を目指している──これがユーキャンの強みをよく表しています。添削7回・最大14ヶ月サポートで、育児や仕事で思うように進まない時期があっても安心です。教育訓練給付金＋リスキリング支援を活用すれば実質負担はかなり下がります。</p>
+        <div class="pharmacist-box mb-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
+          <p class="pharmacist-body mb-2">受講者の86.5%が初学者、81.4%が働きながら合格を目指している──これがユーキャンの強みをよく表しています。添削7回・最大14ヶ月サポートで、育児や仕事で思うように進まない時期があっても安心です。</p>
+          <p class="pharmacist-body mb-0"><strong>教育訓練給付金</strong>の対象なので条件を満たせば受講料の20%が国から支給されます。さらに<strong>リスキリング支援制度</strong>を活用すれば修了後に最大50%（転職成功なら最大70%）がキャッシュバックされる可能性もあります。</p>
         </div>
 
-        <p class="font-black text-slate-700 mb-2">こんな人におすすめ</p>
-        <ul class="text-slate-600 pl-4 list-disc space-y-1 text-sm">
-          <li>完全初学者で何から始めればいいかわからない人</li>
-          <li>添削・質問サポートを受けながら進めたい人</li>
-          <li>給付金やリスキリング制度を活用できる人</li>
-          <li>じっくり時間をかけて確実に合格したい人</li>
-        </ul>
+        <div class="sho-card sho-card--yes">
+          <div class="sho-card-header sho-card-header--yes">✅ こんな人におすすめ</div>
+          <ul class="sho-list">
+            <li>完全初学者で何から始めればいいかわからない人</li>
+            <li>添削・質問サポートを受けながら進めたい人</li>
+            <li>給付金やリスキリング制度を活用できる人</li>
+            <li>じっくり時間をかけて確実に合格したい人</li>
+          </ul>
+        </div>
       </section>
 
       <!-- スタディング -->
       <section class="mb-12">
         <h2 class="section-title">スタディング登録販売者講座</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-6">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
           <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1">
+          <ul class="text-sm text-slate-600 space-y-1.5">
             <li>💰 <strong>受講料</strong>：29,800円（分割払い 2,727円×12回〜）</li>
             <li>🗾 <strong>地域別合格パック</strong>：33,000円〜（各地域の過去問対策つき）</li>
             <li>📱 <strong>形式</strong>：動画講義＋Webテキスト＋問題演習（完全スマホ完結・紙テキストなし）</li>
@@ -190,30 +191,34 @@ import Layout from '../../layouts/Layout.astro';
           </ul>
         </div>
 
-        <div class="feature-highlight mb-6">
-          <div class="feature-icon">💬</div>
-          <div>
-            <p class="feature-title">薬剤師の本音コメント</p>
-            <p class="feature-body">4つの選択肢の中で通信講座としてのコスパは一番高いと思います。29,800円はユーキャンの約6割の価格。スマホ1台で動画・テキスト・問題演習がすべて完結します。ただし紙テキストが一切ないため「手元に本がないと勉強できない」人には向きません。まず無料体験で確かめてから申し込みましょう。</p>
+        <div class="pharmacist-box mb-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
+          <p class="pharmacist-body mb-2">4つの選択肢の中で通信講座としてのコスパは一番高いと思います。29,800円はユーキャンの約6割の価格で、独学でテキストを一式揃えるのと大きく変わらないレベルです。</p>
+          <p class="pharmacist-body mb-2">スマホ1台で動画・テキスト・問題演習がすべて完結するので、通勤中や家事のスキマ時間をフル活用できます。AIが苦手な問題を自動分析してくれるのも現代的で便利です。</p>
+          <p class="pharmacist-body mb-0">ただし<strong>紙テキストが一切ない</strong>点は注意が必要です。「手元に本がないと勉強できない」という人には向きません。まず無料体験で自分のスタイルに合うか確かめてから申し込みましょう。無料登録で10%OFFクーポンが手に入るので、まず登録だけしておきましょう。</p>
         </div>
 
-        <p class="font-black text-slate-700 mb-2">こんな人におすすめ</p>
-        <ul class="text-slate-600 pl-4 list-disc space-y-1 text-sm">
-          <li>スマホ学習が苦にならない人</li>
-          <li>費用をできるだけ抑えたい人</li>
-          <li>通勤・育児の隙間時間を活用したい忙しい社会人</li>
-          <li>AI機能を使って効率よく弱点克服したい人</li>
-        </ul>
+        <div class="sho-card sho-card--yes">
+          <div class="sho-card-header sho-card-header--yes">✅ こんな人におすすめ</div>
+          <ul class="sho-list">
+            <li>スマホ学習が苦にならない人</li>
+            <li>費用をできるだけ抑えたい人</li>
+            <li>通勤・育児の隙間時間を活用したい忙しい社会人</li>
+            <li>AI機能を使って効率よく弱点克服したい人</li>
+          </ul>
+        </div>
       </section>
 
       <!-- オンスク -->
       <section class="mb-12">
         <h2 class="section-title">オンスク.JP</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-6">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
           <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1">
+          <ul class="text-sm text-slate-600 space-y-1.5">
             <li>💰 <strong>受講料</strong>：月額980円（税込1,078円）〜1,480円（税込1,628円）</li>
             <li>📚 <strong>形式</strong>：月額サブスク・70講座以上が受け放題</li>
             <li>📝 <strong>登録販売者講座</strong>：510問・約12.5時間</li>
@@ -221,54 +226,70 @@ import Layout from '../../layouts/Layout.astro';
           </ul>
         </div>
 
-        <div class="feature-highlight mb-6">
-          <div class="feature-icon">💬</div>
-          <div>
-            <p class="feature-title">薬剤師の本音コメント</p>
-            <p class="feature-body">最大の特徴は「70講座以上が月額定額で学び放題」という点。複数の資格を同時に進めたい人には他の講座にはないメリットがあります。ただし、登録販売者1本に集中するなら、3〜4ヶ月で買い切れるスタディングの方がトータルコストは安くなる場合があります。</p>
-          </div>
+        <!-- バナー広告 -->
+        <div class="flex justify-center my-6">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4AZJGF+2W6X6Q+408S+5ZMCH" rel="nofollow">
+            <img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=260319039175&wid=003&eno=01&mid=s00000018694001006000&mc=1" />
+          </a>
+          <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AZJGF+2W6X6Q+408S+5ZMCH" alt="" />
         </div>
 
-        <p class="font-black text-slate-700 mb-2">こんな人におすすめ</p>
-        <ul class="text-slate-600 pl-4 list-disc space-y-1 text-sm">
-          <li>複数の資格を同時に学びたい人</li>
-          <li>月ごとに解約できる柔軟さを求める人</li>
-          <li>ドラッグストア勤務で幅広い知識を身につけたい人</li>
-        </ul>
+        <div class="pharmacist-box mb-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-2">オンスク.JPの一番の特徴は「登録販売者だけでなく、70講座以上が月額定額で学び放題」という点です。</p>
+          <p class="pharmacist-body mb-2">ドラッグストアで働きながら「アロマテラピーの知識も身につけたい」「美容・健康系の資格も取りたい」という方には、複数の学習を同時に進められる点で他の講座にはないメリットがあります。</p>
+          <p class="pharmacist-body mb-0">ただし、登録販売者1本に集中するなら、3〜4ヶ月で買い切れるスタディングの方がトータルコストは安くなる場合があります。まずは無料体験で動画の質や使いやすさを確認してから判断するのがおすすめです。</p>
+        </div>
+
+        <div class="sho-card sho-card--yes">
+          <div class="sho-card-header sho-card-header--yes">✅ こんな人におすすめ</div>
+          <ul class="sho-list">
+            <li>複数の資格を同時に学びたい人</li>
+            <li>月ごとに解約できる柔軟さを求める人</li>
+            <li>ドラッグストア勤務で幅広い知識を身につけたい人</li>
+          </ul>
+        </div>
       </section>
 
       <!-- 独学 -->
       <section class="mb-12">
         <h2 class="section-title">独学（テキスト＋無料サイト活用）</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-6">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
           <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1">
+          <ul class="text-sm text-slate-600 space-y-1.5">
             <li>💰 <strong>費用</strong>：テキスト代のみ（約3,000〜4,000円）</li>
             <li>📚 <strong>おすすめテキスト</strong>：石川達也テキスト・うかる！登録販売者など</li>
             <li>📝 <strong>問題演習</strong>：このサイトの480問が無料で使えます</li>
           </ul>
         </div>
 
-        <div class="feature-highlight mb-6">
-          <div class="feature-icon">💬</div>
-          <div>
-            <p class="feature-title">薬剤師の本音コメント</p>
-            <p class="feature-body">正直なところ、独学でも十分合格できます。合格率40〜50%という数字を見ると難しそうに感じますが、「きちんと対策した人の多くは受かっている」試験です。テキストで知識を入れて、このサイトの問題演習を毎日10問続ける──これだけでも確実に合格力はつきます。</p>
+        <div class="pharmacist-box mb-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
+          <p class="pharmacist-body mb-2">正直なところ、独学でも十分合格できます。</p>
+          <p class="pharmacist-body mb-2">合格率40〜50%という数字を見ると難しそうに感じますが、裏を返せば「きちんと対策した人の多くは受かっている」試験です。</p>
+          <p class="pharmacist-body mb-0">テキストで知識を入れて、このサイトの問題演習を毎日10問続ける。これだけでも確実に合格力はつきます。費用を最小限に抑えながら、自分のペースで学びたい人には最もおすすめの方法です。</p>
         </div>
 
-        <p class="text-slate-600 mb-4">テキスト選びに迷っている方はこちらもご参考に。</p>
-        <a href="/articles/textbook-guide" class="inline-block text-primary font-bold underline underline-offset-2 hover:text-primary-dark transition-colors">
+        <p class="text-slate-600 mb-4">どのテキストを選べばいいか迷っている方は、こちらの記事で用途別に詳しく解説しています。</p>
+        <a href="/articles/textbook-guide" class="inline-flex items-center gap-1 text-primary font-bold hover:text-primary-dark transition-colors underline underline-offset-2">
           👉 登録販売者の独学におすすめテキスト6選【2025年度対応・用途別に紹介】
         </a>
 
-        <p class="font-black text-slate-700 mt-6 mb-2">こんな人におすすめ</p>
-        <ul class="text-slate-600 pl-4 list-disc space-y-1 text-sm">
-          <li>費用をできるだけ抑えたい人</li>
-          <li>自己管理ができる人</li>
-          <li>まず試しに勉強を始めてみたい人</li>
-        </ul>
+        <div class="sho-card sho-card--yes mt-5">
+          <div class="sho-card-header sho-card-header--yes">✅ こんな人におすすめ</div>
+          <ul class="sho-list">
+            <li>費用をできるだけ抑えたい人</li>
+            <li>自己管理ができる人</li>
+            <li>まず試しに勉強を始めてみたい人</li>
+          </ul>
+        </div>
       </section>
 
       <!-- FAQ -->
@@ -276,25 +297,40 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">よくある質問（FAQ）</h2>
 
         <div class="flex flex-col gap-4">
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <p class="font-black text-slate-800 mb-2">Q. 独学と通信講座、どっちが合格しやすいですか？</p>
-            <p class="text-sm text-slate-600">合格率に大きな差はありません。大切なのは「継続できるかどうか」です。一人では続かないと感じるなら講座の検討を。</p>
+          <div class="pharmacist-box">
+            <div class="pharmacist-box-header">
+              <span class="pharmacist-icon">❓</span>
+              <span class="pharmacist-title">独学と通信講座、どっちが合格しやすいですか？</span>
+            </div>
+            <p class="pharmacist-body mb-0">合格率に大きな差はありません。大切なのは「継続できるかどうか」です。一人では続かないと感じるなら講座の検討を。</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <p class="font-black text-slate-800 mb-2">Q. 働きながら取得できますか？</p>
-            <p class="text-sm text-slate-600">できます。1日30分〜1時間のスキマ学習で十分対応できます。</p>
+          <div class="pharmacist-box">
+            <div class="pharmacist-box-header">
+              <span class="pharmacist-icon">❓</span>
+              <span class="pharmacist-title">働きながら取得できますか？</span>
+            </div>
+            <p class="pharmacist-body mb-0">できます。1日30分〜1時間のスキマ学習で十分対応できます。</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <p class="font-black text-slate-800 mb-2">Q. 受験資格はありますか？</p>
-            <p class="text-sm text-slate-600">学歴・年齢問わず誰でも受験できます。ただし合格後に実務経験（2年以上）が必要です。</p>
+          <div class="pharmacist-box">
+            <div class="pharmacist-box-header">
+              <span class="pharmacist-icon">❓</span>
+              <span class="pharmacist-title">受験資格はありますか？</span>
+            </div>
+            <p class="pharmacist-body mb-0">学歴・年齢問わず誰でも受験できます。ただし合格後に実務経験（2年以上）が必要です。</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <p class="font-black text-slate-800 mb-2">Q. どの地域でも同じ試験ですか？</p>
-            <p class="text-sm text-slate-600">ブロックごとに問題が異なります。ただし全国共通範囲からの出題がベースなので、まずは共通範囲の対策を進めましょう。</p>
+          <div class="pharmacist-box">
+            <div class="pharmacist-box-header">
+              <span class="pharmacist-icon">❓</span>
+              <span class="pharmacist-title">どの地域でも同じ試験ですか？</span>
+            </div>
+            <p class="pharmacist-body mb-0">ブロックごとに問題が異なります。ただし全国共通範囲からの出題がベースなので、まずは共通範囲の対策を進めましょう。</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 p-5">
-            <p class="font-black text-slate-800 mb-2">Q. ユーキャンのリスキリング支援制度の条件は？</p>
-            <p class="text-sm text-slate-600">転職活動中または転職意向がある方が対象です。詳しくはユーキャン公式サイトでご確認ください。</p>
+          <div class="pharmacist-box">
+            <div class="pharmacist-box-header">
+              <span class="pharmacist-icon">❓</span>
+              <span class="pharmacist-title">ユーキャンのリスキリング支援制度の条件は？</span>
+            </div>
+            <p class="pharmacist-body mb-0">転職活動中または転職意向がある方が対象です。詳しくはユーキャン公式サイトでご確認ください。</p>
           </div>
         </div>
       </section>
