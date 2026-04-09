@@ -10,7 +10,7 @@ import Layout from '../../layouts/Layout.astro';
         登録販売者の通信講座おすすめ比較【2026年版】<br />薬剤師が本音で解説
       </h1>
       <div class="article-hero mb-8">
-        <img src="/記事画像/登販比較.webp" alt="登録販売者通信講座おすすめ比較2026" class="w-full h-auto rounded-2xl shadow-sm border border-slate-100" />
+        <img src="/記事画像/tousin-kouza-hikaku.webp" alt="登録販売者通信講座おすすめ比較2026" class="w-full h-auto rounded-2xl shadow-sm border border-slate-100" />
       </div>
     </header>
 
@@ -35,46 +35,44 @@ import Layout from '../../layouts/Layout.astro';
       <!-- 結論 -->
       <section class="mb-12">
         <h2 class="section-title">結論：タイプ別おすすめはこれ</h2>
-        <p class="text-slate-600 mb-4">まず結論から。</p>
+        <p>まず結論から。</p>
 
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-slate-600">
-              <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
-                <tr>
-                  <th class="p-4 font-black border-r border-indigo-100">あなたのタイプ</th>
-                  <th class="p-4 font-black text-center">おすすめ</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-slate-100">
-                  <td class="p-4 border-r border-slate-100">サポートを受けながら確実に合格したい</td>
-                  <td class="p-4 font-black text-center text-indigo-700">ユーキャン</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-4 border-r border-slate-100">コスパ重視・スマホ完結で学びたい</td>
-                  <td class="p-4 font-black text-center text-indigo-700">スタディング</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-4 border-r border-slate-100">費用を月額で抑えつつ複数資格も学びたい</td>
-                  <td class="p-4 font-black text-center text-indigo-700">オンスク.JP</td>
-                </tr>
-                <tr>
-                  <td class="p-4 border-r border-slate-100">とにかく費用を最小限にしたい</td>
-                  <td class="p-4 font-black text-center text-indigo-700">独学</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="hikaku-table">
+            <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
+              <tr>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100">あなたのタイプ</th>
+                <th class="hikaku-th hikaku-th--center">おすすめ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100">サポートを受けながら確実に合格したい</td>
+                <td class="hikaku-td hikaku-td--center font-black text-pink-700">ユーキャン</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100">コスパ重視・スマホ完結で学びたい</td>
+                <td class="hikaku-td hikaku-td--center font-black text-blue-700">スタディング</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100">費用を月額で抑えつつ複数資格も学びたい</td>
+                <td class="hikaku-td hikaku-td--center font-black text-emerald-700">オンスク.JP</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100">とにかく費用を最小限にしたい</td>
+                <td class="hikaku-td hikaku-td--center font-black text-orange-700">独学</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <p class="text-slate-600 mb-4">迷ったら<strong>スタディング</strong>か<strong>独学＋無料サイト活用</strong>の組み合わせが、コスパ的に最もおすすめです。</p>
+        <p>迷ったら<strong>スタディング</strong>か<strong>独学＋無料サイト活用</strong>の組み合わせが、コスパ的に最もおすすめです。</p>
       </section>
 
       <!-- 薬剤師の本音 -->
       <section class="mb-12">
         <h2 class="section-title">薬剤師の本音：通信講座は必要？</h2>
-        <p class="text-slate-600 mb-4">18年間、薬剤師として現場で働いてきた立場からはっきり言います。</p>
+        <p>18年間、薬剤師として現場で働いてきた立場からはっきり言います。</p>
 
         <div class="pharmacist-box">
           <div class="pharmacist-box-header">
@@ -85,13 +83,16 @@ import Layout from '../../layouts/Layout.astro';
           <p class="pharmacist-body mb-0">全国平均合格率は約40〜50%。テキスト1冊＋問題演習をしっかりこなせば、合格ラインには十分届きます。</p>
         </div>
 
-        <p class="text-slate-600 mt-5 mb-2">ただし、こんな人には通信講座をおすすめします。</p>
-        <ul class="text-slate-600 mb-4 pl-4 list-disc space-y-1">
-          <li>勉強の習慣がなく、一人では続かない</li>
-          <li>テキストを読んでも理解できない部分が多い</li>
-          <li>申込み締切まで時間がなく、効率よく仕上げたい</li>
-        </ul>
-        <p class="text-slate-600">逆に「テキストを読むのが苦でない」「自分でスケジュール管理できる」という人は独学で十分です。</p>
+        <p style="margin-top: 1.25rem;">ただし、こんな人には通信講座をおすすめします。</p>
+        <div class="sho-card sho-card--yes mb-4">
+          <div class="sho-card-header sho-card-header--yes">✅ 通信講座がおすすめな人</div>
+          <ul class="sho-list">
+            <li>勉強の習慣がなく、一人では続かない</li>
+            <li>テキストを読んでも理解できない部分が多い</li>
+            <li>申込み締切まで時間がなく、効率よく仕上げたい</li>
+          </ul>
+        </div>
+        <p>逆に「テキストを読むのが苦でない」「自分でスケジュール管理できる」という人は独学で十分です。</p>
       </section>
 
       <!-- 費用比較表 -->
@@ -99,49 +100,47 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">費用比較表</h2>
 
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-slate-600">
-              <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
-                <tr>
-                  <th class="p-4 font-black border-r border-indigo-100">講座名</th>
-                  <th class="p-4 font-black border-r border-indigo-100 text-center">費用</th>
-                  <th class="p-4 font-black">形式</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-slate-100">
-                  <td class="p-4 font-bold border-r border-slate-100">ユーキャン</td>
-                  <td class="p-4 border-r border-slate-100 text-center">49,000円</td>
-                  <td class="p-4">テキスト＋デジタルのハイブリッド・添削7回</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-4 font-bold border-r border-slate-100">スタディング</td>
-                  <td class="p-4 border-r border-slate-100 text-center">29,800円〜</td>
-                  <td class="p-4">完全オンライン・紙テキストなし</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-4 font-bold border-r border-slate-100">オンスク.JP</td>
-                  <td class="p-4 border-r border-slate-100 text-center">月額1,078〜1,628円</td>
-                  <td class="p-4">サブスク・受け放題</td>
-                </tr>
-                <tr>
-                  <td class="p-4 font-bold border-r border-slate-100">独学</td>
-                  <td class="p-4 border-r border-slate-100 text-center">3,000〜4,000円</td>
-                  <td class="p-4">テキストのみ</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="hikaku-table">
+            <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+              <tr>
+                <th class="hikaku-th hikaku-th--left border-r border-slate-200" style="width: 28%;">講座名</th>
+                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 28%;">費用</th>
+                <th class="hikaku-th hikaku-th--left" style="width: 44%;">形式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-black text-pink-800 bg-pink-50 border-r border-slate-100">ユーキャン</td>
+                <td class="hikaku-td hikaku-td--center bg-pink-50 border-r border-slate-100">49,000円</td>
+                <td class="hikaku-td hikaku-td--left bg-pink-50">テキスト＋デジタル・添削7回</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-black text-blue-800 bg-blue-50 border-r border-slate-100">スタディング</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100">29,800円〜</td>
+                <td class="hikaku-td hikaku-td--left bg-blue-50">完全オンライン・紙テキストなし</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-black text-emerald-800 bg-emerald-50 border-r border-slate-100">オンスク.JP</td>
+                <td class="hikaku-td hikaku-td--center bg-emerald-50 border-r border-slate-100">月額1,078〜1,628円</td>
+                <td class="hikaku-td hikaku-td--left bg-emerald-50">サブスク・受け放題</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--left font-black text-orange-800 bg-orange-50 border-r border-slate-100">独学</td>
+                <td class="hikaku-td hikaku-td--center bg-orange-50 border-r border-slate-100">3,000〜4,000円</td>
+                <td class="hikaku-td hikaku-td--left bg-orange-50">テキストのみ</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <!-- ユーキャン -->
-      <section class="mb-12">
-        <h2 class="section-title">ユーキャン登録販売者講座</h2>
+      <section class="mb-12 kouza-section kouza-section--pink">
+        <h2 class="section-title section-title--pink">ユーキャン登録販売者講座</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
-          <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1.5">
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
             <li>💰 <strong>受講料</strong>：49,000円（分割払い 3,810円×13回）</li>
             <li>📚 <strong>形式</strong>：フルカラーテキスト＋デジタル学習のハイブリッド</li>
             <li>✏️ <strong>添削指導</strong>：7回（他社平均3回）</li>
@@ -175,15 +174,15 @@ import Layout from '../../layouts/Layout.astro';
       </section>
 
       <!-- スタディング -->
-      <section class="mb-12">
-        <h2 class="section-title">スタディング登録販売者講座</h2>
+      <section class="mb-12 kouza-section kouza-section--blue">
+        <h2 class="section-title section-title--blue">スタディング登録販売者講座</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
-          <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1.5">
+        <div class="kouza-info-box kouza-info-box--blue">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
             <li>💰 <strong>受講料</strong>：29,800円（分割払い 2,727円×12回〜）</li>
             <li>🗾 <strong>地域別合格パック</strong>：33,000円〜（各地域の過去問対策つき）</li>
-            <li>📱 <strong>形式</strong>：動画講義＋Webテキスト＋問題演習（完全スマホ完結・紙テキストなし）</li>
+            <li>📱 <strong>形式</strong>：動画講義＋Webテキスト＋問題演習（完全スマホ完結）</li>
             <li>🤖 <strong>AI学習サポート</strong>：苦手問題を自動分析・復習タイミングを提示</li>
             <li>❓ <strong>質問サービス</strong>：チケット制（10枚付属、追加購入可）</li>
             <li>🎁 <strong>無料登録特典</strong>：10%OFFクーポンプレゼント</li>
@@ -197,8 +196,8 @@ import Layout from '../../layouts/Layout.astro';
             <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
           <p class="pharmacist-body mb-2">4つの選択肢の中で通信講座としてのコスパは一番高いと思います。29,800円はユーキャンの約6割の価格で、独学でテキストを一式揃えるのと大きく変わらないレベルです。</p>
-          <p class="pharmacist-body mb-2">スマホ1台で動画・テキスト・問題演習がすべて完結するので、通勤中や家事のスキマ時間をフル活用できます。AIが苦手な問題を自動分析してくれるのも現代的で便利です。</p>
-          <p class="pharmacist-body mb-0">ただし<strong>紙テキストが一切ない</strong>点は注意が必要です。「手元に本がないと勉強できない」という人には向きません。まず無料体験で自分のスタイルに合うか確かめてから申し込みましょう。無料登録で10%OFFクーポンが手に入るので、まず登録だけしておきましょう。</p>
+          <p class="pharmacist-body mb-2">スマホ1台で動画・テキスト・問題演習がすべて完結するので、通勤中や家事のスキマ時間をフル活用できます。AIが苦手な問題を自動分析してくれるのも便利です。</p>
+          <p class="pharmacist-body mb-0">ただし<strong>紙テキストが一切ない</strong>点は注意が必要です。まず無料体験で自分のスタイルに合うか確かめてから申し込みましょう。</p>
         </div>
 
         <div class="sho-card sho-card--yes">
@@ -213,12 +212,12 @@ import Layout from '../../layouts/Layout.astro';
       </section>
 
       <!-- オンスク -->
-      <section class="mb-12">
-        <h2 class="section-title">オンスク.JP</h2>
+      <section class="mb-12 kouza-section kouza-section--green">
+        <h2 class="section-title section-title--green">オンスク.JP</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
-          <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1.5">
+        <div class="kouza-info-box kouza-info-box--green">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
             <li>💰 <strong>受講料</strong>：月額980円（税込1,078円）〜1,480円（税込1,628円）</li>
             <li>📚 <strong>形式</strong>：月額サブスク・70講座以上が受け放題</li>
             <li>📝 <strong>登録販売者講座</strong>：510問・約12.5時間</li>
@@ -228,10 +227,12 @@ import Layout from '../../layouts/Layout.astro';
 
         <!-- バナー広告 -->
         <div class="flex justify-center my-6">
-          <a href="https://px.a8.net/svt/ejp?a8mat=4AZJGF+2W6X6Q+408S+5ZMCH" rel="nofollow">
-            <img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=260319039175&wid=003&eno=01&mid=s00000018694001006000&mc=1" />
-          </a>
-          <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AZJGF+2W6X6Q+408S+5ZMCH" alt="" />
+          <div>
+            <a href="https://px.a8.net/svt/ejp?a8mat=4AZJGF+2W6X6Q+408S+5ZMCH" rel="nofollow">
+              <img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=260319039175&wid=003&eno=01&mid=s00000018694001006000&mc=1" />
+            </a>
+            <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AZJGF+2W6X6Q+408S+5ZMCH" alt="" />
+          </div>
         </div>
 
         <div class="pharmacist-box mb-5">
@@ -255,12 +256,12 @@ import Layout from '../../layouts/Layout.astro';
       </section>
 
       <!-- 独学 -->
-      <section class="mb-12">
-        <h2 class="section-title">独学（テキスト＋無料サイト活用）</h2>
+      <section class="mb-12 kouza-section kouza-section--orange">
+        <h2 class="section-title section-title--orange">独学（テキスト＋無料サイト活用）</h2>
 
-        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 mb-5">
-          <p class="font-black text-slate-700 mb-3">基本情報</p>
-          <ul class="text-sm text-slate-600 space-y-1.5">
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
             <li>💰 <strong>費用</strong>：テキスト代のみ（約3,000〜4,000円）</li>
             <li>📚 <strong>おすすめテキスト</strong>：石川達也テキスト・うかる！登録販売者など</li>
             <li>📝 <strong>問題演習</strong>：このサイトの480問が無料で使えます</li>
@@ -277,12 +278,10 @@ import Layout from '../../layouts/Layout.astro';
           <p class="pharmacist-body mb-0">テキストで知識を入れて、このサイトの問題演習を毎日10問続ける。これだけでも確実に合格力はつきます。費用を最小限に抑えながら、自分のペースで学びたい人には最もおすすめの方法です。</p>
         </div>
 
-        <p class="text-slate-600 mb-4">どのテキストを選べばいいか迷っている方は、こちらの記事で用途別に詳しく解説しています。</p>
-        <a href="/articles/textbook-guide" class="inline-flex items-center gap-1 text-primary font-bold hover:text-primary-dark transition-colors underline underline-offset-2">
-          👉 登録販売者の独学におすすめテキスト6選【2025年度対応・用途別に紹介】
-        </a>
+        <p>どのテキストを選べばいいか迷っている方はこちら。</p>
+        <a href="/articles/textbook-guide" class="btn-minimal">👉 登録販売者の独学におすすめテキスト6選【用途別に紹介】</a>
 
-        <div class="sho-card sho-card--yes mt-5">
+        <div class="sho-card sho-card--yes" style="margin-top: 1.25rem;">
           <div class="sho-card-header sho-card-header--yes">✅ こんな人におすすめ</div>
           <ul class="sho-list">
             <li>費用をできるだけ抑えたい人</li>
@@ -296,48 +295,311 @@ import Layout from '../../layouts/Layout.astro';
       <section class="mb-12">
         <h2 class="section-title">よくある質問（FAQ）</h2>
 
-        <div class="flex flex-col gap-4">
-          <div class="pharmacist-box">
-            <div class="pharmacist-box-header">
-              <span class="pharmacist-icon">❓</span>
-              <span class="pharmacist-title">独学と通信講座、どっちが合格しやすいですか？</span>
+        <div class="exam-qa-box mb-5">
+          <p class="exam-question">Q. 独学と通信講座、どっちが合格しやすいですか？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--correct">✅ 合格率に大きな差はありません。大切なのは「継続できるかどうか」です。一人では続かないと感じるなら講座の検討を。</li>
+          </ul>
+        </div>
+        <div class="exam-qa-box mb-5">
+          <p class="exam-question">Q. 働きながら取得できますか？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--correct">✅ できます。1日30分〜1時間のスキマ学習で十分対応できます。</li>
+          </ul>
+        </div>
+        <div class="exam-qa-box mb-5">
+          <p class="exam-question">Q. 受験資格はありますか？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--correct">✅ 学歴・年齢問わず誰でも受験できます。ただし合格後に実務経験（2年以上）が必要です。</li>
+          </ul>
+        </div>
+        <div class="exam-qa-box mb-5">
+          <p class="exam-question">Q. どの地域でも同じ試験ですか？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--correct">✅ ブロックごとに問題が異なります。ただし全国共通範囲からの出題がベースなので、まずは共通範囲の対策を進めましょう。</li>
+          </ul>
+        </div>
+        <div class="exam-qa-box">
+          <p class="exam-question">Q. ユーキャンのリスキリング支援制度の条件は？</p>
+          <ul class="exam-answers">
+            <li class="exam-answer exam-answer--correct">✅ 転職活動中または転職意向がある方が対象です。詳しくはユーキャン公式サイトでご確認ください。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mb-12">
+        <div class="cta-box">
+          <div class="cta-box-inner">
+            <p class="cta-heading">まずは無料で練習問題に挑戦</p>
+            <p class="cta-sub">480問の練習問題が完全無料・登録不要で使えます</p>
+            <div class="cta-container">
+              <a href="/" class="cta-btn">
+                <div class="cta-btn-content">
+                  <span class="cta-label">▶ まずはここから</span>
+                  <span class="cta-text">今日の10問を始める →</span>
+                </div>
+              </a>
             </div>
-            <p class="pharmacist-body mb-0">合格率に大きな差はありません。大切なのは「継続できるかどうか」です。一人では続かないと感じるなら講座の検討を。</p>
           </div>
-          <div class="pharmacist-box">
-            <div class="pharmacist-box-header">
-              <span class="pharmacist-icon">❓</span>
-              <span class="pharmacist-title">働きながら取得できますか？</span>
-            </div>
-            <p class="pharmacist-body mb-0">できます。1日30分〜1時間のスキマ学習で十分対応できます。</p>
-          </div>
-          <div class="pharmacist-box">
-            <div class="pharmacist-box-header">
-              <span class="pharmacist-icon">❓</span>
-              <span class="pharmacist-title">受験資格はありますか？</span>
-            </div>
-            <p class="pharmacist-body mb-0">学歴・年齢問わず誰でも受験できます。ただし合格後に実務経験（2年以上）が必要です。</p>
-          </div>
-          <div class="pharmacist-box">
-            <div class="pharmacist-box-header">
-              <span class="pharmacist-icon">❓</span>
-              <span class="pharmacist-title">どの地域でも同じ試験ですか？</span>
-            </div>
-            <p class="pharmacist-body mb-0">ブロックごとに問題が異なります。ただし全国共通範囲からの出題がベースなので、まずは共通範囲の対策を進めましょう。</p>
-          </div>
-          <div class="pharmacist-box">
-            <div class="pharmacist-box-header">
-              <span class="pharmacist-icon">❓</span>
-              <span class="pharmacist-title">ユーキャンのリスキリング支援制度の条件は？</span>
-            </div>
-            <p class="pharmacist-body mb-0">転職活動中または転職意向がある方が対象です。詳しくはユーキャン公式サイトでご確認ください。</p>
-          </div>
+        </div>
+      </section>
+
+      <!-- 著者 -->
+      <section class="mb-12">
+        <div class="disclaimer-box">
+          <h2 class="disclaimer-title">📝 この記事を書いた人</h2>
+          <p class="disclaimer-text">
+            薬剤師・薬局長（薬剤師歴18年）。調剤薬局で日々患者さんの服薬指導を行っています。登録販売者試験の対策から通信講座の選び方まで、現場の視点からわかりやすく解説します。
+          </p>
+        </div>
+      </section>
+
+      <!-- 関連記事 -->
+      <section class="mb-12">
+        <h2 class="section-title">関連記事</h2>
+        <div class="related-links">
+          <a href="/articles/textbook-guide" class="btn-minimal">➡️ 独学おすすめテキスト6選【用途別に紹介】</a>
+          <a href="/articles/studyin-review" class="btn-minimal">➡️ スタディング登録販売者講座の口コミ・評判</a>
+          <a href="/articles/u-can-review" class="btn-minimal">➡️ ユーキャン登録販売者講座の口コミ・評判</a>
         </div>
       </section>
 
       <p class="text-[10px] text-slate-400 mt-8 opacity-80 leading-relaxed italic">
         ※本記事はアフィリエイト広告（A8.netアフィリエイト含む）を掲載しています。記事内のリンクから商品を購入いただくと、サイト運営の支援になります。
       </p>
+
+      <div class="back-nav mt-16 text-center">
+        <a href="/" class="btn-minimal">トップページへ戻る</a>
+      </div>
     </main>
   </div>
 </Layout>
+
+<style>
+  .article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+
+  .article-header {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content {
+    padding: 0 1.5rem 5rem;
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 1.25rem;
+    background: var(--color-primary);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .section-title--pink::before { background: #ec4899; }
+  .section-title--blue::before  { background: #3b82f6; }
+  .section-title--green::before { background: #10b981; }
+  .section-title--orange::before { background: #f97316; }
+
+  p { margin-bottom: 1.25rem; font-size: 0.95rem; }
+
+  /* ====== Learn Card ====== */
+  .learn-card {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .learn-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .learn-icon { font-size: 1.25rem; }
+  .learn-title { font-size: 0.95rem; font-weight: 900; color: #166534; margin: 0; }
+  .learn-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .learn-list li {
+    font-size: 0.9rem; color: #15803d; font-weight: 700;
+    display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5;
+  }
+  .learn-list li::before { content: '✓'; color: #22c55e; font-weight: 950; flex-shrink: 0; }
+
+  /* ====== Pharmacist Box ====== */
+  .pharmacist-box {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #93c5fd;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 16px 16px 0;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .pharmacist-box-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .pharmacist-icon { font-size: 1.1rem; }
+  .pharmacist-title { font-size: 0.875rem; font-weight: 900; color: #1e40af; }
+  .pharmacist-body { font-size: 0.875rem; color: #1e3a5f; line-height: 1.75; margin-bottom: 0.75rem; }
+
+  /* ====== Sho Cards ====== */
+  .sho-card { border-radius: 16px; overflow: hidden; border: 1px solid; }
+  .sho-card--yes { border-color: #86efac; }
+  .sho-card-header { padding: 0.75rem 1.25rem; font-size: 0.875rem; font-weight: 900; }
+  .sho-card-header--yes { background: #16a34a; color: white; }
+  .sho-list {
+    list-style: none; padding: 1rem 1.25rem; margin: 0; display: grid; gap: 0.5rem; background: white;
+  }
+  .sho-list li {
+    font-size: 0.875rem; color: #166534;
+    padding-left: 1.5rem; position: relative; line-height: 1.6;
+  }
+  .sho-list li::before { content: '◎'; color: #22c55e; font-weight: 900; position: absolute; left: 0; top: 0.1em; }
+
+  /* ====== Kouza Section Colors ====== */
+  .kouza-section {
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 2px solid;
+  }
+  .kouza-section--pink  { background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%); border-color: #fbcfe8; }
+  .kouza-section--blue  { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-color: #bfdbfe; }
+  .kouza-section--green { background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); border-color: #bbf7d0; }
+  .kouza-section--orange { background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); border-color: #fed7aa; }
+
+  /* ====== Kouza Info Box ====== */
+  .kouza-info-box {
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid;
+  }
+  .kouza-info-box--pink  { background: #fdf2f8; border-color: #fbcfe8; }
+  .kouza-info-box--blue  { background: #eff6ff; border-color: #bfdbfe; }
+  .kouza-info-box--green { background: #f0fdf4; border-color: #bbf7d0; }
+  .kouza-info-box--orange { background: #fff7ed; border-color: #fed7aa; }
+
+  .kouza-info-heading {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #475569;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .kouza-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .kouza-info-list li { font-size: 0.875rem; color: #334155; line-height: 1.6; }
+
+  /* ====== Exam QA ====== */
+  .exam-qa-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+  .exam-question { font-size: 0.95rem; font-weight: 900; color: #1e293b; margin-bottom: 0.875rem; }
+  .exam-answers { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.625rem; }
+  .exam-answer { font-size: 0.875rem; line-height: 1.6; padding: 0.5rem 0.75rem; border-radius: 8px; }
+  .exam-answer--correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+  /* ====== CTA Box ====== */
+  .cta-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 20px; overflow: hidden; }
+  .cta-box-inner { padding: 1.75rem 1.5rem; text-align: center; }
+  .cta-heading { font-size: 1.1rem; font-weight: 900; color: #1e40af; margin-bottom: 0.25rem; }
+  .cta-sub { font-size: 0.85rem; color: #3b82f6; font-weight: 700; margin-bottom: 1.25rem; }
+  .cta-container { display: flex; justify-content: center; }
+  .cta-btn {
+    display: block; width: 100%; max-width: 360px;
+    background: linear-gradient(to right, #2563eb, #4f46e5);
+    border-radius: 9999px; padding: 1rem 1.5rem; text-decoration: none;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+    transition: all 0.2s ease-in-out;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+  .cta-btn-content { display: flex; flex-direction: column; align-items: center; }
+  .cta-label { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
+  .cta-text { font-size: 1.1rem; font-weight: 900; color: #fff; }
+
+  /* ====== Disclaimer / Author ====== */
+  .disclaimer-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; }
+  .disclaimer-title { font-size: 0.875rem; font-weight: 900; color: #475569; margin-bottom: 0.75rem; }
+  .disclaimer-text { font-size: 0.875rem; color: #475569; margin: 0; line-height: 1.7; }
+
+  /* ====== Related Links ====== */
+  .related-links { display: grid; gap: 0.5rem; }
+
+  /* ====== Hikaku Table ====== */
+  .hikaku-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    color: #475569;
+  }
+  .hikaku-th {
+    padding: 0.875rem 1rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+  }
+  .hikaku-th--left  { text-align: left;   width: 62%; }
+  .hikaku-th--center { text-align: center; width: 38%; }
+  .hikaku-td {
+    padding: 0.875rem 1rem;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+  .hikaku-td--left   { text-align: left; }
+  .hikaku-td--center { text-align: center; }
+
+  /* ====== Compare Cards ====== */
+  .compare-cards { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .compare-card {
+    display: grid;
+    grid-template-columns: 100px 110px 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+  }
+  .compare-name { font-weight: 800; font-size: 0.95rem; color: #1e293b; }
+  .compare-price { font-weight: 700; font-size: 0.9rem; color: var(--color-primary-dark); }
+  .compare-type { font-size: 0.75rem; color: #64748b; }
+
+  /* ====== Back Nav ====== */
+  .btn-minimal {
+    display: inline-block; padding: 0.75rem 2rem;
+    color: #94a3b8; text-decoration: none; font-weight: 800;
+    font-size: 0.85rem; border-radius: 9999px; border: 1px solid #f1f5f9;
+    transition: all 0.2s;
+  }
+  .btn-minimal:hover { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
+</style>
