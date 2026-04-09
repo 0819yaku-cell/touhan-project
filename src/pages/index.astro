@@ -194,6 +194,7 @@ otherArticles.forEach(a => {
             <p class="stats-text font-bold text-lg text-slate-600">
               現在のマスター数：<span id="global-mastered-count" class="text-primary-dark text-2xl mx-1">0</span> / {data.length}問
             </p>
+            <p class="text-[0.7rem] font-bold text-slate-400 mt-1 opacity-80 italic">※マスターした問題は自動で除外されます</p>
           </div>
           
           <div class="cta-buttons flex flex-col items-center gap-4 w-full mx-auto px-4">
@@ -205,10 +206,11 @@ otherArticles.forEach(a => {
             <button id="btn-start-daily" class="btn-primary-lg w-full cursor-pointer border-0 !py-5 !text-[1.1rem] !rounded-2xl shadow-md">
               <span>まずはここから｜今日の10問に挑戦（約3分）</span>
             </button>
-            <p class="text-[0.7rem] font-bold text-slate-400 mt-[-6px] opacity-80 italic">※マスターした問題は自動で除外されます</p>
-            <p class="text-xs font-black text-slate-400 text-center mt-2">
-              登録不要・完全無料・すぐできる
-            </p>
+            <div class="flex justify-center gap-2 mt-3">
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">✓ 登録不要</span>
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">✓ 完全無料</span>
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">✓ すぐできる</span>
+            </div>
             
             <div class="grid grid-cols-2 gap-4 w-full">
               <!-- 左: 模擬テスト120問 -->
