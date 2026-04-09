@@ -146,7 +146,8 @@ otherArticles.forEach(a => {
           </div>
           <div class="hero-catch-text px-4 pt-4 pb-2">
             <h1 class="text-lg font-black text-slate-800 leading-snug mb-2">
-              登録販売者試験対策｜現役薬剤師が作った無料学習サイト
+              登録販売者試験対策<br>
+              <span class="text-primary">現役薬剤師が作った無料学習サイト</span>
             </h1>
             <p class="text-sm text-slate-500 font-bold leading-relaxed">
               18年の現場経験を持つ薬剤師が全国共通範囲を完全網羅。
@@ -326,6 +327,9 @@ otherArticles.forEach(a => {
           </div>
 
           <!-- タブ -->
+          <p class="text-xs font-bold text-slate-400 mb-2 pl-1">
+            カテゴリで絞り込む ↓
+          </p>
           <div class="article-tabs flex gap-2 overflow-x-auto hide-scrollbar mb-6 pb-1">
             {Object.keys(categoryGroups).map((tab, i) => (
               <button
@@ -960,11 +964,15 @@ otherArticles.forEach(a => {
     background: white;
     border-color: #e2e8f0;
     color: #64748b;
+    min-height: 44px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
   .article-tab-btn.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: white;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
   }
 </style>
 
