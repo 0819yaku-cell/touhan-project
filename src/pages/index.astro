@@ -108,6 +108,28 @@ const herbArticles = [
   ...articles.filter(a => a.category.includes('漢方') && !prioritySlugs.includes(a.slug))
 ];
 const otherArticles = articles.filter(a => !a.category.includes('漢方'));
+
+const categoryGroups: Record<string, typeof otherArticles> = {
+  "試験情報": [],
+  "勉強法": [],
+  "OTC・薬の知識": [],
+  "キャリア・資格": [],
+};
+
+otherArticles.forEach(a => {
+  const cat = (a as any).category;
+  if (cat.includes("試験") || cat.includes("スケジュール") || cat.includes("合格率")) {
+    categoryGroups["試験情報"].push(a);
+  } else if (cat.includes("勉強") || cat.includes("テキスト") || cat.includes("通信")) {
+    categoryGroups["勉強法"].push(a);
+  } else if (cat.includes("お薬") || cat.includes("OTC") || cat.includes("薬の知識")) {
+    categoryGroups["OTC・薬の知識"].push(a);
+  } else if (cat.includes("キャリア") || cat.includes("資格") || cat.includes("主婦") || cat.includes("給料")) {
+    categoryGroups["キャリア・資格"].push(a);
+  } else {
+    categoryGroups["試験情報"].push(a);
+  }
+});
 ---
 
 <Layout>
@@ -122,10 +144,33 @@ const otherArticles = articles.filter(a => !a.category.includes('漢方'));
             <p class="sr-only">全国共通範囲に対応（最新基準を完全網羅）現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説</p>
             <img src="/top-hero-official.webp" alt="登録販売者のくすり教室 全国共通範囲に対応（最新基準を完全網羅） 現役薬剤師が本気で噛み砕いた、一番やさしい過去問解説" class="hero-img" loading="eager" fetchpriority="high" />
           </div>
+          <div class="hero-catch-text px-4 pt-4 pb-2">
+            <h1 class="text-lg font-black text-slate-800 leading-snug mb-2">
+              登録販売者試験対策｜現役薬剤師が作った無料学習サイト
+            </h1>
+            <p class="text-sm text-slate-500 font-bold leading-relaxed">
+              18年の現場経験を持つ薬剤師が全国共通範囲を完全網羅。
+              480問の練習問題とやさしい解説で、スキマ時間に合格力を身につけよう。
+            </p>
+          </div>
         </header>
 
         <!-- CTA Section -->
         <section class="cta-section text-center mb-xl">
+          <div class="feature-badges flex justify-around mb-6 px-2">
+            <div class="feature-badge text-center">
+              <div class="text-2xl mb-1">🩺</div>
+              <div class="text-xs font-black text-slate-600 leading-tight">現役薬剤師<br>18年監修</div>
+            </div>
+            <div class="feature-badge text-center">
+              <div class="text-2xl mb-1">📝</div>
+              <div class="text-xs font-black text-slate-600 leading-tight">480問＋<br>模擬テスト</div>
+            </div>
+            <div class="feature-badge text-center">
+              <div class="text-2xl mb-1">⏱</div>
+              <div class="text-xs font-black text-slate-600 leading-tight">1日10問で<br>コツコツ合格</div>
+            </div>
+          </div>
           <div class="stats-container mb-md">
             <p class="stats-text font-bold text-lg text-slate-600">
               現在のマスター数：<span id="global-mastered-count" class="text-primary-dark text-2xl mx-1">0</span> / {data.length}問
@@ -191,19 +236,6 @@ const otherArticles = articles.filter(a => !a.category.includes('漢方'));
           </div>
         </section>
 
-
-        <!-- Comparison Link Section -->
-        <section class="comparison-section px-4 mb-xl">
-          <a href="#" class="comparison-card">
-            <div class="comparison-content">
-              <div class="comparison-text">
-                <span class="comparison-label">薬剤師が本音で比較</span>
-                <h2 class="comparison-title">どの登録販売者講座がいい？</h2>
-              </div>
-              <div class="comparison-arrow">→</div>
-            </div>
-          </a>
-        </section>
 
         <!-- Chapters Progress Section -->
         <section id="modules-section" class="modules-section mb-xl">
@@ -271,32 +303,65 @@ const otherArticles = articles.filter(a => !a.category.includes('漢方'));
           </div>
         </section>
 
+        <!-- Comparison Link Section -->
+        <section class="comparison-section px-4 mb-xl">
+          <a href="#" class="comparison-card">
+            <div class="comparison-content">
+              <div class="comparison-text">
+                <span class="comparison-label">薬剤師が本音で比較</span>
+                <h2 class="comparison-title">独学と通信講座、どっちが合格しやすい？薬剤師が本音で比較</h2>
+              </div>
+              <div class="comparison-arrow">→</div>
+            </div>
+          </a>
+        </section>
+
         <!-- Articles Section -->
         <section class="articles-section px-4 mt-16 mb-8">
-          <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
               <span class="w-2 h-6 bg-primary rounded-full"></span>
               お役立ち記事
             </h2>
           </div>
-          <div class="articles-list flex flex-col gap-4">
-            {otherArticles.map((article) => (
-              <a href={`/articles/${article.slug}`} class="article-card group">
-                <div class="article-card-image">
-                  <img src={article.image} alt={article.title} />
-                </div>
-                <div class="article-card-body">
-                  <div class="article-card-meta">
-                    <span class="article-category">{article.category}</span>
-                  </div>
-                  <h3 class="article-card-title group-hover:text-primary-dark transition-colors">
-                    {article.title}
-                  </h3>
-                  <p class="article-card-desc">{article.description}</p>
-                </div>
-              </a>
+
+          <!-- タブ -->
+          <div class="article-tabs flex gap-2 overflow-x-auto hide-scrollbar mb-6 pb-1">
+            {Object.keys(categoryGroups).map((tab, i) => (
+              <button
+                class={`article-tab-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-black border-2 transition-all ${i === 0 ? 'active' : ''}`}
+                data-tab={tab}
+              >
+                {tab}
+              </button>
             ))}
           </div>
+
+          <!-- タブコンテンツ -->
+          {Object.entries(categoryGroups).map(([tab, arts], i) => (
+            <div class="article-tab-content" data-content={tab} style={i !== 0 ? 'display:none' : ''}>
+              <div class="articles-list flex flex-col gap-4">
+                {arts.length > 0 ? arts.map((article) => (
+                  <a href={`/articles/${(article as any).slug}`} class="article-card group">
+                    <div class="article-card-image">
+                      <img src={(article as any).image} alt={(article as any).title} />
+                    </div>
+                    <div class="article-card-body">
+                      <div class="article-card-meta">
+                        <span class="article-category">{(article as any).category}</span>
+                      </div>
+                      <h3 class="article-card-title group-hover:text-primary-dark transition-colors">
+                        {(article as any).title}
+                      </h3>
+                      <p class="article-card-desc">{(article as any).description}</p>
+                    </div>
+                  </a>
+                )) : (
+                  <p class="text-sm text-slate-400 text-center py-8">記事を準備中です</p>
+                )}
+              </div>
+            </div>
+          ))}
         </section>
       </main>
     </div>
@@ -466,7 +531,6 @@ const otherArticles = articles.filter(a => !a.category.includes('漢方'));
     color: #0f172a;
     line-height: 1.3;
     margin: 0;
-    white-space: nowrap;
   }
 
   @media (max-width: 380px) {
@@ -891,6 +955,17 @@ const otherArticles = articles.filter(a => !a.category.includes('漢方'));
   .hidden {
     display: none !important;
   }
+
+  .article-tab-btn {
+    background: white;
+    border-color: #e2e8f0;
+    color: #64748b;
+  }
+  .article-tab-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
 </style>
 
 <script>
@@ -1027,6 +1102,21 @@ const otherArticles = articles.filter(a => !a.category.includes('漢方'));
         }
       });
     }
+
+    // タブ切り替え
+    const tabBtns = document.querySelectorAll('.article-tab-btn');
+    const tabContents = document.querySelectorAll('.article-tab-content');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = (btn as HTMLElement).dataset.tab;
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        tabContents.forEach(content => {
+          (content as HTMLElement).style.display =
+            (content as HTMLElement).dataset.content === target ? '' : 'none';
+        });
+      });
+    });
   }
 
   // Handle initial page load
