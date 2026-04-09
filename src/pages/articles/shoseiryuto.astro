@@ -254,6 +254,16 @@ import Layout from '../../layouts/Layout.astro';
           花粉症の時期に心強い小青竜湯。鼻の状態をよく観察して、「サラサラ水様」なら第一選択肢になります。登録販売者としては、マオウ含有による持病への影響や、カンゾウによる偽アルドステロン症のリスクをしっかりお伝えすることが大切です。
         </p>
 
+        <!-- 関連記事 -->
+        <section class="mb-12">
+          <h2 class="article-section-title">関連記事</h2>
+          <div class="related-links">
+            <a href="/articles/kakkonto" class="btn-minimal">➡️ 漢方シリーズ｜葛根湯（かっこんとう）</a>
+            <a href="/articles/maoto" class="btn-minimal">➡️ 漢方シリーズ｜麻黄湯（まおうとう）</a>
+            <a href="/articles/bakumondoto" class="btn-minimal">➡️ 漢方シリーズ｜麦門冬湯（ばくもんどうとう）</a>
+          </div>
+        </section>
+
         <!-- ユーキャン CTA -->
         <div class="uccan-cta-box scale-up-center">
           <div class="uccan-cta-inner">
@@ -486,6 +496,8 @@ import Layout from '../../layouts/Layout.astro';
     font-weight: 900;
     color: #fff;
   }
+
+  .related-links { display: grid; gap: 0.5rem; }
 
   /* ====== Back to Top Button ====== */
   .btn-minimal {

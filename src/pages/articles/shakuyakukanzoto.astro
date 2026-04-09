@@ -229,16 +229,31 @@ import Layout from '../../layouts/Layout.astro';
       <!-- Section: おすすめ市販品 -->
       <section class="mb-20">
         <h2 class="article-section-title">おすすめ市販品</h2>
-        <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8 mb-12">
-          <h3 class="text-base font-black text-slate-800 mb-4 mt-0 leading-tight">
-            芍薬甘草湯のおすすめ
-          </h3>
-          <p class="text-xs text-slate-500 mb-8 leading-relaxed">
-            ツムラやクラシエなど、主要メーカーの芍薬甘草湯はこちらから選べます。顆粒や錠剤タイプなど、自分に合ったものを選びましょう。
-          </p>
-          <a href="https://amzn.to/4mguPiS" target="_blank" rel="noopener noreferrer" class="amazon-btn">
-            🛒 アマゾンで詳細を見る
-          </a>
+        <div class="grid gap-6 mb-12">
+          <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8">
+            <span class="bg-amber-100 text-amber-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">顆粒タイプ</span>
+            <h3 class="text-base font-black text-slate-800 mb-2 mt-4 leading-tight">
+              「クラシエ」漢方芍薬甘草湯エキス顆粒 45包
+            </h3>
+            <p class="text-xs text-slate-500 mb-8 leading-relaxed">
+              飲みやすい顆粒タイプ。急なこむら返りや筋肉のけいれんにすばやく対応。
+            </p>
+            <a href="https://amzn.to/47OYWYJ" target="_blank" rel="noopener noreferrer" class="amazon-btn">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
+          <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8">
+            <span class="bg-blue-100 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">錠剤タイプ</span>
+            <h3 class="text-base font-black text-slate-800 mb-2 mt-4 leading-tight">
+              和漢箋 ツラレス 120錠
+            </h3>
+            <p class="text-xs text-slate-500 mb-8 leading-relaxed">
+              持ち運びに便利な錠剤タイプ。外出先や就寝時のこむら返り対策に。
+            </p>
+            <a href="https://amzn.to/4cbosbF" target="_blank" rel="noopener noreferrer" class="amazon-btn">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
         </div>
       </section>
 
@@ -264,6 +279,16 @@ import Layout from '../../layouts/Layout.astro';
         <p class="text-sm leading-relaxed mb-12 font-bold text-slate-800">
           漢方の中で最もシンプルな処方のひとつでありながら、即効性と幅広い効果を持つのが芍薬甘草湯。「体質を問わない」という特徴は、試験でも現場でも必ず覚えておきたい知識です。効くからといって飲み続けずに、正しい使い方を守って活用しましょう。
         </p>
+
+        <!-- 関連記事 -->
+        <section class="mb-12">
+          <h2 class="article-section-title">関連記事</h2>
+          <div class="related-links">
+            <a href="/articles/goshajinkigan" class="btn-minimal">➡️ 漢方シリーズ｜牛車腎気丸（ごしゃじんきがん）</a>
+            <a href="/articles/keishibukuryogan" class="btn-minimal">➡️ 漢方シリーズ｜桂枝茯苓丸（けいしぶくりょうがん）</a>
+            <a href="/articles/daio-kanzo-to" class="btn-minimal">➡️ 漢方シリーズ｜大黄甘草湯（だいおうかんぞうとう）</a>
+          </div>
+        </section>
 
         <!-- ユーキャン CTA -->
         <div class="uccan-cta-box scale-up-center">
@@ -497,6 +522,8 @@ import Layout from '../../layouts/Layout.astro';
     font-weight: 900;
     color: #fff;
   }
+
+  .related-links { display: grid; gap: 0.5rem; }
 
   /* ====== Back to Top Button ====== */
   .btn-minimal {

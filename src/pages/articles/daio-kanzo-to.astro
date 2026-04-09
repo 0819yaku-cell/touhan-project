@@ -355,8 +355,32 @@ import Layout from '../../layouts/Layout.astro';
       <!-- Section 7: 市販品 -->
       <section class="mb-12">
         <h2 class="section-title">おすすめ市販品</h2>
-        <!-- アフィリエイトCTAボックス：Amazon 大黄甘草湯商品リンク挿入箇所（顆粒・錠剤） -->
-        <!-- AFFILIATE_CTA_PLACEHOLDER -->
+        <div class="grid gap-6 mb-4">
+          <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8">
+            <span class="bg-amber-100 text-amber-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">顆粒タイプ</span>
+            <h3 class="text-base font-black text-slate-800 mb-2 mt-4 leading-tight">
+              ツムラ漢方大黄甘草湯エキス顆粒 12包 ×2
+            </h3>
+            <p class="text-xs text-slate-500 mb-8 leading-relaxed">
+              飲みやすい顆粒タイプ。食前または食間に服用する便秘・軽度の腹部膨満感に。
+            </p>
+            <a href="https://amzn.to/4veLzeg" target="_blank" rel="noopener noreferrer" class="amazon-btn">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
+          <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8">
+            <span class="bg-blue-100 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">錠剤タイプ</span>
+            <h3 class="text-base font-black text-slate-800 mb-2 mt-4 leading-tight">
+              大地の漢方便秘薬 65錠
+            </h3>
+            <p class="text-xs text-slate-500 mb-8 leading-relaxed">
+              持ち運びに便利な錠剤タイプ。日常の便秘対策に手軽に使いやすい。
+            </p>
+            <a href="https://amzn.to/4snvaBF" target="_blank" rel="noopener noreferrer" class="amazon-btn">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
+        </div>
       </section>
 
       <!-- Section 8: まとめ -->
@@ -414,12 +438,9 @@ import Layout from '../../layouts/Layout.astro';
       <section class="mb-12">
         <h2 class="section-title">関連記事</h2>
         <div class="related-links">
-          <!-- 内部リンク：漢方シリーズ｜防風通聖散 -->
-          <!-- INTERNAL_LINK_PLACEHOLDER_BOFUTSUSHOSAN -->
-          <!-- 内部リンク：漢方シリーズ｜麻子仁丸 -->
-          <!-- INTERNAL_LINK_PLACEHOLDER_MASHININ -->
-          <!-- 内部リンク：漢方シリーズ｜葛根湯 -->
-          <!-- INTERNAL_LINK_PLACEHOLDER_KAKKONTO -->
+          <a href="/articles/bofutsushosan" class="btn-minimal">➡️ 漢方シリーズ｜防風通聖散（ぼうふうつうしょうさん）</a>
+          <a href="/articles/orengedokuto" class="btn-minimal">➡️ 漢方シリーズ｜黄連解毒湯（おうれんげどくとう）</a>
+          <a href="/articles/shakuyakukanzoto" class="btn-minimal">➡️ 漢方シリーズ｜芍薬甘草湯（しゃくやくかんぞうとう）</a>
         </div>
       </section>
 
@@ -647,6 +668,20 @@ import Layout from '../../layouts/Layout.astro';
   .badge--red { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
   .badge--green { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
   .badge--blue { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+
+  /* ====== Amazon Button ====== */
+  .amazon-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #f97316, #ea580c);
+    color: white; font-size: 0.875rem; font-weight: 900;
+    padding: 0.6rem 1.25rem; border-radius: 9999px; text-decoration: none;
+    box-shadow: 0 3px 10px rgba(249, 115, 22, 0.35);
+    transition: all 0.2s ease-in-out;
+  }
+  .amazon-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(249, 115, 22, 0.45);
+  }
 
   /* ====== CTA Box ====== */
   .cta-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 20px; overflow: hidden; }

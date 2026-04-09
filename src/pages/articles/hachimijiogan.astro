@@ -339,8 +339,32 @@ import Layout from '../../layouts/Layout.astro';
           <p class="warmserv-note">冷えを伴う症状に使う薬なので、お湯で飲むことで体を内側から温め、地黄の消化への負担を軽減する効果も期待できます。</p>
         </div>
 
-        <!-- アフィリエイトCTAボックス：Amazon 八味地黄丸商品リンク挿入箇所（顆粒・錠剤） -->
-        <!-- AFFILIATE_CTA_PLACEHOLDER -->
+        <div class="grid gap-6 mb-4">
+          <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8">
+            <span class="bg-blue-100 text-blue-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">錠剤タイプ</span>
+            <h3 class="text-base font-black text-slate-800 mb-2 mt-4 leading-tight">
+              「クラシエ」漢方八味地黄丸料エキス錠 540錠
+            </h3>
+            <p class="text-xs text-slate-500 mb-8 leading-relaxed">
+              漢方の味が苦手な方にも飲みやすい錠剤タイプ。疲れ・頻尿・腰痛などの腎虚症状に。
+            </p>
+            <a href="https://amzn.to/4bYOr7C" target="_blank" rel="noopener noreferrer" class="amazon-btn">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
+          <div class="bg-white border border-slate-100 shadow-xl rounded-3xl p-8">
+            <span class="bg-amber-100 text-amber-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">顆粒タイプ</span>
+            <h3 class="text-base font-black text-slate-800 mb-2 mt-4 leading-tight">
+              ツムラ漢方八味地黄丸料エキス顆粒A 48包
+            </h3>
+            <p class="text-xs text-slate-500 mb-8 leading-relaxed">
+              吸収が早く温服もできる顆粒タイプ。冷えを伴う症状にはお湯に溶かして服用。
+            </p>
+            <a href="https://amzn.to/4vjp9bJ" target="_blank" rel="noopener noreferrer" class="amazon-btn">
+              🛒 アマゾンで詳細を見る
+            </a>
+          </div>
+        </div>
       </section>
 
       <!-- Section 7: まとめ -->
@@ -394,12 +418,9 @@ import Layout from '../../layouts/Layout.astro';
       <section class="mb-12">
         <h2 class="section-title">関連記事</h2>
         <div class="related-links">
-          <!-- 内部リンク：漢方シリーズ｜牛車腎気丸 -->
-          <!-- INTERNAL_LINK_PLACEHOLDER_GOSHAJINKIGAN -->
-          <!-- 内部リンク：漢方シリーズ｜六君子湯 -->
-          <!-- INTERNAL_LINK_PLACEHOLDER_RIKKUNSHITO -->
-          <!-- 内部リンク：漢方シリーズ｜五苓散 -->
-          <!-- INTERNAL_LINK_PLACEHOLDER_GOREISAN -->
+          <a href="/articles/goshajinkigan" class="btn-minimal">➡️ 漢方シリーズ｜牛車腎気丸（ごしゃじんきがん）</a>
+          <a href="/articles/rikkunshito" class="btn-minimal">➡️ 漢方シリーズ｜六君子湯（りっくんしとう）</a>
+          <a href="/articles/tokishakuyakusan" class="btn-minimal">➡️ 漢方シリーズ｜当帰芍薬散（とうきしゃくやくさん）</a>
         </div>
       </section>
 
@@ -542,6 +563,18 @@ import Layout from '../../layouts/Layout.astro';
 
   .related-links { display: grid; gap: 0.5rem; }
 
+  .amazon-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #f97316, #ea580c);
+    color: white; font-size: 0.875rem; font-weight: 900;
+    padding: 0.6rem 1.25rem; border-radius: 9999px; text-decoration: none;
+    box-shadow: 0 3px 10px rgba(249, 115, 22, 0.35);
+    transition: all 0.2s ease-in-out;
+  }
+  .amazon-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(249, 115, 22, 0.45);
+  }
   .btn-minimal { display: inline-block; padding: 0.75rem 2rem; color: #94a3b8; text-decoration: none; font-weight: 800; font-size: 0.85rem; border-radius: 9999px; border: 1px solid #f1f5f9; transition: all 0.2s; }
   .btn-minimal:hover { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
 </style>

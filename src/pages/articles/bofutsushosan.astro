@@ -271,6 +271,16 @@ import Layout from '../../layouts/Layout.astro';
           </ul>
         </div>
 
+        <!-- 関連記事 -->
+        <section class="mb-12">
+          <h2 class="section-title">関連記事</h2>
+          <div class="related-links">
+            <a href="/articles/boiogito" class="btn-minimal">➡️ 漢方シリーズ｜防己黄耆湯（ぼういおうぎとう）</a>
+            <a href="/articles/daio-kanzo-to" class="btn-minimal">➡️ 漢方シリーズ｜大黄甘草湯（だいおうかんぞうとう）</a>
+            <a href="/articles/orengedokuto" class="btn-minimal">➡️ 漢方シリーズ｜黄連解毒湯（おうれんげどくとう）</a>
+          </div>
+        </section>
+
         <!-- ユーキャン CTA -->
         <div class="uccan-cta-box mt-16 scale-up-center">
           <div class="uccan-cta-inner">
@@ -500,6 +510,8 @@ import Layout from '../../layouts/Layout.astro';
     transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
   }
+
+  .related-links { display: grid; gap: 0.5rem; }
 
   /* ====== Back Nav ====== */
   .btn-minimal {
