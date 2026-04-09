@@ -330,10 +330,10 @@ otherArticles.forEach(a => {
           <p class="text-xs font-bold text-slate-400 mb-2 pl-1">
             カテゴリで絞り込む ↓
           </p>
-          <div class="article-tabs flex gap-2 overflow-x-auto hide-scrollbar mb-6 pb-1">
+          <div class="article-tabs grid grid-cols-2 gap-2 mb-6">
             {Object.keys(categoryGroups).map((tab, i) => (
               <button
-                class={`article-tab-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-black border-2 transition-all ${i === 0 ? 'active' : ''}`}
+                class={`article-tab-btn rounded-full font-black border-2 transition-all ${i === 0 ? 'active' : ''}`}
                 data-tab={tab}
               >
                 {tab}
@@ -965,8 +965,10 @@ otherArticles.forEach(a => {
     border-color: #e2e8f0;
     color: #64748b;
     min-height: 44px;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
   }
   .article-tab-btn.active {
     background: var(--color-primary);
