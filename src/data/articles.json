@@ -270,5 +270,13 @@
         "date": "2026-04-09",
         "image": "/記事画像/tousin-kouza-hikaku.webp",
         "category": "通信講座・勉強法"
+    },
+    {
+        "slug": "kainetsu-chintsu-hikaku",
+        "title": "解熱鎮痛成分の比較【登録販売者試験対策】アセトアミノフェン・イブプロフェン・アスピリンを薬剤師が解説",
+        "description": "アセトアミノフェン・イブプロフェン・アスピリン・ピリン系の違いを現役薬剤師が徹底比較。禁忌・副作用・試験頻出ポイントをわかりやすく解説します。",
+        "date": "2026-04-12",
+        "image": "/記事画像/kainetsu-chintsu-hikaku.webp",
+        "category": "OTC・薬の知識"
     }
 ]
