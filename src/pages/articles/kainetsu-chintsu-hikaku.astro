@@ -91,49 +91,47 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">主な解熱鎮痛成分 比較一覧</h2>
 
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <div class="overflow-x-auto px-4 py-2">
-            <table class="w-full text-sm text-slate-600" style="table-layout: fixed; min-width: 520px;">
-              <thead class="bg-red-50 text-red-900 border-b border-red-100">
-                <tr>
-                  <th class="p-3 font-black text-left border-r border-red-100" style="width: 22%;">成分名</th>
-                  <th class="p-3 font-black text-center border-r border-red-100" style="width: 13%;">解熱</th>
-                  <th class="p-3 font-black text-center border-r border-red-100" style="width: 13%;">鎮痛</th>
-                  <th class="p-3 font-black text-center border-r border-red-100" style="width: 13%;">抗炎症</th>
-                  <th class="p-3 font-black text-left" style="width: 39%;">特記事項</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-slate-100">
-                  <td class="p-3 font-black text-amber-800 bg-amber-50 border-r border-slate-100">アセトアミノフェン</td>
-                  <td class="p-3 text-center bg-amber-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-amber-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-amber-50 border-r border-slate-100"><span class="badge badge--gray">△</span></td>
-                  <td class="p-3 bg-amber-50">胃に優しい・小児・妊婦に使いやすい</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-3 font-black text-blue-800 bg-blue-50 border-r border-slate-100">イブプロフェン</td>
-                  <td class="p-3 text-center bg-blue-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-blue-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-blue-50 border-r border-slate-100"><span class="badge badge--green">◎</span></td>
-                  <td class="p-3 bg-blue-50">抗炎症も強い・<strong>15歳未満不可</strong></td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-3 font-black text-red-800 bg-red-50 border-r border-slate-100">アスピリン</td>
-                  <td class="p-3 text-center bg-red-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-red-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-red-50 border-r border-slate-100"><span class="badge badge--green">◎</span></td>
-                  <td class="p-3 bg-red-50">血小板凝集抑制・<strong>15歳未満不可</strong>・ライ症候群</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-black text-purple-800 bg-purple-50 border-r border-slate-100">イソプロピルアンチピリン</td>
-                  <td class="p-3 text-center bg-purple-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-purple-50 border-r border-slate-100">◎</td>
-                  <td class="p-3 text-center bg-purple-50 border-r border-slate-100"><span class="badge badge--amber">○</span></td>
-                  <td class="p-3 bg-purple-50">ピリン系・アレルギーに注意・<strong>15歳未満不可</strong></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="hikaku-table">
+            <thead class="bg-red-50 text-red-900 border-b border-red-100">
+              <tr>
+                <th class="hikaku-th hikaku-th--left border-r border-red-100" style="width: 24%;">成分名</th>
+                <th class="hikaku-th hikaku-th--center border-r border-red-100" style="width: 13%;">解熱</th>
+                <th class="hikaku-th hikaku-th--center border-r border-red-100" style="width: 13%;">鎮痛</th>
+                <th class="hikaku-th hikaku-th--center border-r border-red-100" style="width: 13%;">抗炎症</th>
+                <th class="hikaku-th hikaku-th--left" style="width: 37%;">特記事項</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-black text-amber-800 bg-amber-50 border-r border-slate-100">アセトアミノフェン</td>
+                <td class="hikaku-td hikaku-td--center bg-amber-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-amber-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-amber-50 border-r border-slate-100"><span class="badge badge--gray">△</span></td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">胃に優しい・小児・妊婦に使いやすい</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-black text-blue-800 bg-blue-50 border-r border-slate-100">イブプロフェン</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100"><span class="badge badge--green">◎</span></td>
+                <td class="hikaku-td hikaku-td--left bg-blue-50">抗炎症も強い・<strong>15歳未満不可</strong></td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-black text-red-800 bg-red-50 border-r border-slate-100">アスピリン</td>
+                <td class="hikaku-td hikaku-td--center bg-red-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-red-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-red-50 border-r border-slate-100"><span class="badge badge--green">◎</span></td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">血小板凝集抑制・<strong>15歳未満不可</strong>・ライ症候群</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--left font-black text-purple-800 bg-purple-50 border-r border-slate-100">イソプロピルアンチピリン</td>
+                <td class="hikaku-td hikaku-td--center bg-purple-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-purple-50 border-r border-slate-100">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-purple-50 border-r border-slate-100"><span class="badge badge--amber">○</span></td>
+                <td class="hikaku-td hikaku-td--left bg-purple-50">ピリン系・アレルギーに注意・<strong>15歳未満不可</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -412,49 +410,47 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="section-title">まとめ｜成分別 禁忌・注意事項一覧</h2>
 
         <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <div class="overflow-x-auto px-4 py-2">
-            <table class="w-full text-sm text-slate-600" style="table-layout: fixed; min-width: 480px;">
-              <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
-                <tr>
-                  <th class="p-3 font-black text-left border-r border-slate-200" style="width: 26%;">成分名</th>
-                  <th class="p-3 font-black text-center border-r border-slate-200" style="width: 13%;">15歳未満</th>
-                  <th class="p-3 font-black text-center border-r border-slate-200" style="width: 17%;">ｱｽﾋﾟﾘﾝ喘息</th>
-                  <th class="p-3 font-black text-center border-r border-slate-200" style="width: 13%;">抗炎症</th>
-                  <th class="p-3 font-black text-left" style="width: 31%;">特記禁忌</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-slate-100">
-                  <td class="p-3 font-bold text-amber-800 bg-amber-50 border-r border-slate-100">アセトアミノフェン</td>
-                  <td class="p-3 text-center bg-amber-50 border-r border-slate-100 text-green-700 font-black">使用可</td>
-                  <td class="p-3 text-center bg-amber-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                  <td class="p-3 text-center bg-amber-50 border-r border-slate-100">なし</td>
-                  <td class="p-3 bg-amber-50">肝機能障害・大量飲酒</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-3 font-bold text-blue-800 bg-blue-50 border-r border-slate-100">イブプロフェン</td>
-                  <td class="p-3 text-center bg-blue-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
-                  <td class="p-3 text-center bg-blue-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
-                  <td class="p-3 text-center bg-blue-50 border-r border-slate-100">あり</td>
-                  <td class="p-3 bg-blue-50">妊娠後期・消化性潰瘍</td>
-                </tr>
-                <tr class="border-b border-slate-100">
-                  <td class="p-3 font-bold text-red-800 bg-red-50 border-r border-slate-100">アスピリン</td>
-                  <td class="p-3 text-center bg-red-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
-                  <td class="p-3 text-center bg-red-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
-                  <td class="p-3 text-center bg-red-50 border-r border-slate-100">あり</td>
-                  <td class="p-3 bg-red-50">ライ症候群・血液凝固</td>
-                </tr>
-                <tr>
-                  <td class="p-3 font-bold text-purple-800 bg-purple-50 border-r border-slate-100">イソプロピルアンチピリン</td>
-                  <td class="p-3 text-center bg-purple-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
-                  <td class="p-3 text-center bg-purple-50 border-r border-slate-100 text-orange-600 font-black">注意</td>
-                  <td class="p-3 text-center bg-purple-50 border-r border-slate-100">あり</td>
-                  <td class="p-3 bg-purple-50">ピリン系アレルギー</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="hikaku-table">
+            <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
+              <tr>
+                <th class="hikaku-th hikaku-th--left border-r border-slate-200" style="width: 26%;">成分名</th>
+                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 14%;">15歳未満</th>
+                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 16%;">喘息</th>
+                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 13%;">抗炎症</th>
+                <th class="hikaku-th hikaku-th--left" style="width: 31%;">特記禁忌</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-bold text-amber-800 bg-amber-50 border-r border-slate-100">アセトアミノフェン</td>
+                <td class="hikaku-td hikaku-td--center bg-amber-50 border-r border-slate-100 text-green-700 font-black">使用可</td>
+                <td class="hikaku-td hikaku-td--center bg-amber-50 border-r border-slate-100 text-green-700 font-black">◎</td>
+                <td class="hikaku-td hikaku-td--center bg-amber-50 border-r border-slate-100">なし</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">肝機能障害・大量飲酒</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-bold text-blue-800 bg-blue-50 border-r border-slate-100">イブプロフェン</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
+                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100">あり</td>
+                <td class="hikaku-td hikaku-td--left bg-blue-50">妊娠後期・消化性潰瘍</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left font-bold text-red-800 bg-red-50 border-r border-slate-100">アスピリン</td>
+                <td class="hikaku-td hikaku-td--center bg-red-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
+                <td class="hikaku-td hikaku-td--center bg-red-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
+                <td class="hikaku-td hikaku-td--center bg-red-50 border-r border-slate-100">あり</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">ライ症候群・血液凝固</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--left font-bold text-purple-800 bg-purple-50 border-r border-slate-100">イソプロピルアンチピリン</td>
+                <td class="hikaku-td hikaku-td--center bg-purple-50 border-r border-slate-100 text-red-700 font-black">✕ 禁忌</td>
+                <td class="hikaku-td hikaku-td--center bg-purple-50 border-r border-slate-100 text-orange-600 font-black">注意</td>
+                <td class="hikaku-td hikaku-td--center bg-purple-50 border-r border-slate-100">あり</td>
+                <td class="hikaku-td hikaku-td--left bg-purple-50">ピリン系アレルギー</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="pharmacist-box">
@@ -589,6 +585,15 @@ import Layout from '../../layouts/Layout.astro';
   .seibun-section--blue   { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-color: #bfdbfe; }
   .seibun-section--red    { background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); border-color: #fecdd3; }
   .seibun-section--purple { background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%); border-color: #e9d5ff; }
+
+  /* ====== Hikaku Table ====== */
+  .hikaku-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.875rem; color: #475569; }
+  .hikaku-th { padding: 0.75rem; font-weight: 900; font-size: 0.8rem; }
+  .hikaku-th--left  { text-align: left; }
+  .hikaku-th--center { text-align: center; }
+  .hikaku-td { padding: 0.75rem; vertical-align: middle; line-height: 1.5; }
+  .hikaku-td--left   { text-align: left; }
+  .hikaku-td--center { text-align: center; }
 
   /* ====== Learn Card ====== */
   .learn-card {
