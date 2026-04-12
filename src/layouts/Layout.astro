@@ -118,4 +118,21 @@ const {
     min-width: 0;
     box-sizing: border-box;
   }
+
+  /* 8. Article tables — mobile safe baseline
+   *    @layer base ensures Tailwind utilities (p-4, text-center etc.) always win */
+  @layer base {
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      word-break: break-word;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      vertical-align: top;
+    }
+  }
 </style>
