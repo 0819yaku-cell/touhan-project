@@ -3,19 +3,19 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="登録販売者試験の頻出成分まとめ【薬剤師が厳選解説】 | 登録販売者のくすり教室"
-  description="抗ヒスタミン成分・アドレナリン作動成分・抗コリン成分・鎮咳去痰成分など試験頻出の成分を薬剤師が厳選解説。禁忌・副作用・覚え方のコツも紹介します。"
+  title="登録販売者試験の頻出成分TOP10｜第3章を効率よく攻略する優先順位まとめ | 登録販売者のくすり教室"
+  description="登録販売者試験で特に出やすい成分TOP10を薬剤師が厳選解説。各成分のどこが問われるかのポイントと、第3章を効率よく攻略するための学習順序を紹介します。"
 >
   <div class="article-container animate-fade-in">
     <header class="article-header">
       <div class="category-tag">💊 OTC・薬の知識</div>
       <h1 class="article-title text-2xl font-black leading-tight text-slate-800 mb-6">
-        登録販売者試験の頻出成分まとめ<br />薬剤師が厳選解説
+        登録販売者試験の頻出成分TOP10<br />第3章を効率よく攻略する優先順位まとめ
       </h1>
       <div class="article-hero mb-8">
         <img
           src="/記事画像/hinsyutsu-seibun.webp"
-          alt="登録販売者試験 頻出成分まとめ"
+          alt="登録販売者試験 頻出成分TOP10"
           class="w-full h-auto rounded-2xl shadow-sm border border-slate-100"
         />
       </div>
@@ -29,278 +29,362 @@ import Layout from '../../layouts/Layout.astro';
           <p class="learn-title">この記事でわかること</p>
         </div>
         <ul class="learn-list">
-          <li>試験に出やすい4カテゴリの頻出成分とその特徴</li>
-          <li>禁忌・副作用・相互作用の覚え方のコツ</li>
-          <li>薬剤師が教える「絶対落とせない」試験ポイント</li>
+          <li>登録販売者試験で特に出やすい成分TOP10</li>
+          <li>各成分のどこが問われるかのポイント</li>
+          <li>第3章を効率よく攻略するための学習順序</li>
         </ul>
       </div>
 
-      <!-- 早見表 -->
+      <!-- イントロ -->
       <section class="mb-12">
-        <h2 class="section-title">カテゴリ別 頻出成分 早見表</h2>
-        <p>まず全体像を把握しましょう。4つのカテゴリから繰り返し出題されます。</p>
-
-        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <table class="hikaku-table">
-            <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
-              <tr>
-                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 28%;">カテゴリ</th>
-                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 37%;">代表成分（例）</th>
-                <th class="hikaku-th hikaku-th--left" style="width: 35%;">試験頻出キーワード</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-slate-100">
-                <td class="hikaku-td hikaku-td--left font-black text-pink-700 bg-pink-50 border-r border-slate-100">抗ヒスタミン成分</td>
-                <td class="hikaku-td hikaku-td--left bg-pink-50 border-r border-slate-100">クロルフェニラミン・ジフェンヒドラミン・メキタジン</td>
-                <td class="hikaku-td hikaku-td--left bg-pink-50">眠気・抗コリン作用・緑内障禁忌</td>
-              </tr>
-              <tr class="border-b border-slate-100">
-                <td class="hikaku-td hikaku-td--left font-black text-blue-700 bg-blue-50 border-r border-slate-100">アドレナリン作動成分</td>
-                <td class="hikaku-td hikaku-td--left bg-blue-50 border-r border-slate-100">エフェドリン・プソイドエフェドリン・フェニレフリン</td>
-                <td class="hikaku-td hikaku-td--left bg-blue-50">交感神経刺激・高血圧禁忌・ドーピング</td>
-              </tr>
-              <tr class="border-b border-slate-100">
-                <td class="hikaku-td hikaku-td--left font-black text-orange-700 bg-orange-50 border-r border-slate-100">抗コリン成分</td>
-                <td class="hikaku-td hikaku-td--left bg-orange-50 border-r border-slate-100">スコポラミン・ロートエキス</td>
-                <td class="hikaku-td hikaku-td--left bg-orange-50">散瞳・緑内障禁忌・前立腺肥大禁忌</td>
-              </tr>
-              <tr>
-                <td class="hikaku-td hikaku-td--left font-black text-emerald-700 bg-emerald-50 border-r border-slate-100">鎮咳・去痰成分</td>
-                <td class="hikaku-td hikaku-td--left bg-emerald-50 border-r border-slate-100">コデイン・デキストロメトルファン・カルボシステイン</td>
-                <td class="hikaku-td hikaku-td--left bg-emerald-50">麻薬性・非麻薬性・12歳未満禁忌</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- 抗ヒスタミン成分 -->
-      <section class="mb-12 kouza-section kouza-section--pink">
-        <h2 class="section-title section-title--pink">① 抗ヒスタミン成分</h2>
-
-        <div class="kouza-info-box kouza-info-box--pink">
-          <p class="kouza-info-heading">主な成分</p>
-          <ul class="kouza-info-list">
-            <li>🔴 <strong>クロルフェニラミンマレイン酸塩</strong>（第一世代）：風邪薬・アレルギー薬に多用</li>
-            <li>🔴 <strong>ジフェンヒドラミン塩酸塩</strong>（第一世代）：乗り物酔い止め・睡眠補助薬に使用</li>
-            <li>🟡 <strong>メキタジン</strong>（第二世代）：眠気が比較的少ない</li>
-            <li>🟡 <strong>ケトチフェンフマル酸塩</strong>（第二世代）：点眼薬にも配合</li>
-            <li>⚡ <strong>主な副作用</strong>：眠気・口渇・排尿困難・散瞳・便秘</li>
-            <li>⛔ <strong>禁忌</strong>：閉塞隅角緑内障・前立腺肥大・授乳中（ジフェンヒドラミン）</li>
-          </ul>
-        </div>
-
-        <div class="pharmacist-box mb-5">
-          <div class="pharmacist-box-header">
-            <span class="pharmacist-icon">💊</span>
-            <span class="pharmacist-title">薬剤師のひとこと</span>
-          </div>
-          <p class="pharmacist-body mb-2">抗ヒスタミン成分の中でも<strong>ジフェンヒドラミン</strong>は特に頻出です。乗り物酔い防止薬の成分として使われますが、「<strong>15歳未満は服用しないこと</strong>」という制限があります。小児での適切な使用量が確認されていないためです。</p>
-          <p class="pharmacist-body mb-0">第一世代は強い眠気と抗コリン作用が出やすいため、「<strong>服用後は乗り物の運転をしないこと</strong>」が添付文書の必須記載事項です。緑内障禁忌の理由は、散瞳により眼圧が上昇するからです。この理由まで説明できるようにしておきましょう。</p>
-        </div>
-
-        <div class="sho-card sho-card--yes">
-          <div class="sho-card-header sho-card-header--yes">✅ 試験 頻出ポイント</div>
-          <ul class="sho-list">
-            <li>ジフェンヒドラミンは乗り物酔い薬で「15歳未満・授乳中 禁忌」</li>
-            <li>第一世代＝眠気強い・抗コリン作用あり（口渇・散瞳・排尿困難）</li>
-            <li>閉塞隅角緑内障禁忌の理由：散瞳→隅角が塞がれ眼圧上昇</li>
-            <li>「服用後は乗り物の運転をしないこと」は必須添付文書記載</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- アドレナリン作動成分 -->
-      <section class="mb-12 kouza-section kouza-section--blue">
-        <h2 class="section-title section-title--blue">② アドレナリン作動成分（交感神経刺激成分）</h2>
-
-        <div class="kouza-info-box kouza-info-box--blue">
-          <p class="kouza-info-heading">主な成分</p>
-          <ul class="kouza-info-list">
-            <li>🔵 <strong>エフェドリン塩酸塩</strong>：気管支拡張・鼻粘膜収縮。ドーピング禁止物質</li>
-            <li>🔵 <strong>プソイドエフェドリン塩酸塩</strong>：鼻炎用内服薬に多用。ドーピング禁止物質</li>
-            <li>🔵 <strong>フェニレフリン塩酸塩</strong>：血管収縮薬・鼻炎に使用</li>
-            <li>🔵 <strong>メチルエフェドリン塩酸塩</strong>：気管支拡張・鎮咳薬にも配合</li>
-            <li>⚡ <strong>主な作用</strong>：交感神経刺激→血管収縮・気管支拡張・心拍数増加・血圧上昇</li>
-            <li>⛔ <strong>禁忌</strong>：高血圧・心臓病・甲状腺機能亢進症・糖尿病・閉塞隅角緑内障</li>
-          </ul>
-        </div>
-
-        <div class="pharmacist-box mb-5">
-          <div class="pharmacist-box-header">
-            <span class="pharmacist-icon">💊</span>
-            <span class="pharmacist-title">薬剤師のひとこと</span>
-          </div>
-          <p class="pharmacist-body mb-2">アドレナリン作動成分（交感神経刺激成分）は禁忌疾患の多さが特徴です。<strong>「高血圧・心臓病・甲状腺機能亢進症・糖尿病・緑内障」</strong>がセットで問われることが多いため、まとめて覚えましょう。</p>
-          <p class="pharmacist-body mb-0"><strong>エフェドリン・プソイドエフェドリン</strong>はWADA（世界アンチ・ドーピング機関）の禁止物質です。アスリートへの販売時は確認が必要です。また、<strong>MAO阻害薬（セレギリンなど）</strong>との相互作用で血圧が急上昇する危険があるため、服用中は禁忌です。</p>
-        </div>
-
-        <div class="sho-card sho-card--yes">
-          <div class="sho-card-header sho-card-header--yes">✅ 試験 頻出ポイント</div>
-          <ul class="sho-list">
-            <li>禁忌5疾患：高血圧・心臓病・甲状腺機能亢進症・糖尿病・緑内障</li>
-            <li>エフェドリン・プソイドエフェドリン＝ドーピング禁止物質</li>
-            <li>MAO阻害薬との併用禁忌（血圧急上昇リスク）</li>
-            <li>メチルエフェドリンは鎮咳薬にも配合（気管支拡張作用）</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- 抗コリン成分 -->
-      <section class="mb-12 kouza-section kouza-section--orange">
-        <h2 class="section-title section-title--orange">③ 抗コリン成分（副交感神経抑制成分）</h2>
-
-        <div class="kouza-info-box kouza-info-box--orange">
-          <p class="kouza-info-heading">主な成分</p>
-          <ul class="kouza-info-list">
-            <li>🟠 <strong>スコポラミン臭化水素酸塩水和物</strong>：乗り物酔い止めに使用</li>
-            <li>🟠 <strong>ロートエキス</strong>：アトロピン含有・胃腸薬・乗り物酔い止めに配合</li>
-            <li>⚡ <strong>主な作用</strong>：ムスカリン受容体拮抗→分泌抑制・平滑筋弛緩</li>
-            <li>⚡ <strong>副作用</strong>：口渇・散瞳・尿閉・便秘・頻脈・眼圧上昇</li>
-            <li>⛔ <strong>禁忌</strong>：閉塞隅角緑内障・前立腺肥大・授乳中（ロートエキス）</li>
-          </ul>
-        </div>
-
-        <div class="pharmacist-box mb-5">
-          <div class="pharmacist-box-header">
-            <span class="pharmacist-icon">💊</span>
-            <span class="pharmacist-title">薬剤師のひとこと</span>
-          </div>
-          <p class="pharmacist-body mb-2">抗コリン成分の副作用は「副交感神経が抑えられる」と考えると覚えやすいです。副交感神経は「休息モード」で唾液分泌・消化・排尿を促進します。これを抑えると口渇・便秘・尿閉が起こります。</p>
-          <p class="pharmacist-body mb-0"><strong>ロートエキス</strong>は母乳中に移行するため授乳中禁忌です。また、散瞳作用があるため閉塞隅角緑内障では眼圧が急上昇する危険があります。「散瞳→隅角が塞がれる→眼圧上昇」という機序を理解しておきましょう。</p>
-        </div>
-
-        <div class="sho-card sho-card--yes">
-          <div class="sho-card-header sho-card-header--yes">✅ 試験 頻出ポイント</div>
-          <ul class="sho-list">
-            <li>散瞳作用→閉塞隅角緑内障は禁忌（眼圧上昇の危険）</li>
-            <li>ロートエキス＝授乳中禁忌（母乳への移行）</li>
-            <li>前立腺肥大のある人は排尿困難悪化のため禁忌</li>
-            <li>副作用の語呂：口渇・尿閉・便秘・頻脈・散瞳</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- 鎮咳・去痰成分 -->
-      <section class="mb-12 kouza-section kouza-section--green">
-        <h2 class="section-title section-title--green">④ 鎮咳・去痰成分</h2>
-
-        <div class="kouza-info-box kouza-info-box--green">
-          <p class="kouza-info-heading">主な成分</p>
-          <ul class="kouza-info-list">
-            <li>🟢 <strong>コデインリン酸塩</strong>（麻薬性鎮咳）：12歳未満禁忌・依存性あり</li>
-            <li>🟢 <strong>ジヒドロコデインリン酸塩</strong>（麻薬性鎮咳）：コデインより鎮咳作用が強い</li>
-            <li>🟢 <strong>デキストロメトルファン臭化水素酸塩</strong>（非麻薬性）：依存性なし・最も汎用</li>
-            <li>🟢 <strong>ノスカピン</strong>（非麻薬性）：妊婦への安全性が比較的高い</li>
-            <li>💧 <strong>グアイフェネシン</strong>（去痰）：気道分泌促進・痰を薄める</li>
-            <li>💧 <strong>カルボシステイン</strong>（去痰）：痰の粘稠度を下げる・鼻炎症状にも効果</li>
-          </ul>
-        </div>
-
-        <div class="pharmacist-box mb-5">
-          <div class="pharmacist-box-header">
-            <span class="pharmacist-icon">💊</span>
-            <span class="pharmacist-title">薬剤師のひとこと</span>
-          </div>
-          <p class="pharmacist-body mb-2">鎮咳成分の最重要ポイントは「麻薬性か非麻薬性か」の区別です。<strong>コデイン・ジヒドロコデイン</strong>は麻薬性で、2019年（令和元年）から<strong>12歳未満への使用が禁忌</strong>になりました。小児では呼吸抑制が強く出るリスクがあるためです。この改定は試験でも問われます。</p>
-          <p class="pharmacist-body mb-0">去痰薬の<strong>カルボシステイン</strong>は痰の粘稠度を下げるだけでなく、副鼻腔炎・鼻炎の症状改善にも使われます。「去痰薬なのに鼻にも効く」という点が試験で狙われやすいです。</p>
-        </div>
-
-        <div class="sho-card sho-card--yes">
-          <div class="sho-card-header sho-card-header--yes">✅ 試験 頻出ポイント</div>
-          <ul class="sho-list">
-            <li>コデイン・ジヒドロコデイン＝麻薬性・12歳未満禁忌（2019年改定）</li>
-            <li>デキストロメトルファン＝非麻薬性・依存性なし</li>
-            <li>カルボシステインは「去痰薬」だが鼻炎・副鼻腔炎にも適用あり</li>
-            <li>グアイフェネシン＝気道分泌促進（痰を薄めて排出しやすくする）</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- まとめ比較表 -->
-      <section class="mb-12">
-        <h2 class="section-title">まとめ｜カテゴリ別 禁忌一覧</h2>
-
-        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
-          <table class="hikaku-table">
-            <thead class="bg-slate-50 text-slate-800 border-b border-slate-200">
-              <tr>
-                <th class="hikaku-th hikaku-th--left border-r border-slate-200" style="width: 25%;">カテゴリ</th>
-                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 14%;">緑内障</th>
-                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 14%;">前立腺</th>
-                <th class="hikaku-th hikaku-th--center border-r border-slate-200" style="width: 14%;">高血圧</th>
-                <th class="hikaku-th hikaku-th--left" style="width: 33%;">その他の主要禁忌</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-slate-100">
-                <td class="hikaku-td hikaku-td--left font-black text-pink-700 bg-pink-50 border-r border-slate-100">抗ヒスタミン</td>
-                <td class="hikaku-td hikaku-td--center bg-pink-50 border-r border-slate-100 text-red-700 font-black">✕</td>
-                <td class="hikaku-td hikaku-td--center bg-pink-50 border-r border-slate-100 text-red-700 font-black">✕</td>
-                <td class="hikaku-td hikaku-td--center bg-pink-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                <td class="hikaku-td hikaku-td--left bg-pink-50">ジフェンヒドラミン：15歳未満・授乳中</td>
-              </tr>
-              <tr class="border-b border-slate-100">
-                <td class="hikaku-td hikaku-td--left font-black text-blue-700 bg-blue-50 border-r border-slate-100">アドレナリン作動</td>
-                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100 text-red-700 font-black">✕</td>
-                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                <td class="hikaku-td hikaku-td--center bg-blue-50 border-r border-slate-100 text-red-700 font-black">✕</td>
-                <td class="hikaku-td hikaku-td--left bg-blue-50">心臓病・甲状腺機能亢進症・糖尿病・MAO阻害薬</td>
-              </tr>
-              <tr class="border-b border-slate-100">
-                <td class="hikaku-td hikaku-td--left font-black text-orange-700 bg-orange-50 border-r border-slate-100">抗コリン</td>
-                <td class="hikaku-td hikaku-td--center bg-orange-50 border-r border-slate-100 text-red-700 font-black">✕</td>
-                <td class="hikaku-td hikaku-td--center bg-orange-50 border-r border-slate-100 text-red-700 font-black">✕</td>
-                <td class="hikaku-td hikaku-td--center bg-orange-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                <td class="hikaku-td hikaku-td--left bg-orange-50">ロートエキス：授乳中禁忌</td>
-              </tr>
-              <tr>
-                <td class="hikaku-td hikaku-td--left font-black text-emerald-700 bg-emerald-50 border-r border-slate-100">鎮咳・去痰</td>
-                <td class="hikaku-td hikaku-td--center bg-emerald-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                <td class="hikaku-td hikaku-td--center bg-emerald-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                <td class="hikaku-td hikaku-td--center bg-emerald-50 border-r border-slate-100 text-green-700 font-black">◎</td>
-                <td class="hikaku-td hikaku-td--left bg-emerald-50">コデイン類：12歳未満禁忌・依存性</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 class="section-title">第3章は500成分を全部覚える必要はない</h2>
 
         <div class="pharmacist-box">
           <div class="pharmacist-box-header">
             <span class="pharmacist-icon">💊</span>
             <span class="pharmacist-title">薬剤師のひとこと</span>
           </div>
-          <p class="pharmacist-body mb-0">「<strong>緑内障禁忌</strong>」は抗ヒスタミン・抗コリン・アドレナリン作動成分と3カテゴリに共通する重要禁忌です。それぞれ「散瞳による眼圧上昇」が理由です。「なぜ禁忌か？」を成分ごとに説明できるレベルまで理解しておくと、応用問題にも対応できます。</p>
+          <p class="pharmacist-body mb-2">
+            登録販売者試験の第3章は全120問中40問を占める最重要章です。手引きに登場する成分数は500種類以上ありますが、実際の試験では毎年繰り返し出る「頻出成分」が存在します。
+          </p>
+          <p class="pharmacist-body mb-2">
+            すべてを均等に覚えようとすると時間が足りません。まずは頻出成分を確実に得点源にすることが合格への近道です。
+          </p>
+          <p class="pharmacist-body mb-0">
+            薬剤師として18年現場に立ってきた立場から言うと、頻出成分は「現場でも実際によく使われる成分」と一致していることが多いです。試験対策と実務知識が同時に身につくので、優先して覚える価値は十分あります。
+          </p>
         </div>
       </section>
 
-      <!-- FAQ -->
-      <section class="mb-12">
-        <h2 class="section-title">よくある質問（FAQ）</h2>
+      <!-- 第1位 アセトアミノフェン -->
+      <section class="mb-8 kouza-section kouza-section--pink">
+        <h2 class="section-title section-title--pink">第1位　アセトアミノフェン（解熱鎮痛）</h2>
+        <p class="why-text">15歳未満に使える唯一の内服解熱鎮痛成分という「例外的な特徴」があるため、毎年必ず問われます。</p>
 
-        <div class="exam-qa-box mb-5">
-          <p class="exam-question">Q. 抗ヒスタミン成分はなぜ眠くなるの？</p>
-          <ul class="exam-answers">
-            <li class="exam-answer exam-answer--correct">✅ H₁受容体を脳内でもブロックするためです。脳内のヒスタミンは覚醒に関わっているため、これが遮断されると眠気が生じます。第二世代は脳への移行が少なく眠気が出にくいです。</li>
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 抗炎症作用がほとんどない（NSAIDsとの違い）</li>
+            <li>📌 空腹時でも服用可能</li>
+            <li>📌 過量服用・アルコール多飲で肝障害リスク</li>
+            <li>📌 <strong>15歳未満への使用が可能</strong>（解熱鎮痛成分では唯一）</li>
           </ul>
         </div>
-        <div class="exam-qa-box mb-5">
-          <p class="exam-question">Q. アドレナリン作動成分の禁忌をまとめて覚えるコツは？</p>
-          <ul class="exam-answers">
-            <li class="exam-answer exam-answer--correct">✅ 「交感神経が過剰に働くと困る疾患」が禁忌です。高血圧（血圧がさらに上昇）・心臓病（心拍増加が危険）・甲状腺機能亢進症（もともと交感神経亢進状態）・糖尿病（血糖値上昇）・緑内障（眼圧上昇）を、作用の仕組みと一緒に覚えましょう。</li>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">使用実績が長く、子供や妊娠している方にも比較的安全に使えるというのは現場の常識です。「なぜ15歳未満に使えるのか」という理由まで理解しておきましょう。</p>
+        </div>
+      </section>
+
+      <!-- 第2位 アスピリン -->
+      <section class="mb-8 kouza-section kouza-section--blue">
+        <h2 class="section-title section-title--blue">第2位　アスピリン（解熱鎮痛）</h2>
+        <p class="why-text">「ライ症候群」という固有名詞がセットで問われるため、知っているかどうかがはっきり差が出る成分です。</p>
+
+        <div class="kouza-info-box kouza-info-box--blue">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 ウイルス性疾患の15歳未満への投与で<strong>ライ症候群</strong>リスク</li>
+            <li>📌 抗血小板作用がある（他の解熱鎮痛成分にはない特徴）</li>
+            <li>📌 胃腸障害が強い</li>
+            <li>📌 アスピリン喘息はNSAIDs全般に注意</li>
           </ul>
         </div>
-        <div class="exam-qa-box mb-5">
-          <p class="exam-question">Q. コデインが12歳未満禁忌になったのはいつ？</p>
-          <ul class="exam-answers">
-            <li class="exam-answer exam-answer--correct">✅ 2019年（令和元年）の改定です。小児では成人より呼吸抑制が強く現れるリスクがあるため、コデイン・ジヒドロコデインを含む製品が12歳未満禁忌になりました。</li>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">アスピリン喘息という名前ですが、イブプロフェンやロキソプロフェンでも起こります。「名前に惑わされない」という視点で覚えましょう。</p>
+        </div>
+      </section>
+
+      <!-- 第3位 クロルフェニラミン -->
+      <section class="mb-8 kouza-section kouza-section--orange">
+        <h2 class="section-title section-title--orange">第3位　クロルフェニラミンマレイン酸塩（抗ヒスタミン）</h2>
+        <p class="why-text">抗ヒスタミン成分の代表格で、風邪薬・鼻炎薬・かゆみ止めなど複数の薬効群をまたいで登場するため出題頻度が高いです。</p>
+
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 第1世代抗ヒスタミン成分（眠気が出やすい）</li>
+            <li>📌 抗コリン作用も持つ（緑内障・排尿困難に注意）</li>
+            <li>📌 <strong>服用後は乗り物の運転不可</strong></li>
+            <li>📌 風邪薬・鼻炎薬・内服アレルギー薬に広く配合</li>
           </ul>
         </div>
-        <div class="exam-qa-box">
-          <p class="exam-question">Q. 抗コリン成分と抗ヒスタミン成分、どちらも緑内障禁忌？</p>
-          <ul class="exam-answers">
-            <li class="exam-answer exam-answer--correct">✅ はい、どちらも「散瞳作用」があるため閉塞隅角緑内障は禁忌です。散瞳すると虹彩が隅角（房水の排出口）を塞ぎ、眼圧が急上昇する危険があります。試験では「緑内障」とだけ書かれていることが多いですが、正確には「閉塞隅角緑内障」が問題になります。</li>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「なぜ風邪薬を飲むと眠くなるのか」という患者さんの疑問の答えがこの成分です。抗ヒスタミン成分の眠気と抗コリン作用はセットで理解しておきましょう。</p>
+        </div>
+      </section>
+
+      <!-- 第4位 ロートエキス -->
+      <section class="mb-8 kouza-section kouza-section--green">
+        <h2 class="section-title section-title--green">第4位　ロートエキス（抗コリン）</h2>
+        <p class="why-text">緑内障・前立腺肥大への禁忌という「禁忌の理由」まで問われるため、仕組みの理解が必要な成分です。</p>
+
+        <div class="kouza-info-box kouza-info-box--green">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 抗コリン作用により消化管の運動を抑制</li>
+            <li>📌 <strong>緑内障・前立腺肥大の人には禁忌</strong>（眼圧上昇・排尿困難の悪化）</li>
+            <li>📌 母乳移行するため授乳中は使用を避ける</li>
+            <li>📌 胃腸薬・乗り物酔い薬に配合</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「なぜ緑内障に禁忌なのか」という理由（瞳孔散大→眼圧上昇）まで理解すると、ロートエキス以外の抗コリン成分すべてに応用できます。</p>
+        </div>
+      </section>
+
+      <!-- 第5位 コデイン -->
+      <section class="mb-8 kouza-section kouza-section--pink">
+        <h2 class="section-title section-title--pink">第5位　コデインリン酸塩（鎮咳）</h2>
+        <p class="why-text">2019年の規制強化（12歳未満禁止）という比較的新しい改訂内容が試験に反映されており、出題が続いています。</p>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 麻薬性鎮咳成分（依存性あり）</li>
+            <li>📌 <strong>12歳未満への使用禁止（2019年改訂）</strong></li>
+            <li>📌 妊婦・授乳中は使用を避ける</li>
+            <li>📌 便秘の副作用</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「12歳未満禁止」になったのは、欧米での死亡事例報告を受けた国際的な流れです。こういった「なぜ変わったか」の背景を知っておくと記憶に定着しやすくなります。</p>
+        </div>
+      </section>
+
+      <!-- 第6位 イブプロフェン -->
+      <section class="mb-8 kouza-section kouza-section--blue">
+        <h2 class="section-title section-title--blue">第6位　イブプロフェン（解熱鎮痛）</h2>
+        <p class="why-text">OTC医薬品の中で最もよく売れている解熱鎮痛成分のひとつで、禁忌が多く出題しやすいためです。</p>
+
+        <div class="kouza-info-box kouza-info-box--blue">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 <strong>15歳未満・妊婦（末期）・アスピリン喘息は禁忌</strong></li>
+            <li>📌 抗炎症作用あり（アセトアミノフェンとの違い）</li>
+            <li>📌 胃腸障害が出やすい</li>
+            <li>📌 NSAIDsの一種</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">イブプロフェンとアセトアミノフェンの比較問題は毎年どこかで出ます。「炎症に効くか・小児に使えるか・胃への影響」の3軸で比較しておくと安心です。</p>
+        </div>
+      </section>
+
+      <!-- 第7位 グリチルリチン酸 -->
+      <section class="mb-8 kouza-section kouza-section--orange">
+        <h2 class="section-title section-title--orange">第7位　グリチルリチン酸二カリウム（抗炎症）</h2>
+        <p class="why-text">「偽アルドステロン症」という副作用名が独特で覚えやすく、かつ出題頻度が高い成分です。</p>
+
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 抗炎症作用・抗アレルギー作用</li>
+            <li>📌 <strong>偽アルドステロン症</strong>（むくみ・血圧上昇・低カリウム血症）のリスク</li>
+            <li>📌 大量摂取・長期連用で副作用リスク上昇</li>
+            <li>📌 風邪薬・胃腸薬・口内炎薬など多くの製品に配合</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">グリチルリチン酸は甘草（かんぞう）の主成分でもあります。漢方薬に甘草が含まれていると、グリチルリチン酸を含む他の薬との重複に注意が必要です。これは現場でも実際に問題になります。</p>
+        </div>
+      </section>
+
+      <!-- 第8位 センノシド -->
+      <section class="mb-8 kouza-section kouza-section--green">
+        <h2 class="section-title section-title--green">第8位　センノシド（瀉下）</h2>
+        <p class="why-text">大腸刺激性・習慣性・妊婦禁忌という3つの重要ポイントがコンパクトにまとまっており、出題しやすい成分です。</p>
+
+        <div class="kouza-info-box kouza-info-box--green">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 大腸を刺激して排便を促す（大腸刺激性瀉下薬）</li>
+            <li>📌 長期連用で<strong>習慣性（耐性）</strong>が生じる</li>
+            <li>📌 <strong>妊婦には使用を避ける</strong>（子宮収縮を促す可能性）</li>
+            <li>📌 センナ・ダイオウも同系統の生薬</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「便秘薬の飲みすぎで効かなくなってきた」という患者さんへの対応は現場でよくある場面です。大腸刺激性瀉下薬は常用を避けるよう伝えることが重要です。</p>
+        </div>
+      </section>
+
+      <!-- 第9位 ロペラミド -->
+      <section class="mb-8 kouza-section kouza-section--pink">
+        <h2 class="section-title section-title--pink">第9位　ロペラミド塩酸塩（止瀉）</h2>
+        <p class="why-text">「感染性下痢には使ってはいけない」という反直感的な禁忌が試験で繰り返し問われます。</p>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 腸の運動を抑制して止瀉</li>
+            <li>📌 <strong>感染性下痢（食中毒など）への使用は避ける</strong>（原因菌・毒素の排出を妨げる）</li>
+            <li>📌 乳幼児への使用禁止</li>
+            <li>📌 眠気・めまいの副作用</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「下痢をしているからといって止瀉薬を使えばよいわけではない」という考え方は、登録販売者として来局者に適切な薬を選んでもらうための重要な視点です。</p>
+        </div>
+      </section>
+
+      <!-- 第10位 プソイドエフェドリン -->
+      <section class="mb-12 kouza-section kouza-section--blue">
+        <h2 class="section-title section-title--blue">第10位　プソイドエフェドリン塩酸塩（交感神経刺激）</h2>
+        <p class="why-text">高血圧・前立腺肥大・甲状腺機能亢進症など禁忌が多く、鼻炎薬の成分として身近なため出題されやすいです。</p>
+
+        <div class="kouza-info-box kouza-info-box--blue">
+          <p class="kouza-info-heading">試験で問われるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 交感神経を刺激して鼻粘膜の血管を収縮→鼻づまり改善</li>
+            <li>📌 <strong>高血圧・心臓病・前立腺肥大・甲状腺機能亢進症は禁忌</strong></li>
+            <li>📌 依存性・乱用のリスク（濫用等のおそれのある医薬品に指定）</li>
+            <li>📌 速攻性があるため鼻炎薬に広く使われる</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">プソイドエフェドリンは海外ではメタンフェタミン（覚醒剤）の前駆体として悪用された歴史から、販売規制が厳しくなった成分です。濫用医薬品として<strong>1個（1包装）のみ販売可能</strong>という規定も試験範囲です。</p>
+        </div>
+      </section>
+
+      <!-- 学習優先順位まとめ表 -->
+      <section class="mb-12">
+        <h2 class="section-title">頻出成分の学習優先順位まとめ</h2>
+
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
+          <table class="hikaku-table">
+            <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
+              <tr>
+                <th class="hikaku-th hikaku-th--center border-r border-indigo-100" style="width: 18%;">優先度</th>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 40%;">成分</th>
+                <th class="hikaku-th hikaku-th--left" style="width: 42%;">最重要ポイント</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-red-700 bg-red-50 border-r border-slate-100">★★★</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50 border-r border-slate-100 font-bold">アセトアミノフェン</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">15歳未満OK・抗炎症なし</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-red-700 bg-red-50 border-r border-slate-100">★★★</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50 border-r border-slate-100 font-bold">アスピリン</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">ライ症候群・抗血小板</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-red-700 bg-red-50 border-r border-slate-100">★★★</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50 border-r border-slate-100 font-bold">クロルフェニラミン</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">眠気・抗コリン作用</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-red-700 bg-red-50 border-r border-slate-100">★★★</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50 border-r border-slate-100 font-bold">ロートエキス</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">緑内障禁忌の理由</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-red-700 bg-red-50 border-r border-slate-100">★★★</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50 border-r border-slate-100 font-bold">コデイン</td>
+                <td class="hikaku-td hikaku-td--left bg-red-50">12歳未満禁止・依存性</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-amber-600 bg-amber-50 border-r border-slate-100">★★</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50 border-r border-slate-100 font-bold">イブプロフェン</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">15歳未満禁止・NSAIDs</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-amber-600 bg-amber-50 border-r border-slate-100">★★</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50 border-r border-slate-100 font-bold">グリチルリチン酸</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">偽アルドステロン症</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-amber-600 bg-amber-50 border-r border-slate-100">★★</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50 border-r border-slate-100 font-bold">センノシド</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">習慣性・妊婦禁忌</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--center font-black text-amber-600 bg-amber-50 border-r border-slate-100">★★</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50 border-r border-slate-100 font-bold">ロペラミド</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">感染性下痢NG</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--center font-black text-amber-600 bg-amber-50 border-r border-slate-100">★★</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50 border-r border-slate-100 font-bold">プソイドエフェドリン</td>
+                <td class="hikaku-td hikaku-td--left bg-amber-50">高血圧禁忌・濫用リスク</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 学習アドバイス -->
+      <section class="mb-12">
+        <h2 class="section-title">第3章攻略の学習アドバイス</h2>
+
+        <div class="pharmacist-box mb-5">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-2">第3章は成分数が多く「全部覚えよう」とすると挫折します。まずこのTOP10を完璧にすることで、試験全体の得点率が大きく上がります。</p>
+          <p class="pharmacist-body mb-0">TOP10を押さえたら次は<strong>「禁忌の横断整理」</strong>がおすすめです。緑内障・前立腺肥大・高血圧・妊婦・小児など、禁忌の対象ごとに成分を整理し直すと、初見の問題にも対応できる力がつきます。</p>
+        </div>
+
+        <div class="sho-card sho-card--yes">
+          <div class="sho-card-header sho-card-header--yes">✅ 効率的な学習ステップ</div>
+          <ul class="sho-list">
+            <li>STEP1：このTOP10を「なぜ？」まで含めて理解する</li>
+            <li>STEP2：禁忌を「対象者別」（小児・妊婦・緑内障など）に横断整理する</li>
+            <li>STEP3：問題演習で間違えた成分だけを繰り返し復習する</li>
+            <li>STEP4：過去問で出題パターンを把握する</li>
           </ul>
         </div>
       </section>
@@ -358,9 +442,7 @@ import Layout from '../../layouts/Layout.astro';
     min-height: 100vh;
   }
 
-  .article-header {
-    padding: 3rem 1.5rem 0;
-  }
+  .article-header { padding: 3rem 1.5rem 0; }
 
   .category-tag {
     display: inline-block;
@@ -388,7 +470,6 @@ import Layout from '../../layouts/Layout.astro';
     align-items: center;
     gap: 0.5rem;
   }
-
   .section-title::before {
     content: '';
     width: 4px;
@@ -397,13 +478,21 @@ import Layout from '../../layouts/Layout.astro';
     border-radius: 2px;
     flex-shrink: 0;
   }
-
   .section-title--pink::before   { background: #ec4899; }
   .section-title--blue::before   { background: #3b82f6; }
   .section-title--orange::before { background: #f97316; }
   .section-title--green::before  { background: #10b981; }
 
   p { margin-bottom: 1.25rem; font-size: 0.95rem; }
+
+  .why-text {
+    font-size: 0.875rem;
+    color: #475569;
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid #e2e8f0;
+  }
 
   /* ====== Learn Card ====== */
   .learn-card {
@@ -452,56 +541,25 @@ import Layout from '../../layouts/Layout.astro';
   .sho-list li::before { content: '◎'; color: #22c55e; font-weight: 900; position: absolute; left: 0; top: 0.1em; }
 
   /* ====== Kouza Section Colors ====== */
-  .kouza-section {
-    padding: 1.5rem;
-    border-radius: 20px;
-    border: 2px solid;
-  }
+  .kouza-section { padding: 1.5rem; border-radius: 20px; border: 2px solid; }
   .kouza-section--pink   { background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%); border-color: #fbcfe8; }
   .kouza-section--blue   { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border-color: #bfdbfe; }
   .kouza-section--orange { background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); border-color: #fed7aa; }
   .kouza-section--green  { background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); border-color: #bbf7d0; }
 
   /* ====== Kouza Info Box ====== */
-  .kouza-info-box {
-    border-radius: 12px;
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
-    border: 1px solid;
-  }
+  .kouza-info-box { border-radius: 12px; padding: 1.25rem; margin-bottom: 1.25rem; border: 1px solid; }
   .kouza-info-box--pink   { background: #fdf2f8; border-color: #fbcfe8; }
   .kouza-info-box--blue   { background: #eff6ff; border-color: #bfdbfe; }
   .kouza-info-box--orange { background: #fff7ed; border-color: #fed7aa; }
   .kouza-info-box--green  { background: #f0fdf4; border-color: #bbf7d0; }
 
   .kouza-info-heading {
-    font-size: 0.8rem;
-    font-weight: 900;
-    color: #475569;
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 0.8rem; font-weight: 900; color: #475569;
+    margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
   }
-  .kouza-info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.6rem;
-  }
+  .kouza-info-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
   .kouza-info-list li { font-size: 0.875rem; color: #334155; line-height: 1.6; }
-
-  /* ====== Exam QA ====== */
-  .exam-qa-box {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 1.25rem;
-  }
-  .exam-question { font-size: 0.95rem; font-weight: 900; color: #1e293b; margin-bottom: 0.875rem; }
-  .exam-answers { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.625rem; }
-  .exam-answer { font-size: 0.875rem; line-height: 1.6; padding: 0.5rem 0.75rem; border-radius: 8px; }
-  .exam-answer--correct { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
 
   /* ====== CTA Box ====== */
   .cta-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 20px; overflow: hidden; }
@@ -530,13 +588,7 @@ import Layout from '../../layouts/Layout.astro';
   .related-links { display: grid; gap: 0.5rem; }
 
   /* ====== Hikaku Table ====== */
-  .hikaku-table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-    color: #475569;
-  }
+  .hikaku-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.875rem; color: #475569; }
   .hikaku-th { padding: 0.875rem 1rem; font-weight: 900; font-size: 0.8rem; }
   .hikaku-th--left   { text-align: left; }
   .hikaku-th--center { text-align: center; }
