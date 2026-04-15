@@ -1,0 +1,720 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="ビタミン成分まとめ【登録販売者試験対策】B1・B2・B6・B12・A・Dの欠乏症と過剰症を薬剤師が解説 | 登録販売者のくすり教室"
+  description="登録販売者試験に出るビタミン成分を薬剤師が解説。B1（脚気）・B2（口角炎・尿が黄色）・B12（巨赤芽球性貧血）・ビタミンA（妊婦禁忌）・ビタミンD（くる病）の欠乏症と過剰症まで試験頻出ポイントをまとめました。"
+>
+  <div class="article-container animate-fade-in">
+    <header class="article-header">
+      <div class="category-tag">💊 OTC・薬の知識</div>
+      <h1 class="article-title text-2xl font-black leading-tight text-slate-800 mb-6">
+        ビタミン成分まとめ【登録販売者試験対策】<br />B1・B2・B6・B12・A・Dの欠乏症と過剰症を薬剤師が解説
+      </h1>
+      <div class="article-hero mb-8">
+        <img
+          src="/記事画像/ビタミン成分まとめ.webp"
+          alt="ビタミン成分まとめ 登録販売者試験対策"
+          class="w-full h-auto rounded-2xl shadow-sm border border-slate-100"
+        />
+      </div>
+    </header>
+
+    <main class="article-content">
+      <p class="text-[10px] text-slate-400 mb-6 opacity-80 leading-relaxed italic">
+        ※当サイトはアフィリエイト広告（Amazonアソシエイト・afbアフィリエイト含む）を掲載しています。記事内のリンクから商品を購入いただくと、サイト運営の支援になります。
+      </p>
+
+      <!-- この記事でわかること -->
+      <div class="learn-card mb-8">
+        <div class="learn-header">
+          <span class="learn-icon">📋</span>
+          <p class="learn-title">この記事でわかること</p>
+        </div>
+        <ul class="learn-list">
+          <li>ビタミンB1・B2・B6・B12それぞれの働きと欠乏症</li>
+          <li>各ビタミンの成分名（試験に出る正式名称）</li>
+          <li>ビタミンAの過剰摂取リスク（妊婦禁忌）</li>
+          <li>ビタミンDの欠乏症（くる病・骨軟化症）</li>
+          <li>水溶性・脂溶性ビタミンの違い</li>
+        </ul>
+      </div>
+
+      <!-- イントロ -->
+      <section class="mb-12">
+        <h2 class="section-title">ビタミンは「欠乏症」と「成分名」をセットで覚える</h2>
+        <p>登録販売者試験のビタミン問題は「このビタミンが不足するとどうなるか（欠乏症）」と「成分名の正式名称」がセットで問われます。「ビタミンB2」ではなく「リボフラビン」のような成分名で出題されることも多いため、一般名と成分名の両方を覚えておく必要があります。</p>
+
+        <!-- B群一覧表 -->
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
+          <table class="hikaku-table">
+            <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
+              <tr>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 16%;">ビタミン</th>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 28%;">主な成分名</th>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 26%;">主な働き</th>
+                <th class="hikaku-th hikaku-th--left" style="width: 30%;">欠乏症</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 font-black text-pink-700 bg-pink-50">B1</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-pink-50">チアミン・フルスルチアミン</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-pink-50">糖質代謝・神経機能</td>
+                <td class="hikaku-td hikaku-td--left bg-pink-50 font-bold text-pink-700">脚気・ウェルニッケ脳症</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 font-black text-orange-700 bg-orange-50">B2</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-orange-50">リボフラビン・FAD</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-orange-50">細胞再生・粘膜維持</td>
+                <td class="hikaku-td hikaku-td--left bg-orange-50 font-bold text-orange-700">口角炎・口内炎・舌炎</td>
+              </tr>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 font-black text-blue-700 bg-blue-50">B6</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-blue-50">ピリドキシン塩酸塩</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-blue-50">アミノ酸代謝・神経伝達</td>
+                <td class="hikaku-td hikaku-td--left bg-blue-50 font-bold text-blue-700">口内炎・末梢神経障害</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 font-black text-green-700 bg-green-50">B12</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-green-50">シアノコバラミン</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-green-50">赤血球形成・神経維持</td>
+                <td class="hikaku-td hikaku-td--left bg-green-50 font-bold text-green-700">巨赤芽球性貧血</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pharmacist-box">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「口内炎が続いている」「疲れが取れない」「手足がしびれる」などの訴えから適切なビタミンを案内できると、登録販売者としての信頼が上がります。</p>
+        </div>
+      </section>
+
+      <!-- B1 -->
+      <section class="mb-8 kouza-section kouza-section--pink">
+        <h2 class="section-title section-title--pink">ビタミンB1（チアミン）</h2>
+        <p class="why-text">「脚気」「ウェルニッケ脳症」がキーワード。フルスルチアミンという誘導体名も覚えましょう。</p>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
+            <li>📌 成分名：<strong>チアミン塩化物塩酸塩</strong>・フルスルチアミン（ビタミンB1誘導体）</li>
+            <li>📌 働き：糖質をエネルギーに変える反応を助ける・神経の働きを維持する</li>
+            <li>📌 代表製品：アリナミン系・チョコラBB等</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">欠乏症</p>
+          <ul class="kouza-info-list">
+            <li>📌 <strong>脚気</strong>：手足のしびれ・むくみ・心臓機能の低下</li>
+            <li>📌 <strong>ウェルニッケ脳症</strong>：眼球運動障害・歩行障害・意識障害（重症）</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">試験で押さえるポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 「脚気」「ウェルニッケ脳症」がキーワード</li>
+            <li>📌 フルスルチアミンはビタミンB1の<strong>誘導体で吸収がよい</strong></li>
+            <li>📌 「尿が黄色くなる」のは<strong>B2の特徴</strong>（B1と混同しないこと）</li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">脚気はかつて日本で多発した疾患で、白米中心の食生活でビタミンB1が不足することが原因でした。現在でも偏食・アルコール多飲の方には不足しやすいです。</p>
+        </div>
+      </section>
+
+      <!-- B2 -->
+      <section class="mb-8 kouza-section kouza-section--orange">
+        <h2 class="section-title section-title--orange">ビタミンB2（リボフラビン）</h2>
+        <p class="why-text">「口角炎・口内炎・舌炎」の欠乏症と「尿が黄色くなる」の2点が試験頻出。どちらもひっかけに使われます。</p>
+
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
+            <li>📌 成分名：<strong>リボフラビン</strong>・リボフラビン酪酸エステル・フラビンアデニンジヌクレオチドナトリウム（FAD）</li>
+            <li>📌 働き：細胞の再生・皮膚や粘膜の健康維持・脂質の代謝補助</li>
+            <li>📌 代表製品：チョコラBB・ハイシー等</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">欠乏症</p>
+          <ul class="kouza-info-list">
+            <li>📌 <strong>口角炎</strong>：口の端が切れる・ただれる</li>
+            <li>📌 <strong>口内炎</strong>・<strong>舌炎</strong>・<strong>皮膚炎</strong></li>
+            <li>📌 目の充血・光過敏</li>
+          </ul>
+        </div>
+
+        <div class="alert-box">
+          <div class="alert-box-header">⚠️ ひっかけ注意：尿が黄色くなる</div>
+          <p class="alert-box-body">ビタミンB2（リボフラビン）を服用すると<strong>尿が黄色くなる</strong>ことがあります。これは<strong>副作用ではなく正常な反応</strong>です（リボフラビンの色素がそのまま排出されるだけ）。「異常なので服用をやめた方がいい」という記述は誤りです。</p>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">「ビタミンを飲んだら尿が黄色くなった」という相談は現場でよくあります。ビタミンB2の色素がそのまま出てくるだけで問題ないことを説明します。</p>
+        </div>
+      </section>
+
+      <!-- B6 -->
+      <section class="mb-8 kouza-section kouza-section--blue">
+        <h2 class="section-title section-title--blue">ビタミンB6（ピリドキシン）</h2>
+        <p class="why-text">B2と欠乏症が似ているため混同しやすい。「B6はアミノ酸代謝」という違いで区別しましょう。</p>
+
+        <div class="kouza-info-box kouza-info-box--blue">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
+            <li>📌 成分名：<strong>ピリドキシン塩酸塩</strong>・ピリドキサールリン酸エステル</li>
+            <li>📌 働き：アミノ酸・タンパク質の代謝補助・神経伝達物質の合成</li>
+            <li>📌 代表製品：各種ビタミン複合剤</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--blue">
+          <p class="kouza-info-heading">欠乏症・試験ポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 口内炎・皮膚炎・<strong>末梢神経障害（手足のしびれ）</strong></li>
+            <li>📌 B2と欠乏症が似ているが、<strong>B6はアミノ酸代謝</strong>（B2は脂質代謝）という違いで覚える</li>
+            <li>📌 妊娠悪阻（つわり）の補助に使われることがある</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- B12 -->
+      <section class="mb-8 kouza-section kouza-section--green">
+        <h2 class="section-title section-title--green">ビタミンB12（コバラミン）</h2>
+        <p class="why-text">「巨赤芽球性貧血」が最重要キーワード。鉄欠乏性貧血とは仕組みが違う点も試験で問われます。</p>
+
+        <div class="kouza-info-box kouza-info-box--green">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
+            <li>📌 成分名：<strong>シアノコバラミン</strong>・ヒドロキソコバラミン酢酸塩</li>
+            <li>📌 働き：赤血球の形成・神経の機能維持・DNA合成補助</li>
+            <li>📌 代表製品：各種ビタミン複合剤・貧血用薬</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--green">
+          <p class="kouza-info-heading">欠乏症・試験ポイント</p>
+          <ul class="kouza-info-list">
+            <li>📌 <strong>巨赤芽球性貧血（悪性貧血）</strong>：大きな未熟な赤血球が増える</li>
+            <li>📌 末梢神経障害・舌炎</li>
+            <li>📌 葉酸と協力して赤血球を作る（葉酸欠乏でも同じ貧血が起きる）</li>
+            <li>📌 動物性食品に多く含まれ、<strong>厳格なベジタリアンで不足しやすい</strong></li>
+          </ul>
+        </div>
+
+        <div class="pharmacist-box mb-0">
+          <div class="pharmacist-box-header">
+            <span class="pharmacist-icon">💊</span>
+            <span class="pharmacist-title">薬剤師のひとこと</span>
+          </div>
+          <p class="pharmacist-body mb-0">B12欠乏による貧血は「悪性貧血」とも呼ばれ、鉄欠乏性貧血とは仕組みが違います。鉄を補っても改善しない貧血の場合、B12や葉酸不足を疑うことが重要です。</p>
+        </div>
+      </section>
+
+      <!-- ビタミンA -->
+      <section class="mb-8 kouza-section kouza-section--pink">
+        <h2 class="section-title section-title--pink">ビタミンA（レチノール）</h2>
+        <p class="why-text">「夜盲症」が欠乏症。脂溶性で体内に蓄積するため、過剰摂取・妊婦禁忌が試験頻出です。</p>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
+            <li>📌 成分名：<strong>レチノール酢酸エステル</strong>・レチノールパルミチン酸エステル</li>
+            <li>📌 働き：視覚の維持・皮膚・粘膜の健康維持・免疫機能</li>
+            <li>📌 分類：<strong>脂溶性ビタミン</strong>（体内に蓄積しやすい）</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--pink">
+          <p class="kouza-info-heading">欠乏症</p>
+          <ul class="kouza-info-list">
+            <li>📌 <strong>夜盲症</strong>（暗い場所で見えにくくなる）</li>
+            <li>📌 皮膚・粘膜の乾燥・角化</li>
+          </ul>
+        </div>
+
+        <div class="alert-box">
+          <div class="alert-box-header">🚫 過剰摂取・妊婦禁忌</div>
+          <p class="alert-box-body">ビタミンAは脂溶性のため体内に蓄積しやすく、過剰摂取で<strong>頭痛・吐き気・肝障害</strong>が起きることがあります。特に<strong>妊婦への大量投与は禁忌</strong>で、胎児奇形リスクがあります。水溶性ビタミン（B群・C）と違い、脂溶性は過剰摂取に注意が必要です。</p>
+        </div>
+      </section>
+
+      <!-- ビタミンD -->
+      <section class="mb-8 kouza-section kouza-section--orange">
+        <h2 class="section-title section-title--orange">ビタミンD（カルシフェロール）</h2>
+        <p class="why-text">「くる病（小児）・骨軟化症（成人）」が欠乏症。過剰摂取での高カルシウム血症も試験ポイントです。</p>
+
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">基本情報</p>
+          <ul class="kouza-info-list">
+            <li>📌 成分名：<strong>エルゴカルシフェロール（D2）</strong>・コレカルシフェロール（D3）</li>
+            <li>📌 働き：カルシウムの吸収を助ける・骨の形成を促進する</li>
+            <li>📌 分類：<strong>脂溶性ビタミン</strong>（体内に蓄積しやすい）</li>
+          </ul>
+        </div>
+
+        <div class="kouza-info-box kouza-info-box--orange">
+          <p class="kouza-info-heading">欠乏症・過剰症</p>
+          <ul class="kouza-info-list">
+            <li>📌 欠乏→小児：<strong>くる病</strong>（骨の発育障害・O脚・X脚）</li>
+            <li>📌 欠乏→成人：<strong>骨軟化症</strong>（骨が弱くなる）・骨粗鬆症リスク上昇</li>
+            <li>📌 過剰摂取→<strong>高カルシウム血症</strong>：食欲不振・嘔吐・腎機能障害</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 水溶性・脂溶性の比較 -->
+      <section class="mb-12">
+        <h2 class="section-title">水溶性ビタミンと脂溶性ビタミンの違い</h2>
+        <p>「どのビタミンが脂溶性か」という観点でも試験に出ます。脂溶性は蓄積するため過剰摂取のリスクがあります。</p>
+
+        <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-6">
+          <table class="hikaku-table">
+            <thead class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
+              <tr>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 22%;">分類</th>
+                <th class="hikaku-th hikaku-th--left border-r border-indigo-100" style="width: 28%;">ビタミン</th>
+                <th class="hikaku-th hikaku-th--left" style="width: 50%;">特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100">
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 font-black text-blue-700 bg-blue-50">水溶性</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-blue-50">B群・C</td>
+                <td class="hikaku-td hikaku-td--left bg-blue-50">余分は尿に排出される・過剰摂取のリスクは低い</td>
+              </tr>
+              <tr>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 font-black text-orange-700 bg-orange-50">脂溶性</td>
+                <td class="hikaku-td hikaku-td--left border-r border-slate-100 bg-orange-50">A・D・E・K</td>
+                <td class="hikaku-td hikaku-td--left bg-orange-50"><strong>体内に蓄積しやすい・過剰摂取に注意が必要</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 試験問題 -->
+      <section class="mb-12">
+        <h2 class="section-title">試験問題形式で確認</h2>
+
+        <div class="mondai-card mb-5">
+          <div class="mondai-header">問1</div>
+          <p class="mondai-question">ビタミンB2に関する記述として正しいものを1つ選べ。</p>
+          <ul class="mondai-choices">
+            <li>① ビタミンB2の主な成分名はチアミンであり、欠乏すると脚気になる</li>
+            <li class="mondai-correct">② ビタミンB2（リボフラビン）を服用すると尿が黄色くなることがあるが、これは異常ではない　← 正解</li>
+            <li>③ ビタミンB2が欠乏しても皮膚や粘膜への影響はない</li>
+            <li>④ ビタミンB2の欠乏症は巨赤芽球性貧血である</li>
+          </ul>
+        </div>
+
+        <div class="mondai-card mb-5">
+          <div class="mondai-header">問2</div>
+          <p class="mondai-question">ビタミンに関する記述として誤っているものを1つ選べ。</p>
+          <ul class="mondai-choices">
+            <li>① ビタミンB1（チアミン）が欠乏すると脚気やウェルニッケ脳症を起こすことがある</li>
+            <li>② ビタミンB12が欠乏すると巨赤芽球性貧血が起きることがある</li>
+            <li class="mondai-correct">③ ビタミンAは水溶性のため過剰摂取しても体内に蓄積しない　← 正解（誤り）</li>
+            <li>④ ビタミンAの大量投与は妊婦に対して禁忌である</li>
+          </ul>
+        </div>
+
+        <div class="mondai-card mb-0">
+          <div class="mondai-header">問3</div>
+          <p class="mondai-question">ビタミンと欠乏症の組み合わせとして正しいものを1つ選べ。</p>
+          <ul class="mondai-choices">
+            <li>① ビタミンB2：脚気</li>
+            <li>② ビタミンB1：口角炎・舌炎</li>
+            <li class="mondai-correct">③ ビタミンB12：巨赤芽球性貧血　← 正解</li>
+            <li>④ ビタミンA：ウェルニッケ脳症</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 試験直前チェックリスト -->
+      <section class="mb-12">
+        <h2 class="section-title">まとめ：試験直前チェックリスト</h2>
+
+        <div class="sho-card sho-card--yes">
+          <div class="sho-card-header sho-card-header--yes">✅ ここだけ押さえれば得点できる</div>
+          <ul class="sho-list">
+            <li>B1（チアミン）：欠乏→<strong>脚気・ウェルニッケ脳症</strong></li>
+            <li>B2（リボフラビン）：欠乏→<strong>口角炎・口内炎・舌炎</strong>・服用すると<strong>尿が黄色くなる（異常ではない）</strong></li>
+            <li>B6（ピリドキシン）：欠乏→口内炎・皮膚炎・末梢神経障害・<strong>アミノ酸代謝</strong>が主な働き</li>
+            <li>B12（シアノコバラミン）：欠乏→<strong>巨赤芽球性貧血（悪性貧血）</strong>・末梢神経障害</li>
+            <li>ビタミンA（レチノール）：欠乏→<strong>夜盲症</strong>・過剰摂取→<strong>妊婦禁忌（胎児奇形リスク）</strong></li>
+            <li>ビタミンD：欠乏→<strong>くる病（小児）・骨軟化症（成人）</strong>・過剰→高カルシウム血症</li>
+            <li>脂溶性ビタミン（<strong>A・D・E・K</strong>）は蓄積するため<strong>過剰摂取に注意</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mb-12">
+        <div class="cta-box">
+          <div class="cta-box-inner">
+            <p class="cta-heading">この知識を問題演習でアウトプット</p>
+            <p class="cta-sub">480問の練習問題が完全無料・登録不要で使えます</p>
+            <div class="cta-container">
+              <a href="/" class="cta-btn">
+                <div class="cta-btn-content">
+                  <span class="cta-label">▶ まずはここから</span>
+                  <span class="cta-text">今日の10問を始める →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 著者 -->
+      <section class="mb-12">
+        <div class="disclaimer-box">
+          <h2 class="disclaimer-title">📝 この記事を書いた人</h2>
+          <p class="disclaimer-text">
+            薬剤師・薬局長（薬剤師歴18年）。調剤薬局で日々患者さんの服薬指導を行っています。ビタミン成分の働きと欠乏症を、現場で実際に扱う視点からわかりやすく解説します。
+          </p>
+        </div>
+      </section>
+
+      <!-- 関連記事 -->
+      <section class="mb-12">
+        <h2 class="section-title">関連記事</h2>
+        <div class="related-links">
+          <a href="/articles/kinki-seibun" class="btn-minimal">➡️ 登録販売者試験の禁忌成分まとめ｜妊婦・授乳中・小児に使えない成分一覧</a>
+          <a href="/articles/benpi-geri-seibun" class="btn-minimal">➡️ 便秘薬・下痢止め成分まとめ｜センノシド・ロペラミドの違い</a>
+          <a href="/articles/gurichiru-giari" class="btn-minimal">➡️ グリチルリチン酸二カリウムとは｜偽アルドステロン症の仕組み</a>
+          <a href="/articles/hinsyutsu-seibun" class="btn-minimal">➡️ 登録販売者試験の頻出成分TOP10｜第3章攻略まとめ</a>
+        </div>
+      </section>
+
+      <div class="back-nav mt-16 text-center">
+        <a href="/" class="btn-minimal">トップページへ戻る</a>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+
+  .article-header { padding: 3rem 1.5rem 0; }
+
+  .category-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content {
+    padding: 0 1.5rem 5rem;
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 1.25rem;
+    background: var(--color-primary, #6366f1);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .section-title--pink::before   { background: #ec4899; }
+  .section-title--blue::before   { background: #3b82f6; }
+  .section-title--orange::before { background: #f97316; }
+  .section-title--green::before  { background: #10b981; }
+
+  p { margin-bottom: 1.25rem; font-size: 0.95rem; }
+
+  .why-text {
+    font-size: 0.875rem;
+    color: #475569;
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid #e2e8f0;
+  }
+
+  /* ====== Learn Card ====== */
+  .learn-card {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .learn-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .learn-icon { font-size: 1.25rem; }
+  .learn-title { font-size: 0.95rem; font-weight: 900; color: #166534; margin: 0; }
+  .learn-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .learn-list li {
+    font-size: 0.9rem; color: #15803d; font-weight: 700;
+    display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5;
+  }
+  .learn-list li::before { content: '✓'; color: #22c55e; font-weight: 950; flex-shrink: 0; }
+
+  /* ====== Pharmacist Box ====== */
+  .pharmacist-box {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #93c5fd;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 16px 16px 0;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .pharmacist-box-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .pharmacist-icon { font-size: 1.1rem; }
+  .pharmacist-title { font-size: 0.8rem; font-weight: 900; color: #1d4ed8; }
+  .pharmacist-body { font-size: 0.875rem; color: #1e40af; line-height: 1.75; }
+
+  /* ====== Kouza Section ====== */
+  .kouza-section {
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid transparent;
+  }
+  .kouza-section--pink   { background: #fff0f6; border-color: #fce7f3; }
+  .kouza-section--blue   { background: #eff8ff; border-color: #dbeafe; }
+  .kouza-section--orange { background: #fff7ed; border-color: #fed7aa; }
+  .kouza-section--green  { background: #f0fdf4; border-color: #bbf7d0; }
+
+  .kouza-info-box {
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+  }
+  .kouza-info-box--pink   { background: white; border-color: #fbcfe8; }
+  .kouza-info-box--blue   { background: white; border-color: #bfdbfe; }
+  .kouza-info-box--orange { background: white; border-color: #fed7aa; }
+  .kouza-info-box--green  { background: white; border-color: #bbf7d0; }
+
+  .kouza-info-heading {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .kouza-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .kouza-info-list li { font-size: 0.9rem; color: #334155; line-height: 1.6; }
+
+  /* ====== Alert Box ====== */
+  .alert-box {
+    background: #fefce8;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 12px 12px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .alert-box-header { font-size: 0.85rem; font-weight: 900; color: #92400e; margin-bottom: 0.5rem; }
+  .alert-box-body { font-size: 0.875rem; color: #78350f; line-height: 1.75; margin: 0; }
+
+  /* ====== Hikaku Table ====== */
+  .hikaku-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .hikaku-th {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  .hikaku-th--left   { text-align: left; }
+  .hikaku-th--center { text-align: center; }
+  .hikaku-td {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+  }
+  .hikaku-td--left   { text-align: left; }
+  .hikaku-td--center { text-align: center; }
+
+  /* ====== Mondai Card ====== */
+  .mondai-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    overflow: hidden;
+  }
+  .mondai-header {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: white;
+    background: #6366f1;
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+  .mondai-question {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+  }
+  .mondai-choices {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .mondai-choices li {
+    font-size: 0.875rem;
+    color: #475569;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    line-height: 1.5;
+  }
+  .mondai-correct {
+    background: #f0fdf4 !important;
+    border-color: #86efac !important;
+    color: #166534 !important;
+    font-weight: 700 !important;
+  }
+
+  /* ====== Sho Card ====== */
+  .sho-card {
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid transparent;
+  }
+  .sho-card--yes { background: #f0fdf4; border-color: #bbf7d0; }
+  .sho-card-header {
+    font-size: 0.875rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid;
+  }
+  .sho-card-header--yes { color: #166534; border-color: #86efac; }
+  .sho-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.625rem;
+  }
+  .sho-list li {
+    font-size: 0.875rem;
+    color: #15803d;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.6;
+  }
+  .sho-list li::before { content: '✓'; font-weight: 900; flex-shrink: 0; }
+
+  /* ====== CTA ====== */
+  .cta-box {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border-radius: 20px;
+    padding: 2px;
+  }
+  .cta-box-inner {
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+  .cta-heading { font-size: 1rem; font-weight: 900; color: #312e81; margin-bottom: 0.25rem; }
+  .cta-sub { font-size: 0.825rem; color: #4338ca; margin-bottom: 1.25rem; }
+  .cta-container { display: flex; justify-content: center; }
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border-radius: 14px;
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    font-weight: 900;
+    box-shadow: 0 4px 14px rgba(99,102,241,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99,102,241,0.5); }
+  .cta-btn-content { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+  .cta-label { font-size: 0.7rem; opacity: 0.85; letter-spacing: 0.05em; }
+  .cta-text { font-size: 1rem; }
+
+  /* ====== Disclaimer / Author ====== */
+  .disclaimer-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+  }
+  .disclaimer-title { font-size: 0.9rem; font-weight: 900; color: #334155; margin-bottom: 0.5rem; }
+  .disclaimer-text { font-size: 0.825rem; color: #64748b; line-height: 1.7; margin: 0; }
+
+  /* ====== Related Links ====== */
+  .related-links { display: grid; gap: 0.75rem; }
+  .btn-minimal {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    color: #334155;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-minimal:hover { background: #f1f5f9; border-color: #cbd5e1; }
+
+  .back-nav a { color: #6366f1; font-weight: 700; font-size: 0.875rem; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+</style>
