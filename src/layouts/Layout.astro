@@ -5,11 +5,13 @@ import Footer from '../components/Footer.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	noindex?: boolean;
 }
 
-const { 
+const {
 	title = "登録販売者のくすり教室",
-	description = "登録販売者試験の対策ができるクイズサイトです。現役薬剤師が詳しく解説。合格を目指して頑張りましょう！"
+	description = "登録販売者試験の対策ができるクイズサイトです。現役薬剤師が詳しく解説。合格を目指して頑張りましょう！",
+	noindex = false,
 } = Astro.props;
 ---
 <!doctype html>
@@ -22,6 +24,7 @@ const {
 		<meta name="google-site-verification" content="gyDsl6h4HoosI8JhjPegIC0tD6VGLVGgAWvigYaS2FA" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

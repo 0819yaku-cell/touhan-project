@@ -26,7 +26,7 @@ const pageTitle = `Q${questionNumber} ${text.length > 15 ? text.substring(0, 15)
 const pageDescription = text;
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} noindex={true}>
   <div class="qpage-wrapper">
 
     <!-- ミニヘッダー：サイト名 + 進捗 -->
