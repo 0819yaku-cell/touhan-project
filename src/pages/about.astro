@@ -18,7 +18,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <h2 class="text-xl font-bold text-slate-800 mb-2">運営者プロフィール</h2>
           <p class="text-center text-sm md:text-base leading-relaxed font-medium text-slate-700">
-            薬剤師歴18年（病院5年・調剤薬局13年）、薬局長歴10年の現役薬剤師。<br class="hidden sm:block" />2008年に薬剤師免許取得。
+            薬剤師歴18年（病院5年・調剤薬局13年）、薬局長歴10年の現役薬剤師。<br class="hidden sm:block" />2008年に薬剤師免許取得。<br />妻も薬剤師。3児の父（9歳・6歳・3歳）。日常的に子どもの市販薬選びを実践中。
           </p>
         </div>
       </section>
@@ -49,40 +49,38 @@ import Layout from '../layouts/Layout.astro';
           <span class="text-xl">⏳</span> 経歴
         </h2>
         
-        <div class="ml-2 mt-4">
-          <div class="relative border-l-2 border-blue-300 space-y-6 pb-2">
-            
-            <div class="relative pl-6">
-              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
-              <div class="font-bold text-blue-900 text-sm">2008年</div>
-              <div class="text-slate-700 mt-1">薬剤師免許取得</div>
-            </div>
-            
-            <div class="relative pl-6">
-              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
-              <div class="font-bold text-blue-900 text-sm">2008〜2013年</div>
-              <div class="text-slate-700 mt-1">病院勤務（5年）</div>
-            </div>
+        <div class="timeline mt-4">
 
-            <div class="relative pl-6">
-              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
-              <div class="font-bold text-blue-900 text-sm">2013年〜現在</div>
-              <div class="text-slate-700 mt-1">調剤薬局勤務（13年）</div>
-            </div>
-
-            <div class="relative pl-6">
-              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
-              <div class="font-bold text-blue-900 text-sm">2015年〜現在</div>
-              <div class="text-slate-700 mt-1">薬局長として勤務（10年）</div>
-            </div>
-
-            <div class="relative pl-6">
-              <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white"></span>
-              <div class="font-bold text-blue-900 text-sm">2026年</div>
-              <div class="text-slate-700 mt-1">登録販売者のくすり教室を開設</div>
-            </div>
-
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-year">2008年</div>
+            <div class="timeline-body">薬剤師免許取得</div>
           </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-year">2008〜2013年</div>
+            <div class="timeline-body">病院勤務（5年）</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-year">2013年〜現在</div>
+            <div class="timeline-body">調剤薬局勤務（13年）</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-year">2015年〜現在</div>
+            <div class="timeline-body">薬局長として勤務（10年）</div>
+          </div>
+
+          <div class="timeline-item timeline-item--last">
+            <div class="timeline-badge"></div>
+            <div class="timeline-year">2026年</div>
+            <div class="timeline-body">登録販売者のくすり教室を開設</div>
+          </div>
+
         </div>
       </section>
 
@@ -99,3 +97,59 @@ import Layout from '../layouts/Layout.astro';
     </main>
   </div>
 </Layout>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.45rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background-color: #bfdbfe; /* blue-200 */
+    border-radius: 1px;
+  }
+
+  .timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .timeline-item--last {
+    padding-bottom: 0;
+  }
+
+  .timeline-badge {
+    position: absolute;
+    left: -1.5rem;
+    top: 0.3rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    background-color: #3b82f6; /* blue-500 */
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #bfdbfe;
+  }
+
+  .timeline-year {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1e3a8a; /* blue-900 */
+    letter-spacing: 0.02em;
+  }
+
+  .timeline-body {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #334155; /* slate-700 */
+    line-height: 1.5;
+  }
+</style>
