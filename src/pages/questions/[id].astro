@@ -37,6 +37,13 @@ const pageDescription = text;
       <span class="progress-badge" id="header-progress-badge">{questionNumber} / {totalQuestions}問</span>
     </header>
 
+    <!-- 監修者ラベル -->
+    <div class="supervised-by">
+      <span class="supervised-icon">👨‍⚕️</span>
+      <span class="supervised-text">薬剤師Hiroki監修</span>
+      <a href="/about/" class="supervised-link">プロフィール</a>
+    </div>
+
     <!-- カテゴリ表示 -->
     {(chapter || category) && (
       <div class="category-bar">
@@ -118,6 +125,42 @@ const pageDescription = text;
     font-size: 0.85rem;
     padding: 4px 12px;
     border-radius: 9999px;
+  }
+
+  /* ── 監修者ラベル ── */
+  .supervised-by {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.35rem 1rem;
+    background: #f0fdf4;
+    border-bottom: 1px solid #bbf7d0;
+    font-size: 0.72rem;
+  }
+
+  .supervised-icon {
+    font-size: 0.85rem;
+    line-height: 1;
+  }
+
+  .supervised-text {
+    font-weight: 700;
+    color: #15803d;
+  }
+
+  .supervised-link {
+    margin-left: auto;
+    font-weight: 700;
+    color: #16a34a;
+    text-decoration: none;
+    border-bottom: 1px solid #86efac;
+    padding-bottom: 1px;
+    font-size: 0.7rem;
+  }
+
+  .supervised-link:hover {
+    color: #15803d;
+    border-color: #15803d;
   }
 
   /* ── カテゴリバー ── */

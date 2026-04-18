@@ -1,0 +1,18 @@
+---
+import Layout from './Layout.astro';
+import AuthorBio from '../components/AuthorBio.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex } = Astro.props;
+---
+
+<Layout title={title} description={description} noindex={noindex}>
+  <slot name="head" slot="head" />
+  <slot />
+  <AuthorBio />
+</Layout>

@@ -1,0 +1,92 @@
+---
+// AuthorBio.astro — 記事末尾の著者プロフィールブロック
+---
+
+<aside class="author-bio">
+  <div class="author-bio-inner">
+    <img
+      src="/pharmacist.webp"
+      alt="著者 Hiroki"
+      class="author-avatar"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="author-info">
+      <p class="author-name">Hiroki（ひろき）</p>
+      <p class="author-title">薬剤師・薬局長｜薬剤師歴18年・薬局長歴10年</p>
+      <p class="author-desc">
+        全国約50店舗の薬局グループで新卒薬剤師教育担当。病院薬剤部・調剤薬局での実務経験をもとに、試験対策と現場で役立つ知識を発信しています。
+      </p>
+      <a href="/about/" class="author-link">プロフィール詳細 →</a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .author-bio {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .author-bio-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+
+  .author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e0f2fe;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .author-name {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin: 0 0 0.125rem;
+  }
+
+  .author-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #0ea5e9;
+    margin: 0 0 0.5rem;
+  }
+
+  .author-desc {
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.65;
+    margin: 0 0 0.625rem;
+  }
+
+  .author-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0369a1;
+    text-decoration: none;
+    border-bottom: 1px solid #bae6fd;
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .author-link:hover {
+    color: #0284c7;
+    border-color: #0284c7;
+  }
+</style>
