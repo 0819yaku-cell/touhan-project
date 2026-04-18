@@ -1,0 +1,285 @@
+---
+const pathname = Astro.url.pathname;
+
+const isActive = (href: string) => {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href);
+};
+
+const navLinks = [
+  { href: '/questions/1', label: '問題集' },
+  { href: '/articles/',   label: '漢方'   },
+  { href: '/otc/',        label: 'OTC'    },
+  { href: '/study/',      label: '試験対策' },
+  { href: '/about/',      label: '運営者情報' },
+];
+---
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <!-- ロゴ -->
+    <a href="/" class="site-logo" aria-label="登録販売者のくすり教室 トップページ">
+      <span class="logo-emoji" aria-hidden="true">💊</span>
+      <span class="logo-text">登録販売者のくすり教室</span>
+    </a>
+
+    <!-- デスクトップナビ -->
+    <nav class="desktop-nav" aria-label="メインナビゲーション">
+      {navLinks.map(({ href, label }) => (
+        <a
+          href={href}
+          class={`nav-link ${isActive(href) ? 'nav-link--active' : ''}`}
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- ハンバーガーボタン -->
+    <button
+      class="hamburger"
+      id="hamburger-btn"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- モバイルナビ -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="モバイルナビゲーション" aria-hidden="true">
+    {navLinks.map(({ href, label }) => (
+      <a
+        href={href}
+        class={`mobile-nav-link ${isActive(href) ? 'mobile-nav-link--active' : ''}`}
+      >
+        {label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<!-- ヘッダー高さ分のスペーサー（sticky分の押し出し） -->
+<div class="header-spacer" aria-hidden="true"></div>
+
+<style>
+  /* ── ヘッダー全体 ── */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 52px;
+    box-sizing: border-box;
+  }
+
+  /* ── ロゴ ── */
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-emoji {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .logo-text {
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #0c4a6e;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  /* ── デスクトップナビ ── */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+  }
+
+  .nav-link {
+    display: inline-block;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background: #f0f9ff;
+    color: #0369a1;
+  }
+
+  .nav-link--active {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+
+  /* ── ハンバーガー ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .hamburger:hover {
+    background: #f0f9ff;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #475569;
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  /* ハンバーガー open 状態 */
+  .hamburger.is-open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.is-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.is-open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── モバイルナビ ── */
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 0.5rem 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+  }
+
+  .mobile-nav.is-open {
+    max-height: 400px;
+    padding: 0.5rem 0;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    text-decoration: none;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.1s, color 0.1s;
+  }
+
+  .mobile-nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-link:hover {
+    background: #f0f9ff;
+    color: #0369a1;
+  }
+
+  .mobile-nav-link--active {
+    color: #0369a1;
+    background: #f0f9ff;
+  }
+
+  /* ── スペーサー ── */
+  .header-spacer {
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  /* ── レスポンシブ ── */
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: flex;
+    }
+
+    .logo-text {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* ロゴテキスト：非常に狭い画面では短縮 */
+  @media (max-width: 360px) {
+    .logo-text {
+      font-size: 0.72rem;
+    }
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const btn = document.getElementById('hamburger-btn');
+    const nav = document.getElementById('mobile-nav');
+    if (!btn || !nav) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      btn.classList.toggle('is-open', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
+      nav.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    // ナビリンクをタップしたらメニューを閉じる
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initHeader);
+  document.addEventListener('astro:page-load', initHeader);
+</script>
