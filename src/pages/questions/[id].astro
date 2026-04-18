@@ -39,7 +39,7 @@ const pageDescription = text;
 
     <!-- 監修者ラベル -->
     <div class="supervised-by">
-      <span class="supervised-icon">👨‍⚕️</span>
+      <img src="/pharmacist.webp" alt="薬剤師Hiroki" class="supervised-avatar" />
       <span class="supervised-text">薬剤師Hiroki監修</span>
       <a href="/about/" class="supervised-link">プロフィール</a>
     </div>
@@ -138,9 +138,13 @@ const pageDescription = text;
     font-size: 0.72rem;
   }
 
-  .supervised-icon {
-    font-size: 0.85rem;
-    line-height: 1;
+  .supervised-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #bbf7d0;
+    flex-shrink: 0;
   }
 
   .supervised-text {
