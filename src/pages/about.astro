@@ -6,6 +6,26 @@ import Layout from '../layouts/Layout.astro';
   title="運営者情報 | 登録販売者のくすり教室"
   description="touhan-quiz.com運営者Hirokiのプロフィール。薬剤師歴18年・薬局長歴10年の現役薬剤師が、病院勤務経験と現場での登録販売者育成経験をもとに、試験対策と実務に役立つ情報を発信しています。"
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hiroki",
+    "jobTitle": "薬剤師・薬局長",
+    "description": "薬剤師歴18年・薬局長歴10年。全国約50店舗の薬局グループで新卒薬剤師の教育担当。",
+    "url": "https://touhan-quiz.com/about/",
+    "image": "https://touhan-quiz.com/avatar.png",
+    "sameAs": ["https://x.com/touhan_kusuri"],
+    "knowsAbout": ["登録販売者試験", "OTC医薬品", "漢方薬", "薬剤師実務"],
+    "memberOf": {
+      "@type": "Organization",
+      "name": "日本薬剤師会"
+    },
+    "hasCredential": [
+      {"@type": "EducationalOccupationalCredential", "name": "薬剤師"},
+      {"@type": "EducationalOccupationalCredential", "name": "研修認定薬剤師"},
+      {"@type": "EducationalOccupationalCredential", "name": "かかりつけ薬剤師"}
+    ]
+  })}></script>
   <div class="container page-wrapper py-8 animate-fade-in mx-auto px-4 sm:px-6">
     <header class="mb-8 text-center mt-4">
       <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight">運営者情報</h1>
