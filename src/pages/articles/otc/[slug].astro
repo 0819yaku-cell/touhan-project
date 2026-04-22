@@ -1,0 +1,290 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('otc');
+  return entries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { title, description, category, affiliateNote } = entry.data;
+const eyecatchPath = `/記事画像/${entry.id}.webp`;
+---
+
+<ArticleLayout title={title} description={description}>
+  <div class="article-container animate-fade-in">
+    <header class="article-header">
+      <div class="category-tag">{category ?? '💊 OTC・薬の知識'}</div>
+      <h1 class="article-title">{title}</h1>
+      <div class="article-hero mb-8">
+        <img src={eyecatchPath} alt={title} class="w-full h-auto rounded-2xl shadow-sm border border-slate-100" />
+      </div>
+    </header>
+
+    <main class="article-content">
+      {affiliateNote && (
+        <p class="text-[10px] text-slate-400 mb-6 opacity-80 leading-relaxed italic">
+          ※{affiliateNote}
+        </p>
+      )}
+
+      <Content />
+
+      <div class="cta-box mt-16 mb-12">
+        <div class="cta-box-inner">
+          <p class="cta-heading">まずは無料で練習問題に挑戦</p>
+          <p class="cta-sub">480問の練習問題が完全無料・登録不要で使えます</p>
+          <div class="cta-container">
+            <a href="/" class="cta-btn">
+              <div class="cta-btn-content">
+                <span class="cta-label">▶ まずはここから</span>
+                <span class="cta-text">今日の10問を始める →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="back-nav mt-8 text-center">
+        <a href="/" class="btn-minimal">トップページへ戻る</a>
+      </div>
+    </main>
+  </div>
+</ArticleLayout>
+
+<style>
+  .article-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+  }
+
+  .article-header {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-title {
+    font-size: 1.375rem;
+    font-weight: 900;
+    color: #1e293b;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content {
+    padding: 0 1.5rem 5rem;
+    line-height: 1.8;
+  }
+
+  /* ====== Markdown要素の共通スタイル ====== */
+  .article-content :global(p) {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    color: #334155;
+  }
+
+  .article-content :global(strong) {
+    font-weight: 900;
+    color: #1e293b;
+  }
+
+  /* ====== h2：section-title風 ====== */
+  .article-content :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0.875rem;
+    border-left: 4px solid var(--color-primary, #3b82f6);
+    line-height: 1.4;
+  }
+
+  /* ====== h3 ====== */
+  .article-content :global(h3) {
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: #1e40af;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ====== 箇条書き ====== */
+  .article-content :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .article-content :global(ul li) {
+    font-size: 0.9rem;
+    color: #334155;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .article-content :global(ul li)::before {
+    content: '◎';
+    color: var(--color-primary, #3b82f6);
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    font-size: 0.8rem;
+  }
+
+  /* ====== 番号付きリスト ====== */
+  .article-content :global(ol) {
+    padding-left: 1.5rem;
+    margin: 0 0 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .article-content :global(ol li) {
+    font-size: 0.9rem;
+    color: #334155;
+    line-height: 1.65;
+    padding-left: 0.25rem;
+  }
+
+  /* ====== テーブル：hikaku-table風 ====== */
+  .article-content :global(table) {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .article-content :global(thead) {
+    background: #eff6ff;
+  }
+
+  .article-content :global(thead th) {
+    padding: 0.875rem 1rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: #1e3a8a;
+    text-align: left;
+    border-bottom: 1px solid #bfdbfe;
+  }
+
+  .article-content :global(tbody tr) {
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .article-content :global(tbody tr:last-child) {
+    border-bottom: none;
+  }
+
+  .article-content :global(tbody td) {
+    padding: 0.875rem 1rem;
+    vertical-align: middle;
+    line-height: 1.5;
+    color: #475569;
+    font-size: 0.875rem;
+  }
+
+  /* ====== コードブロック ====== */
+  .article-content :global(pre) {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content :global(pre code) {
+    font-size: 0.85rem;
+    color: #e2e8f0;
+    background: none;
+    padding: 0;
+  }
+
+  .article-content :global(code) {
+    background: #f1f5f9;
+    color: #1e40af;
+    font-size: 0.85rem;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  /* ====== 水平線 ====== */
+  .article-content :global(hr) {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 2rem 0;
+  }
+
+  /* ====== ブロッククォート ====== */
+  .article-content :global(blockquote) {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #93c5fd;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 16px 16px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .article-content :global(blockquote p) {
+    font-size: 0.875rem;
+    color: #1e3a5f;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ====== CTA Box ====== */
+  .cta-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 20px; overflow: hidden; }
+  .cta-box-inner { padding: 1.75rem 1.5rem; text-align: center; }
+  .cta-heading { font-size: 1.1rem; font-weight: 900; color: #1e40af; margin-bottom: 0.25rem; }
+  .cta-sub { font-size: 0.85rem; color: #3b82f6; font-weight: 700; margin-bottom: 1.25rem; }
+  .cta-container { display: flex; justify-content: center; }
+  .cta-btn {
+    display: block; width: 100%; max-width: 360px;
+    background: linear-gradient(to right, #2563eb, #4f46e5);
+    border-radius: 9999px; padding: 1rem 1.5rem; text-decoration: none;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+    transition: all 0.2s ease-in-out;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+  .cta-btn-content { display: flex; flex-direction: column; align-items: center; }
+  .cta-label { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
+  .cta-text { font-size: 1.1rem; font-weight: 900; color: #fff; }
+
+  /* ====== Back Nav ====== */
+  .btn-minimal {
+    display: inline-block; padding: 0.75rem 2rem;
+    color: #94a3b8; text-decoration: none; font-weight: 800;
+    font-size: 0.85rem; border-radius: 9999px; border: 1px solid #f1f5f9;
+    transition: all 0.2s;
+  }
+  .btn-minimal:hover { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
+</style>
