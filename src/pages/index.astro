@@ -1,7 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import data from '../data/questions.json';
-import articles from '../data/articles.json';
+import articlesJson from '../data/articles.json';
+import { getCollection } from 'astro:content';
+
+// kampoコレクション記事を正規化
+const kampoEntries = await getCollection('kampo');
+const kampoNormalized = kampoEntries.map(entry => ({
+  href: `/articles/kampo/${entry.id}`,
+  slug: entry.id,
+  title: entry.data.title,
+  description: entry.data.description,
+  date: entry.data.pubDate ?? '',
+  image: `/記事画像/${entry.id}.webp`,
+  category: entry.data.category ?? '',
+}));
+
+// articles.jsonを正規化
+const jsonNormalized = articlesJson.map(a => ({
+  href: `/articles/${a.slug}`,
+  slug: a.slug,
+  title: a.title,
+  description: a.description,
+  date: a.date,
+  image: a.image,
+  category: a.category,
+}));
+
+// マージして日付降順
+const articles = [...kampoNormalized, ...jsonNormalized]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 // --- 進捗表示用のデータ構造の生成 ---
 const chapterTitles: Record<string, string> = {
@@ -251,7 +279,7 @@ otherArticles.forEach(a => {
           <div class="herb-scroll-container hide-scrollbar">
             <div class="herb-flex-wrapper">
               {herbArticles.map((article) => (
-                <a href={`/articles/${article.slug}`} class="herb-card snap-start">
+                <a href={article.href} class="herb-card snap-start">
                   <div class="herb-card-image">
                     <img src={article.image} alt={article.title} />
                   </div>
@@ -374,7 +402,7 @@ otherArticles.forEach(a => {
             <div class="article-tab-content" data-content={tab} style={i !== 0 ? 'display:none' : ''}>
               <div class="articles-list flex flex-col gap-4">
                 {arts.length > 0 ? arts.map((article) => (
-                  <a href={`/articles/${(article as any).slug}`} class="article-card group">
+                  <a href={(article as any).href} class="article-card group">
                     <div class="article-card-image">
                       <img src={(article as any).image} alt={(article as any).title} />
                     </div>

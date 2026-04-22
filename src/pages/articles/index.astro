@@ -1,9 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import articles from '../../data/articles.json';
+import articlesJson from '../../data/articles.json';
+import { getCollection } from 'astro:content';
 
-// 漢方記事のみを抽出し、日付順にソートして表示
-const kampoArticles = articles
+// kampoコレクション記事を正規化
+const kampoEntries = await getCollection('kampo');
+const kampoNormalized = kampoEntries.map(entry => ({
+  href: `/articles/kampo/${entry.id}`,
+  title: entry.data.title,
+  description: entry.data.description,
+  date: entry.data.pubDate ?? '',
+  image: `/記事画像/${entry.id}.webp`,
+  category: entry.data.category ?? '',
+}));
+
+// articles.jsonを正規化
+const jsonNormalized = articlesJson.map(a => ({
+  href: `/articles/${a.slug}`,
+  title: a.title,
+  description: a.description,
+  date: a.date,
+  image: a.image,
+  category: a.category,
+}));
+
+// 漢方記事のみ抽出・日付降順
+const kampoArticles = [...kampoNormalized, ...jsonNormalized]
   .filter(a => a.category.includes('漢方'))
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
@@ -23,7 +45,7 @@ const kampoArticles = articles
       <section class="px-4">
         <div class="articles-list flex flex-col gap-6">
           {kampoArticles.map((article) => (
-            <a href={`/articles/${article.slug}`} class="article-card group">
+            <a href={article.href} class="article-card group">
               <div class="article-card-image">
                 <img src={article.image} alt={article.title} />
               </div>
