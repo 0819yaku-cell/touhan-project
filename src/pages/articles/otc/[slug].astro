@@ -59,6 +59,35 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   </div>
 </ArticleLayout>
 
+<script>
+  function styleAmazonLinks() {
+    document.querySelectorAll<HTMLAnchorElement>('a[href*="amzn"]').forEach(el => {
+      Object.assign(el.style, {
+        display: 'inline-block',
+        background: 'linear-gradient(to right, #ff9900, #ffb347)',
+        color: '#fff',
+        fontWeight: '900',
+        fontSize: '0.9rem',
+        padding: '0.65rem 1.5rem',
+        borderRadius: '9999px',
+        textDecoration: 'none',
+        boxShadow: '0 3px 10px rgba(255,153,0,0.35)',
+        transition: 'all 0.2s',
+        margin: '0.5rem 0',
+      });
+      el.addEventListener('mouseenter', () => {
+        el.style.transform = 'translateY(-2px)';
+        el.style.boxShadow = '0 5px 15px rgba(255,153,0,0.45)';
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+        el.style.boxShadow = '0 3px 10px rgba(255,153,0,0.35)';
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', styleAmazonLinks);
+</script>
+
 <style>
   .article-container {
     max-width: 600px;
@@ -300,4 +329,5 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
     transition: all 0.2s;
   }
   .btn-minimal:hover { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
+
 </style>
