@@ -14,7 +14,7 @@ const normalizeEntries = (entries: any[], prefix: string) =>
       title: entry.data.title,
       description: entry.data.description,
       date: entry.data.pubDate ?? '',
-      image: `/記事画像/${urlSlug}.webp`,
+      image: entry.data.image ?? `/記事画像/${urlSlug}.webp`,
       category: entry.data.category ?? '',
     };
   });
