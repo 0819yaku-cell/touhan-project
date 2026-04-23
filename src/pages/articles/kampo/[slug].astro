@@ -5,7 +5,7 @@ import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 export async function getStaticPaths() {
   const entries = await getCollection('kampo');
   return entries.map(entry => ({
-    params: { slug: entry.id },
+    params: { slug: entry.data.slug ?? entry.id },
     props: { entry },
   }));
 }
@@ -14,7 +14,8 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const { title, description, category, affiliateNote } = entry.data;
-const eyecatchPath = `/記事画像/${entry.id}.webp`;
+const urlSlug = entry.data.slug ?? entry.id;
+const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
 ---
 
 <ArticleLayout title={title} description={description}>
@@ -177,23 +178,27 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
     border-collapse: collapse;
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     overflow: hidden;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
   .article-content :global(thead) {
-    background: #eff6ff;
+    background: #eef2ff;
   }
 
   .article-content :global(thead th) {
     padding: 0.875rem 1rem;
     font-weight: 900;
     font-size: 0.8rem;
-    color: #1e3a8a;
+    color: #1e1b4b;
     text-align: left;
-    border-bottom: 1px solid #bfdbfe;
+    border-bottom: 1px solid #e0e7ff;
+  }
+
+  .article-content :global(thead th:not(:last-child)) {
+    border-right: 1px solid #e0e7ff;
   }
 
   .article-content :global(tbody tr) {
@@ -210,6 +215,10 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
     line-height: 1.5;
     color: #475569;
     font-size: 0.875rem;
+  }
+
+  .article-content :global(tbody td:not(:last-child)) {
+    border-right: 1px solid #f1f5f9;
   }
 
   /* ====== コードブロック ====== */

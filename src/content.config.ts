@@ -10,6 +10,8 @@ const kampo = defineCollection({
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     affiliateNote: z.string().optional(),
+    slug: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 
@@ -22,6 +24,8 @@ const otc = defineCollection({
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     affiliateNote: z.string().optional(),
+    slug: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 
@@ -34,6 +38,8 @@ const study = defineCollection({
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     affiliateNote: z.string().optional(),
+    slug: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 

@@ -5,7 +5,7 @@ import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 export async function getStaticPaths() {
   const entries = await getCollection('otc');
   return entries.map(entry => ({
-    params: { slug: entry.id },
+    params: { slug: entry.data.slug ?? entry.id },
     props: { entry },
   }));
 }
@@ -14,7 +14,8 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const { title, description, category, affiliateNote } = entry.data;
-const eyecatchPath = `/記事画像/${entry.id}.webp`;
+const urlSlug = entry.data.slug ?? entry.id;
+const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
 ---
 
 <ArticleLayout title={title} description={description}>
@@ -123,7 +124,7 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
   .article-content :global(h3) {
     font-size: 1.05rem;
     font-weight: 900;
-    color: #1e40af;
+    color: #0d9488;
     margin-top: 1.75rem;
     margin-bottom: 0.75rem;
   }
@@ -177,23 +178,27 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
     border-collapse: collapse;
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     overflow: hidden;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
   .article-content :global(thead) {
-    background: #eff6ff;
+    background: #4338ca;
   }
 
   .article-content :global(thead th) {
     padding: 0.875rem 1rem;
     font-weight: 900;
     font-size: 0.8rem;
-    color: #1e3a8a;
+    color: #ffffff;
     text-align: left;
-    border-bottom: 1px solid #bfdbfe;
+    border-bottom: 1px solid #6366f1;
+  }
+
+  .article-content :global(thead th:not(:last-child)) {
+    border-right: 1px solid #6366f1;
   }
 
   .article-content :global(tbody tr) {
@@ -204,12 +209,20 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
     border-bottom: none;
   }
 
+  .article-content :global(tbody tr:nth-child(even)) {
+    background: #f8fafc;
+  }
+
   .article-content :global(tbody td) {
     padding: 0.875rem 1rem;
     vertical-align: middle;
     line-height: 1.5;
     color: #475569;
     font-size: 0.875rem;
+  }
+
+  .article-content :global(tbody td:not(:last-child)) {
+    border-right: 1px solid #f1f5f9;
   }
 
   /* ====== コードブロック ====== */
@@ -246,9 +259,9 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
 
   /* ====== ブロッククォート ====== */
   .article-content :global(blockquote) {
-    background: linear-gradient(135deg, #eff6ff, #dbeafe);
-    border: 1px solid #93c5fd;
-    border-left: 4px solid #3b82f6;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #86efac;
+    border-left: 4px solid #16a34a;
     border-radius: 0 16px 16px 0;
     padding: 1.25rem 1.5rem;
     margin: 0 0 1.25rem;
@@ -256,7 +269,7 @@ const eyecatchPath = `/記事画像/${entry.id}.webp`;
 
   .article-content :global(blockquote p) {
     font-size: 0.875rem;
-    color: #1e3a5f;
+    color: #14532d;
     line-height: 1.75;
     margin: 0;
   }
