@@ -5,7 +5,7 @@ import articlesJson from '../data/articles.json';
 import { getCollection } from 'astro:content';
 
 // コレクション記事を正規化するヘルパー
-const normalizeEntries = (entries: any[], prefix: string) =>
+const normalizeEntries = (entries: any[], prefix: string, defaultCategory = '') =>
   entries.map(entry => {
     const urlSlug = entry.data.slug ?? entry.id;
     return {
@@ -15,14 +15,16 @@ const normalizeEntries = (entries: any[], prefix: string) =>
       description: entry.data.description,
       date: entry.data.pubDate ?? '',
       image: entry.data.image ?? `/記事画像/${urlSlug}.webp`,
-      category: entry.data.category ?? '',
+      category: entry.data.category ?? defaultCategory,
     };
   });
 
-const [kampoEntries, otcEntries, studyEntries] = await Promise.all([
+const [kampoEntries, otcEntries, studyEntries, careerEntries, examEntries] = await Promise.all([
   getCollection('kampo'),
   getCollection('otc'),
   getCollection('study'),
+  getCollection('career'),
+  getCollection('exam'),
 ]);
 
 // articles.jsonを正規化
@@ -41,6 +43,8 @@ const articles = [
   ...normalizeEntries(kampoEntries, 'kampo'),
   ...normalizeEntries(otcEntries, 'otc'),
   ...normalizeEntries(studyEntries, 'study'),
+  ...normalizeEntries(careerEntries, 'career', 'キャリア・資格'),
+  ...normalizeEntries(examEntries, 'exam', 'キャリア・資格'),
   ...jsonNormalized,
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
