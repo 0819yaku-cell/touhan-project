@@ -39,6 +39,14 @@ affiliateNote: "本記事はアフィリエイトリンクを含みます。"
 
 ---
 
+転職先を探す際は、求人数が豊富なリクナビNEXTや、
+転職のプロに相談できるリクルートエージェントも活用してみてください。
+
+- [リクナビNEXTで求人を探す](https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3768855&pid=892605626&vc_url=https%3A%2F%2Fnext.rikunabi.com%2F)（登録無料・求人検索）
+- [リクルートエージェントに相談する](//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3768855&pid=892605627)（非公開求人あり・転職サポート）
+
+---
+
 ## 2026年現在の管理者要件3パターン
 
 2023年4月の法改正により、管理者要件が緩和されました。現在は以下の3パターンのいずれかを満たすことで店舗管理者になれます。
