@@ -327,7 +327,7 @@ otherArticles.forEach(a => {
               </svg>
             </a>
           </div>
-          <p class="pl-4 mb-4" style="font-size:0.8rem; color:#94a3b8; font-weight:600;">試験に出る漢方を薬剤師が徹底解説</p>
+          <p class="pl-4 mb-4" style="font-size:0.8rem; color:#94a3b8; font-weight:600;">試験頻出漢方を薬剤師が徹底解説</p>
 
           <div class="articles-list">
             {kampoHighlightArticles.map((article) => (
@@ -356,7 +356,7 @@ otherArticles.forEach(a => {
           <div class="flex justify-between items-center mt-2 mb-1">
             <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
               <span class="w-2 h-6 bg-primary rounded-full"></span>
-              試験対策
+              試験対策まとめ
             </h2>
             <a href="/articles/study" class="kampo-list-btn no-underline">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -472,7 +472,7 @@ otherArticles.forEach(a => {
         </section>
 
         <!-- Articles Section -->
-        <section class="articles-section px-4 mt-16 mb-8">
+        <section id="articles-section" class="articles-section px-4 mt-16 mb-8">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
               <span class="w-2 h-6 bg-primary rounded-full"></span>
@@ -1358,6 +1358,19 @@ otherArticles.forEach(a => {
         });
       });
     });
+
+    // URLパラメータ ?category= によるタブ自動選択＋スクロール
+    const urlCategory = new URLSearchParams(window.location.search).get('category');
+    if (urlCategory) {
+      const matchBtn = [...tabBtns].find(b => (b as HTMLElement).dataset.tab === urlCategory) as HTMLElement | undefined;
+      if (matchBtn) {
+        matchBtn.click();
+        requestAnimationFrame(() => {
+          const section = document.getElementById('articles-section');
+          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    }
   }
 
   // Handle initial page load

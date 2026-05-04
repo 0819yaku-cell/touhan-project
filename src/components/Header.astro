@@ -2,17 +2,19 @@
 const pathname = Astro.url.pathname;
 
 const isActive = (href: string) => {
+  if (href.startsWith('/?')) return false;
   if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(href);
 };
 
 const navLinks = [
-  { href: '/questions/1', label: '問題集' },
-  { href: '/articles/',   label: '漢方'   },
-  { href: '/otc/',        label: 'OTC'    },
-  { href: '/study/',      label: '試験対策' },
-  { href: '/career/',     label: 'キャリア・転職' },
-  { href: '/about/',      label: '運営者情報' },
+  { href: '/articles/kampo',           label: '漢方' },
+  { href: '/articles/study',           label: '試験対策' },
+  { href: '/?category=試験情報',        label: '試験情報' },
+  { href: '/?category=勉強法',          label: '勉強法' },
+  { href: '/?category=OTC・薬の知識',   label: 'OTC・薬の知識' },
+  { href: '/?category=キャリア・資格',   label: 'キャリア・転職' },
+  { href: '/about/',                   label: '運営者情報' },
 ];
 ---
 
@@ -82,12 +84,13 @@ const navLinks = [
   .header-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 1rem;
-    height: 52px;
+    min-height: 52px;
     box-sizing: border-box;
+    gap: 0.25rem 0;
   }
 
   /* ── ロゴ ── */
@@ -97,6 +100,8 @@ const navLinks = [
     gap: 0.4rem;
     text-decoration: none;
     flex-shrink: 0;
+    margin-right: 0.5rem;
+    height: 52px;
   }
 
   .logo-emoji {
@@ -116,13 +121,15 @@ const navLinks = [
   .desktop-nav {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.125rem;
+    padding: 0.25rem 0;
   }
 
   .nav-link {
     display: inline-block;
-    padding: 0.35rem 0.65rem;
-    font-size: 0.78rem;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: #475569;
     text-decoration: none;
@@ -156,6 +163,7 @@ const navLinks = [
     padding: 4px;
     border-radius: 6px;
     flex-shrink: 0;
+    margin-left: auto;
   }
 
   .hamburger:hover {
@@ -191,11 +199,11 @@ const navLinks = [
     padding: 0.5rem 0;
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.25s ease, padding 0.25s ease;
+    transition: max-height 0.3s ease, padding 0.3s ease;
   }
 
   .mobile-nav.is-open {
-    max-height: 400px;
+    max-height: 520px;
     padding: 0.5rem 0;
   }
 
@@ -247,9 +255,12 @@ const navLinks = [
     .logo-text {
       font-size: 0.8rem;
     }
+
+    .header-inner {
+      flex-wrap: nowrap;
+    }
   }
 
-  /* ロゴテキスト：非常に狭い画面では短縮 */
   @media (max-width: 360px) {
     .logo-text {
       font-size: 0.72rem;
@@ -258,6 +269,14 @@ const navLinks = [
 </style>
 
 <script>
+  function updateSpacerHeight() {
+    const header = document.getElementById('site-header');
+    const spacer = document.querySelector('.header-spacer') as HTMLElement | null;
+    if (header && spacer) {
+      spacer.style.height = header.offsetHeight + 'px';
+    }
+  }
+
   function initHeader() {
     const btn = document.getElementById('hamburger-btn');
     const nav = document.getElementById('mobile-nav');
@@ -268,6 +287,7 @@ const navLinks = [
       btn.classList.toggle('is-open', isOpen);
       btn.setAttribute('aria-expanded', String(isOpen));
       nav.setAttribute('aria-hidden', String(!isOpen));
+      updateSpacerHeight();
     });
 
     // ナビリンクをタップしたらメニューを閉じる
@@ -277,8 +297,12 @@ const navLinks = [
         btn.classList.remove('is-open');
         btn.setAttribute('aria-expanded', 'false');
         nav.setAttribute('aria-hidden', 'true');
+        updateSpacerHeight();
       });
     });
+
+    updateSpacerHeight();
+    window.addEventListener('resize', updateSpacerHeight);
   }
 
   document.addEventListener('DOMContentLoaded', initHeader);
