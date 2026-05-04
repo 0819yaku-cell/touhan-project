@@ -257,13 +257,6 @@ otherArticles.forEach(a => {
               <div class="text-xs font-black text-slate-600 leading-tight mt-1">1日10問で<br>コツコツ合格</div>
             </div>
           </div>
-          <div class="stats-container mb-md">
-            <p class="stats-text font-bold text-lg text-slate-600">
-              現在のマスター数：<span id="global-mastered-count" class="text-primary-dark text-2xl mx-1">0</span> / {data.length}問
-            </p>
-            <p class="text-[0.7rem] font-bold text-slate-400 mt-1 opacity-80 italic">※マスターした問題は自動で除外されます</p>
-          </div>
-          
           <div class="cta-buttons flex flex-col items-center gap-4 w-full mx-auto px-4">
             <div class="text-center mb-2">
               <span class="inline-block bg-orange-400 text-white text-xs font-black px-3 py-1 rounded-full">
@@ -415,11 +408,21 @@ otherArticles.forEach(a => {
         <!-- Chapters Progress Section -->
         <section id="modules-section" class="modules-section mb-xl">
           <div class="px-4 mb-6">
-            <h2 class="section-title text-xl font-black text-slate-800 flex items-center gap-2 mb-2">
-              <span class="w-2 h-6 bg-primary rounded-full"></span>
-              章ごとに学習する
+            <h2 class="section-title text-xl font-black text-slate-800 flex items-center gap-2 mb-2" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              <span class="w-2 h-6 bg-primary rounded-full flex-shrink-0"></span>
+              章ごとに学習する<span style="font-size:0.82rem; font-weight:600; color:#94a3b8; margin-left:0.4rem;">（タップで単元を選べます）</span>
             </h2>
-            <p class="text-sm font-bold text-slate-500 pl-4">章をタップ → 単元を選んで学習できます</p>
+            <div class="flex justify-center mt-2">
+              <span class="font-black rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200" style="font-size:0.9rem; padding:0.3rem 1rem; display:inline-flex; align-items:center; gap:0.4rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" aria-hidden="true" style="flex-shrink:0;">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                総合マスター数：<span id="global-mastered-count">0</span> / {data.length}問
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" aria-hidden="true" style="flex-shrink:0;">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </span>
+            </div>
           </div>
           <div class="modules-grid">
             {chapters.map((chap, i) => {
@@ -540,7 +543,7 @@ otherArticles.forEach(a => {
   }
 
   .py-xl {
-    padding-top: 1rem;
+    padding-top: 0.25rem;
     padding-bottom: 4.5rem;
   }
 
@@ -1250,7 +1253,7 @@ otherArticles.forEach(a => {
         matchBtn.click();
         requestAnimationFrame(() => {
           const section = document.getElementById('articles-section');
-          if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (section) section.scrollIntoView({ behavior: 'instant', block: 'start' });
         });
       }
     }

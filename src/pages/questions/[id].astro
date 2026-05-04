@@ -35,6 +35,7 @@ const pageDescription = text;
         <span class="back-icon">←</span> 問題一覧
       </a>
       <span class="progress-badge" id="header-progress-badge">{questionNumber} / {totalQuestions}問</span>
+      <button id="btn-end-mock" class="end-mock-btn" style="display:none" aria-label="テストを終了する">終了</button>
     </header>
 
     <!-- 監修者ラベル -->
@@ -126,6 +127,21 @@ const pageDescription = text;
     padding: 4px 12px;
     border-radius: 9999px;
   }
+
+  .end-mock-btn {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #dc2626;
+    background: #fef2f2;
+    border: 1.5px solid #fca5a5;
+    border-radius: 8px;
+    padding: 4px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .end-mock-btn:hover { background: #fee2e2; }
 
   /* ── 監修者ラベル ── */
   .supervised-by {
@@ -257,6 +273,18 @@ const pageDescription = text;
       const index = parseInt(sessionStorage.getItem('touhan_mock_index') || '0', 10);
       const total = JSON.parse(mockSessionStr).length;
       badge.textContent = `${index + 1} / ${total}問 (模擬テスト)`;
+
+      // 終了ボタンを表示
+      const endBtn = document.getElementById('btn-end-mock') as HTMLButtonElement | null;
+      if (endBtn) {
+        endBtn.style.display = 'block';
+        endBtn.addEventListener('click', () => {
+          const ok = window.confirm('途中終了しますか？\n現在までの回答で結果を表示します。');
+          if (ok) {
+            window.location.href = '/mock-exam/result';
+          }
+        });
+      }
     }
   }
 
