@@ -18,7 +18,7 @@ const urlSlug = entry.data.slug ?? entry.id;
 const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
 ---
 
-<ArticleLayout title={title} description={description}>
+<ArticleLayout title={title} description={description} category={category} slug={urlSlug}>
   <div class="article-container animate-fade-in">
     <header class="article-header">
       <div class="category-tag">{category ?? '💼 キャリア・転職'}</div>
