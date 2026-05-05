@@ -220,9 +220,6 @@ otherArticles.forEach(a => {
               18年の現場経験を持つ薬剤師が全国共通範囲を完全網羅。
               480問の練習問題とやさしい解説で、スキマ時間に合格力を身につけよう。
             </p>
-            <div class="mt-2">
-              <a href="/articles/study/how-to-use" style="font-size:0.75rem; color:#64748b; font-weight:700; text-decoration:none; white-space:nowrap; background:#f1f5f9; border:1.5px solid #cbd5e1; border-radius:9999px; padding:0.3rem 0.75rem; transition:background 0.15s, transform 0.15s; display:inline-block;" onmouseover="this.style.background='#e2e8f0';this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#f1f5f9';this.style.transform=''">🔰 このサイトの使い方</a>
-            </div>
           </div>
         </header>
 
@@ -261,10 +258,16 @@ otherArticles.forEach(a => {
             </div>
           </div>
           <div class="cta-buttons flex flex-col items-center gap-4 w-full mx-auto px-4">
-            <div class="text-center mb-2">
-              <span class="inline-block bg-orange-400 text-white text-xs font-black px-3 py-1 rounded-full">
-                ✨ はじめての方はここから ↓
-              </span>
+            <div class="w-full grid items-center mb-2" style="grid-template-columns: 1fr auto 1fr;">
+              <div></div>
+              <div class="flex justify-center">
+                <span class="inline-block bg-orange-400 text-white text-xs font-black px-3 py-1 rounded-full whitespace-nowrap">
+                  ✨ はじめての方はここから ↓
+                </span>
+              </div>
+              <div class="flex justify-center">
+                <a href="/articles/study/how-to-use" class="how-to-use-link" style="font-size:0.72rem; background:#f1f5f9; border:1.5px solid #cbd5e1; border-radius:9999px; padding:0.25rem 0.6rem; text-decoration:none; font-weight:700; color:#64748b; white-space:nowrap;">🔰 使い方</a>
+              </div>
             </div>
             <button id="btn-start-daily" class="btn-primary-lg w-full cursor-pointer border-0 !py-5 !text-[1.1rem] !rounded-2xl shadow-md">
               <span>まずはここから｜今日の10問に挑戦（約3分）</span>
@@ -540,6 +543,19 @@ otherArticles.forEach(a => {
 </Layout>
 
 <style>
+  .how-to-use-link {
+    color: #15803d;
+    text-decoration: none;
+    font-weight: 800;
+    margin-left: 0.3rem;
+    transition: color 0.15s, text-decoration 0.15s;
+  }
+  .how-to-use-link:hover {
+    color: #166534;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   .page-wrapper {
     max-width: 480px;
     margin: 0 auto;
